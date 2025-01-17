@@ -201,7 +201,6 @@ else %Downsample output or specify output
             writematrix(phi_temp, Filename, 'WriteMode', 'append'); 
             % writematrix(phi_temp,strcat(pwd,'/',phifn,'.csv'),'WriteMode','append');
         end
-        fprintf('Data appended to %s\n', Filename);
 
         mass_t(k) = sum(sum(phi_temp))/(h2*nx*ny);
         E_t(k) = ch_discrete_energy(phi_temp,h2,nx,ny,epsilon2);
@@ -210,6 +209,8 @@ else %Downsample output or specify output
             fprintf('%3.0f percent complete\n',i/t_iter*100)
         end
     end
+    fprintf('Data appended to %s\n', Filename);
+
 end
 
 %Center mass and normalize energy to t == 0
