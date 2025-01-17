@@ -48,29 +48,29 @@ ch_movie(phi_t,t_out, filename = filename);
 % RUN NMG SOLVER 
 % #################################################
 
-pathname = sprintf("%s/NMG_MATLAB_%d_dt_%.2e_Nx_%d_n_relax_%d_",outdir,max_it,dt, GridSize, n_relax);
-tStart_NMG = tic;
-[t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_NMG(phi0,...
-                                    t_iter = max_it,...
-                                    dt = dt,...
-                                    m = m,...
-                                    boundary = boundary,...
-                                    printphi=print_phi,...
-                                    pathname=pathname,...
-                                    dt_out = 10);
-elapsedTime = toc(tStart_NMG);
+% pathname = sprintf("%s/NMG_MATLAB_%d_dt_%.2e_Nx_%d_n_relax_%d_",outdir,max_it,dt, GridSize, n_relax);
+% tStart_NMG = tic;
+% [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_NMG(phi0,...
+%                                     t_iter = max_it,...
+%                                     dt = dt,...
+%                                     m = m,...
+%                                     boundary = boundary,...
+%                                     printphi=print_phi,...
+%                                     pathname=pathname,...
+%                                     dt_out = 10);
+% elapsedTime = toc(tStart_NMG);
 
-fid = fopen('Job_specs.txt', 'a+');
-v = [string(datetime) "NMG_spinodal_decomp_smoothed_print" "MATLAB" "NMG" GridSize epsilon dt 'NaN' max_it 'NaN' elapsedTime];
-fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);
-fclose(fid);
+% fid = fopen('Job_specs.txt', 'a+');
+% v = [string(datetime) "NMG_spinodal_decomp_smoothed_print" "MATLAB" "NMG" GridSize epsilon dt 1e-5 max_it 1e4 elapsedTime];
+% fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);
+% fclose(fid);
 
-writematrix(phi_t(:,:,end),sprintf('%sfinal_phi.csv', pathname));
-writematrix(delta_mass_t,sprintf('%smass.csv', pathname));
-writematrix(E_t,sprintf('%senergy.csv', pathname));
+% writematrix(phi_t(:,:,end),sprintf('%sfinal_phi.csv', pathname));
+% writematrix(delta_mass_t,sprintf('%smass.csv', pathname));
+% writematrix(E_t,sprintf('%senergy.csv', pathname));
 
-filename = strcat(pathname, "movie");
-ch_movie(phi_t,t_out, filename = filename);
+% filename = strcat(pathname, "movie");
+% ch_movie(phi_t,t_out, filename = filename);
 
 
 
@@ -78,7 +78,6 @@ ch_movie(phi_t,t_out, filename = filename);
 % % RUN FD SOLVER 
 % % #################################################
 
-outdir = "output";
 pathname = sprintf("%s/FD_MATLAB_%d_dt_%.2e_Nx_%d_n_relax_%d_",outdir,max_it,dt, GridSize, n_relax);
 tStart_FD = tic;
 [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_FD(phi0,...
@@ -92,7 +91,7 @@ tStart_FD = tic;
 elapsedTime = toc(tStart_FD);
 
 fid = fopen('Job_specs.txt', 'a+');
-v = [string(datetime) "spinodal_decomp_smoothed_print" "MATLAB" "FD" GridSize epsilon dt 'NaN' max_it 'NaN' elapsedTime];
+v = [string(datetime) "FD_spinodal_decomp_smoothed_print" "MATLAB" "FD" GridSize epsilon dt 'NaN' max_it 'NaN' elapsedTime];
 fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);
 fclose(fid);
 

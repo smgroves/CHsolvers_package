@@ -43,7 +43,7 @@ function [t_out,phi_t,delta_mass_t,E_t] = CahnHilliard_NMG(phi0,varargin)
 default_t_iter = 1e3;
 default_dt = 2.5e-5;
 default_solver_iter = 1e4;
-default_tol = 1e-6;
+default_tol = 1e-5;
 default_dt_out = nan;
 default_m = 4;
 default_epsilon2 = nan;
@@ -65,7 +65,7 @@ valid_pos_num = @(x) isnumeric(x) && (x > 0);
 valid_boundary_type = @(x) strcmpi(x,'periodic') || strcmpi(x,'neumann');
 valid_domain_vector = @(x) length(x) == 4;
 valid_logical = @(x) islogical(x) || x == 1 || x == 0;
-valid_filename = @(x) ischar(x) || isstring(x);
+valid_string = @(x) ischar(x) || isstring(x);
 
 %Set parser options and valid input criteria
 addRequired(CahnHilliard_NMG_parser,'phi0',valid_matrix);
@@ -82,7 +82,7 @@ addParameter(CahnHilliard_NMG_parser,'c_relax',default_c_relax,valid_integer);
 addParameter(CahnHilliard_NMG_parser,'domain',default_domain,valid_domain_vector);
 addParameter(CahnHilliard_NMG_parser,'printres',default_printres,valid_logical);
 addParameter(CahnHilliard_NMG_parser,'printphi',default_printphi,valid_logical);
-addParameter(CahnHilliard_NMG_parser,'pathname',default_pathname);
+addParameter(CahnHilliard_NMG_parser,'pathname',default_pathname,valid_string);
 
 % addParameter(CahnHilliard_NMG_parser,'phifn',default_phifn,valid_filename);
 
@@ -130,7 +130,7 @@ mu = zeros(nx,ny); %Initialize chemical potential
 phi_old = phi0; %Initialize prior chemical state
 phi_new = phi0; %Initialize next chemical state
 downsampled = nx*ny*t_iter > 1e9; %Logical index for the need to downsample
-optdownsampled = dt_out < t_iter; %Logical index if the user opted to downsample
+optdownsampled = dt_out > 1; %Logical index if the user opted to downsample
 if ~downsampled && ~optdownsampled %Initialize outputs
     phi_t = zeros(nx,ny,t_iter);
     mass_t = zeros(t_iter,1);
