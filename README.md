@@ -10,8 +10,8 @@ Either SAV or MG should be used for solving the CH equation, depending on contex
 
 
 To run this github repository:
-1. Clone the repo to your local computer.
-2. Before making changes, always "git pull origin main" to get the latest version.
+1. Clone the repo to your local computer. (`git clone remote_address`)
+2. Before making changes, always `git pull origin main` to get the latest version.
 3. Make changes to the code.
 4. `git add .` to add stage all changes for commit.
 5. `git commit -m "commit message"` To commit your changes locally.
