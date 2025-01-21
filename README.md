@@ -11,6 +11,8 @@ Either SAV or MG should be used for solving the CH equation, depending on contex
 
 To run this github repository:
 1. Clone the repo to your local computer.
-2. Before making changes, always "git pull origin master" to get the latest version.
+2. Before making changes, always "git pull origin main" to get the latest version.
 3. Make changes to the code.
-4. `git push origin master` to push your local code to the remote repository. You will need to ensure there are no conflicts. 
+4. `git add .` to add stage all changes for commit.
+5. `git commit -m "commit message"` To commit your changes locally.
+6. `git push origin main` to push your local changes to the remote repository. You will need to ensure there are no conflicts. This will open a pull request. If you are sure there are no conflicts, you can merge your new changes with the current `main` branch. 
