@@ -1,0 +1,28 @@
+CahnHilliard_NMG Logical
+INPUT
+dt = time step; default = 2.5e-5
+dt_out = spacing of timesteps the user wants output to phi_t; default = NaN <-- default should be changed to 1
+pathname: name of path to which phi is printed; default = "cd"
+
+OUTPUT
+t_out: time array corresponding to dt time step outputs
+phi_t: phi over t_out time steps
+
+downsampled = nx*ny*t_iter > 1e9: if True, force downsampling because phi_t will be too large to keep as variable
+optdownsampled = dt_out > 1: if True, user requested downsampling by setting a dt_out larger than 1
+
+if no downsampling is necessary or requested:
+    #initialize variables
+    t_out = 0:dt:(t_iter-1)*dt <-- should go from 0 to t_iter*dt
+    t_spacing = 1 <-- replace t_spacing with dt_out variable
+else: must downsample
+    if the user did not opt to downsample:
+        t_iter_ds = 1e9/nx/ny (max possible number of iterations)
+        t_spacing = t_iter/t_iter_ds (set to dt_out when automatic downsampling is applied)
+    else if the user does specify downsampling:
+        t_spacing = dt_out
+        t_iter_ds = t_iter/dt_out
+    if dt_out is NaN or the user opted to downsample 
+        #initialize variable phi_t; otherwise it will be printed to file
+    t_out = 0:t_spacing*dt:(t_iter-t_spacing)*dt; <-- replace with 0:dt_out*dt:(t_iter)*dt_out*dt
+
