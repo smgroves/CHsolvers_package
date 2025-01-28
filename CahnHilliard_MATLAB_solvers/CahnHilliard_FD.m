@@ -138,7 +138,7 @@ if ~downsampled && (isnan(dt_out) || ~optdownsampled || ~printphi) %If output is
     for i = 1:t_iter
         phi_t(:,:,i) = phi_old;
         mass_t(i) = sum(sum(phi_old))/(h2*nx*ny);
-        E_t(i) = ch_discrete_energy(phi_old,h2,nx,ny,epsilon2);
+        E_t(i) = ch_discrete_energy(phi_old,h2,epsilon2);
         phi_new = fd_solver(phi_old,nx,ny,xright,xleft,yright,yleft, ...
             dt,epsilon2,boundary,printres);
         phi_old = phi_new;
@@ -155,7 +155,7 @@ else %Downsample output or specify output
     k = 1; %Initialize counter and outputs
     phi_t(:,:,k) = phi_old;
     mass_t(k) = sum(sum(phi_old))/(h2*nx*ny);
-    E_t(k) = ch_discrete_energy(phi_old,h2,nx,ny,epsilon2);
+    E_t(k) = ch_discrete_energy(phi_old,h2,epsilon2);
     for i = 0:t_spacing:(t_iter-t_spacing)
         for j = 1:t_spacing %Iterate through t_spacing steps
             phi_temp = fd_solver(phi_old,nx,ny,xright,xleft,yright,yleft, ...
@@ -174,7 +174,7 @@ else %Downsample output or specify output
             % writematrix(phi_temp,strcat(pwd,'/phi_t.csv'),'WriteMode','append');
         end
         mass_t(k) = sum(sum(phi_temp))/(h2*nx*ny);
-        E_t(k) = ch_discrete_energy(phi_temp,h2,nx,ny,epsilon2);
+        E_t(k) = ch_discrete_energy(phi_temp,h2,epsilon2);
         k = k+1;
         if mod(i/t_iter*100,5) == 0
             fprintf('%3.0f percent complete\n',i/t_iter*100)
