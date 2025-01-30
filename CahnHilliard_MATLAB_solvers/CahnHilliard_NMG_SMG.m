@@ -52,8 +52,6 @@ default_printres = false;
 default_printphi = false;
 default_pathname = 'cd';
 
-% default_phifn = 'phi_t';
-
 CahnHilliard_NMG_parser = inputParser;
 
 %Set general criteria for inputs and name-value pairs
@@ -67,7 +65,6 @@ valid_string = @(x) ischar(x) || isstring(x);
 
 %Set parser options and valid input criteria
 addRequired(CahnHilliard_NMG_parser,'phi0',valid_matrix);
-   
 addParameter(CahnHilliard_NMG_parser,'t_iter',default_t_iter,valid_integer);
 addParameter(CahnHilliard_NMG_parser,'dt',default_dt,valid_pos_num);
 addParameter(CahnHilliard_NMG_parser,'solver_iter',default_solver_iter,valid_integer);
@@ -82,10 +79,7 @@ addParameter(CahnHilliard_NMG_parser,'printres',default_printres,valid_logical);
 addParameter(CahnHilliard_NMG_parser,'printphi',default_printphi,valid_logical);
 addParameter(CahnHilliard_NMG_parser,'pathname',default_pathname,valid_string);
 
-% addParameter(CahnHilliard_NMG_parser,'phifn',default_phifn,valid_filename);
-
 parse(CahnHilliard_NMG_parser,phi0,varargin{:});
-
 %Extract parsed inputs
 phi0 = CahnHilliard_NMG_parser.Results.phi0;
 t_iter = CahnHilliard_NMG_parser.Results.t_iter;
@@ -105,10 +99,7 @@ printres = CahnHilliard_NMG_parser.Results.printres;
 printphi = CahnHilliard_NMG_parser.Results.printphi;
 pathname = CahnHilliard_NMG_parser.Results.pathname;
 
-% phifn = CahnHilliard_NMG_parser.Results.phifn;
-
 %% Define and initialize key simulation parameters
-
 [nx,ny] = size(phi0); %Define number of grid points in x and y
 %Define maximum possible V-cycle levels as the largest power of two
 %shared by both x and y dimensions
@@ -128,15 +119,12 @@ end
 mu = zeros(nx,ny); %Initialize chemical potential
 phi_old = phi0; %Initialize prior chemical state
 phi_new = phi0; %Initialize next chemical state
-
-
-
 downsampled = nx*ny*t_iter/dt_out > 1e9; %Logical index for the need to downsample
 n_timesteps = floor(t_iter/dt_out);
 
 if printphi %print to file
-    mass_t = zeros(n_timesteps,1);
-    E_t = zeros(n_timesteps,1);
+    mass_t = zeros(n_timesteps+1,1);
+    E_t = zeros(n_timesteps+1,1);
     t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out;
     %do not make a phi_t variable but save the phi0 to a file
     if pathname == "cd"
@@ -152,28 +140,27 @@ else %save to variable phi_t
         dt_out = new_dt_out;
         n_timesteps = floor(t_iter/dt_out);
     end
-    mass_t = zeros(n_timesteps,1);
-    E_t = zeros(n_timesteps,1);
+    mass_t = zeros(n_timesteps+1,1);
+    E_t = zeros(n_timesteps+1,1);
     t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out;
-    phi_t = zeros(nx,ny,n_timesteps);
+    phi_t = zeros(nx,ny,n_timesteps+1);
+    phi_t(:,:,1) = phi0;
 end
 
-%At this point, dt_out and n_timesteps should both be updated to a value that works for saving or printing. So we can use a similar logic structure,
-%looping over 1:t_iter and saving to phi_t or printing to file every dt_out as needed.
-        
-%% Run nonlinear multigrid solver
+mass_t(1) = sum(sum(phi0))/(h2*nx*ny);
+E_t(1) = ch_discrete_energy(phi0,h2,epsilon2);
 
+%% Run nonlinear multigrid solver
 if printres
     fprintf('Saving squared residuals per iteration to file in the working directory\n')
 end
-
 for i = 1:t_iter
-    mass_t(i) = sum(sum(phi_old))/(h2*nx*ny);
-    E_t(i) = ch_discrete_energy(phi_old,h2,epsilon2);
     phi_new = nmg_solver(phi_old,phi_new,mu,nx,ny, ...
         xright,xleft,yright,yleft,c_relax,dt,epsilon2,n_level, ...
         solver_iter,tol,boundary,printres);
     phi_old = phi_new;
+    mass_t(i+1) = sum(sum(phi_old))/(h2*nx*ny);
+    E_t(i+1) = ch_discrete_energy(phi_old,h2,epsilon2);
     if mod(i/t_iter*100,5) == 0
         fprintf('%3.0f percent complete\n',i/t_iter*100)
     end
@@ -188,10 +175,7 @@ for i = 1:t_iter
     end
 end
 
-
-
 %Center mass and normalize energy to t == 0
 delta_mass_t = mass_t - mass_t(1);
 E_t = E_t/E_t(1);
-
 end
