@@ -134,7 +134,7 @@ phi_new = phi0; %Initialize next chemical state
 downsampled = nx*ny*t_iter/dt_out > 1e9; %Logical index for the need to downsample
 n_timesteps = floor(t_iter/dt_out);
 
-if printphi
+if printphi %print to file
     mass_t = zeros(n_timesteps,1);
     E_t = zeros(n_timesteps,1);
     t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out;
@@ -145,86 +145,50 @@ if printphi
     Filename = strcat(pathname, 'phi.csv');
     %note that this will overwrite the file if it already exists
     writematrix(phi0, Filename, 'WriteMode', 'overwrite'); 
-else
-    if ~downsampled
-        mass_t = zeros(n_timesteps,1);
-        E_t = zeros(n_timesteps,1);
-        t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out;
-        phi_t = zeros(nx,ny,n_timesteps);
-    else
-        dt_out_ds = ceil(nx*ny*t_iter/1e9); %we need to round up to ensure we have enough space
-        fprintf("Variable phi_t is too large with dt_out = %4.0f. Downsampling to every %4.0f time steps\n", dt_out, dt_out_ds)
-        n_timesteps = floor(t_iter/dt_out_ds);
-        mass_t = zeros(n_timesteps,1);
-        E_t = zeros(n_timesteps,1);
-        t_out = 0:dt_out_ds*dt:(n_timesteps)*dt*dt_out_ds;
-        phi_t = zeros(nx,ny,n_timesteps);
+else %save to variable phi_t
+    if downsampled
+        new_dt_out = ceil(nx*ny*t_iter/1e9); %we need to round up to ensure we have enough space
+        fprintf("Variable phi_t is too large with dt_out = %4.0f. Downsampling to every %4.0f time steps\n", dt_out, new_dt_out)
+        dt_out = new_dt_out;
+        n_timesteps = floor(t_iter/dt_out);
     end
-
+    mass_t = zeros(n_timesteps,1);
+    E_t = zeros(n_timesteps,1);
+    t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out;
+    phi_t = zeros(nx,ny,n_timesteps);
 end
 
-
-% HAVE NOT EDITED BELOW HERE
+%At this point, dt_out and n_timesteps should both be updated to a value that works for saving or printing. So we can use a similar logic structure,
+%looping over 1:t_iter and saving to phi_t or printing to file every dt_out as needed.
         
 %% Run nonlinear multigrid solver
 
 if printres
     fprintf('Saving squared residuals per iteration to file in the working directory\n')
 end
-if ~downsampled && (isnan(dt_out) || ~optdownsampled || ~printphi) %If output is not specified or does not need to be downsampled
-    for i = 1:t_iter
-        phi_t(:,:,i) = phi_old;
-        mass_t(i) = sum(sum(phi_old))/(h2*nx*ny);
-        E_t(i) = ch_discrete_energy(phi_old,h2,epsilon2);
-        phi_new = nmg_solver(phi_old,phi_new,mu,nx,ny, ...
-            xright,xleft,yright,yleft,c_relax,dt,epsilon2,n_level, ...
-            solver_iter,tol,boundary,printres);
-        phi_old = phi_new;
-        if mod(i/t_iter*100,5) == 0
-            fprintf('%3.0f percent complete\n',i/t_iter*100)
-        end
-    end
-else %Downsample output or specify output
-    if isnan(dt_out)
-        fprintf('Downsaving every %4.0f time steps\n',t_spacing)
-    else
-        fprintf('Saving phi_t to file specified by pathname\n')
-    end       
-    k = 1; %Initialize counter and outputs
-    phi_t(:,:,k) = phi_old;
-    mass_t(k) = sum(sum(phi_old))/(h2*nx*ny);
-    E_t(k) = ch_discrete_energy(phi_old,h2,epsilon2);
-    for i = 0:t_spacing:(t_iter-t_spacing)
-        for j = 1:t_spacing %Iterate through t_spacing steps
-            phi_temp = nmg_solver(phi_old,phi_new,mu,nx,ny, ...
-                xright,xleft,yright,yleft,c_relax,dt,epsilon2,n_level, ...
-                solver_iter,tol,boundary,printres);
-            phi_old = phi_temp;
-        end
-        if isnan(dt_out) && ~printphi %Save to variable
-            phi_t(:,:,k) = phi_temp;
-        else %Write to file
 
-            if pathname == "cd"
-                pathname = pwd;
-            end
-            % Print phi to file if specified
-            Filename = strcat(pathname, 'phi.csv');
+for i = 1:t_iter
+    mass_t(i) = sum(sum(phi_old))/(h2*nx*ny);
+    E_t(i) = ch_discrete_energy(phi_old,h2,epsilon2);
+    phi_new = nmg_solver(phi_old,phi_new,mu,nx,ny, ...
+        xright,xleft,yright,yleft,c_relax,dt,epsilon2,n_level, ...
+        solver_iter,tol,boundary,printres);
+    phi_old = phi_new;
+    if mod(i/t_iter*100,5) == 0
+        fprintf('%3.0f percent complete\n',i/t_iter*100)
+    end
+    % save or print every dt_out
+    if mod(i,dt_out) == 0
+        if printphi
             % Path = strcat(pwd, '/', Filename);
-            writematrix(phi_temp, Filename, 'WriteMode', 'append'); 
-            % writematrix(phi_temp,strcat(pwd,'/',phifn,'.csv'),'WriteMode','append');
-        end
-
-        mass_t(k) = sum(sum(phi_temp))/(h2*nx*ny);
-        E_t(k) = ch_discrete_energy(phi_temp,h2,epsilon2);
-        k = k+1;
-        if mod(i/t_iter*100,5) == 0
-            fprintf('%3.0f percent complete\n',i/t_iter*100)
+            writematrix(phi_new, Filename, 'WriteMode', 'append'); 
+        else
+            phi_t(:,:,i) = phi_old;
         end
     end
-    fprintf('Data appended to %s\n', Filename);
-
 end
+
+
 
 %Center mass and normalize energy to t == 0
 delta_mass_t = mass_t - mass_t(1);
