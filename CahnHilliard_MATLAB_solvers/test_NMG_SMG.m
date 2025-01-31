@@ -1,3 +1,4 @@
+%%
 indir = "../IC/";
 outdir = "../output/test_NMG_SMG/";
 
@@ -10,7 +11,7 @@ dt = 5.5e-6;
 max_it = 2000;
 boundary = 'neumann';
 
-
+%%
 % #################################################
 % RUN NMG SOLVER -- TEST SAVING PHI_T when small
 % #################################################
@@ -29,6 +30,7 @@ pathname = sprintf("%s/NMG_MATLAB_%d_dt_%.2e_Nx_%d_n_relax_%d_",outdir,max_it,dt
                                     dt_out = 10);
 % elapsedTime = toc(tStart_NMG);
 
+%%
 % fid = fopen('../Job_specs.txt', 'a+');
 % v = [string(datetime) "NMG_spinodal_decomp_smoothed_print" "MATLAB" "NMG" GridSize epsilon dt 1e-5 max_it 1e4 elapsedTime];
 % fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);

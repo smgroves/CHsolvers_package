@@ -121,7 +121,6 @@ phi_old = phi0; %Initialize prior chemical state
 phi_new = phi0; %Initialize next chemical state
 downsampled = nx*ny*t_iter/dt_out > 1e9; %Logical index for the need to downsample
 n_timesteps = floor(t_iter/dt_out);
-
 if printphi %print to file
     mass_t = zeros(n_timesteps+1,1);
     E_t = zeros(n_timesteps+1,1);
@@ -159,8 +158,6 @@ for i = 1:t_iter
         xright,xleft,yright,yleft,c_relax,dt,epsilon2,n_level, ...
         solver_iter,tol,boundary,printres);
     phi_old = phi_new;
-    mass_t(i+1) = sum(sum(phi_old))/(h2*nx*ny);
-    E_t(i+1) = ch_discrete_energy(phi_old,h2,epsilon2);
     if mod(i/t_iter*100,5) == 0
         fprintf('%3.0f percent complete\n',i/t_iter*100)
     end
@@ -170,7 +167,10 @@ for i = 1:t_iter
             % Path = strcat(pwd, '/', Filename);
             writematrix(phi_new, Filename, 'WriteMode', 'append'); 
         else
-            phi_t(:,:,i) = phi_old;
+            t_index = floor(i/dt_out)+1;
+            phi_t(:,:,t_index) = phi_old;
+            mass_t(t_index) = sum(sum(phi_old))/(h2*nx*ny);
+            E_t(t_index) = ch_discrete_energy(phi_old,h2,epsilon2);
         end
     end
 end

@@ -1,0 +1,42 @@
+%%
+indir = "../IC/";
+outdir = "../output/test_NMG_SMG/";
+
+n_relax = 4;
+m = 8;
+epsilon = m * (1 / 128) / (2 * sqrt(2) * atanh(0.9));
+% total_time = .2;
+dt = 5.5e-6;
+% max_it = round(total_time / dt);
+max_it = 20;
+boundary = 'neumann';
+
+%%
+% #################################################
+% RUN NMG SOLVER -- TEST SAVING PHI_T when small
+% #################################################
+GridSize = 128;
+init_file = sprintf("%s/initial_phi_%d_smooth_n_relax_%d.csv",indir,GridSize, n_relax);
+phi0 = readmatrix(init_file);
+pathname = sprintf("%s/NMG_MATLAB_%d_dt_%.2e_Nx_%d_n_relax_%d_",outdir,max_it,dt, GridSize, n_relax);
+% tStart_NMG = tic;
+[t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_NMG_SMG(phi0,...
+                                    t_iter = max_it,...
+                                    dt = dt,...
+                                    m = m,...
+                                    boundary = boundary,...
+                                    printphi=false,...
+                                    pathname=pathname,...
+                                    dt_out = 10);
+% elapsedTime = toc(tStart_NMG);
+
+%%
+% fid = fopen('../Job_specs.txt', 'a+');
+% v = [string(datetime) "NMG_spinodal_decomp_smoothed_print" "MATLAB" "NMG" GridSize epsilon dt 1e-5 max_it 1e4 elapsedTime];
+% fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);
+% fclose(fid);
+writematrix(delta_mass_t,sprintf('%smass.csv', pathname));
+writematrix(E_t,sprintf('%senergy.csv', pathname));
+
+movie_filename = strcat(pathname, "movie");
+ch_movie(phi_t,t_out, filename = movie_filename);
