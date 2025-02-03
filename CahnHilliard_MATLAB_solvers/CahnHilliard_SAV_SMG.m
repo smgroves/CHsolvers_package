@@ -8,11 +8,9 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
 %NAME-VALUE PAIRS
     % t_iter = Number of time steps simulated. Default = 1e3.
     % dt = Time step. Default = 2.5e-5 characteristic times.
-    % dt_out = Every 'dt_out' time step data is stored. Default = 10.
-    % dt_output = Number of time steps output to phi_t as a multidimensional
+    %dt_out = Spacing of time steps output to phi_t as a multidimensional
     %   array (if less than 1e9 elements) or printed file (if greater than
-    %   1e9 elements). Default = nan (output as many timesteps that enable
-    %   saving a multidimensional array of less than 1e9 elements).
+    %   1e9 elements). Default = 1, to output every time step. 
     % m = Number of mesh points over which the interface exists. Default = 4.
     % epsilon2 = Squared interfacial transition distance; if specified,
     %   m will be overwritten. Default = nan (do not overwrite m).
@@ -35,8 +33,7 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
     % Set parameter defaults
         default_t_iter = 1e3;
         default_dt = 2.5e-5;
-        default_dt_out = 10;
-        default_dt_output = nan;
+        default_dt_out = 1;
         default_m = 4;
         default_epsilon2 = nan;
         default_boundary = 'periodic';
@@ -65,7 +62,6 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
         addParameter(CahnHilliard_SAV_parser,'t_iter',default_t_iter,valid_integer);
         addParameter(CahnHilliard_SAV_parser,'dt',default_dt,valid_pos_num);
         addParameter(CahnHilliard_SAV_parser,'dt_out',default_dt_out,valid_integer);
-        addParameter(CahnHilliard_SAV_parser,'dt_output',default_dt_output,valid_integer);
         addParameter(CahnHilliard_SAV_parser,'m',default_m,valid_integer);
         addParameter(CahnHilliard_SAV_parser,'epsilon2',default_epsilon2,valid_pos_num);
         addParameter(CahnHilliard_SAV_parser,'domain',default_domain,valid_domain_vector);
@@ -145,57 +141,36 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
         r_old = r0_fun(phi_old,hx,hy,C0); % Initialize sav state
 
     % Initialize output variables according to the output specifications
-        t_iter_out = floor(t_iter/dt_out);
-        downsampled = nx*ny*t_iter_out > 1e9; %Logical index for the need to downsample
-        optdownsampled = (dt_output - 1) < t_iter_out; %Logical index if the user opted to downsample
-        
-        if ~downsampled && ~optdownsampled % Initialize outputs
+        downsampled = nx*ny*t_iter/dt_out > 1e9; %Logical index for the need to downsample
+        n_timesteps = floor(t_iter/dt_out);
+        if printphi
+            mass_t = zeros(n_timesteps+1,1);
+            E_t = zeros(n_timesteps+1,1);
+            if pathname == "cd"
+                pathname = pwd;
+            end
+            Filename = strcat(pathname, 'phi.csv');
+            %note that this will overwrite the file if it already exists
+            writematrix(phi0, Filename, 'WriteMode', 'overwrite'); 
+        else
+            if downsampled
+                new_dt_out = ceil(nx*ny*t_iter/1e9); %we need to round up to ensure we have enough space
+                fprintf("Variable phi_t is too large with dt_out = %4.0f. Downsampling to every %4.0f time steps\n", dt_out, new_dt_out)
+                dt_out = new_dt_out;
+                n_timesteps = floor(t_iter/dt_out);
+            end
             if strcmpi(boundary,'neumann')
-                phi_t = zeros(nx/2,ny/2,t_iter_out+1); 
+                phi_t = zeros(nx/2,ny/2,n_timesteps+1); 
             elseif strcmpi(boundary,'periodic')
-                phi_t = zeros(nx,ny,t_iter_out+1);
+                phi_t = zeros(nx,ny,n_timesteps+1);
             end
-            mass_t = zeros(t_iter_out+1,1);
-            E_t = zeros(t_iter_out+1,1);
-        else % Downsample outputs by redefining t_iter_out and dt_out
-            if ~optdownsampled
-                t_iter_out = floor(1e9/nx/ny);
-                dt_out = floor(t_iter/t_iter_out);
-            else
-                t_iter_out = dt_output-1;
-                dt_out = floor(t_iter/t_iter_out); % Space out according to dt_output
-            end
-            if isnan(dt_output) || optdownsampled % If downsampled to be saved
-                if strcmpi(boundary,'neumann')
-                    phi_t = zeros(nx/2,ny/2,t_iter_out+1);
-                elseif strcmpi(boundary,'periodic')
-                    phi_t = zeros(nx,ny,t_iter_out+1);
-                end
-            end
-            mass_t = zeros(t_iter_out+1,1);
-            E_t = zeros(t_iter_out+1,1);
+            mass_t = zeros(n_timesteps+1,1);
+            E_t = zeros(n_timesteps+1,1);
+            phi_t(:,:,1) = phi_old;
         end
-
-    % Store initial states into output variables
-        % If Neumann: shrink the result back to the original domain size in phi_old_out for output computations
-        if strcmpi(boundary,'neumann')
-            phi_old_out = extback(phi_old);
-        elseif strcmpi(boundary,'periodic')
-            phi_old_out = phi_old;
-        end
-        % Compute mass and energy according to phi_old_out
-        mass = ch_mass(phi_old_out,h2); % Initialize mass
-        E = ch_discrete_energy(phi_old_out,h2,epsilon2); % Initialize energy
-        
-        % Store initial states into output variables
-        [phi_t,mass_t,E_t] = store_data(phi_t,mass_t,E_t,phi_old_out,mass,E,1); 
-    
-    % Message before time iteration
-        if isnan(dt_output) && downsampled
-            fprintf('Downsaving every %4.0f time steps\n',dt_out)
-        elseif printphi
-            fprintf('Saving phi_t to file specified by pathname\n')
-        end    
+        mass_t(1) = ch_mass(phi_old,h2);
+        E_t(1) = ch_discrete_energy(phi0,h2,epsilon2);
+  
 
 %% Run SAV solver
 
@@ -216,27 +191,20 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
             E = ch_discrete_energy(phi_new_out,h2,epsilon2);
 
         % Store data according to the output specifications
-            if isnan(dt_output) && ~printphi % Save to variable
-                % Store current states every dt_out time steps
-                    if mod(i,dt_out) == 0
-                        [phi_t,mass_t,E_t] = store_data(phi_t,mass_t,E_t,phi_new_out,mass,E,i/dt_out+1);
-                    end
-            else % Write to file for phi, save mass and energy
-                if pathname == "cd"
-                    pathname = pwd;
-                end
-                % Print phi to file if specified
-                    Filename = strcat(pathname, 'phi.csv');
 
-                if mod(i,dt_out) == 0
-                    % Write phi_new_out to file
-                        writematrix(phi_new_out, Filename, 'WriteMode', 'append'); 
-                        fprintf('Data appended to %s\n', Filename);
-                    % Store mass and energy
-                        mass_t(i/dt_out+1) = mass;
-                        E_t(i/dt_out+1) = E;
+            if mod(i,dt_out) == 0
+                if printphi
+                % Write phi_new_out to file
+                    writematrix(phi_new_out, Filename, 'WriteMode', 'append'); 
+                else
+                % Store mass and energy
+                    t_index = floor(i/dt_out)+1;
+                    phi_t(:,:,t_index) = phi_new_out;
+                    mass_t(i/dt_out+1) = mass;
+                    E_t(i/dt_out+1) = E;
                 end
             end
+            
 
         % Update iteration variables
             phi_old = phi_new;
@@ -251,23 +219,23 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
 
 %% For post-processing
 
-    if pathname == "cd"
-        pathname = pwd;
-    end
-    % Print phi to file if specified
-        if printphi
-            Filename = strcat(pathname, 'phi.csv');
-            % Path = strcat(pwd, '/', Filename);
-            writematrix(phi_new, Filename, 'WriteMode', 'append'); 
-            fprintf('Data appended to %s\n', Filename);
-        end
+    % if pathname == "cd"
+    %     pathname = pwd;
+    % end
+    % % Print phi to file if specified
+    %     if printphi
+    %         Filename = strcat(pathname, 'phi.csv');
+    %         % Path = strcat(pwd, '/', Filename);
+    %         writematrix(phi_new, Filename, 'WriteMode', 'append'); 
+    %         fprintf('Data appended to %s\n', Filename);
+    %     end
 
     % Center mass and normalize energy to t == 0
         delta_mass_t = mass_t - mass_t(1);
         E_t = E_t/E_t(1);
     
     % Output t_out vector for post-processing
-        t_out = (0:dt_out:t_iter)*dt;
+        t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out;
 
 end
 
