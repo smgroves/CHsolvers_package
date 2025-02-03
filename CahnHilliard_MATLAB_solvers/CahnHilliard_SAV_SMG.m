@@ -80,7 +80,6 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
         dt = CahnHilliard_SAV_parser.Results.dt;
         dt_out = CahnHilliard_SAV_parser.Results.dt_out;
         if dt_out > t_iter, error('Error: dt_out should not be greater than t_iter.'); end
-        dt_output = CahnHilliard_SAV_parser.Results.dt_output;
         m = CahnHilliard_SAV_parser.Results.m;
         epsilon2 = CahnHilliard_SAV_parser.Results.epsilon2;
         boundary = CahnHilliard_SAV_parser.Results.boundary;
@@ -166,7 +165,12 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
             end
             mass_t = zeros(n_timesteps+1,1);
             E_t = zeros(n_timesteps+1,1);
-            phi_t(:,:,1) = phi_old;
+            if strcmpi(boundary,'neumann')
+                phi_old_out = extback(phi_old);
+            elseif strcmpi(boundary,'periodic')
+                phi_old_out = phi_old;
+            end
+            phi_t(:,:,1) = phi_old_out;
         end
         mass_t(1) = ch_mass(phi_old,h2);
         E_t(1) = ch_discrete_energy(phi0,h2,epsilon2);
