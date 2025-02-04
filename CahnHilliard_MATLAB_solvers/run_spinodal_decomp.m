@@ -98,8 +98,8 @@ pathname = sprintf("%s/FD_MATLAB_%d_dt_%.2e_Nx_%d_n_relax_%d_",outdir,max_it,dt,
 % % writematrix(phi_t(:,:,end),sprintf('%sfinal_phi.csv', pathname));
 % writematrix(delta_mass_t,sprintf('%smass.csv', pathname));
 % writematrix(E_t,sprintf('%senergy.csv', pathname));
-t_out = 0:10*dt:max_it*dt*10;
-filename = strcat(pathname, "movie");
+t_out = 0:10*dt:max_it*dt;
+filename = strcat(pathname, "movie_from_file");
 phi_file = strcat(pathname, "phi.csv");
 ch_movie_from_file(phi_file,t_out, 128, filename = filename, dtframes = 100);
 
