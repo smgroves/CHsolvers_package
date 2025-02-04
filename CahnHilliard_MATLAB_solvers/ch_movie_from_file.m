@@ -101,8 +101,8 @@ for i = 1:dtframes:size(t_out,2)
     colormap(interp1(1:100:1100,redbluecmap,1:1001)); %Expand redbluecmap to 1000 elements
     colorbar;
     writeVideo(phi_movie,getframe(h));
-    if mod(i,10*dtframes)==1
-        fprintf("%f%% \n",round(100*i/size(t_out,2)));
+    if mod(i/size(t_out,2)*100,5) == 0
+        fprintf('%3.0f percent complete\n',i/t_iter*100)
     end
 end
 close(phi_movie);

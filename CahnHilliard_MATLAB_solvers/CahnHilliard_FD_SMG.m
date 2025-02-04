@@ -165,9 +165,9 @@ for i = 1:t_iter
         else
             t_index = floor(i/dt_out)+1;
             phi_t(:,:,t_index) = phi_old;
-            mass_t(t_index) = sum(sum(phi_old))/(h2*nx*ny);
-            E_t(t_index) = ch_discrete_energy(phi_old,h2,epsilon2);
         end
+        mass_t(t_index) = sum(sum(phi_old))/(h2*nx*ny);
+        E_t(t_index) = ch_discrete_energy(phi_old,h2,epsilon2);
     end
 end
 
