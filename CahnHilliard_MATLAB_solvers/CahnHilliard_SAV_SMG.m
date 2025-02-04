@@ -55,7 +55,6 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
         valid_logical = @(x) islogical(x) || x == 1 || x == 0;
         valid_string = @(x) ischar(x) || isstring(x);
 
-
     % Set parser options and valid input criteria
         addRequired(CahnHilliard_SAV_parser,'phi0',valid_matrix);
         
@@ -140,8 +139,8 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
         r_old = r0_fun(phi_old,hx,hy,C0); % Initialize sav state
 
     % Initialize output variables according to the output specifications
-        downsampled = nx*ny*t_iter/dt_out > 1e9; %Logical index for the need to downsample
         n_timesteps = floor(t_iter/dt_out);
+        downsampled = nx*ny*n_timesteps > 1e9; % Logical index for the need to downsample
         if printphi
             mass_t = zeros(n_timesteps+1,1);
             E_t = zeros(n_timesteps+1,1);
@@ -149,8 +148,13 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
                 pathname = pwd;
             end
             Filename = strcat(pathname, 'phi.csv');
-            %note that this will overwrite the file if it already exists
-            writematrix(phi0, Filename, 'WriteMode', 'overwrite'); 
+            % Note that this will overwrite the file if it already exists
+            if strcmpi(boundary,'neumann')
+                phi_old_out = extback(phi_old);
+            elseif strcmpi(boundary,'periodic')
+                phi_old_out = phi_old;
+            end
+            writematrix(phi_old_out, Filename, 'WriteMode', 'overwrite'); 
         else
             if downsampled
                 new_dt_out = ceil(nx*ny*t_iter/1e9); %we need to round up to ensure we have enough space
@@ -160,25 +164,22 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
             end
             if strcmpi(boundary,'neumann')
                 phi_t = zeros(nx/2,ny/2,n_timesteps+1); 
+                phi_old_out = extback(phi_old);
             elseif strcmpi(boundary,'periodic')
                 phi_t = zeros(nx,ny,n_timesteps+1);
+                phi_old_out = phi_old;
             end
             mass_t = zeros(n_timesteps+1,1);
             E_t = zeros(n_timesteps+1,1);
-            if strcmpi(boundary,'neumann')
-                phi_old_out = extback(phi_old);
-            elseif strcmpi(boundary,'periodic')
-                phi_old_out = phi_old;
-            end
             phi_t(:,:,1) = phi_old_out;
         end
-        mass_t(1) = ch_mass(phi_old,h2);
-        E_t(1) = ch_discrete_energy(phi0,h2,epsilon2);
-  
+        mass_t(1) = ch_mass(phi_old_out,h2);
+        E_t(1) = ch_discrete_energy(phi_old_out,h2,epsilon2);
 
 %% Run SAV solver
 
     for i = 1:t_iter
+
         % Calculate current phi, r, mass and E
             [phi_new, r_new] = sav_solver(phi_old, r_old, ...
                 hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0);
@@ -195,21 +196,20 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
             E = ch_discrete_energy(phi_new_out,h2,epsilon2);
 
         % Store data according to the output specifications
-
             if mod(i,dt_out) == 0
+                t_index = floor(i/dt_out)+1;
                 if printphi
                 % Write phi_new_out to file
                     writematrix(phi_new_out, Filename, 'WriteMode', 'append'); 
                 else
-                % Store mass and energy
-                    t_index = floor(i/dt_out)+1;
+                % Store as phi_t
                     phi_t(:,:,t_index) = phi_new_out;
-                    mass_t(i/dt_out+1) = mass;
-                    E_t(i/dt_out+1) = E;
                 end
+                % Store mass and energy
+                mass_t(t_index) = mass;
+                E_t(t_index) = E;
             end
             
-
         % Update iteration variables
             phi_old = phi_new;
             r_old = r_new;
@@ -219,27 +219,15 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
                 fprintf('%3.0f percent complete\n',i/t_iter*100)
             end
     end
-    
 
 %% For post-processing
-
-    % if pathname == "cd"
-    %     pathname = pwd;
-    % end
-    % % Print phi to file if specified
-    %     if printphi
-    %         Filename = strcat(pathname, 'phi.csv');
-    %         % Path = strcat(pwd, '/', Filename);
-    %         writematrix(phi_new, Filename, 'WriteMode', 'append'); 
-    %         fprintf('Data appended to %s\n', Filename);
-    %     end
 
     % Center mass and normalize energy to t == 0
         delta_mass_t = mass_t - mass_t(1);
         E_t = E_t/E_t(1);
     
     % Output t_out vector for post-processing
-        t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out;
+        t_out = (0:1:n_timesteps)*dt*dt_out;
 
 end
 
@@ -250,13 +238,6 @@ end
     function mass = ch_mass(phi,h2)
         [nx,ny] = size(phi);
         mass = sum(sum(phi))/(h2*nx*ny);
-    end
-
-% Local function for data storage
-    function [phi_t,mass_t,E_t] = store_data(phi_t,mass_t,E_t,phi,mass,E,step_i)
-        phi_t(:,:,step_i) = phi;
-        mass_t(step_i) = mass;
-        E_t(step_i) = E;
     end
 
 % Local function for "flip" extension
@@ -281,8 +262,8 @@ end
 % Local function for "flip" extension back
     function x_back = extback(x_ext)
         % Shrinks from 2*nx x 2*ny back to nx x ny (upper-left block)
-        [nx_ext, ny_ext] = size(x_ext);
-        nx = nx_ext/2;
-        ny = ny_ext/2;
-        x_back = x_ext(1:nx, 1:ny);
+            [nx_ext, ny_ext] = size(x_ext);
+            nx = nx_ext/2;
+            ny = ny_ext/2;
+            x_back = x_ext(1:nx, 1:ny);
     end
