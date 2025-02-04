@@ -111,6 +111,8 @@ if presmooth
     [phi_old,~] = ch_smooth(phi0,zeros(nx,ny),phi0/dt- ...
     ch_laplace(phi0,nx,ny,xright,xleft,yright,yleft,boundary),zeros(nx,ny), ...
     c_relax,nx,ny,xright,xleft,yright,yleft,dt,epsilon2,boundary); %Smooth phi0 c_relax times
+else
+    phi_old = phi0;
 end
 downsampled = nx*ny*t_iter/dt_out > 1e9; %Logical index for the need to downsample
 n_timesteps = floor(t_iter/dt_out);

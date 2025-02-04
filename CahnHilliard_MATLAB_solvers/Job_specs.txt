@@ -1,5 +1,0 @@
-17-Jan-2025 14:21:06,SAV_spinodal_decomp_smoothed_print,MATLAB,SAV,128,0.015009,5.5e-05,NaN,2000,NaN,8.8518
-17-Jan-2025 14:35:50,NMG_spinodal_decomp_smoothed_print,MATLAB,NMG,128,0.015009,5.5e-05,NaN,2000,NaN,807.8064
-17-Jan-2025 14:57:10,SAV_spinodal_decomp_smoothed_print,MATLAB,SAV,128,0.015009,5.5e-06,NaN,2000,NaN,9.1788
-17-Jan-2025 15:00:28,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-06,NaN,2000,NaN,3.1335
-17-Jan-2025 15:29:57,NMG_spinodal_decomp_smoothed_print,MATLAB,NMG,128,0.015009,5.5e-06,1e-05,2000,10000,1424.5401
