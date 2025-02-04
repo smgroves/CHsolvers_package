@@ -132,6 +132,8 @@ if printphi %print to file
     Filename = strcat(pathname, 'phi.csv');
     %note that this will overwrite the file if it already exists
     writematrix(phi0, Filename, 'WriteMode', 'overwrite'); 
+    phi_t = phi0; %if printing out, just save the initial phi as phi_t so you don't get an error of ouput argument not assigned
+
 else %save to variable phi_t
     if downsampled
         new_dt_out = ceil(nx*ny*t_iter/1e9); %we need to round up to ensure we have enough space

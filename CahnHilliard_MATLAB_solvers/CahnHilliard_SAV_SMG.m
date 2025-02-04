@@ -155,6 +155,8 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
                 phi_old_out = phi_old;
             end
             writematrix(phi_old_out, Filename, 'WriteMode', 'overwrite'); 
+            phi_t = phi_old_out; %if printing out, just save the initial phi as phi_t so you don't get an error of ouput argument not assigned
+
         else
             if downsampled
                 new_dt_out = ceil(nx*ny*t_iter/1e9); %we need to round up to ensure we have enough space
