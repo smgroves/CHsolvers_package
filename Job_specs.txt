@@ -5,3 +5,14 @@ date,name,language,solver,nx,epsilon,dt,tol,timesteps,max_it_CH,time (secs)
 03-Feb-2025 18:23:51,FD_spinodal_decomp_smoothed_no_print,MATLAB,FD,128,0.015009,5.5e-07,NaN,20000,NaN,17.4162
 04-Feb-2025 11:29:04,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-08,NaN,200000,NaN,476.5113
 2025-02-03T18:24:30.234,NMG_spinodal_decomp_smoothed_no_print,Julia,NMG,128,0.015009369912862116,5.5e-6,1.0e-5,2000,10000,40.088466305
+06-Feb-2025 12:50:33,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-05,NaN,200,NaN,5.2852,../output//SAV_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_
+06-Feb-2025 12:54:41,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-05,NaN,200,NaN,4.7303,../output//SAV_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_
+06-Feb-2025 12:55:53,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-05,NaN,200,NaN,70.4305,../output//NMG_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_
+06-Feb-2025 13:00:53,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-06,NaN,200,NaN,4.8516,../output//SAV_MATLAB_200_dt_5.50e-06_Nx_128_n_relax_4_
+06-Feb-2025 13:01:26,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-05,NaN,200,NaN,4.7846,../output//SAV_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_
+06-Feb-2025 13:01:58,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-05,NaN,200,NaN,4.7367,../output//SAV_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_
+06-Feb-2025 13:05:21,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-05,NaN,200,NaN,73.5607,../output//NMG_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_
+06-Feb-2025 13:06:44,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-05,NaN,200,NaN,4.9118,../output//SAV_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_
+06-Feb-2025 13:10:31,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-05,NaN,200,NaN,73.4609,../output//NMG_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_
+06-Feb-2025 13:23:00,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-06,NaN,2000,NaN,45.617,../output//v2_SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_
+06-Feb-2025 13:24:51,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-06,NaN,2000,NaN,22.3554,../output/v2_SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_

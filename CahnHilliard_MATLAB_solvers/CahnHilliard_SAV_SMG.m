@@ -224,12 +224,12 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV_SMG(phi0, varargin
 
 %% For post-processing
 
-    % Center mass and normalize energy to t == 0
-        delta_mass_t = mass_t - mass_t(1);
-        E_t = E_t/E_t(1);
-    
-    % Output t_out vector for post-processing
-        t_out = (0:1:n_timesteps)*dt*dt_out;
+% Center mass and normalize energy to t == 0
+    delta_mass_t = mass_t - mass_t(1);
+    E_t = E_t/E_t(1);
+
+% Output t_out vector for post-processing
+    t_out = (0:1:n_timesteps)*dt*dt_out;
 
 end
 
