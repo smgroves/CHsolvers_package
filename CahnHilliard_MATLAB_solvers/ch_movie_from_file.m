@@ -102,6 +102,7 @@ for i = 1:dtframes:size(t_out,2)
     colorbar;
     writeVideo(phi_movie,getframe(h));
     if mod(i/size(t_out,2)*100,5) == 0
+        fprintf('%f',i)
         fprintf('%3.0f percent complete\n',i/t_iter*100)
     end
 end

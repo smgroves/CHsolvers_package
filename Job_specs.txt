@@ -1,8 +1,7 @@
 date,name,language,solver,nx,epsilon,dt,tol,timesteps,max_it_CH,time (secs)
-17-Jan-2025 10:18:47,spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-05,NaN,2000,NaN,1.6914
-17-Jan-2025 11:19:26,NMG_spinodal_decomp_smoothed_print,MATLAB,NMG,128,0.015009,5.5e-05,1e-5,2000,1e4,870.9613
 03-Feb-2025 18:02:21,SAV_spinodal_decomp_smoothed_no_print,MATLAB,SAV,128,0.015009,5.5e-06,NaN,2000,NaN,22.2264
 03-Feb-2025 18:16:07,NMG_spinodal_decomp_smoothed_no_print,MATLAB,NMG,128,0.015009,5.5e-06,1e-05,2000,10000,748.3885
 03-Feb-2025 18:20:29,FD_spinodal_decomp_smoothed_no_print,MATLAB,FD,128,0.015009,5.5e-06,NaN,2000,NaN,1.7973
 03-Feb-2025 18:23:51,FD_spinodal_decomp_smoothed_no_print,MATLAB,FD,128,0.015009,5.5e-07,NaN,20000,NaN,17.4162
 04-Feb-2025 11:29:04,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-08,NaN,200000,NaN,476.5113
+2025-02-03T18:24:30.234,NMG_spinodal_decomp_smoothed_no_print,Julia,NMG,128,0.015009369912862116,5.5e-6,1.0e-5,2000,10000,40.088466305
