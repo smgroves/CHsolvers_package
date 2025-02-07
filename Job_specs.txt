@@ -16,3 +16,7 @@ date,name,language,solver,nx,epsilon,dt,tol,timesteps,max_it_CH,time (secs)
 06-Feb-2025 13:10:31,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-05,NaN,200,NaN,73.4609,../output//NMG_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_
 06-Feb-2025 13:23:00,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-06,NaN,2000,NaN,45.617,../output//v2_SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_
 06-Feb-2025 13:24:51,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-06,NaN,2000,NaN,22.3554,../output/v2_SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_
+06-Feb-2025 14:46:52,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-06,NaN,2000,NaN,738.5983,../output/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_
+06-Feb-2025 15:01:27,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-06,NaN,2000,NaN,3.1061,../output/FD_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_
+06-Feb-2025 15:02:05,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-06,NaN,2000,NaN,3.2388,../output/FD_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_
+06-Feb-2025 15:06:47,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.5e-06,NaN,2000,NaN,15.1093,../output/FD_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_

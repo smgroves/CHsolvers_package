@@ -159,11 +159,12 @@ for i = 1:t_iter
     end
     % save or print every dt_out
     if mod(i,dt_out) == 0
+        t_index = floor(i/dt_out)+1;
+
         if printphi
             % Path = strcat(pwd, '/', Filename);
             writematrix(phi_new, Filename, 'WriteMode', 'append'); 
         else
-            t_index = floor(i/dt_out)+1;
             phi_t(:,:,t_index) = phi_old;
         end
         mass_t(t_index) = sum(sum(phi_old))/(h2*nx*ny);

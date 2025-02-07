@@ -1,2 +1,7 @@
 .DS_store
 output/FD_MATLAB_200000_dt_5.50e-08_Nx_128_n_relax_4_phi.csv
+output/FD_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_phi.csv
+output/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_phi.csv
+output/FD_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_phi.csv
+output/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_phi.csv
+output/FD_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_phi.csv
