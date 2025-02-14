@@ -2,7 +2,7 @@ using DelimitedFiles
 using Dates
 using BenchmarkTools
 include("CahnHilliard_NMG.jl")
-
+include("ch_movie_from_file.jl")
 indir = "./IC/"
 outdir = "./output/output_julia/"
 ################################
@@ -15,7 +15,7 @@ h = 1 / GridSize
 m = 8
 epsilon = m * h / (2 * sqrt(2) * atanh(0.9))
 
-dt = 5.5e-6;
+dt = 1e-4;
 max_it = 2000;
 boundary = "neumann"
 printphi = true
@@ -41,3 +41,5 @@ end
 open("$(pathname)energy.csv", "w", lock=false) do f
     writedlm(f, E_t, " ")
 end
+# t_out = readdlm("$(pathname)t_out.csv", ',', Float64)
+# ch_movie_from_file("$(pathname)phi.csv", t_out, 128; dtframes=1, filename="$(pathname)movie_jl", filetype="avi", colorbar_type="default")

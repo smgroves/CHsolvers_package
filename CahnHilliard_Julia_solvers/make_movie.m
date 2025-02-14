@@ -1,7 +1,7 @@
 outdir = "../output/output_julia";
 n_relax = 4;
 GridSize = 128;
-dt = 5.5e-6;
+dt = 1.00e-5;
 max_it = 2000;
 
 pathname = sprintf("%s/NMG_Julia_%d_dt_%.2e_Nx_%d_n_relax_%d_",outdir,max_it,dt, GridSize, n_relax);
