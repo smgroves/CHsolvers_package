@@ -1,0 +1,28 @@
+date,name,language,solver,nx,epsilon,dt,tol,timesteps,max_it_CH,output_name,time (secs),mem_allocated (MB)
+2/3/25 18:02,SAV_spinodal_decomp_smoothed_no_print,MATLAB,SAV,128,0.015009,5.50E-06,NaN,2000,NaN,NaN,22.2264,NaN
+2/3/25 18:16,NMG_spinodal_decomp_smoothed_no_print,MATLAB,NMG,128,0.015009,5.50E-06,1.00E-05,2000,10000,NaN,748.3885,NaN
+2/3/25 18:20,FD_spinodal_decomp_smoothed_no_print,MATLAB,FD,128,0.015009,5.50E-06,NaN,2000,NaN,NaN,1.7973,NaN
+2/3/25 18:23,FD_spinodal_decomp_smoothed_no_print,MATLAB,FD,128,0.015009,5.50E-07,NaN,20000,NaN,NaN,17.4162,NaN
+2/4/25 11:29,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.50E-08,NaN,200000,NaN,NaN,476.5113,NaN
+2025-02-03T18:24:30.234,NMG_spinodal_decomp_smoothed_no_print,Julia,NMG,128,0.01500937,5.50E-06,1.00E-05,2000,10000,NaN,40.08846631,NaN
+2/6/25 12:50,FD_spinodal_decomp_smoothed_print,MATLAB,SAV,128,0.015009,5.50E-05,NaN,200,NaN,../output//SAV_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_,5.2852,NaN
+2/6/25 12:54,FD_spinodal_decomp_smoothed_print,MATLAB,SAV,128,0.015009,5.50E-05,NaN,200,NaN,../output//SAV_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_,4.7303,NaN
+2/6/25 12:55,FD_spinodal_decomp_smoothed_print,MATLAB,NMG,128,0.015009,5.50E-05,1.00E+05,200,1.00E+04,../output//NMG_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_,70.4305,NaN
+2/6/25 13:00,FD_spinodal_decomp_smoothed_print,MATLAB,SAV,128,0.015009,5.50E-06,NaN,200,NaN,../output//SAV_MATLAB_200_dt_5.50e-06_Nx_128_n_relax_4_,4.8516,NaN
+2/6/25 13:01,FD_spinodal_decomp_smoothed_print,MATLAB,SAV,128,0.015009,5.50E-05,NaN,200,NaN,../output//SAV_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_,4.7846,NaN
+2/6/25 13:01,FD_spinodal_decomp_smoothed_print,MATLAB,SAV,128,0.015009,5.50E-05,NaN,200,NaN,../output//SAV_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_,4.7367,NaN
+2/6/25 13:05,FD_spinodal_decomp_smoothed_print,MATLAB,NMG,128,0.015009,5.50E-05,1.00E+05,200,1.00E+04,../output//NMG_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_,73.5607,NaN
+2/6/25 13:06,FD_spinodal_decomp_smoothed_print,MATLAB,SAV,128,0.015009,5.50E-05,NaN,200,NaN,../output//SAV_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_,4.9118,NaN
+2/6/25 13:10,FD_spinodal_decomp_smoothed_print,MATLAB,NMG,128,0.015009,5.50E-05,1.00E+05,200,1.00E+04,../output//NMG_MATLAB_200_dt_5.50e-05_Nx_128_n_relax_4_,73.4609,NaN
+2/6/25 13:23,FD_spinodal_decomp_smoothed_print,MATLAB,SAV,128,0.015009,5.50E-06,NaN,2000,NaN,../output//v2_SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,45.617,NaN
+2/6/25 13:24,FD_spinodal_decomp_smoothed_print,MATLAB,SAV,128,0.015009,5.50E-06,NaN,2000,NaN,../output/v2_SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,22.3554,NaN
+2/6/25 14:46,FD_spinodal_decomp_smoothed_print,MATLAB,NMG,128,0.015009,5.50E-06,1.00E+05,2000,1.00E+04,../output/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,738.5983,NaN
+2/6/25 15:01,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.50E-06,NaN,2000,NaN,../output/FD_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,3.1061,NaN
+2/6/25 15:02,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.50E-06,NaN,2000,NaN,../output/FD_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,3.2388,NaN
+2/6/25 15:06,FD_spinodal_decomp_smoothed_print,MATLAB,FD,128,0.015009,5.50E-06,NaN,2000,NaN,../output/FD_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,15.1093,NaN
+2/7/25 13:50,SAV_spinodal_decomp_smoothed_dtout_2000,MATLAB,SAV,128,0.015009,5.50E-06,NaN,2000,NaN,../output/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,38.8424,NaN
+2/7/25 14:17,NMG_spinodal_decomp_smoothed_dtout_2000,MATLAB,NMG,128,0.015009,5.50E-06,1.00E+05,2000,1.00E+04,../output/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,1595.3241,NaN
+2/13/25 16:44,SAV_spinodal_decomp_smoothed_dtout_2000,MATLAB,SAV,256,0.0075047,5.50E-06,NaN,2000,NaN,../output/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_n_relax_4_,125.5217,NaN
+2/13/25 17:35,NMG_spinodal_decomp_smoothed_dtout_2000,MATLAB,NMG,256,0.0075047,5.50E-06,1.00E+05,2000,1.00E+04,../output/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_n_relax_4_,3113.7705,NaN
+02/14/2025 15:00:24,NMG_spinodal_decomp_smoothed_dtout_2000,Julia,NMG,128,0.015009369912862116,5.5e-6,100000.0,2000,10000.0,./output/output_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_n_relax_4_,52.661870747,25557.96106202/14/2025 15:09:52,NMG_spinodal_decomp_smoothed_print,Julia,NMG,128,0.015009369912862116,5.5e-6,100000.0,2000,10000.0,./output/output_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_n_relax_4_,53.914153982,27223.709446
+02/14/2025 15:17:29,NMG_spinodal_decomp_smoothed_print,Julia,NMG,128,0.015009369912862116,5.5e-6,100000.0,2000,10000.0,./output/output_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_n_relax_4_,54.804484676,27223.709446

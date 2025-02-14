@@ -92,19 +92,19 @@ function initialization_from_file(file, nx, ny; delim=',', transpose_matrix=fals
     return phi
 end
 
-function initialization(nx, ny; method="spinodal", initial_file="", delim=",", h=1 / 128, R0=0.1, epsilon=0.01, cohesin_width=4, CPC_width=20)
+function ch_initialization(nx, ny; method="spinodal", initial_file="", delim=",", h=1 / 128, R0=0.1, epsilon=0.01, cohesin_width=4, CPC_width=20)
     if method == "random"
-        oc = initialization_random(nx, ny)
+        phi0 = initialization_random(nx, ny)
     elseif method == "droplet"
-        oc = initialization_from_function(nx, ny, h, R0=R0, epsilon=epsilon)
+        phi0 = initialization_from_function(nx, ny, h, R0=R0, epsilon=epsilon)
     elseif method == "geometric"
-        oc = initialize_geometric_CPC(nx, ny, CPC_width=CPC_width, cohesin_width=cohesin_width)
+        phi0 = initialize_geometric_CPC(nx, ny, CPC_width=CPC_width, cohesin_width=cohesin_width)
     elseif method == "file"
-        oc = initialization_from_file(initial_file, nx, ny, delim=delim)
+        phi0 = initialization_from_file(initial_file, nx, ny, delim=delim)
     elseif method == "spinodal"
-        oc = initialization_spinodal(nx, ny)
+        phi0 = initialization_spinodal(nx, ny)
     else
         println("Warning: initialize must be one of [random, droplet, geometric, file, spinodal].")
     end
-    return oc
+    return phi0
 end

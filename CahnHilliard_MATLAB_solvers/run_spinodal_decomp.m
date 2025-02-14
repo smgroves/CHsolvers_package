@@ -31,7 +31,7 @@ tStart_SAV = tic;
                                     dt_out = dt_out);
 elapsedTime = toc(tStart_SAV);
 
-fid = fopen('../Job_specs.txt', 'a+');
+fid = fopen('../Job_specs.csv', 'a+');
 v = [string(datetime) "SAV_spinodal_decomp_smoothed_dtout_2000" "MATLAB" "SAV" GridSize epsilon dt 'NaN' max_it 'NaN' elapsedTime, pathname];
 fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);
 fclose(fid);
@@ -65,7 +65,7 @@ tStart_NMG = tic;
                                     dt_out = dt_out);
 elapsedTime = toc(tStart_NMG);
 
-fid = fopen('../Job_specs.txt', 'a+');
+fid = fopen('../Job_specs.csv', 'a+');
 v = [string(datetime) "NMG_spinodal_decomp_smoothed_dtout_2000" "MATLAB" "NMG" GridSize epsilon dt 'NaN' max_it 'NaN' elapsedTime, pathname];
 fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);
 fclose(fid);
@@ -99,7 +99,7 @@ fclose(fid);
 %                                     dt_out = dt_out);
 % elapsedTime = toc(tStart_FD);
 
-% fid = fopen('../Job_specs.txt', 'a+');
+% fid = fopen('../Job_specs.csv', 'a+');
 % v = [string(datetime) "FD_spinodal_decomp_smoothed_print" "MATLAB" "FD" GridSize epsilon dt 'NaN' max_it 'NaN' elapsedTime, pathname];
 % fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);
 % fclose(fid);
