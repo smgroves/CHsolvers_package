@@ -1,6 +1,9 @@
+using LinearAlgebra
+using StaticArrays
+using Printf
 
 # laplacian function: laplacian(m, nx, ny, h2)
-function laplace!(lap_a, a, nxt, nyt, xright, xleft, yright, yleft)
+function laplace!(lap_a, a, nxt, nyt, xright, xleft, yright, yleft, boundary)
 
     ht2 = ((xright - xleft) / nxt)^2
     for i in 1:nxt
@@ -8,22 +11,38 @@ function laplace!(lap_a, a, nxt, nyt, xright, xleft, yright, yleft)
             if i > 1
                 dadx_L = (a[i, j] - a[i-1, j])
             else
-                dadx_L = 0
+                if boundary == "neumann"
+                    dadx_L = 0
+                elseif boundary == "periodic"
+                    dadx_L = a[i, j] - a[nxt-1, j]
+                end
             end
             if i < nxt
                 dadx_R = (a[i+1, j] - a[i, j])
             else
-                dadx_R = 0
+                if boundary == "neumann"
+                    dadx_R = 0
+                elseif boundary == "periodic"
+                    dadx_R = a[2, j] - a[i, j]
+                end
             end
             if j > 1
                 dady_B = (a[i, j] - a[i, j-1])
             else
-                dady_B = 0
+                if boundary == "neumann"
+                    dady_B = 0
+                elseif boundary == "periodic"
+                    dady_B = a[i, j] - a[i, nyt-1]
+                end
             end
             if j < nyt
                 dady_T = (a[i, j+1] - a[i, j])
             else
-                dady_T = 0
+                if boundary == "neumann"
+                    dady_T = 0
+                elseif boundary == "periodic"
+                    dady_T = a[i, 2] - a[i, j]
+                end
             end
             lap_a[i, j] = (dadx_R - dadx_L + dady_T - dady_B) / ht2
         end
@@ -42,11 +61,11 @@ function print_mat(file, matrix)
     end
 end
 
-function source(c_old, nx, ny, dt, xright, xleft, yright, yleft)
+function source(c_old, nx, ny, dt, xright, xleft, yright, yleft, boundary)
     src_mu = zeros(Float64, nx, ny)
     src_c = zeros(Float64, nx, ny)
     ct = zeros(Float64, nx, ny)
-    laplace!(ct, c_old, nx, ny, xright, xleft, yright, yleft)
+    laplace!(ct, c_old, nx, ny, xright, xleft, yright, yleft, boundary)
 
     src_c .= c_old ./ dt .- ct
 
@@ -60,19 +79,23 @@ function relax!(c_new, mu_new, su, sw, nxt, nyt, c_relax, xright, xleft, yright,
     for iter in 1:c_relax
         for i in 1:nxt
             for j in 1:nyt
-                if i > 1 && i < nxt
+                if boundary == "neumann"
+                    if i > 1 && i < nxt
+                        x_fac = 2.0
+                    else
+                        x_fac = 1.0
+                    end
+                    if j > 1 && j < nyt
+                        y_fac = 2.0
+                    else
+                        y_fac = 1.0
+                    end
+                elseif boundary == "periodic"
                     x_fac = 2.0
-                else
-                    x_fac = 1.0
-                end
-                if j > 1 && j < nyt
                     y_fac = 2.0
-                else
-                    y_fac = 1.0
                 end
                 a[1] = 1 / dt
                 a[2] = (x_fac + y_fac) / ht2
-                #a[2] = -(x_fac + y_fac) * Cahn / ht2 - d2f(c_new[i][j]);
                 a[3] = -(x_fac + y_fac) * Cahn / ht2 - 3 * (c_new[i, j])^2
                 cnew_val = (c_new[i, j])
                 d2f = -3 * (c_new[i, j])^2
@@ -85,18 +108,30 @@ function relax!(c_new, mu_new, su, sw, nxt, nyt, c_relax, xright, xleft, yright,
                 if i > 1
                     f[1] += mu_new[i-1, j] / ht2
                     f[2] -= Cahn * c_new[i-1, j] / ht2
+                elseif boundary == "periodic"
+                    f[1] += mu_new[nxt-1, j] / ht2
+                    f[2] -= Cahn * c_new[nxt-1, j] / ht2
                 end
                 if i < nxt
                     f[1] += mu_new[i+1, j] / ht2
                     f[2] -= Cahn * c_new[i+1, j] / ht2
+                elseif boundary == "periodic"
+                    f[1] += mu_new[2, j] / ht2
+                    f[2] -= Cahn * c_new[2, j] / ht2
                 end
                 if j > 1
                     f[1] += mu_new[i, j-1] / ht2
                     f[2] -= Cahn * c_new[i, j-1] / ht2
+                elseif boundary == "periodic"
+                    f[1] += mu_new[i, nyt-1] / ht2
+                    f[2] -= Cahn * c_new[i, nyt-1] / ht2
                 end
                 if j < nyt
                     f[1] += mu_new[i, j+1] / ht2
                     f[2] -= Cahn * c_new[i, j+1] / ht2
+                elseif boundary == "periodic"
+                    f[1] += mu_new[i, 2] / ht2
+                    f[2] -= Cahn * c_new[i, 2] / ht2
                 end
                 det = a[1] * a[4] - a[2] * a[3]
                 c_new[i, j] = (a[4] * f[1] - a[2] * f[2]) / det
@@ -121,11 +156,11 @@ function restrict_ch(uf, vf, nxc, nyc)
     return uc, vc
 end
 
-function nonL!(lap_c, lap_mu, c_new, mu_new, nxt, nyt, dt, Cahn, xright, xleft, yright, yleft)
+function nonL!(lap_c, lap_mu, c_new, mu_new, nxt, nyt, dt, Cahn, xright, xleft, yright, yleft, boundary)
     ru = zeros(Float64, nxt, nyt)
     rw = zeros(Float64, nxt, nyt)
-    laplace!(lap_c, c_new, nxt, nyt, xright, xleft, yright, yleft)
-    laplace!(lap_mu, mu_new, nxt, nyt, xright, xleft, yright, yleft)
+    laplace!(lap_c, c_new, nxt, nyt, xright, xleft, yright, yleft, boundary)
+    laplace!(lap_mu, mu_new, nxt, nyt, xright, xleft, yright, yleft, boundary)
 
     for i in 1:nxt
         for j in 1:nyt
@@ -139,8 +174,8 @@ end
 # df(c) function: c.^3
 # d2f(c) function: 3*c.^2
 function defect!(lap_c, lap_mu, uf_new, wf_new, suf, swf, nxf, nyf, uc_new, wc_new, nxc, nyc, dt, Cahn, xright, xleft, yright, yleft)
-    ruc, rwc = nonL!(lap_c, lap_mu, uc_new, wc_new, nxc, nyc, dt, Cahn, xright, xleft, yright, yleft)
-    ruf, rwf = nonL!(lap_c, lap_mu, uf_new, wf_new, nxf, nyf, dt, Cahn, xright, xleft, yright, yleft)
+    ruc, rwc = nonL!(lap_c, lap_mu, uc_new, wc_new, nxc, nyc, dt, Cahn, xright, xleft, yright, yleft, boundary)
+    ruf, rwf = nonL!(lap_c, lap_mu, uf_new, wf_new, nxf, nyf, dt, Cahn, xright, xleft, yright, yleft, boundary)
     ruf = suf - ruf
     rwf = swf - rwf
     rruf, rrwf = restrict_ch(ruf, rwf, nxc, nyc)
@@ -198,13 +233,13 @@ function vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel, c_relax, xright, xleft
     return uf_new, wf_new
 end
 
-function error2!(rr, c_old, c_new, mu, nxt, nyt, dt, xright, xleft, yright, yleft)
+function error2!(rr, c_old, c_new, mu, nxt, nyt, dt, xright, xleft, yright, yleft, boundary)
     x = 0.0
 
     rr .= mu .- c_old
 
     sor = zeros(Float64, nxt, nyt)
-    laplace!(sor, rr, nxt, nyt, xright, xleft, yright, yleft)
+    laplace!(sor, rr, nxt, nyt, xright, xleft, yright, yleft, boundary)
 
     rr .= sor .- (c_new .- c_old) ./ dt
 
@@ -219,16 +254,16 @@ function error2!(rr, c_old, c_new, mu, nxt, nyt, dt, xright, xleft, yright, ylef
 end
 
 
-function cahn!(rr, c_old, c_new, mu, nx, ny, dt, max_it_CH, tol, c_relax, xright, xleft, yright, yleft, Cahn, n_level; suffix="", print_r=true)
+function cahn!(rr, c_old, c_new, mu, nx, ny, dt, max_it_CH, tol, c_relax, xright, xleft, yright, yleft, Cahn, n_level, boundary; suffix="", print_r=true)
     it_mg2 = 0
     resid2 = 1
-    sc, smu = source(c_old, nx, ny, dt, xright, xleft, yright, yleft)
+    sc, smu = source(c_old, nx, ny, dt, xright, xleft, yright, yleft, boundary)
 
     while resid2 > tol && it_mg2 < max_it_CH
 
         c_new, mu = vcycle(c_new, mu, sc, smu, nx, ny, 1, c_relax, xright, xleft, yright, yleft, dt, Cahn, n_level)
 
-        resid2 = error2!(rr, c_old, c_new, mu, nx, ny, dt, xright, xleft, yright, yleft)
+        resid2 = error2!(rr, c_old, c_new, mu, nx, ny, dt, xright, xleft, yright, yleft, boundary)
         if print_r
             print_mat("$(outdir)/residual_$(nx)_$(tol)_$(suffix).txt", resid2)
         end

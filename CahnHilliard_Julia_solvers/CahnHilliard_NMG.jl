@@ -30,7 +30,7 @@ include("ch_initialization.jl")
 Random.seed!(1234) #note that when using a random seed, you must RESTART the REPL or run in a new instance for the runs to be the same. 
 
 
-function multigrid_solver(oc, nx, tol, outdir; max_it=1000, max_it_CH=10000, suffix="", overwrite=true, print_phi=true, print_mass=false, print_e=false, print_r=true, dt=2.5e-5, m=8, ns=10, epsilon=0.0, check_dir=true, c_relax=2, domain=[1.0, 0.0, 1.0, 0.0])
+function multigrid_solver(oc, nx, tol, outdir; max_it=1000, max_it_CH=10000, suffix="", overwrite=true, print_phi=true, print_mass=false, print_e=false, print_r=true, dt=2.5e-5, m=8, ns=10, epsilon=0.0, check_dir=true, c_relax=2, domain=[1.0, 0.0, 1.0, 0.0], boundary="neumann")
     while true
         xright, xleft, yright, yleft = domain
         ny = nx
@@ -108,7 +108,7 @@ function multigrid_solver(oc, nx, tol, outdir; max_it=1000, max_it_CH=10000, suf
         rr = zeros(Float64, nx, ny)
         #run cahn hilliard
         for it in 1:max_it
-            cahn!(rr, oc, nc, mu, nx, ny, dt, max_it_CH, tol, c_relax, xright, xleft, yright, yleft, Cahn, n_level, suffix=suffix, print_r=print_r)
+            cahn!(rr, oc, nc, mu, nx, ny, dt, max_it_CH, tol, c_relax, xright, xleft, yright, yleft, Cahn, n_level, boundary, suffix=suffix, print_r=print_r)
 
             if print_mass
                 print_mat("$(outdir)/ave_mass_$(nx)_$(max_it)_$(tol)_$(suffix).txt", calculate_mass(oc, h2, nx, ny))
@@ -135,4 +135,8 @@ function multigrid_solver(oc, nx, tol, outdir; max_it=1000, max_it_CH=10000, suf
         end
         break
     end
+end
+
+function CahnHilliard_NMG()
+
 end

@@ -23,3 +23,4 @@ date,name,language,solver,nx,epsilon,dt,tol,timesteps,max_it_CH,time (secs),outp
 07-Feb-2025 13:50:33,SAV_spinodal_decomp_smoothed_dtout_2000,MATLAB,SAV,128,0.015009,5.5e-06,NaN,2000,NaN,38.8424,../output/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_
 07-Feb-2025 14:17:09,NMG_spinodal_decomp_smoothed_dtout_2000,MATLAB,NMG,128,0.015009,5.5e-06,NaN,2000,NaN,1595.3241,../output/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_
 13-Feb-2025 16:44:03,SAV_spinodal_decomp_smoothed_dtout_2000,MATLAB,SAV,256,0.0075047,5.5e-06,NaN,2000,NaN,125.5217,../output/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_n_relax_4_
+13-Feb-2025 17:35:57,NMG_spinodal_decomp_smoothed_dtout_2000,MATLAB,NMG,256,0.0075047,5.5e-06,NaN,2000,NaN,3113.7705,../output/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_n_relax_4_
