@@ -93,7 +93,7 @@ function CahnHilliard_NMG(phi0; t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5
             pathname = pwd()
         end
         open("$(pathname)phi.csv", "w", lock=false) do f
-            writedlm(f, phi0, " ")
+            writedlm(f, phi0, ",")
         end
         phi_t = NaN
     else #save to variables
