@@ -2,12 +2,12 @@ using Plots, CSV, DataFrames
 
 default(colorbar=false)  # Turn off colorbars globally for cleaner animation
 
-function ch_movie_from_file(phi_file, t_out, ny; dtframes=1, filename="ch_movie", filetype="mp4", colorbar_type="default")
+function ch_movie(phi, t_out, ny; dtframes=1, filename="ch_movie", filetype="mp4", colorbar_type="default")
     """
     This function creates a red-white-blue video trajectory of chemical states using @animate.
 
     # Arguments
-    - phi_file::String: File name for multidimensional array of chemical states.
+    - phi::String: File name for multidimensional array of chemical states.
     - t_out::Vector{Float64}: Vector of time steps corresponding to the third dimension of phi_t.
     - ny::Int: Number of mesh points in the y direction.
 
@@ -32,16 +32,13 @@ function ch_movie_from_file(phi_file, t_out, ny; dtframes=1, filename="ch_movie"
     
     anim = @animate for i in 1:dtframes:length(t_out)
         # Read the necessary frame from the file
-        row_start = (i - 1) * ny + 1
-        # row_end = i * ny
-        df = DataFrame(CSV.File(phi_file; header=false, skipto =row_start, limit=ny))
-        phi_temp = Matrix(df)
+        phi_temp = phi[:,:,i]
 
         # Determine color limits
         clims = if colorbar_type == "default"
             (-1, 1)
         elseif colorbar_type == "initial_range"
-            initial_range === nothing && (initial_range = extrema(phi_temp))
+            initial_range === nothing && (initial_range = extrema(phi_temp)) #if initial range still == nothing, update it to the extrema
             initial_range
         elseif colorbar_type == "variable"
             extrema(phi_temp)
@@ -50,7 +47,7 @@ function ch_movie_from_file(phi_file, t_out, ny; dtframes=1, filename="ch_movie"
         end
         
         # Create the heatmap
-        heatmap(phi_temp,y_flip = true, color=reverse(cgrad(:RdBu)),cbar = true, clims=clims, xlabel="", ylabel="", title="t = $(t_out[i])",xlim=(0,ny),ylim=(0,ny),aspect_ratio=:equal, dpi = 300)
+        heatmap(phi_temp, color=:RdBu, clims=clims, xlabel="", ylabel="", title="t = $(t_out[i])",xlim=(0,ny),ylim=(0,ny),aspect_ratio=:equal)
         if (i-1) / (length(t_out)-1) * 100 % 5 == 0
             println(@sprintf("%3.0f percent complete", i / length(t_out) * 100))
         end
