@@ -52,7 +52,7 @@ function ch_movie_from_file(phi_file, t_out, ny; dtframes=1, filename="ch_movie"
         # Create the heatmap
         heatmap(phi_temp,y_flip = true, color=reverse(cgrad(:RdBu)),cbar = true, clims=clims, xlabel="", ylabel="", title="t = $(t_out[i])",xlim=(0,ny),ylim=(0,ny),aspect_ratio=:equal, dpi = 300)
         if (i-1) / (length(t_out)-1) * 100 % 5 == 0
-            println(@sprintf("%3.0f percent complete", i / length(t_out) * 100))
+            println(@sprintf("%3.0f percent complete", (i-1) / (length(t_out)-1) * 100))
         end
     end #every dtframes <- redundant with above
     
