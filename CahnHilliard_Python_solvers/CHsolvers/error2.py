@@ -1,6 +1,7 @@
-import aux_functions as aux
+from . import aux_functions as aux
 import numpy as np
-from laplacian import laplace
+
+from .laplacian import laplace
 
 
 def error2(c_old, c_new, mu, nxt, nyt, dt=dt):

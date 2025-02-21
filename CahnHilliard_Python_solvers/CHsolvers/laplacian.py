@@ -1,4 +1,4 @@
-import aux_functions as aux
+from . import aux_functions as aux
 
 
 def laplace(a, nxt, nyt, xright=xright, xleft=xleft):

@@ -3,9 +3,8 @@ import random
 import os
 import time
 import pandas as pd
-import aux_functions as aux
-import initialization as init
-import NMG_solver as solver
+from . import NMG_solver as solver
+from . import initialization as init
 
 ######################
 # Global variables
