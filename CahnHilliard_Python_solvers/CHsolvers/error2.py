@@ -4,7 +4,7 @@ import numpy as np
 from .laplacian import laplace
 
 
-def error2(c_old, c_new, mu, nxt, nyt, dt=dt):
+def error2(c_old, c_new, mu, nxt, nyt, dt, xright, xleft, yright, yleft, boundary):
     """
     Calculate the residual for phi
     :param c_old: old phi
@@ -19,7 +19,7 @@ def error2(c_old, c_new, mu, nxt, nyt, dt=dt):
         for j in range(nyt):
             rr[i][j] = mu[i][j] - c_old[i][j]
 
-    sor = laplace(rr, nxt, nyt)
+    sor = laplace(rr, nxt, nyt, xright, xleft, yright, yleft, boundary)
     for i in range(nxt):
         for j in range(nyt):
             rr[i][j] = sor[i][j] - (c_new[i][j] - c_old[i][j]) / dt
