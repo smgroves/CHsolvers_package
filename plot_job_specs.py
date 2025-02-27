@@ -12,10 +12,20 @@ sns.catplot(
     kind="bar",
     y="time (secs)",
     x="solver",
-    hue="dt",
+    hue="nx",
     col="language",
     height=4,
     aspect=0.5,
 )
 plt.show()
+# %%
+sns.lineplot(
+    data,
+    y="time (secs)",
+    x="nx",
+    hue="solver",
+    style="language",
+)
+plt.show()
+
 # %%

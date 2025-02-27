@@ -46,7 +46,7 @@ end
 
 # df(c) function: c.^3
 # d2f(c) function: 3*c.^2
-function defect!(lap_c, lap_mu, uf_new, wf_new, suf, swf, nxf, nyf, uc_new, wc_new, nxc, nyc, dt, epsilon2, xright, xleft, yright, yleft)
+function defect!(lap_c, lap_mu, uf_new, wf_new, suf, swf, nxf, nyf, uc_new, wc_new, nxc, nyc, dt, epsilon2, xright, xleft, yright, yleft, boundary)
     ruc, rwc = nonL!(lap_c, lap_mu, uc_new, wc_new, nxc, nyc, dt, epsilon2, xright, xleft, yright, yleft, boundary)
     ruf, rwf = nonL!(lap_c, lap_mu, uf_new, wf_new, nxf, nyf, dt, epsilon2, xright, xleft, yright, yleft, boundary)
     ruf = suf - ruf
@@ -75,8 +75,8 @@ function prolong_ch(uc, vc, nxc, nyc)
     return uf, vf
 end
 
-function vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level)
-    relax!(uf_new, wf_new, su, sw, nxf, nyf, c_relax, xright, xleft, yright, yleft, dt, epsilon2)
+function vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level, boundary)
+    relax!(uf_new, wf_new, su, sw, nxf, nyf, c_relax, xright, xleft, yright, yleft, dt, epsilon2, boundary)
 
     if ilevel < n_level
         nxc = trunc(Int64, nxf / 2)
@@ -84,12 +84,12 @@ function vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel, c_relax, xright, xleft
         uc_new, wc_new = restrict_ch(uf_new, wf_new, nxc, nyc)
         lap_c = zeros(Float64, nxf, nyf)
         lap_mu = zeros(Float64, nxf, nyf)
-        duc, dwc = defect!(lap_c, lap_mu, uf_new, wf_new, su, sw, nxf, nyf, uc_new, wc_new, nxc, nyc, dt, epsilon2, xright, xleft, yright, yleft)
+        duc, dwc = defect!(lap_c, lap_mu, uf_new, wf_new, su, sw, nxf, nyf, uc_new, wc_new, nxc, nyc, dt, epsilon2, xright, xleft, yright, yleft, boundary)
 
         uc_def = copy(uc_new)
         wc_def = copy(wc_new)
 
-        uc_def, wc_def = vcycle(uc_def, wc_def, duc, dwc, nxc, nyc, ilevel + 1, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level)
+        uc_def, wc_def = vcycle(uc_def, wc_def, duc, dwc, nxc, nyc, ilevel + 1, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level, boundary)
 
 
         uc_def = uc_def - uc_new
@@ -100,7 +100,7 @@ function vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel, c_relax, xright, xleft
         uf_new = uf_new + uf_def
         wf_new = wf_new + wf_def
 
-        relax!(uf_new, wf_new, su, sw, nxf, nyf, c_relax, xright, xleft, yright, yleft, dt, epsilon2)
+        relax!(uf_new, wf_new, su, sw, nxf, nyf, c_relax, xright, xleft, yright, yleft, dt, epsilon2, boundary)
 
     end
     return uf_new, wf_new
@@ -114,7 +114,7 @@ function cahn!(rr, c_old, c_new, mu, nx, ny, dt, solver_iter, tol, c_relax, xrig
 
     while resid2 > tol && it_mg2 < solver_iter
 
-        c_new, mu = vcycle(c_new, mu, sc, smu, nx, ny, 1, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level)
+        c_new, mu = vcycle(c_new, mu, sc, smu, nx, ny, 1, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level, boundary)
 
         resid2 = error2!(rr, c_old, c_new, mu, nx, ny, dt, xright, xleft, yright, yleft, boundary)
         if printres

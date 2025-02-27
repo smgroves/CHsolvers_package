@@ -1,7 +1,7 @@
 from . import aux_functions as aux
 
 
-def laplace(a, nxt, nyt, xright=xright, xleft=xleft):
+def laplace(a, nxt, nyt, xright, xleft, yright, yleft, boundary):
     """
     Compute the discrete Laplacian of a
     :param xright:

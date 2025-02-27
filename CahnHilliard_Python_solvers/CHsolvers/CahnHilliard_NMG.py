@@ -29,10 +29,10 @@ Cahn = gam**2  # ϵ^2 defined as a global variable
 
 if __name__ == "__main__":
     for max_it in [10000]:
-        for max_it_CH in [1000, 10000, 100000]:
+        for solver_iter in [1000, 10000, 100000]:
             brcd = random.randint(0, 1000)
             start = time.time()
-            # max_it_CH = 1
+            # solver_iter = 1
             tol = 1e-6
             # max_it = 100 # number of time steps
             ns = 10  # frequency that time step is printed to file (1 = every time step, 10 = every 10 steps, etc)
@@ -45,7 +45,9 @@ if __name__ == "__main__":
             nc = oc.copy()
 
             for it in range(max_it):
-                nc = solver.cahn(oc, nc, mu, max_it_CH=max_it_CH, tol=tol)  # update phi
+                nc = solver.cahn(
+                    oc, nc, mu, solver_iter=solver_iter, tol=tol
+                )  # update phi
                 oc = nc.copy()  # copy updated phi to old phi
 
             with open(f"../outputs/runtime_tests/phi_{brcd}.txt", "w") as f:
@@ -56,7 +58,7 @@ if __name__ == "__main__":
                     f.write("\n")
                 for it in range(max_it):
                     nc = solver.cahn(
-                        oc, nc, mu, max_it_CH=max_it_CH, tol=tol
+                        oc, nc, mu, solver_iter=solver_iter, tol=tol
                     )  # update phi
                     oc = nc.copy()  # copy updated phi to old phi
                     if it % ns == 0:
@@ -75,7 +77,7 @@ if __name__ == "__main__":
             T["solver"] = "Python"
             T["dt"] = dt
             T["max_it"] = max_it
-            T["max_it_CH"] = max_it_CH
+            T["solver_iter"] = solver_iter
             T["n_level"] = n_level
             T["ns"] = ns
             T["nx"] = nx

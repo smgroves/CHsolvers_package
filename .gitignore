@@ -3,3 +3,4 @@ output/output_MATLAB/FD_MATLAB_200000_dt_5.50e-08_Nx_128_n_relax_4_phi.csv
 output/output_MATLAB/FD_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_phi.csv
 output/output_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_phi.csv
 
+output/output_julia/NMG_Julia_20000_dt_1.00e-05_Nx_128_n_relax_4_phi.csv

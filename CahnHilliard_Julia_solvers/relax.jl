@@ -1,4 +1,4 @@
-function relax!(c_new, mu_new, su, sw, nxt, nyt, c_relax, xright, xleft, yright, yleft, dt, epsilon2)
+function relax!(c_new, mu_new, su, sw, nxt, nyt, c_relax, xright, xleft, yright, yleft, dt, epsilon2, boundary)
     ht2 = ((xright - xleft) / nxt)^2
     a = MVector{4,Float64}(undef)
     f = MVector{2,Float64}(undef)
@@ -23,9 +23,6 @@ function relax!(c_new, mu_new, su, sw, nxt, nyt, c_relax, xright, xleft, yright,
                 a[1] = 1 / dt
                 a[2] = (x_fac + y_fac) / ht2
                 a[3] = -(x_fac + y_fac) * epsilon2 / ht2 - 3 * (c_new[i, j])^2
-                cnew_val = (c_new[i, j])
-                d2f = -3 * (c_new[i, j])^2
-
                 a[4] = 1.0
 
                 f[1] = su[i, j]

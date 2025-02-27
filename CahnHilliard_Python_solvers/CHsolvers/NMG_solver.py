@@ -5,7 +5,7 @@ from error2 import error2
 
 
 # note: the C code updates ct, but it doesn't appear to be used anywhere. We'll need to check if it should be returned.
-def source(c_old, nx=nx, ny=ny, dt=dt):
+def source(c_old, nx, ny, dt, xright, xleft, yright, yleft, boundary):
     """
     Compute the source term for phi and mu
     :param c_old: phi at a time step
@@ -14,92 +14,12 @@ def source(c_old, nx=nx, ny=ny, dt=dt):
 
     src_mu = aux.dmatrix(nx, ny)
     src_c = aux.dmatrix(nx, ny)
-    ct = laplace(c_old, nx, ny)
+    ct = laplace(c_old, nx, ny, xright, xleft, yright, yleft, boundary)
     for i in range(nx):
         for j in range(ny):
             src_c[i, j] = c_old[i, j] / dt - ct[i, j]  # update source term of phi
             src_mu[i, j] = 0  # set source term for mu to zero
     return src_c, src_mu
-
-
-def relax(
-    c_new,
-    mu_new,
-    su,
-    sw,
-    nxt,
-    nyt,
-    c_relax=c_relax,
-    xright=xright,
-    xleft=xleft,
-    dt=dt,
-    Cahn=Cahn,
-):
-    """
-    SMOOTH Relaxation operator. This is just solving x =b*A-1 for the system of equations c_new and mu_new, where A is
-    the LHS of equations 22 and 23, and b is the RHS.
-    :param c_new: c to be smoothed
-    :param mu_new: mu to be smoothed
-    :param su: sc, locally defined
-    :param sw: smu, locally defined
-    :param nxt: temp (number of grid points in x-direction, locally defined)
-    :param nyt: temp (number of grid points in y-direction, locally defined)
-    :param c_relax: number of relaxation operations
-    :param xright: right x-coordinate
-    :param xleft: left x-coordinate
-    :param dt: time step
-    :param Cahn: ϵ^2
-    :return: c_new, mu_new
-    """
-    ht2 = ((xright - xleft) / nxt) ** 2  # h2 temp, defined locally
-    a = np.empty(4)
-    f = np.empty(2)
-    # print("c_new before relaxation: \n", c_new)
-    # print("mu_new before relaxation: \n", mu_new)
-    # print("su before relaxation: \n", su)
-    # print("sw before relaxation: \n", sw)
-    for iter in range(c_relax):  # c_relax is defined to be 2 in CHsolver.c
-        for i in range(nxt):
-            for j in range(nyt):
-                if i > 0 and i < nxt - 1:
-                    x_fac = 2.0
-                else:
-                    x_fac = 1.0
-                if j > 0 and j < nyt - 1:
-                    y_fac = 2.0
-                else:
-                    y_fac = 1.0
-                a[0] = 1 / dt
-                a[1] = (x_fac + y_fac) / ht2
-                a[2] = -(x_fac + y_fac) * Cahn / ht2 - 3 * (c_new[i][j]) ** 2
-                a[3] = 1.0
-
-                f[0] = su[i][j]
-                f[1] = sw[i][j] - 2 * (
-                    c_new[i][j] ** 3
-                )  # replaced from c code with a more condensed version
-                if (
-                    i > 0
-                ):  # boundary cases are slightly different because i-1 doesn't exist for i = 0, for example (same for j)
-                    f[0] += mu_new[i - 1][j] / ht2
-                    f[1] -= Cahn * c_new[i - 1][j] / ht2
-                if i < nxt - 1:
-                    f[0] += mu_new[i + 1][j] / ht2
-                    f[1] -= Cahn * c_new[i + 1][j] / ht2
-                if j > 0:
-                    f[0] += mu_new[i][j - 1] / ht2
-                    f[1] -= Cahn * c_new[i][j - 1] / ht2
-                if j < nyt - 1:
-                    f[0] += mu_new[i][j + 1] / ht2
-                    f[1] -= Cahn * c_new[i][j + 1] / ht2
-                det = a[0] * a[3] - a[1] * a[2]
-                c_new[i][j] = (a[3] * f[0] - a[1] * f[1]) / det
-                mu_new[i][j] = (-a[2] * f[0] + a[0] * f[1]) / det
-        # print("f: \n", f)
-        # print("a: \n", a)
-        # print("c_new: \n", c_new)
-        # print("mu_new: \n", mu_new)
-    return c_new, mu_new
 
 
 def restrict_ch(uf, vf, nxc, nyc):
@@ -132,7 +52,7 @@ def restrict_ch(uf, vf, nxc, nyc):
     return uc, vc
 
 
-def nonL(c_new, mu_new, nxt, nyt, dt=dt, Cahn=Cahn):
+def nonL(c_new, mu_new, nxt, nyt, dt, epsilon2):
     """
     NSO operator
     :param c_new: c at a time step
@@ -149,7 +69,7 @@ def nonL(c_new, mu_new, nxt, nyt, dt=dt, Cahn=Cahn):
     for i in range(nxt):
         for j in range(nyt):
             ru[i][j] = c_new[i][j] / dt - lap_mu[i][j]
-            rw[i][j] = mu_new[i][j] - (c_new[i][j]) ** 3 + Cahn * lap_c[i][j]
+            rw[i][j] = mu_new[i][j] - (c_new[i][j]) ** 3 + epsilon2 * lap_c[i][j]
     return ru, rw
 
 
@@ -178,7 +98,24 @@ def prolong_ch(uc, vc, nxc, nyc):
     return uf, vf
 
 
-def vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel):
+def vcycle(
+    uf_new,
+    wf_new,
+    su,
+    sw,
+    nxf,
+    nyf,
+    ilevel,
+    c_relax,
+    xright,
+    xleft,
+    yright,
+    yleft,
+    dt,
+    epsilon2,
+    n_level,
+    boundary,
+):
     """
     FAS multigrid cycle
     """
@@ -200,7 +137,7 @@ def vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel):
         xright=xright,
         xleft=xleft,
         dt=dt,
-        Cahn=Cahn,
+        epsilon2=epsilon2,
     )
     # print("after relaxing IN VCYCLE")
     # print("uf_new: \n", uf_new) #same
@@ -231,13 +168,20 @@ def vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel):
         wc_def = wc_new.copy()
 
         uc_def, wc_def = vcycle(
-            uf_new=uc_def,
-            wf_new=wc_def,
-            su=duc,
-            sw=dwc,
-            nxf=nxc,
-            nyf=nyc,
-            ilevel=ilevel + 1,
+            uc_def,
+            wc_def,
+            duc,
+            dwc,
+            nxc,
+            nyc,
+            ilevel + 1,
+            c_relax,
+            xright,
+            xleft,
+            dt,
+            epsilon2,
+            n_level,
+            boundary,
         )
 
         uc_def = uc_def - uc_new
@@ -259,22 +203,22 @@ def vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel):
             xright=xright,
             xleft=xleft,
             dt=dt,
-            Cahn=Cahn,
+            epsilon2=epsilon2,
         )
 
     return uf_new, wf_new
 
 
-def cahn(c_old, c_new, mu, nx=nx, ny=ny, dt=dt, max_it_CH=10000, tol=1e-10):
+def cahn(c_old, c_new, mu, nx, ny, dt, solver_iter, tol, xright, xleft):
     it_mg2 = 0
     resid2 = 1
-    sc, smu = source(c_old, nx=nx, ny=ny, dt=dt)
+    sc, smu = source(c_old, nx, ny, dt, xright, xleft)
 
-    while it_mg2 < max_it_CH and resid2 > tol:
+    while it_mg2 < solver_iter and resid2 > tol:
 
         c_new, mu = vcycle(
             uf_new=c_new, wf_new=mu, su=sc, sw=smu, nxf=nx, nyf=ny, ilevel=1
-        )  # TODO why does this give any error when assigned to c_new, mu?
+        )
         resid2 = error2(c_old=c_old, c_new=c_new, mu=mu, nxt=nx, nyt=ny, dt=dt)
         it_mg2 += 1
 
