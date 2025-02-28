@@ -25,7 +25,7 @@ for GridSize in [128]
     date_time = now()
     result, elapsed_time, mem_allocated, gc_time, memory_counters = @timed CahnHilliard_NMG(phi0; t_iter=max_it, dt=dt, dt_out=dt_out, m=m, boundary=boundary, printphi=printphi, pathname=pathname)
     open("./Job_specs.csv", "a", lock=false) do f
-        writedlm(f, [Dates.format(date_time, "mm/dd/yyyy HH:MM:SS") "NMG_spinodal_decomp_smoothed_dtout_2000" "Julia" "NMG" GridSize epsilon dt 1e5 max_it 1e4 pathname elapsed_time mem_allocated / 1e6], ",")
+        writedlm(f, [Dates.format(date_time, "mm/dd/yyyy HH:MM:SS") "NMG_spinodal_decomp_smoothed_dtout_2000" "Julia" "NMG" GridSize epsilon dt 1e-5 max_it 1e4 pathname elapsed_time mem_allocated / 1e6], ",")
     end
 
     t_out = result[1]

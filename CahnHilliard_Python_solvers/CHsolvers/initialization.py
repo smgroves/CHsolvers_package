@@ -1,4 +1,4 @@
-from . import aux_defs as aux
+from . import aux_functions as aux
 import scipy as sc
 import numpy as np
 import random
@@ -49,7 +49,8 @@ def initialize_round_CPC(nx, ny, CPC_width=10, cohesin_width=4):
 
 
 def initialization_from_def(nx, ny, h, R0=0.1, epsilon=0.01):
-    phi = np.zeros((ny, nx))  # Assuming aux.dmatrix(nx, ny) creates a zero matrix
+    # Assuming aux.dmatrix(nx, ny) creates a zero matrix
+    phi = np.zeros((ny, nx))
 
     x = np.arange(nx) * h
     y = np.arange(ny) * h
