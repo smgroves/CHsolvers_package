@@ -49,3 +49,5 @@ old, old,Python,NMG,64,0.015009369912862116,5.5e-6,100000.0,2000,10000.0,./outpu
 03/13/2025 18:05:33,spinodal_decomp_smoothed,Julia,NMG,128,0.015009369912862116,5.5e-6,1.0e-5,2000,10000.0,./output/output_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_n_relax_4_,130.061349293,153226.067442
 02/28/2025 14:58:21,spinodal_decomp_smoothed_save_variable_dt_out_200EXTRAPOLATED,Python,NMG,128,0.015009369912862116,5.5e-06,1e-05,2000,10000.0,./output/output_python/NMG_Julia_200_dt_5.50e-06_Nx_128_n_relax_4_,95750,2.023381233215332
 13-Mar-2025 18:37:57,SAV_spinodal_decomp_smoothed_neumann_dtout_2000,MATLAB,SAV,512,0.0037523,5.5e-06,NaN,2000,NaN,../output/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_n_relax_4_,579.5049,NaN
+03/14/2025 15:18:57,spinodal_decomp_smoothed,Julia,NMG,128,0.015009369912862116,5.5e-6,1.0e-5,2000,10000.0,./output/output_julia/SAV_v2_Julia_2000_dt_5.50e-06_Nx_128_n_relax_4_,127.145667467,129371.459936
+03/14/2025 15:31:34,spinodal_decomp_smoothed,Julia,NMG,128,0.015009369912862116,5.5e-6,1.0e-5,2000,10000.0,./output/output_julia/SAV_v2_Julia_2000_dt_5.50e-06_Nx_128_n_relax_4_,129.042899929,129371.360096

@@ -57,12 +57,12 @@ for GridSize in [128]
     m = 8
     epsilon = m * h / (2 * sqrt(2) * atanh(0.9))
 
-    dt = 5.5E-06;
-    max_it = 2000;
+    dt = 5.5E-06
+    max_it = 2000
     boundary = "neumann"
     printphi = true
     phi0 = initialization_from_file("$(indir)initial_phi_$(GridSize)_smooth_n_relax_$n_relax.csv", GridSize, GridSize, delim=',', transpose_matrix=false)
-    pathname = @sprintf("%s%s_Julia_%d_dt_%.2e_Nx_%d_n_relax_%d_", outdir, method, max_it, dt, GridSize, n_relax);
+    pathname = @sprintf("%s%s_v2_Julia_%d_dt_%.2e_Nx_%d_n_relax_%d_", outdir, method, max_it, dt, GridSize, n_relax)
     dt_out = 10
     date_time = now()
     result, elapsed_time, mem_allocated, gc_time, memory_counters = @timed CahnHilliard_SAV(phi0; t_iter=max_it, dt=dt, dt_out=dt_out, m=m, boundary=boundary, printphi=printphi, pathname=pathname)
@@ -84,5 +84,5 @@ for GridSize in [128]
     #     writedlm(f, E_t, " ")
     # end
     # t_out = readdlm("$(pathname)t_out.csv", ',', Float64)
-    ch_movie_from_file("$(pathname)phi.csv", t_out, 128; dtframes=10, filename="$(pathname)movie_jl", filetype="mp4", colorbar_type="default")
+    ch_movie_from_file("$(pathname)phi.csv", t_out, 128; dtframes=1, filename="$(pathname)movie_jl", filetype="mp4", colorbar_type="default")
 end

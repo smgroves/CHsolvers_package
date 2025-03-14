@@ -49,24 +49,24 @@ This function uses the nonlinear multigrid method to solve the Cahn-Hilliard equ
         delta_mass_t = Vector of mass change over t_out.
         E_t = Vector of relative energy over t_out.
 """
-function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5, dt_out=1, m=4, epsilon2=NaN, boundary="periodic", c_relax=2, domain=[1 0 1 0], printres=false, printphi=false, pathname="cd",C0=0, Beta = 0, gamma0=0)
+function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=NaN, boundary="periodic", domain=[1 0 1 0], printres=false, printphi=false, pathname="cd", C0=0, Beta=0, gamma0=0)
     nx, ny = size(phi0)
     xright, xleft, yright, yleft = domain
-    Lx = xright -xleft
-    Ly = yright-yleft
+    Lx = xright - xleft
+    Ly = yright - yleft
 
     # % Decide on the solver's mesh spacing for NEUMANN vs PERIODIC
     # %  - For Neumann: we will mirror the domain, so pass 2*hx and 2*hy into sav_solver.
     # %  - For Periodic: keep as-is.
     if boundary == "neumann"
-        Lx = 2*Lx;
-        Ly = 2*Ly;
-        nx = 2*nx;
-        ny = 2*ny;
+        Lx = 2 * Lx
+        Ly = 2 * Ly
+        nx = 2 * nx
+        ny = 2 * ny
     end
-    hx = Lx/nx
-    hy = Ly/ny
-    h2 = ((xright - xleft) / nx) * ((yright - yleft) / ny) #Define mesh size
+    hx = Lx / nx
+    hy = Ly / ny
+    h2 = hx * hy #Define mesh size
 
 
     if isnan(epsilon2)
@@ -92,7 +92,7 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5
         phi_old = copy(phi0)
     end
 
-    r_old = r0_fun(phi_old,hx,hy,C0) # Initialize sav state
+    r_old = r0_fun(phi_old, hx, hy, C0) # Initialize sav state
 
     downsampled = nx * ny * t_iter / dt_out > 1e9 #Logical index for the need to downsample
     n_timesteps = floor(Int64, t_iter / dt_out)
@@ -125,13 +125,13 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5
         E_t = zeros(Float64, n_timesteps + 1, 1)
         t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out
         if boundary == "neumann"
-            phi_t = zeros(Float64, nx/2, ny/2, n_timesteps + 1)
+            phi_t = zeros(Float64, nx / 2, ny / 2, n_timesteps + 1)
             phi_old_out = extback(phi_old)
-            phi_t[:,:,1] = phi_old_out
+            phi_t[:, :, 1] = phi_old_out
         else
             phi_t = zeros(Float64, nx, ny, n_timesteps + 1)
             phi_old_out = phi_old
-            phi_t[:,:,1] = phi_old_out
+            phi_t[:, :, 1] = phi_old_out
         end
     end
 

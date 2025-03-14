@@ -16,25 +16,25 @@ function ch_movie_from_file(phi_file, t_out, ny; dtframes=1, filename="ch_movie"
     - filename::String: Name of the movie file to be saved. Default is 'ch_movie'.
     - filetype::String: Format of the movie file ('mp4', 'gif'). Default is 'mp4'.
     - colorbar_type::String: Type of colorbar to be used ('default', 'initial_range'). Default is 'default'.
-    
+
     # Output
     Saves a red-white-blue video.
     """
-    
+
     # Validate file type
     valid_filetypes = ["mp4", "gif"]
     if !(filetype in valid_filetypes)
         error("Invalid filetype. Supported types are: mp4, gif")
     end
-    
+
     # Initial color range
     initial_range = nothing
-    
+
     anim = @animate for i in 1:dtframes:length(t_out)
         # Read the necessary frame from the file
         row_start = (i - 1) * ny + 1
         # row_end = i * ny
-        df = DataFrame(CSV.File(phi_file; header=false, skipto =row_start, limit=ny))
+        df = DataFrame(CSV.File(phi_file; header=false, skipto=row_start, limit=ny))
         phi_temp = Matrix(df)
 
         # Determine color limits
@@ -48,20 +48,22 @@ function ch_movie_from_file(phi_file, t_out, ny; dtframes=1, filename="ch_movie"
         else
             error("Invalid colorbar_type: $colorbar_type")
         end
-        
+
         # Create the heatmap
-        heatmap(phi_temp,y_flip = true, color=reverse(cgrad(:RdBu)),cbar = true, clims=clims, xlabel="", ylabel="", title="t = $(t_out[i])",xlim=(0,ny),ylim=(0,ny),aspect_ratio=:equal, dpi = 300)
-        if (i-1) / (length(t_out)-1) * 100 % 5 == 0
-            println(@sprintf("%3.0f percent complete", (i-1) / (length(t_out)-1) * 100))
+        title = @sprintf("%.3e", t_out[i])
+
+        heatmap(phi_temp, y_flip=true, color=reverse(cgrad(:RdBu)), cbar=true, clims=clims, xlabel="", ylabel="", title="t = $(title)", xlim=(0, ny), ylim=(0, ny), aspect_ratio=:equal, dpi=300)
+        if (i - 1) / (length(t_out) - 1) * 100 % 5 == 0
+            println(@sprintf("%3.0f percent complete", (i - 1) / (length(t_out) - 1) * 100))
         end
     end #every dtframes <- redundant with above
-    
+
     # Save animation
     if filetype == "mp4"
         mp4(anim, "$filename.mp4")
     elseif filetype == "gif"
         gif(anim, "$filename.gif")
     end
-    
+
     println("Animation saved as $filename.$filetype")
 end
