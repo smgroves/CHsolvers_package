@@ -7,7 +7,8 @@ import seaborn as sns
 data = pd.read_csv("Job_specs.csv", sep=",", header=0, index_col=None)
 
 data = data.loc[data["timesteps"] == 2000]
-sns.catplot(
+# %%
+g = sns.catplot(
     data,
     kind="bar",
     y="time (secs)",
@@ -16,7 +17,11 @@ sns.catplot(
     col="language",
     height=4,
     aspect=0.5,
+    # log=True
+    palette="Set2"
 )
+g.figure.get_axes()[0].set_yscale('log')
+
 plt.show()
 # %%
 sns.lineplot(

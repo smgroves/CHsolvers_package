@@ -107,7 +107,7 @@ function vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel, c_relax, xright, xleft
 end
 
 
-function cahn!(rr, c_old, c_new, mu, nx, ny, dt, solver_iter, tol, c_relax, xright, xleft, yright, yleft, epsilon2, n_level, boundary; suffix="", printres=true)
+function nmg_solver!(rr, c_old, c_new, mu, nx, ny, dt, solver_iter, tol, c_relax, xright, xleft, yright, yleft, epsilon2, n_level, boundary; suffix="", printres=true)
     it_mg2 = 0
     resid2 = 1
     sc, smu = source(c_old, nx, ny, dt, xright, xleft, yright, yleft, boundary)

@@ -117,7 +117,7 @@ function CahnHilliard_NMG(phi0; t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5
     end
     rr = zeros(Float64, nx, ny)
     for it in 1:t_iter
-        cahn!(rr, phi_old, phi_new, mu, nx, ny, dt, solver_iter, tol, c_relax, xright, xleft, yright, yleft, epsilon2, n_level, boundary, printres=printres)
+        nmg_solver!(rr, phi_old, phi_new, mu, nx, ny, dt, solver_iter, tol, c_relax, xright, xleft, yright, yleft, epsilon2, n_level, boundary, printres=printres)
         phi_old = copy(phi_new)
         if it / t_iter * 100 % 5 == 0
             println(@sprintf("%3.0f percent complete", it / t_iter * 100))
