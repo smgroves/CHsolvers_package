@@ -13,4 +13,11 @@ CahnHilliard_Python_solvers/CHsolvers/__pycache__/error2.cpython-38.pyc
 CahnHilliard_Python_solvers/CHsolvers/__pycache__/CahnHilliard_NMG.cpython-38.pyc
 CahnHilliard_Python_solvers/CHsolvers/__pycache__/aux_functions.cpython-38.pyc
 CahnHilliard_Python_solvers/CHsolvers/__pycache__/__init__.cpython-38.pyc
-output/output_julia/SAV_Julia_20000_dt_1.00e-05_Nx_128_n_relax_4_phi.csv
+output/output_julia/SAV_Julia_20000_dt_1.00e-05_Nx_128_n_relax_4_phi.csvoutput/output_MATLAB-neumann/FD_MATLAB_200000_dt_5.50e-08_Nx_128_n_relax_4_phi.csv
+output/obsolete/output_julia/NMG_Julia_20000_dt_1.00e-05_Nx_128_n_relax_4_phi.csv
+output/output_julia/SAV_SAV_3999_dt_5.00e-06_Nx_128_n_relax_4_phi.csv
+output/output_julia/NMG_Julia_20000_dt_1.00e-06_Nx_128_n_relax_4_phi.csv
+output/output_julia/SAV_SAV_20000_dt_1.00e-06_Nx_128_n_relax_4_phi.csv
+output/output_julia/NMG_Julia_3999_dt_5.00e-06_Nx_128_n_relax_4_phi.csv
+output/output_MATLAB-neumann/FD_MATLAB_200000_dt_5.50e-08_Nx_128_n_relax_4_phi.csv
+output/output_MATLAB-neumann/FD_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_phi.csv

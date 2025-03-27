@@ -40,9 +40,13 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
         default_domain = [1 0 1 0];
         default_printphi = false;
         default_pathname = 'cd';
-        default_C0 = 0;
+        default_C0 = 0; %1
         default_Beta = 0;
-        default_gamma0 = 0;
+        default_gamma0 = 0; %4
+
+        % eta = 0.95
+        % xi_flag = 1
+        % Mob = 1
         
         CahnHilliard_SAV_parser = inputParser;
 

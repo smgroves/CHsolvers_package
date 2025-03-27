@@ -158,7 +158,7 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=N
                     writedlm(f, phi_new_out, ",")
                 end
             else
-                phi_t[:, :, t_index] = phi_old
+                phi_t[:, :, t_index] = phi_new_out
             end
             mass_t[t_index] = calculate_mass(phi_new_out, h2, nx, ny)
             E_t[t_index] = calculate_discrete_energy(phi_new_out, h2, nx, ny, epsilon2)

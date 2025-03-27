@@ -8,7 +8,7 @@ import numpy as np
 indir = "./IC/"
 outdir = "./output/output_python/"
 
-method = "NMG"
+method = "SAV"
 n_relax = 4
 GridSize = 128
 h = 1/GridSize
@@ -16,9 +16,10 @@ m = 8
 epsilon = m * h / (2 * np.sqrt(2) * np.arctanh(0.9))
 
 dt = 5.5E-06
-max_it = 200
-boundary = "neumann"
-printphi = False
+max_it = 2000
+boundary = "periodic"
+printphi = True
+dt_out = 10  # output every 10 timesteps
 
 
 # phi0 = ch.init.initialization_from_file(f"{indir}initial_phi_$(GridSize)_smooth_n_relax_{n_relax}.csv",
@@ -27,14 +28,13 @@ printphi = False
 phi0 = np.loadtxt(
     f"{indir}initial_phi_{GridSize}_smooth_n_relax_{n_relax}.csv", delimiter=",")
 
-pathname = f"{outdir}{method}_Julia_{max_it}_dt_{dt:.2e}_Nx_{GridSize}_n_relax_{n_relax}_"
+pathname = f"{outdir}{method}_Python_{max_it}_dt_{dt:.2e}_Nx_{GridSize}_n_relax_{n_relax}_{boundary}_"
 
-dt_out = max_it
 date_time = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
 
 # note that if using the time_and_mem decorator (in CahnHilliard_NMG), it will return a results dictionary.
 # TODO remove decorator for final package
-results_dict = ch.NMG.CahnHilliard_NMG(phi0, t_iter=max_it, dt=dt, dt_out=dt_out, m=m,
+results_dict = ch.SAV.CahnHilliard_SAV(phi0, t_iter=max_it, dt=dt, dt_out=dt_out, m=m,
                                        boundary=boundary, printphi=printphi, printres=True, pathname=pathname)
 
 # t_out, phi_t, delta_mass_t, E_t
@@ -62,18 +62,19 @@ np.savetxt(f"{pathname}E_t.csv", results_dict["E_t"], delimiter=",")
 
 T = {}
 T['date'] = date_time
-T['name'] = "spinodal_decomp_smoothed_save_variable_dt_out_200"
+T['name'] = "spinodal_decomp_smoothed_save_variable_dt_out_10_print"
 T['language'] = "Python"
-T['solver'] = "NMG"
+T['solver'] = method
 T['nx'] = GridSize
 T['epsilon'] = epsilon
 T['dt'] = dt
-T['tol'] = 1e-5
+T['tol'] = np.nan
 T['timesteps'] = max_it
-T['max_it_CH'] = 1e4
+T['max_it_CH'] = np.nan
 T['output_name'] = pathname
 T['time (secs)'] = results_dict["computation_time_Sec"]
 T['mem_allocated (MB)'] = results_dict["memory_usage_MB"]
+T["bc"] = boundary
 
 T = pd.DataFrame([T])
 file = "./Job_specs.csv"
