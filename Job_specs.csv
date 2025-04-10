@@ -1,4 +1,4 @@
-date,name,language,solver,nx,epsilon,dt,tol,timesteps,max_it_CH,output_name,time (secs),mem_allocated (MB),bc
+date,name,language,solver,GridSize,epsilon,dt,tol,t_iter,solver_iter,pathname,elapsed_time(s),mem_allocated(MB),boundary
 2/3/25 18:02,SAV_spinodal_decomp_smoothed_no_print,MATLAB,SAV,128,0.015009,5.50E-06,NaN,2000,NaN,NaN,22.2264,NaN,neumann
 2/3/25 18:16,NMG_spinodal_decomp_smoothed_no_print,MATLAB,NMG,128,0.015009,5.50E-06,1.00E-05,2000,10000,NaN,748.3885,NaN,neumann
 2/3/25 18:20,FD_spinodal_decomp_smoothed_no_print,MATLAB,FD,128,0.015009,5.50E-06,NaN,2000,NaN,NaN,1.7973,NaN,neumann
@@ -74,3 +74,4 @@ old, old,Python,NMG,64,0.015009369912862116,5.5e-6,100000.0,2000,10000.0,./outpu
 03/21/2025 14:51:16,spinodal_decomp_smoothed_save_variable_dt_out_200,Python,SAV,128,0.015009369912862116,5.5e-06,,2000,,./output/output_python/SAV_Python_2000_dt_5.50e-06_Nx_128_n_relax_4_,36.888336181640625,40.95234394073486,neumann
 03/25/2025 10:03:44,spinodal_decomp_smoothed_save_variable_dt_out_10_print,Python,SAV,128,0.015009369912862116,5.5e-06,,2000,,./output/output_python/SAV_Python_2000_dt_5.50e-06_Nx_128_n_relax_4_periodic_,26.548539876937866,4.194980621337891,periodic
 03/27/2025 14:44:48,spinodal_decomp_smoothed_save_variable_dt_out_10_print,Python,SAV,128,0.015009369912862116,5.5e-06,,2000,,./output/output_python/SAV_Python_2000_dt_5.50e-06_Nx_128_n_relax_4_periodic_,36.93676710128784,4.297327041625977,periodic
+04/04/2025 11:04:02,spinodal_decomp_smoothed_save_variable_dtout_200_print,Python,SAV,128,0.015009369912862116,5.5e-06,,200,,./output/output_python-periodic/SAV_Python_200_dt_5.50e-06_Nx_128_n_relax_4_periodic_,2.214733123779297,4.291325569152832,periodic

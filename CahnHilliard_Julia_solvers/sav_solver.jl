@@ -51,6 +51,6 @@ function sav_solver(phi_old, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, 
 
     # Step 3
     phi_new = dt / 4 * bphi .* AiLb + Aig
-    r_new = r_fun(xext, phi_old, r0, b, hx, hy, C0, Beta, dt)
+    r_new = r_fun(phi_new, phi_old, r0, b, hx, hy, C0, Beta, dt)
     return phi_new, r_new
 end
