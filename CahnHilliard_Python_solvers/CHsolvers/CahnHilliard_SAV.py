@@ -100,8 +100,9 @@ def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=np.nan
             phi_old_out = phi_old
 
         with open(f"{pathname}phi.csv", "w") as f:
-            for i in range(nx):
-                for j in range(ny):
+            [nx_print, ny_print] = phi_old_out.shape
+            for i in range(nx_print):
+                for j in range(ny_print):
                     f.write(f"{phi_old_out[i][j]},")
                 f.write("\n")  # end of each row
 
@@ -149,8 +150,9 @@ def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=np.nan
             t_index = int(np.floor(it / dt_out) + 1)
             if printphi:
                 with open(f"{pathname}phi.csv", "a") as f:
-                    for i in range(nx):
-                        for j in range(ny):
+                    [nx_print, ny_print] = phi_new_out.shape
+                    for i in range(nx_print):
+                        for j in range(ny_print):
                             f.write(f"{phi_new_out[i][j]},")
                         f.write("\n")  # end of each row
 

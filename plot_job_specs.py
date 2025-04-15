@@ -53,8 +53,8 @@ plt.suptitle(
     f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations, {bc.capitalize()} BC", y=1.)
 g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
 plt.tight_layout()
-# plt.show()
-plt.savefig(f"./output/compare_runtime_{bc}_{GridSize}.pdf")
+plt.show()
+# plt.savefig(f"./output/compare_runtime_{bc}_{GridSize}.pdf")
 # %%
 sns.lineplot(
     data,
@@ -64,5 +64,31 @@ sns.lineplot(
     style="language",
 )
 plt.show()
+
+# %%
+
+bc = "periodic"
+g = sns.catplot(
+    all_data.loc[
+        (all_data["boundary"] == bc) &
+        (all_data['language'] == "Julia")
+    ],
+    kind="bar",
+    y="mem_allocated(MB)",
+    x="solver",
+    # # hue="bc",
+    col="GridSize",
+    # height=4,
+    aspect=0.35,
+)
+# plt.ylim(1, 1e7)
+g.figure.get_axes()[0].set_yscale('log')
+plt.suptitle(
+    f"Memory Allocated for 2000 Iterations, {bc.capitalize()} BC, Julia", y=1.)
+g.set_axis_labels("Solver", "Memory Allocated (MB)")
+# plt.tight_layout()
+# plt.show()
+plt.savefig(f"./output/compare_memalloc_{bc}_Julia.pdf")
+
 
 # %%
