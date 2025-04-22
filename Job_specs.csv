@@ -1,4 +1,4 @@
-date,name,language,solver,GridSize,epsilon,dt,tol,t_iter,solver_iter,pathname,elapsed_time(s),mem_allocated(MB),boundary
+date,name,language,method,GridSize,epsilon,dt,tol,t_iter,solver_iter,pathname,elapsed_time(s),mem_allocated(MB),boundary
 2/3/25 18:02,SAV_spinodal_decomp_smoothed_no_print,MATLAB,SAV,128,0.015009,5.50E-06,NaN,2000,NaN,NaN,22.2264,NaN,neumann
 2/3/25 18:16,NMG_spinodal_decomp_smoothed_no_print,MATLAB,NMG,128,0.015009,5.50E-06,1.00E-05,2000,10000,NaN,748.3885,NaN,neumann
 2/3/25 18:20,FD_spinodal_decomp_smoothed_no_print,MATLAB,FD,128,0.015009,5.50E-06,NaN,2000,NaN,NaN,1.7973,NaN,neumann
