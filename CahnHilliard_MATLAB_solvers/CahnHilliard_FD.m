@@ -8,11 +8,10 @@ function [t_out,phi_t,delta_mass_t,E_t] = CahnHilliard_FD(phi0,varargin)
 %NAME-VALUE PAIRS
     %t_iter = Number of time steps simulated. Default = 1e3.
     %dt = Time step. Default = 2.5e-5 characteristic times.
-    %dt_out = Number of time steps output to phi_t as a multidimensional
+    %dt_out = Spacing of time steps output to phi_t as a multidimensional
     %   array (if less than 1e9 elements) or printed file (if greater than
-    %   1e9 elements). Default = nan (output as many timesteps that enable
-    %   saving a multidimensional array of less than 1e9 elements).
-    %m = Number of mesh points over which the interface exists. Default = 4. **OR SHOULD THIS BE 8**
+    %   1e9 elements). Default = 1, to output every time step. 
+    %m = Number of mesh points over which the interface exists. Default = 4. 
     %epsilon2 = Squared interfacial transition distance; if specified,
     %   m will be overwritten. Default = nan (do not overwrite m).
     %boundary = Boundary conditions for the simulation:
@@ -26,6 +25,7 @@ function [t_out,phi_t,delta_mass_t,E_t] = CahnHilliard_FD(phi0,varargin)
     %printphi = Logical to print phi to a file regardless of whether or 
     %   not it can be saved as a multidimensional array. Default = false.
     % pathname = Name of the path to which phi is printed. Default = 'cd'. May include a prefix for the filename.
+    %presmooth = Optional smoothing before the solver. Default = false.
 
 %
 %OUTPUT
@@ -39,7 +39,7 @@ function [t_out,phi_t,delta_mass_t,E_t] = CahnHilliard_FD(phi0,varargin)
 %Set parameter defaults
 default_t_iter = 1e3;
 default_dt = 2.5e-5;
-default_dt_out = nan;
+default_dt_out = 1;
 default_m = 4;
 default_epsilon2 = nan;
 default_boundary = 'periodic';
@@ -48,6 +48,7 @@ default_domain = [1 0 1 0];
 default_printres = false;
 default_printphi = false;
 default_pathname = 'cd';
+default_presmooth = false;
 
 CahnHilliard_FD_parser = inputParser;
 
@@ -73,6 +74,8 @@ addParameter(CahnHilliard_FD_parser,'domain',default_domain,valid_domain_vector)
 addParameter(CahnHilliard_FD_parser,'printres',default_printres,valid_logical);
 addParameter(CahnHilliard_FD_parser,'printphi',default_printphi,valid_logical);
 addParameter(CahnHilliard_FD_parser,'pathname',default_pathname);
+addParameter(CahnHilliard_FD_parser,'presmooth',default_presmooth,valid_logical);
+
 
 parse(CahnHilliard_FD_parser,phi0,varargin{:});
 
@@ -92,6 +95,7 @@ yleft = CahnHilliard_FD_parser.Results.domain(4);
 printres = CahnHilliard_FD_parser.Results.printres;
 printphi = CahnHilliard_FD_parser.Results.printphi;
 pathname = CahnHilliard_FD_parser.Results.pathname;
+presmooth = CahnHilliard_FD_parser.Results.presmooth;
 
 %% Define and initialize key simulation parameters
 
@@ -102,86 +106,70 @@ if isnan(epsilon2)
 else
     m = sqrt((epsilon2*(2*sqrt(2)*atanh(0.9))^2)/h2); %Else overwrite m
 end
-[phi_old,~] = ch_smooth(phi0,zeros(nx,ny),phi0/dt- ...
+
+if presmooth
+    [phi_old,~] = ch_smooth(phi0,zeros(nx,ny),phi0/dt- ...
     ch_laplace(phi0,nx,ny,xright,xleft,yright,yleft,boundary),zeros(nx,ny), ...
     c_relax,nx,ny,xright,xleft,yright,yleft,dt,epsilon2,boundary); %Smooth phi0 c_relax times
-downsampled = nx*ny*t_iter > 1e9; %Logical index for the need to downsample
-optdownsampled = dt_out > 1; %Logical index if the user opted to downsample
-if ~downsampled && ~optdownsampled %Initialize outputs
-    phi_t = zeros(nx,ny,t_iter);
-    mass_t = zeros(t_iter,1);
-    E_t = zeros(t_iter,1);
-    t_out = 0:dt:((t_iter-1)*dt);
-    t_spacing = 1;
-else %Downsample outputs
-    if ~optdownsampled
-        t_iter_ds = floor(1e9/nx/ny);
-        t_spacing = floor(t_iter/t_iter_ds);
-    else
-        t_spacing = dt_out;
-        t_iter_ds = floor(t_iter/dt_out); %Space out according to dt_out
-    end
-    if isnan(dt_out) || optdownsampled %If downsampled to be saved
-        phi_t = zeros(nx,ny,t_iter_ds);
-    end
-    mass_t = zeros(t_iter_ds,1);
-    E_t = zeros(t_iter_ds,1);
-    t_out = 0:t_spacing*dt:(t_iter-t_spacing)*dt;
+else
+    phi_old = phi0;
 end
+downsampled = nx*ny*t_iter/dt_out > 1e9; %Logical index for the need to downsample
+n_timesteps = floor(t_iter/dt_out);
+if printphi %print to file
+    mass_t = zeros(n_timesteps+1,1);
+    E_t = zeros(n_timesteps+1,1);
+    t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out;
+    %do not make a phi_t variable but save the phi0 to a file
+    if pathname == "cd"
+        pathname = pwd;
+    end
+    Filename = strcat(pathname, 'phi.csv');
+    %note that this will overwrite the file if it already exists
+    writematrix(phi0, Filename, 'WriteMode', 'overwrite'); 
+    phi_t = phi0; %if printing out, just save the initial phi as phi_t so you don't get an error of ouput argument not assigned
+else %save to variable phi_t
+    if downsampled
+        new_dt_out = ceil(nx*ny*t_iter/1e9); %we need to round up to ensure we have enough space
+        fprintf("Variable phi_t is too large with dt_out = %4.0f. Downsampling to every %4.0f time steps\n", dt_out, new_dt_out)
+        dt_out = new_dt_out;
+        n_timesteps = floor(t_iter/dt_out);
+    end
+    mass_t = zeros(n_timesteps+1,1);
+    E_t = zeros(n_timesteps+1,1);
+    t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out;
+    phi_t = zeros(nx,ny,n_timesteps+1);
+    phi_t(:,:,1) = phi0;
+end
+
+mass_t(1) = sum(sum(phi0))/(h2*nx*ny);
+E_t(1) = ch_discrete_energy(phi0,h2,epsilon2);
 
 %% Run finite difference solver
 
 if printres
     fprintf('Saving squared residuals per iteration to file in the working directory\n')
 end
-if ~downsampled && (isnan(dt_out) || ~optdownsampled || ~printphi) %If output is not specified or does not need to be downsampled
-    for i = 1:t_iter
-        phi_t(:,:,i) = phi_old;
-        mass_t(i) = sum(sum(phi_old))/(h2*nx*ny);
-        E_t(i) = ch_discrete_energy(phi_old,h2,epsilon2);
-        phi_new = fd_solver(phi_old,nx,ny,xright,xleft,yright,yleft, ...
-            dt,epsilon2,boundary,printres);
-        phi_old = phi_new;
-        if mod(i/t_iter*100,5) == 0
-            fprintf('%3.0f percent complete\n',i/t_iter*100)
-        end
+for i = 1:t_iter
+    phi_new = fd_solver(phi_old,nx,ny,xright,xleft,yright,yleft, ...
+        dt,epsilon2,boundary,printres);
+    phi_old = phi_new;
+    if mod(i/t_iter*100,5) == 0
+        fprintf('%3.0f percent complete\n',i/t_iter*100)
     end
-else %Downsample output or specify output
-    if isnan(dt_out)
-        fprintf('Downsaving every %4.0f time steps\n',t_spacing)
-    else
-        fprintf('Saving phi_t to file in the working directory\n')
-    end       
-    k = 1; %Initialize counter and outputs
-    phi_t(:,:,k) = phi_old;
-    mass_t(k) = sum(sum(phi_old))/(h2*nx*ny);
-    E_t(k) = ch_discrete_energy(phi_old,h2,epsilon2);
-    for i = 0:t_spacing:(t_iter-t_spacing)
-        for j = 1:t_spacing %Iterate through t_spacing steps
-            phi_temp = fd_solver(phi_old,nx,ny,xright,xleft,yright,yleft, ...
-                dt,epsilon2,boundary,printres);
-            phi_old = phi_temp;
-        end
-        if isnan(dt_out) && ~printphi %Save to variable
-            phi_t(:,:,k) = phi_temp;
-        else %Write to file
-            if pathname == "cd"
-                pathname = pwd;
-            end
-            % Print phi to file if specified
-            Filename = strcat(pathname, 'phi.csv');
-            writematrix(phi_temp, Filename, 'WriteMode', 'append'); 
-            % writematrix(phi_temp,strcat(pwd,'/phi_t.csv'),'WriteMode','append');
-        end
-        mass_t(k) = sum(sum(phi_temp))/(h2*nx*ny);
-        E_t(k) = ch_discrete_energy(phi_temp,h2,epsilon2);
-        k = k+1;
-        if mod(i/t_iter*100,5) == 0
-            fprintf('%3.0f percent complete\n',i/t_iter*100)
-        end
-    end
-    fprintf('Data appended to %s\n', Filename);
+    % save or print every dt_out
+    if mod(i,dt_out) == 0
+        t_index = floor(i/dt_out)+1;
 
+        if printphi
+            % Path = strcat(pwd, '/', Filename);
+            writematrix(phi_new, Filename, 'WriteMode', 'append'); 
+        else
+            phi_t(:,:,t_index) = phi_old;
+        end
+        mass_t(t_index) = sum(sum(phi_old))/(h2*nx*ny);
+        E_t(t_index) = ch_discrete_energy(phi_old,h2,epsilon2);
+    end
 end
 
 %Center mass and normalize energy to t == 0
