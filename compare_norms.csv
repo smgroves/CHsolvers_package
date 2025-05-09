@@ -1,97 +1,883 @@
 language,method,GridSize,boundary,ic,dt_out,timepoint,norm,pathname
-MATLAB,NMG,64,neumann,25p,None,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
-MATLAB,SAV,64,neumann,50p,None,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_phi.csv
-MATLAB,SAV,64,periodic,25p,None,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
-MATLAB,NMG,64,periodic,25p,None,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
-MATLAB,SAV,64,periodic,75p,None,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
-MATLAB,NMG,64,neumann,75p,None,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
-MATLAB,SAV,64,neumann,75p,None,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
-MATLAB,SAV,64,periodic,50p,None,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_phi.csv
-MATLAB,SAV,64,neumann,25p,None,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
-MATLAB,NMG,64,periodic,75p,None,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
-MATLAB,NMG,64,neumann,50p,None,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_phi.csv
-MATLAB,NMG,64,periodic,50p,None,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_phi.csv
+MATLAB,SAV,256,periodic,25p,None (10),0,130.02964977248234,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,periodic,50p,None (10),0,16.338019238090343,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,neumann,25p,None (10),0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,512,periodic,75p,None (10),0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,128,periodic,50p,None (10),0,16.338019238090343,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_phi.csv
+MATLAB,SAV,256,neumann,25p,None (10),0,130.02964977248234,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,128,neumann,75p,None (10),0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_75p_phi.csv
+MATLAB,NMG,256,neumann,50p,None (10),0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,neumann,75p,None (10),0,130.13179688686242,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,64,neumann,50p,None (10),0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_phi.csv
+MATLAB,NMG,128,periodic,75p,None (10),0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,neumann,25p,None (10),0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,64,periodic,25p,None (10),0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,64,periodic,25p,None (10),0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,128,periodic,25p,None (10),0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,256,periodic,25p,None (10),0,130.02964977248234,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,64,periodic,75p,None (10),0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,periodic,50p,None (10),0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_phi.csv
+MATLAB,SAV,512,periodic,25p,None (10),0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,neumann,50p,None (10),0,16.338019238090343,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_phi.csv
+MATLAB,SAV,512,neumann,25p,None (10),0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,256,periodic,50p,None (10),0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,neumann,75p,None (10),0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,neumann,75p,None (10),0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,neumann,50p,None (10),0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_phi.csv
+MATLAB,SAV,64,neumann,75p,None (10),0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
+MATLAB,NMG,128,neumann,50p,None (10),0,16.338019238090343,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_phi.csv
+MATLAB,SAV,256,periodic,75p,None (10),0,130.13179688686242,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,periodic,75p,None (10),0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,128,neumann,25p,None (10),0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,512,neumann,75p,None (10),0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,256,neumann,75p,None (10),0,130.13179688686242,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,64,periodic,50p,None (10),0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_phi.csv
+MATLAB,SAV,64,neumann,25p,None (10),0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,256,neumann,50p,None (10),0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,neumann,25p,None (10),0,130.02964977248234,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,512,periodic,50p,None (10),0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_phi.csv
+MATLAB,SAV,128,neumann,75p,None (10),0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,128,periodic,25p,None (10),0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,periodic,75p,None (10),0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,256,periodic,50p,None (10),0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,periodic,75p,None (10),0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,64,neumann,50p,None (10),0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,periodic,75p,None (10),0,130.13179688686242,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,neumann,50p,None (10),0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_phi.csv
+MATLAB,NMG,128,neumann,25p,None (10),0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,64,periodic,50p,None (10),0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_phi.csv
+MATLAB,NMG,512,periodic,25p,None (10),0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_25p_phi.csv
+Julia,NMG,128,neumann,50p,10,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_phi.csv
 Julia,NMG,64,neumann,25p,10,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25p_phi.csv
+Julia,NMG,256,neumann,50p,2000,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_phi.csv
+Julia,SAV,512,periodic,75p,2000,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_75p_phi.csv
+Julia,NMG,128,neumann,50p,2000,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_phi.csv
+Julia,SAV,256,periodic,25p,2000,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_25p_phi.csv
+Julia,NMG,512,neumann,50p,2000,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_phi.csv
+Julia,SAV,512,neumann,50p,10,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_phi.csv
+Julia,SAV,512,periodic,75p,10,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75p_phi.csv
+Julia,NMG,128,periodic,50p,2000,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_phi.csv
+Julia,SAV,128,neumann,75p,10,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75p_phi.csv
+Julia,SAV,128,periodic,25p,10,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25p_phi.csv
 Julia,NMG,64,neumann,75p,10,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75p_phi.csv
+Julia,NMG,256,periodic,75p,2000,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_75p_phi.csv
+Julia,NMG,128,periodic,75p,2000,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_75p_phi.csv
+Julia,NMG,128,neumann,25p,2000,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_25p_phi.csv
+Julia,SAV,512,periodic,25p,2000,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_25p_phi.csv
 Julia,NMG,64,neumann,50p,10,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_phi.csv
+Julia,SAV,256,neumann,50p,2000,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_phi.csv
+Julia,SAV,512,periodic,25p,10,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25p_phi.csv
+Julia,SAV,128,periodic,50p,10,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_phi.csv
+Julia,SAV,512,neumann,75p,10,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75p_phi.csv
+Julia,NMG,256,periodic,50p,2000,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_phi.csv
+Julia,SAV,128,periodic,50p,2000,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_phi.csv
 Julia,SAV,64,neumann,25p,2000,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_25p_phi.csv
+Julia,NMG,512,periodic,75p,2000,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_75p_phi.csv
+Julia,SAV,256,periodic,75p,2000,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_75p_phi.csv
+Julia,SAV,256,neumann,25p,10,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25p_phi.csv
+Julia,SAV,128,neumann,25p,2000,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_25p_phi.csv
+Julia,NMG,256,neumann,75p,10,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75p_phi.csv
+Julia,SAV,512,neumann,25p,10,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25p_phi.csv
 Julia,NMG,64,neumann,50p,2000,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_phi.csv
+Julia,SAV,256,periodic,50p,2000,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_phi.csv
 Julia,SAV,64,neumann,50p,2000,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_phi.csv
+Julia,SAV,128,periodic,75p,10,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75p_phi.csv
 Julia,NMG,64,periodic,50p,10,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_phi.csv
+Julia,SAV,512,neumann,50p,2000,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_phi.csv
 Julia,NMG,64,periodic,50p,2000,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_phi.csv
 Julia,NMG,64,periodic,75p,2000,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_75p_phi.csv
+Julia,NMG,512,neumann,25p,10,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25p_phi.csv
+Julia,SAV,256,neumann,25p,2000,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_25p_phi.csv
+Julia,SAV,256,neumann,75p,2000,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_75p_phi.csv
+Julia,SAV,512,periodic,50p,10,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,50p,10,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_phi.csv
+Julia,NMG,128,neumann,75p,2000,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_75p_phi.csv
+Julia,NMG,512,periodic,25p,2000,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_25p_phi.csv
 Julia,SAV,64,periodic,25p,2000,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_25p_phi.csv
+Julia,NMG,128,neumann,25p,10,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25p_phi.csv
+Julia,NMG,512,periodic,50p,2000,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_phi.csv
 Julia,NMG,64,periodic,75p,10,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75p_phi.csv
 Julia,SAV,64,neumann,75p,2000,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_75p_phi.csv
+Julia,SAV,128,neumann,75p,2000,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_75p_phi.csv
 Julia,SAV,64,periodic,75p,2000,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_75p_phi.csv
+Julia,SAV,128,neumann,50p,10,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_phi.csv
+Julia,NMG,512,neumann,75p,10,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75p_phi.csv
+Julia,SAV,256,neumann,50p,10,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_phi.csv
+Julia,NMG,512,neumann,25p,2000,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_25p_phi.csv
+Julia,NMG,256,periodic,25p,10,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25p_phi.csv
+Julia,NMG,256,neumann,50p,10,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_phi.csv
+Julia,SAV,128,neumann,50p,2000,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_phi.csv
+Julia,NMG,256,periodic,75p,10,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75p_phi.csv
 Julia,SAV,64,neumann,25p,10,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25p_phi.csv
+Julia,NMG,512,neumann,50p,10,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_phi.csv
+Julia,SAV,128,neumann,25p,10,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25p_phi.csv
+Julia,NMG,512,periodic,75p,10,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75p_phi.csv
+Julia,SAV,512,neumann,75p,2000,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_75p_phi.csv
+Julia,SAV,128,periodic,25p,2000,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_25p_phi.csv
+Julia,SAV,256,periodic,25p,10,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25p_phi.csv
+Julia,SAV,512,periodic,50p,2000,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_phi.csv
+Julia,NMG,256,neumann,25p,2000,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_25p_phi.csv
+Julia,NMG,128,neumann,75p,10,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75p_phi.csv
+Julia,NMG,512,periodic,25p,10,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25p_phi.csv
 Julia,NMG,64,neumann,25p,2000,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_25p_phi.csv
 Julia,SAV,64,periodic,50p,2000,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_phi.csv
 Julia,SAV,64,neumann,75p,10,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75p_phi.csv
 Julia,SAV,64,periodic,75p,10,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75p_phi.csv
 Julia,NMG,64,periodic,25p,10,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25p_phi.csv
 Julia,SAV,64,periodic,50p,10,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_phi.csv
+Julia,SAV,256,neumann,75p,10,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75p_phi.csv
+Julia,NMG,256,neumann,25p,10,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25p_phi.csv
+Julia,SAV,256,periodic,75p,10,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75p_phi.csv
 Julia,SAV,64,neumann,50p,10,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_phi.csv
+Julia,SAV,128,periodic,75p,2000,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_75p_phi.csv
+Julia,NMG,256,periodic,50p,10,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,75p,10,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75p_phi.csv
+Julia,SAV,256,periodic,50p,10,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,25p,10,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25p_phi.csv
 Julia,NMG,64,neumann,75p,2000,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_75p_phi.csv
 Julia,NMG,64,periodic,25p,2000,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_25p_phi.csv
+Julia,NMG,256,neumann,75p,2000,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_75p_phi.csv
+Julia,SAV,512,neumann,25p,2000,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_25p_phi.csv
+Julia,NMG,512,neumann,75p,2000,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_75p_phi.csv
+Julia,NMG,256,periodic,25p,2000,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_25p_phi.csv
+Julia,NMG,512,periodic,50p,10,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,25p,2000,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_25p_phi.csv
 Julia,SAV,64,periodic,25p,10,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25p_phi.csv
-MATLAB,NMG,64,neumann,25p,None,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
-MATLAB,SAV,64,neumann,50p,None,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_phi.csv
-MATLAB,SAV,64,periodic,25p,None,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
-MATLAB,NMG,64,periodic,25p,None,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
-MATLAB,SAV,64,periodic,75p,None,200,31.52640544624525,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
-MATLAB,NMG,64,neumann,75p,None,200,31.52950516370679,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
-MATLAB,SAV,64,neumann,75p,None,200,31.529455329878335,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
-MATLAB,SAV,64,periodic,50p,None,200,10.044333210987459,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_phi.csv
-MATLAB,SAV,64,neumann,25p,None,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
-MATLAB,NMG,64,periodic,75p,None,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
-MATLAB,NMG,64,neumann,50p,None,200,10.40255049786071,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_phi.csv
-MATLAB,NMG,64,periodic,50p,None,200,10.14346008185456,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_phi.csv
-Julia,NMG,64,neumann,25p,10,200,31.414789913155868,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25p_phi.csv
-Julia,NMG,64,neumann,75p,10,200,31.41579722504934,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75p_phi.csv
-Julia,NMG,64,neumann,50p,10,200,15.463282342791958,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_phi.csv
-Julia,SAV,64,neumann,25p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_25p_phi.csv
-Julia,NMG,64,neumann,50p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_phi.csv
-Julia,SAV,64,neumann,50p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_phi.csv
-Julia,NMG,64,periodic,50p,10,200,15.373279366252234,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_phi.csv
-Julia,NMG,64,periodic,50p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_phi.csv
-Julia,NMG,64,periodic,75p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_75p_phi.csv
-Julia,SAV,64,periodic,25p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_25p_phi.csv
-Julia,NMG,64,periodic,75p,10,200,31.396670886471625,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75p_phi.csv
-Julia,SAV,64,neumann,75p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_75p_phi.csv
-Julia,SAV,64,periodic,75p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_75p_phi.csv
-Julia,SAV,64,neumann,25p,10,200,31.528587428094546,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25p_phi.csv
-Julia,NMG,64,neumann,25p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_25p_phi.csv
-Julia,SAV,64,periodic,50p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_phi.csv
-Julia,SAV,64,neumann,75p,10,200,31.529462488434042,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75p_phi.csv
-Julia,SAV,64,periodic,75p,10,200,31.526409405667025,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75p_phi.csv
-Julia,NMG,64,periodic,25p,10,200,31.40489838805438,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25p_phi.csv
-Julia,SAV,64,periodic,50p,10,200,11.038447535534498,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_phi.csv
-Julia,SAV,64,neumann,50p,10,200,11.619937454490513,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_phi.csv
-Julia,NMG,64,neumann,75p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_75p_phi.csv
-Julia,NMG,64,periodic,25p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_25p_phi.csv
-Julia,SAV,64,periodic,25p,10,200,31.527487419178623,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25p_phi.csv
-Python,NMG,64,periodic,50p,200,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_64_periodic_dtout_200phi.csv
-Python,NMG,64,neumann,25p,1,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_1_25pphi.csv
-Python,NMG,64,periodic,50p,20,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20phi.csv
-Python,NMG,64,periodic,50p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_2000phi.csv
-Python,NMG,64,neumann,75p,1,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_1_75pphi.csv
-Python,NMG,64,neumann,75p,20,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_20_75pphi.csv
-Python,SAV,64,periodic,25p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_25pphi.csv
-Python,NMG,64,periodic,50p,1,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1phi.csv
-Python,SAV,64,periodic,75p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_75pphi.csv
-Python,NMG,64,neumann,25p,20,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_20_25pphi.csv
-Python,NMG,64,neumann,50p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_2000phi.csv
-Python,SAV,64,neumann,50p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000phi.csv
-Python,SAV,64,neumann,75p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_75pphi.csv
-Python,NMG,64,periodic,75p,1,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1_75pphi.csv
-Python,SAV,64,neumann,25p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_25pphi.csv
-Python,SAV,64,periodic,50p,2000,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000phi.csv
-Python,NMG,64,periodic,25p,20,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20_25pphi.csv
-Python,NMG,64,periodic,25p,1,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1_25pphi.csv
-Python,NMG,64,neumann,50p,10,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_10phi.csv
-Python,NMG,64,periodic,50p,20,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20phi.csv
-Python,NMG,64,periodic,75p,20,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20_75pphi.csv
-Python,NMG,64,periodic,50p,10,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
-Python,NMG,64,neumann,50p,200,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_64_neumann_dtout_200phi.csv
-Python,NMG,64,periodic,50p,10,200,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+Python,NMG,256,periodic,25p,20,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20_25pphi.csv
+Python,SAV,256,neumann,50p,2000,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000phi.csv
+Python,NMG,512,neumann,25p,1,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_1_25pphi.csv
+Python,SAV,512,periodic,25p,2000,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_25pphi.csv
+Python,NMG,512,periodic,50p,20,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20phi.csv
+Python,SAV,64,neumann,25p,10,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25pphi.csv
+Python,NMG,256,neumann,50p,10,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_10phi.csv
+Python,NMG,128,periodic,50p,10,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_10phi.csv
+Python,NMG,64,periodic,50p,200,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_64_periodic_dtout_200phi.csv
+Python,SAV,256,neumann,75p,2000,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_75pphi.csv
+Python,NMG,512,neumann,50p,20,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20phi.csv
+Python,SAV,128,neumann,50p,10,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10phi.csv
+Python,NMG,256,neumann,25p,20,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20_25pphi.csv
+Python,SAV,256,neumann,75p,10,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75pphi.csv
+Python,NMG,128,neumann,75p,1,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_1_75pphi.csv
+Python,NMG,512,periodic,50p,20,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20phi.csv
+Python,SAV,64,neumann,75p,10,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75pphi.csv
+Python,NMG,512,periodic,50p,1,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1phi.csv
+Python,NMG,128,periodic,50p,2000,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_2000phi.csv
+Python,NMG,128,periodic,50p,20,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20phi.csv
+Python,SAV,512,neumann,25p,2000,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_25pphi.csv
+Python,NMG,128,periodic,50p,1,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1phi.csv
+Python,NMG,64,neumann,25p,1,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_1_25pphi.csv
+Python,SAV,128,periodic,75p,2000,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_75pphi.csv
+Python,NMG,256,periodic,50p,2000,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_2000phi.csv
+Python,NMG,512,periodic,75p,1,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1_75pphi.csv
+Python,SAV,512,neumann,50p,2000,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000phi.csv
+Python,NMG,64,periodic,50p,20,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20phi.csv
+Python,SAV,512,periodic,75p,10,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75pphi.csv
+Python,SAV,512,periodic,75p,2000,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_75pphi.csv
+Python,NMG,64,periodic,50p,2000,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_2000phi.csv
+Python,NMG,64,neumann,75p,1,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_1_75pphi.csv
+Python,NMG,128,periodic,75p,20,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20_75pphi.csv
+Python,SAV,256,periodic,50p,2000,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000phi.csv
+Python,SAV,512,neumann,75p,10,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75pphi.csv
+Python,SAV,128,periodic,25p,2000,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_25pphi.csv
+Python,NMG,64,neumann,75p,20,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_20_75pphi.csv
+Python,SAV,256,periodic,50p,10,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10phi.csv
+Python,NMG,256,periodic,50p,1,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1phi.csv
+Python,SAV,64,periodic,25p,2000,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_25pphi.csv
+Python,NMG,128,periodic,25p,1,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1_25pphi.csv
+Python,SAV,512,periodic,50p,10,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10phi.csv
+Python,NMG,128,periodic,50p,20,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20phi.csv
+Python,NMG,64,periodic,50p,1,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1phi.csv
+Python,SAV,64,neumann,50p,10,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10phi.csv
+Python,NMG,512,neumann,50p,10,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_10phi.csv
+Python,NMG,256,periodic,50p,20,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20phi.csv
+Python,NMG,256,periodic,50p,200,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_256_periodic_dtout_200phi.csv
+Python,SAV,64,periodic,75p,2000,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_75pphi.csv
+Python,NMG,128,periodic,25p,20,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20_25pphi.csv
+Python,NMG,64,neumann,25p,20,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_20_25pphi.csv
+Python,SAV,128,neumann,25p,10,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25pphi.csv
+Python,SAV,256,periodic,25p,2000,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_25pphi.csv
+Python,NMG,128,neumann,50p,10,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_10phi.csv
+Python,NMG,256,periodic,75p,1,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1_75pphi.csv
+Python,NMG,256,neumann,50p,2000,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_2000phi.csv
+Python,NMG,512,neumann,25p,20,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20_25pphi.csv
+Python,NMG,256,periodic,75p,20,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20_75pphi.csv
+Python,NMG,512,periodic,50p,2000,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_2000phi.csv
+Python,NMG,64,neumann,50p,2000,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_2000phi.csv
+Python,SAV,64,neumann,50p,2000,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000phi.csv
+Python,SAV,512,periodic,50p,2000,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000phi.csv
+Python,SAV,512,neumann,50p,10,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10phi.csv
+Python,SAV,64,neumann,75p,2000,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_75pphi.csv
+Python,SAV,256,periodic,25p,10,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25pphi.csv
+Python,NMG,64,periodic,75p,1,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1_75pphi.csv
+Python,NMG,512,neumann,50p,200,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_512_neumann_dtout_200phi.csv
+Python,NMG,128,neumann,25p,1,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_1_25pphi.csv
+Python,SAV,128,neumann,50p,2000,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000phi.csv
+Python,NMG,256,neumann,75p,1,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_1_75pphi.csv
+Python,NMG,256,neumann,25p,1,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_1_25pphi.csv
+Python,NMG,256,periodic,50p,20,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20phi.csv
+Python,NMG,256,neumann,50p,20,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20phi.csv
+Python,SAV,64,neumann,25p,2000,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_25pphi.csv
+Python,SAV,128,neumann,75p,2000,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_75pphi.csv
+Python,NMG,512,periodic,50p,10,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_10phi.csv
+Python,SAV,64,periodic,25p,10,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25pphi.csv
+Python,NMG,128,neumann,25p,20,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_20_25pphi.csv
+Python,NMG,128,periodic,75p,1,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1_75pphi.csv
+Python,SAV,64,periodic,50p,2000,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000phi.csv
+Python,SAV,128,periodic,25p,10,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25pphi.csv
+Python,NMG,128,periodic,50p,200,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_128_periodic_dtout_200phi.csv
+Python,NMG,64,periodic,25p,20,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20_25pphi.csv
+Python,SAV,512,neumann,75p,2000,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_75pphi.csv
+Python,SAV,256,neumann,25p,10,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25pphi.csv
+Python,NMG,64,periodic,25p,1,0,31.89139796114392,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1_25pphi.csv
+Python,SAV,128,neumann,75p,10,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75pphi.csv
+Python,NMG,256,neumann,75p,20,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20_75pphi.csv
+Python,NMG,256,periodic,25p,1,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1_25pphi.csv
+Python,SAV,512,periodic,25p,10,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25pphi.csv
+Python,NMG,64,neumann,50p,10,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_10phi.csv
+Python,NMG,128,neumann,75p,20,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_20_75pphi.csv
+Python,NMG,128,neumann,50p,2000,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_2000phi.csv
+Python,NMG,128,neumann,50p,200,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_128_neumann_dtout_200phi.csv
+Python,NMG,512,periodic,25p,1,0,255.81444673962085,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1_25pphi.csv
+Python,NMG,64,periodic,50p,20,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20phi.csv
+Python,NMG,512,periodic,50p,200,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_512_periodic_dtout_200phi.csv
+Python,SAV,256,neumann,50p,10,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10phi.csv
+Python,SAV,64,periodic,75p,10,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75pphi.csv
+Python,SAV,256,neumann,25p,2000,0,130.02964977248232,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_25pphi.csv
+Python,NMG,512,neumann,50p,2000,0,79.2467743605897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_2000phi.csv
+Python,SAV,128,periodic,50p,2000,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000phi.csv
+Python,NMG,64,periodic,75p,20,0,31.90797299687814,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20_75pphi.csv
+Python,NMG,256,periodic,50p,10,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_10phi.csv
+Python,NMG,64,periodic,50p,10,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+Python,SAV,256,periodic,75p,10,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75pphi.csv
+Python,NMG,512,neumann,75p,20,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20_75pphi.csv
+Python,NMG,64,neumann,50p,200,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_64_neumann_dtout_200phi.csv
+Python,NMG,512,neumann,75p,1,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_1_75pphi.csv
+Python,NMG,64,periodic,50p,10,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+Python,NMG,512,periodic,75p,20,0,261.0235085456542,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20_75pphi.csv
+Python,NMG,256,neumann,50p,200,0,37.84490979408554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_256_neumann_dtout_200phi.csv
+Python,SAV,128,periodic,75p,10,0,64.56840056370952,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75pphi.csv
+Python,SAV,256,periodic,75p,2000,0,130.1317968868624,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_75pphi.csv
+Python,SAV,128,neumann,25p,2000,0,64.52529436818811,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_25pphi.csv
+Python,SAV,128,periodic,50p,10,0,16.338019238090347,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10phi.csv
+Python,NMG,512,periodic,25p,20,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20_25pphi.csv
+Python,SAV,512,neumann,25p,10,0,260.81333081731987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25pphi.csv
+Python,SAV,64,periodic,50p,10,0,5.793058526954734,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+MATLAB,SAV,256,periodic,25p,None (10),20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,periodic,50p,None (10),20,5.7002571282617325,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,neumann,25p,None (10),20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,512,periodic,75p,None (10),20,256.1520481724324,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,128,periodic,50p,None (10),20,5.662245662729454,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_phi.csv
+MATLAB,SAV,256,neumann,25p,None (10),20,187.97518255027967,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,128,neumann,75p,None (10),20,63.10965453568904,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_75p_phi.csv
+MATLAB,NMG,256,neumann,50p,None (10),20,25.117517132423174,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,neumann,75p,None (10),20,126.71254753028275,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,64,neumann,50p,None (10),20,1.5447789689915672,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_phi.csv
+MATLAB,NMG,128,periodic,75p,None (10),20,63.12001320580721,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,neumann,25p,None (10),20,256.00137245811663,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,64,periodic,25p,None (10),20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,64,periodic,25p,None (10),20,31.524861610256764,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,128,periodic,25p,None (10),20,63.108963855321164,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,256,periodic,25p,None (10),20,126.68567910633719,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,64,periodic,75p,None (10),20,31.547024492321185,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,periodic,50p,None (10),20,179.49950717978837,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_phi.csv
+MATLAB,SAV,512,periodic,25p,None (10),20,418.5278936216843,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,neumann,50p,None (10),20,5.856340417585462,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_phi.csv
+MATLAB,SAV,512,neumann,25p,None (10),20,402.21924294641974,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,256,periodic,50p,None (10),20,24.65529175760388,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,neumann,75p,None (10),20,31.550744062959836,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,neumann,75p,None (10),20,256.29222180436966,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,neumann,50p,None (10),20,179.9490549580169,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_phi.csv
+MATLAB,SAV,64,neumann,75p,None (10),20,31.54892330730266,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
+MATLAB,NMG,128,neumann,50p,None (10),20,5.9016979966666385,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_phi.csv
+MATLAB,SAV,256,periodic,75p,None (10),20,129.08120996917572,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,periodic,75p,None (10),20,256.1094609954897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,128,neumann,25p,None (10),20,63.168919102051035,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,512,neumann,75p,None (10),20,256.2307186482159,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,256,neumann,75p,None (10),20,126.59890199252833,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,64,periodic,50p,None (10),20,2.0312893715124747,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_phi.csv
+MATLAB,SAV,64,neumann,25p,None (10),20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,256,neumann,50p,None (10),20,25.218930997077425,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,neumann,25p,None (10),20,126.83575657012688,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,512,periodic,50p,None (10),20,161.4171167602541,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_phi.csv
+MATLAB,SAV,128,neumann,75p,None (10),20,63.127524251886676,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,128,periodic,25p,None (10),20,63.16439491140359,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,periodic,75p,None (10),20,63.166606959653095,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,256,periodic,50p,None (10),20,24.878567649840004,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,periodic,75p,None (10),20,31.525523349835115,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,64,neumann,50p,None (10),20,1.8142636441807576,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,periodic,75p,None (10),20,126.7005918005267,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,neumann,50p,None (10),20,162.06333077211187,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_phi.csv
+MATLAB,NMG,128,neumann,25p,None (10),20,63.09796297160185,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,64,periodic,50p,None (10),20,1.7371540971179182,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_phi.csv
+MATLAB,NMG,512,periodic,25p,None (10),20,255.89752052175612,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_25p_phi.csv
+Julia,NMG,128,neumann,50p,10,20,5.685651786887897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_phi.csv
+Julia,NMG,64,neumann,25p,10,20,31.434194363755346,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25p_phi.csv
+Julia,SAV,512,neumann,50p,10,20,179.94905495801692,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_phi.csv
+Julia,SAV,512,periodic,75p,10,20,256.15204817243244,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75p_phi.csv
+Julia,SAV,128,neumann,75p,10,20,63.17074125390439,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75p_phi.csv
+Julia,SAV,128,periodic,25p,10,20,63.1643949114036,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25p_phi.csv
+Julia,NMG,64,neumann,75p,10,20,31.434065368871227,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75p_phi.csv
+Julia,NMG,64,neumann,50p,10,20,1.771433110235276,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_phi.csv
+Julia,SAV,512,periodic,25p,10,20,255.9539551770531,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25p_phi.csv
+Julia,SAV,128,periodic,50p,10,20,5.7002571282617325,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_phi.csv
+Julia,SAV,512,neumann,75p,10,20,256.29222180436966,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75p_phi.csv
+Julia,SAV,256,neumann,25p,10,20,126.67124502474371,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25p_phi.csv
+Julia,NMG,256,neumann,75p,10,20,115.87786452613601,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75p_phi.csv
+Julia,SAV,512,neumann,25p,10,20,256.0549811090598,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25p_phi.csv
+Julia,SAV,128,periodic,75p,10,20,63.1666069596531,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75p_phi.csv
+Julia,NMG,64,periodic,50p,10,20,1.6953339171156343,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_phi.csv
+Julia,NMG,512,neumann,25p,10,20,198.12079331600242,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25p_phi.csv
+Julia,SAV,512,periodic,50p,10,20,179.4995071797884,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,50p,10,20,5.498736769083606,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_phi.csv
+Julia,NMG,128,neumann,25p,10,20,61.76795498132722,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25p_phi.csv
+Julia,NMG,64,periodic,75p,10,20,31.41585253105682,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75p_phi.csv
+Julia,SAV,128,neumann,50p,10,20,5.856340417585468,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_phi.csv
+Julia,NMG,512,neumann,75p,10,20,198.13809653520192,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75p_phi.csv
+Julia,SAV,256,neumann,50p,10,20,25.218930997077425,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_phi.csv
+Julia,NMG,256,periodic,25p,10,20,115.83781553494107,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25p_phi.csv
+Julia,NMG,256,neumann,50p,10,20,21.21260503377975,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_phi.csv
+Julia,NMG,256,periodic,75p,10,20,115.83753575434164,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75p_phi.csv
+Julia,SAV,64,neumann,25p,10,20,31.549120963391,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25p_phi.csv
+Julia,NMG,512,neumann,50p,10,20,75.30144693916402,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_phi.csv
+Julia,SAV,128,neumann,25p,10,20,63.168919102051035,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25p_phi.csv
+Julia,NMG,512,periodic,75p,10,20,198.07575256711462,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75p_phi.csv
+Julia,SAV,256,periodic,25p,10,20,126.65598306274632,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25p_phi.csv
+Julia,NMG,128,neumann,75p,10,20,61.77007551535894,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75p_phi.csv
+Julia,NMG,512,periodic,25p,10,20,198.06005652735988,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25p_phi.csv
+Julia,SAV,64,neumann,75p,10,20,31.54892330730266,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75p_phi.csv
+Julia,SAV,64,periodic,75p,10,20,31.547024492321196,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75p_phi.csv
+Julia,NMG,64,periodic,25p,10,20,31.426593630261998,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25p_phi.csv
+Julia,SAV,64,periodic,50p,10,20,1.6769473746248582,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_phi.csv
+Julia,SAV,256,neumann,75p,10,20,126.70243618237625,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75p_phi.csv
+Julia,NMG,256,neumann,25p,10,20,115.86447171457472,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25p_phi.csv
+Julia,SAV,256,periodic,75p,10,20,126.68599256034679,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75p_phi.csv
+Julia,SAV,64,neumann,50p,10,20,1.7641420142153477,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_phi.csv
+Julia,NMG,256,periodic,50p,10,20,20.77525439934636,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,75p,10,20,61.7456253391327,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75p_phi.csv
+Julia,SAV,256,periodic,50p,10,20,24.87856764984002,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,25p,10,20,61.76641690345253,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25p_phi.csv
+Julia,NMG,512,periodic,50p,10,20,74.59249548626549,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_phi.csv
+Julia,SAV,64,periodic,25p,10,20,31.54768527176153,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25p_phi.csv
+Python,NMG,256,periodic,25p,20,20,127.92460761435089,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20_25pphi.csv
+Python,NMG,512,neumann,25p,1,20,256.00137245771583,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_1_25pphi.csv
+Python,NMG,512,periodic,50p,20,20,72.21244924431976,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20phi.csv
+Python,SAV,64,neumann,25p,10,20,31.558370944936225,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25pphi.csv
+Python,NMG,256,neumann,50p,10,20,22.77529721137546,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_10phi.csv
+Python,NMG,128,periodic,50p,10,20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_10phi.csv
+Python,NMG,512,neumann,50p,20,20,72.5681735210592,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20phi.csv
+Python,SAV,128,neumann,50p,10,20,6.284649318426194,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10phi.csv
+Python,NMG,256,neumann,25p,20,20,127.94570813488926,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20_25pphi.csv
+Python,SAV,256,neumann,75p,10,20,126.83734238631776,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75pphi.csv
+Python,NMG,128,neumann,75p,1,20,63.17376693860111,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_1_75pphi.csv
+Python,NMG,512,periodic,50p,20,20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20phi.csv
+Python,SAV,64,neumann,75p,10,20,31.55825529383667,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75pphi.csv
+Python,NMG,512,periodic,50p,1,20,161.66335786862768,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1phi.csv
+Python,NMG,128,periodic,50p,20,20,10.06923441413492,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20phi.csv
+Python,NMG,128,periodic,50p,1,20,5.757130191260566,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1phi.csv
+Python,NMG,64,neumann,25p,1,20,31.55094312465564,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_1_25pphi.csv
+Python,NMG,512,periodic,75p,1,20,256.11892733873253,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1_75pphi.csv
+Python,NMG,64,periodic,50p,20,20,3.748299968072515,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20phi.csv
+Python,SAV,512,periodic,75p,10,20,255.7576886490253,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75pphi.csv
+Python,NMG,64,neumann,75p,1,20,31.550744062979923,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_1_75pphi.csv
+Python,NMG,128,periodic,75p,20,20,63.602653914414795,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20_75pphi.csv
+Python,SAV,512,neumann,75p,10,20,255.84332284345987,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75pphi.csv
+Python,NMG,64,neumann,75p,20,20,31.686502812467904,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_20_75pphi.csv
+Python,SAV,256,periodic,50p,10,20,22.44088245841992,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10phi.csv
+Python,NMG,256,periodic,50p,1,20,24.726717070064822,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1phi.csv
+Python,NMG,128,periodic,25p,1,20,63.18414764680691,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1_25pphi.csv
+Python,SAV,512,periodic,50p,10,20,113.56385098187837,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10phi.csv
+Python,NMG,128,periodic,50p,20,20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20phi.csv
+Python,NMG,64,periodic,50p,1,20,1.7381932135046796,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1phi.csv
+Python,SAV,64,neumann,50p,10,20,1.9441233192271583,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10phi.csv
+Python,NMG,512,neumann,50p,10,20,106.44178377460854,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_10phi.csv
+Python,NMG,256,periodic,50p,20,20,27.33603406778686,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20phi.csv
+Python,NMG,128,periodic,25p,20,20,63.581589191916756,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20_25pphi.csv
+Python,NMG,64,neumann,25p,20,20,31.6781619914581,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_20_25pphi.csv
+Python,SAV,128,neumann,25p,10,20,63.2119839851417,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25pphi.csv
+Python,NMG,128,neumann,50p,10,20,6.304231018753412,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_10phi.csv
+Python,NMG,256,periodic,75p,1,20,126.70459181886999,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1_75pphi.csv
+Python,NMG,512,neumann,25p,20,20,258.058912690639,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20_25pphi.csv
+Python,NMG,256,periodic,75p,20,20,127.98935087494365,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20_75pphi.csv
+Python,SAV,512,neumann,50p,10,20,114.05252444100788,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10phi.csv
+Python,SAV,256,periodic,25p,10,20,126.78285084792155,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25pphi.csv
+Python,NMG,64,periodic,75p,1,20,31.539169265377843,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1_75pphi.csv
+Python,NMG,128,neumann,25p,1,20,63.171404425424846,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_1_25pphi.csv
+Python,NMG,256,neumann,75p,1,20,126.71254753032547,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_1_75pphi.csv
+Python,NMG,256,neumann,25p,1,20,126.67968730056576,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_1_25pphi.csv
+Python,NMG,256,periodic,50p,20,20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20phi.csv
+Python,NMG,256,neumann,50p,20,20,27.586602934086983,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20phi.csv
+Python,NMG,512,periodic,50p,10,20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_10phi.csv
+Python,SAV,64,periodic,25p,10,20,31.55668674526044,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25pphi.csv
+Python,NMG,128,neumann,25p,20,20,63.58567724581849,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_20_25pphi.csv
+Python,NMG,128,periodic,75p,1,20,63.17005635857385,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1_75pphi.csv
+Python,SAV,128,periodic,25p,10,20,63.20761519748455,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25pphi.csv
+Python,NMG,64,periodic,25p,20,20,31.673518018086572,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20_25pphi.csv
+Python,SAV,256,neumann,25p,10,20,126.79763305174926,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25pphi.csv
+Python,NMG,64,periodic,25p,1,20,31.545326212618434,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1_25pphi.csv
+Python,SAV,128,neumann,75p,10,20,63.21644748955299,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75pphi.csv
+Python,NMG,256,neumann,75p,20,20,128.01528062200487,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20_75pphi.csv
+Python,NMG,256,periodic,25p,1,20,126.68965853890263,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1_25pphi.csv
+Python,SAV,512,periodic,25p,10,20,255.59259937676413,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25pphi.csv
+Python,NMG,64,neumann,50p,10,20,2.021915171734363,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_10phi.csv
+Python,NMG,128,neumann,75p,20,20,63.61166651321611,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_20_75pphi.csv
+Python,NMG,512,periodic,25p,1,20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1_25pphi.csv
+Python,NMG,64,periodic,50p,20,20,3.743731764651743,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20phi.csv
+Python,SAV,256,neumann,50p,10,20,22.730348599548797,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10phi.csv
+Python,SAV,64,periodic,75p,10,20,31.556460258923725,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75pphi.csv
+Python,NMG,64,periodic,75p,20,20,31.679076871413944,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20_75pphi.csv
+Python,NMG,256,periodic,50p,10,20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_10phi.csv
+Python,NMG,64,periodic,50p,10,20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+Python,SAV,256,periodic,75p,10,20,126.82115474165917,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75pphi.csv
+Python,NMG,512,neumann,75p,20,20,258.24750751045195,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20_75pphi.csv
+Python,NMG,512,neumann,75p,1,20,256.23071864792,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_1_75pphi.csv
+Python,NMG,64,periodic,50p,10,20,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+Python,NMG,512,periodic,75p,20,20,258.1820070286859,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20_75pphi.csv
+Python,SAV,128,periodic,75p,10,20,63.21197085462444,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75pphi.csv
+Python,SAV,128,periodic,50p,10,20,6.1485828950250445,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10phi.csv
+Python,NMG,512,periodic,25p,20,20,257.9978126481088,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20_25pphi.csv
+Python,SAV,512,neumann,25p,10,20,255.65428898861148,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25pphi.csv
+Python,SAV,64,periodic,50p,10,20,1.8598253284868018,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+MATLAB,SAV,256,periodic,25p,None (10),1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,periodic,50p,None (10),1000,73.6755373697722,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,neumann,25p,None (10),1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,512,periodic,75p,None (10),1000,438.28957956100714,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,128,periodic,50p,None (10),1000,72.9708470012747,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_phi.csv
+MATLAB,SAV,256,neumann,25p,None (10),1000,211.37329559158445,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,128,neumann,75p,None (10),1000,63.12257030804223,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_75p_phi.csv
+MATLAB,NMG,256,neumann,50p,None (10),1000,192.61468638744205,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,neumann,75p,None (10),1000,187.25024074703282,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_75p_phi.csv
+MATLAB,NMG,128,periodic,75p,None (10),1000,63.10810877533731,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,neumann,25p,None (10),1000,436.9962537490206,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,64,periodic,25p,None (10),1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,64,periodic,25p,None (10),1000,31.521778892395957,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,128,periodic,25p,None (10),1000,63.15126585017361,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,256,periodic,25p,None (10),1000,192.32966270781236,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,64,periodic,75p,None (10),1000,31.52650054523181,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,periodic,50p,None (10),1000,433.84346017440413,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_phi.csv
+MATLAB,SAV,512,periodic,25p,None (10),1000,441.5820236892185,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,neumann,50p,None (10),1000,73.4481895742842,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_phi.csv
+MATLAB,SAV,512,neumann,25p,None (10),1000,439.8373388741806,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,256,periodic,50p,None (10),1000,193.8659513201841,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,neumann,75p,None (10),1000,31.529237640387002,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,neumann,75p,None (10),1000,437.9198548585057,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,neumann,50p,None (10),1000,432.76147584788293,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_phi.csv
+MATLAB,SAV,64,neumann,75p,None (10),1000,31.529181467701687,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
+MATLAB,NMG,128,neumann,50p,None (10),1000,74.17394354283478,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_phi.csv
+MATLAB,SAV,256,periodic,75p,None (10),1000,203.8627301299482,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,periodic,75p,None (10),1000,438.98025361641095,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,128,neumann,25p,None (10),1000,63.11704294876918,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,512,neumann,75p,None (10),1000,438.3100867340895,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,256,neumann,75p,None (10),1000,193.44608247990263,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,64,neumann,25p,None (10),1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,256,neumann,50p,None (10),1000,192.31017051619457,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,neumann,25p,None (10),1000,201.78393619223908,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,512,periodic,50p,None (10),1000,432.6027403405174,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_phi.csv
+MATLAB,SAV,128,neumann,75p,None (10),1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,128,periodic,25p,None (10),1000,63.10912673268227,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,periodic,75p,None (10),1000,63.112017761849906,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,256,periodic,50p,None (10),1000,192.70118142375324,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,periodic,75p,None (10),1000,31.514852294776396,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,64,neumann,50p,None (10),1000,3.270825562536417,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,periodic,75p,None (10),1000,188.73560842701195,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,neumann,50p,None (10),1000,432.2944363019225,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_phi.csv
+MATLAB,NMG,128,neumann,25p,None (10),1000,63.13574197922087,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,64,periodic,50p,None (10),1000,3.112027265173979,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_phi.csv
+MATLAB,NMG,512,periodic,25p,None (10),1000,437.83766287132784,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_25p_phi.csv
+Julia,NMG,128,neumann,50p,10,1000,77.80094311604064,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_phi.csv
+Julia,NMG,64,neumann,25p,10,1000,31.414451107542313,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25p_phi.csv
+Julia,SAV,512,neumann,50p,10,1000,434.1515092725283,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_phi.csv
+Julia,SAV,512,periodic,75p,10,1000,438.28957956100766,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75p_phi.csv
+Julia,SAV,128,neumann,75p,10,1000,63.11720788147305,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75p_phi.csv
+Julia,SAV,128,periodic,25p,10,1000,63.10912673268227,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25p_phi.csv
+Julia,NMG,64,neumann,75p,10,1000,31.415081554478355,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75p_phi.csv
+Julia,NMG,64,neumann,50p,10,1000,4.065187627307142,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_phi.csv
+Julia,SAV,512,periodic,25p,10,1000,437.0897457135138,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25p_phi.csv
+Julia,SAV,128,periodic,50p,10,1000,73.67553736977189,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_phi.csv
+Julia,SAV,512,neumann,75p,10,1000,437.919854858505,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75p_phi.csv
+Julia,SAV,256,neumann,25p,10,1000,192.73049006792493,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25p_phi.csv
+Julia,NMG,256,neumann,75p,10,1000,191.90486301661102,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75p_phi.csv
+Julia,SAV,512,neumann,25p,10,1000,436.4835894605065,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25p_phi.csv
+Julia,SAV,128,periodic,75p,10,1000,63.11201776184991,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75p_phi.csv
+Julia,NMG,64,periodic,50p,10,1000,3.9118968963281087,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_phi.csv
+Julia,NMG,512,neumann,25p,10,1000,408.5238063403032,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25p_phi.csv
+Julia,SAV,512,periodic,50p,10,1000,435.055183151694,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,50p,10,1000,77.28013780637103,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_phi.csv
+Julia,NMG,128,neumann,25p,10,1000,61.75563929177036,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25p_phi.csv
+Julia,NMG,64,periodic,75p,10,1000,31.39722440529844,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75p_phi.csv
+Julia,SAV,128,neumann,50p,10,1000,74.68037721704657,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_phi.csv
+Julia,NMG,512,neumann,75p,10,1000,411.3828051514364,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75p_phi.csv
+Julia,SAV,256,neumann,50p,10,1000,193.67520021471137,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_phi.csv
+Julia,NMG,256,periodic,25p,10,1000,193.76244148131698,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25p_phi.csv
+Julia,NMG,256,neumann,50p,10,1000,191.99403940363928,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_phi.csv
+Julia,NMG,256,periodic,75p,10,1000,192.80034831669207,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75p_phi.csv
+Julia,SAV,64,neumann,25p,10,1000,31.528550475785732,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25p_phi.csv
+Julia,NMG,512,neumann,50p,10,1000,414.5340428249593,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_phi.csv
+Julia,SAV,128,neumann,25p,10,1000,63.11704294876917,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25p_phi.csv
+Julia,NMG,512,periodic,75p,10,1000,411.19779687495793,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75p_phi.csv
+Julia,SAV,256,periodic,25p,10,1000,193.28524102992012,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25p_phi.csv
+Julia,NMG,128,neumann,75p,10,1000,61.755342112414404,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75p_phi.csv
+Julia,NMG,512,periodic,25p,10,1000,408.1625518252855,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25p_phi.csv
+Julia,SAV,64,neumann,75p,10,1000,31.529181467701676,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75p_phi.csv
+Julia,SAV,64,periodic,75p,10,1000,31.526496082976156,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75p_phi.csv
+Julia,NMG,64,periodic,25p,10,1000,31.405445736463438,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25p_phi.csv
+Julia,SAV,64,periodic,50p,10,1000,3.2153442760481616,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_phi.csv
+Julia,SAV,256,neumann,75p,10,1000,188.12445310007593,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75p_phi.csv
+Julia,NMG,256,neumann,25p,10,1000,193.6145694648363,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25p_phi.csv
+Julia,SAV,256,periodic,75p,10,1000,189.73652776629206,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75p_phi.csv
+Julia,SAV,64,neumann,50p,10,1000,3.447620066869502,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_phi.csv
+Julia,NMG,256,periodic,50p,10,1000,191.96106125724188,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,75p,10,1000,61.732369772365516,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75p_phi.csv
+Julia,SAV,256,periodic,50p,10,1000,194.15883948125605,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,25p,10,1000,61.75072785598947,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25p_phi.csv
+Julia,NMG,512,periodic,50p,10,1000,414.79873797348677,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_phi.csv
+Julia,SAV,64,periodic,25p,10,1000,31.527277516861176,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25p_phi.csv
+Python,NMG,256,periodic,25p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20_25pphi.csv
+Python,NMG,512,neumann,25p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_1_25pphi.csv
+Python,NMG,512,periodic,50p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20phi.csv
+Python,SAV,64,neumann,25p,10,1000,31.528557360685948,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25pphi.csv
+Python,NMG,256,neumann,50p,10,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_10phi.csv
+Python,NMG,128,periodic,50p,10,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_10phi.csv
+Python,NMG,64,periodic,50p,200,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_64_periodic_dtout_200phi.csv
+Python,NMG,512,neumann,50p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20phi.csv
+Python,SAV,128,neumann,50p,10,1000,74.47388558147766,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10phi.csv
+Python,NMG,256,neumann,25p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20_25pphi.csv
+Python,SAV,256,neumann,75p,10,1000,187.4518880407088,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75pphi.csv
+Python,NMG,128,neumann,75p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_1_75pphi.csv
+Python,NMG,512,periodic,50p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20phi.csv
+Python,SAV,64,neumann,75p,10,1000,31.529185557244343,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75pphi.csv
+Python,NMG,512,periodic,50p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1phi.csv
+Python,NMG,128,periodic,50p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20phi.csv
+Python,NMG,128,periodic,50p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1phi.csv
+Python,NMG,64,neumann,25p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_1_25pphi.csv
+Python,NMG,512,periodic,75p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1_75pphi.csv
+Python,NMG,64,periodic,50p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20phi.csv
+Python,SAV,512,periodic,75p,10,1000,438.14538256532967,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75pphi.csv
+Python,NMG,64,neumann,75p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_1_75pphi.csv
+Python,NMG,128,periodic,75p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20_75pphi.csv
+Python,SAV,512,neumann,75p,10,1000,437.78757998023576,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75pphi.csv
+Python,NMG,64,neumann,75p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_20_75pphi.csv
+Python,SAV,256,periodic,50p,10,1000,193.9473216109162,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10phi.csv
+Python,NMG,256,periodic,50p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1phi.csv
+Python,NMG,128,periodic,25p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1_25pphi.csv
+Python,SAV,512,periodic,50p,10,1000,434.8422628394777,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10phi.csv
+Python,NMG,128,periodic,50p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20phi.csv
+Python,NMG,64,periodic,50p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1phi.csv
+Python,SAV,64,neumann,50p,10,1000,3.4102287786362386,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10phi.csv
+Python,NMG,512,neumann,50p,10,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_10phi.csv
+Python,NMG,256,periodic,50p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20phi.csv
+Python,NMG,256,periodic,50p,200,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_256_periodic_dtout_200phi.csv
+Python,NMG,128,periodic,25p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20_25pphi.csv
+Python,NMG,64,neumann,25p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_20_25pphi.csv
+Python,SAV,128,neumann,25p,10,1000,63.11654608807246,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25pphi.csv
+Python,NMG,128,neumann,50p,10,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_10phi.csv
+Python,NMG,256,periodic,75p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1_75pphi.csv
+Python,NMG,512,neumann,25p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20_25pphi.csv
+Python,NMG,256,periodic,75p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20_75pphi.csv
+Python,SAV,512,neumann,50p,10,1000,433.948878691805,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10phi.csv
+Python,SAV,256,periodic,25p,10,1000,192.6244819934458,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25pphi.csv
+Python,NMG,64,periodic,75p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1_75pphi.csv
+Python,NMG,512,neumann,50p,200,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_512_neumann_dtout_200phi.csv
+Python,NMG,128,neumann,25p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_1_25pphi.csv
+Python,NMG,256,neumann,75p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_1_75pphi.csv
+Python,NMG,256,neumann,25p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_1_25pphi.csv
+Python,NMG,256,periodic,50p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20phi.csv
+Python,NMG,256,neumann,50p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20phi.csv
+Python,NMG,512,periodic,50p,10,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_10phi.csv
+Python,SAV,64,periodic,25p,10,1000,31.527281223118976,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25pphi.csv
+Python,NMG,128,neumann,25p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_20_25pphi.csv
+Python,NMG,128,periodic,75p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1_75pphi.csv
+Python,SAV,128,periodic,25p,10,1000,63.10873595000792,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25pphi.csv
+Python,NMG,128,periodic,50p,200,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_128_periodic_dtout_200phi.csv
+Python,NMG,64,periodic,25p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20_25pphi.csv
+Python,SAV,256,neumann,25p,10,1000,192.06892322685692,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25pphi.csv
+Python,NMG,64,periodic,25p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1_25pphi.csv
+Python,SAV,128,neumann,75p,10,1000,63.11672594698724,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75pphi.csv
+Python,NMG,256,neumann,75p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20_75pphi.csv
+Python,NMG,256,periodic,25p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1_25pphi.csv
+Python,SAV,512,periodic,25p,10,1000,436.8450630693618,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25pphi.csv
+Python,NMG,64,neumann,50p,10,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_10phi.csv
+Python,NMG,128,neumann,75p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_20_75pphi.csv
+Python,NMG,128,neumann,50p,200,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_128_neumann_dtout_200phi.csv
+Python,NMG,512,periodic,25p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1_25pphi.csv
+Python,NMG,64,periodic,50p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20phi.csv
+Python,NMG,512,periodic,50p,200,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_512_periodic_dtout_200phi.csv
+Python,SAV,256,neumann,50p,10,1000,193.47616104482663,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10phi.csv
+Python,SAV,64,periodic,75p,10,1000,31.52650444359053,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75pphi.csv
+Python,NMG,64,periodic,75p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20_75pphi.csv
+Python,NMG,256,periodic,50p,10,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_10phi.csv
+Python,NMG,64,periodic,50p,10,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+Python,SAV,256,periodic,75p,10,1000,189.11911531213406,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75pphi.csv
+Python,NMG,512,neumann,75p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20_75pphi.csv
+Python,NMG,64,neumann,50p,200,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_64_neumann_dtout_200phi.csv
+Python,NMG,512,neumann,75p,1,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_1_75pphi.csv
+Python,NMG,64,periodic,50p,10,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+Python,NMG,512,periodic,75p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20_75pphi.csv
+Python,NMG,256,neumann,50p,200,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_256_neumann_dtout_200phi.csv
+Python,SAV,128,periodic,75p,10,1000,63.11154509537003,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75pphi.csv
+Python,SAV,128,periodic,50p,10,1000,73.46477861590833,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10phi.csv
+Python,NMG,512,periodic,25p,20,1000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20_25pphi.csv
+Python,SAV,512,neumann,25p,10,1000,436.26002855415476,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25pphi.csv
+Python,SAV,64,periodic,50p,10,1000,3.180499293209839,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+MATLAB,SAV,256,periodic,25p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,periodic,50p,None (10),2000,86.93505241480213,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,neumann,25p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,512,periodic,75p,None (10),2000,447.9994210618892,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,128,periodic,50p,None (10),2000,86.38359593815396,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_phi.csv
+MATLAB,SAV,256,neumann,25p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,128,neumann,75p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_75p_phi.csv
+MATLAB,NMG,256,neumann,50p,None (10),2000,206.0678595100578,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,neumann,75p,None (10),2000,213.01511661108722,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,64,neumann,50p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_phi.csv
+MATLAB,NMG,128,periodic,75p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,neumann,25p,None (10),2000,445.4903051278205,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,64,periodic,25p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,64,periodic,25p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,128,periodic,25p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_25p_phi.csv
+MATLAB,NMG,256,periodic,25p,None (10),2000,212.36321079170466,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,64,periodic,75p,None (10),2000,31.52640544624525,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,periodic,50p,None (10),2000,449.6555679186532,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_phi.csv
+MATLAB,SAV,512,periodic,25p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,neumann,50p,None (10),2000,86.01658112222805,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_phi.csv
+MATLAB,SAV,512,neumann,25p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,256,periodic,50p,None (10),2000,207.7809447492659,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,neumann,75p,None (10),2000,31.52950516370679,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,neumann,75p,None (10),2000,448.02508347136074,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,512,neumann,50p,None (10),2000,448.72707556571265,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_phi.csv
+MATLAB,SAV,64,neumann,75p,None (10),2000,31.529455329878335,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_75p_phi.csv
+MATLAB,NMG,128,neumann,50p,None (10),2000,86.07467232232753,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_phi.csv
+MATLAB,SAV,256,periodic,75p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,periodic,75p,None (10),2000,448.45335694160974,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,128,neumann,25p,None (10),2000,63.28799303285219,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,512,neumann,75p,None (10),2000,448.70175247837864,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,256,neumann,75p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,64,periodic,50p,None (10),2000,10.044333210987459,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_phi.csv
+MATLAB,SAV,64,neumann,25p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_25p_phi.csv
+MATLAB,SAV,256,neumann,50p,None (10),2000,205.70985152521897,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,neumann,25p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,512,periodic,50p,None (10),2000,449.2240314004587,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_phi.csv
+MATLAB,SAV,128,neumann,75p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_75p_phi.csv
+MATLAB,SAV,128,periodic,25p,None (10),2000,63.20088169280996,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_25p_phi.csv
+MATLAB,SAV,128,periodic,75p,None (10),2000,63.260524051063015,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_periodic_n_relax_4_75p_phi.csv
+MATLAB,SAV,256,periodic,50p,None (10),2000,206.73201410788226,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/SAV_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_phi.csv
+MATLAB,NMG,64,periodic,75p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,64,neumann,50p,None (10),2000,10.40255049786071,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_neumann_n_relax_4_phi.csv
+MATLAB,NMG,256,periodic,75p,None (10),2000,211.91756423401497,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_256_periodic_n_relax_4_75p_phi.csv
+MATLAB,NMG,512,neumann,50p,None (10),2000,448.1547254876634,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_neumann_n_relax_4_phi.csv
+MATLAB,NMG,128,neumann,25p,None (10),2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_neumann_n_relax_4_25p_phi.csv
+MATLAB,NMG,64,periodic,50p,None (10),2000,10.14346008185456,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_64_periodic_n_relax_4_phi.csv
+MATLAB,NMG,512,periodic,25p,None (10),2000,446.7407829257655,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_MATLAB/NMG_MATLAB_2000_dt_5.50e-06_Nx_512_periodic_n_relax_4_25p_phi.csv
+Julia,NMG,128,neumann,50p,10,2000,88.97552455171996,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_phi.csv
+Julia,NMG,64,neumann,25p,10,2000,31.414789913155868,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25p_phi.csv
+Julia,NMG,256,neumann,50p,2000,2000,204.93765146038754,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_phi.csv
+Julia,SAV,512,periodic,75p,2000,2000,448.055596499635,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_75p_phi.csv
+Julia,NMG,128,neumann,50p,2000,2000,88.97552455171996,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_phi.csv
+Julia,SAV,256,periodic,25p,2000,2000,212.36572037788932,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_25p_phi.csv
+Julia,NMG,512,neumann,50p,2000,2000,432.20687068324156,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_phi.csv
+Julia,SAV,512,neumann,50p,10,2000,449.82987147902037,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_phi.csv
+Julia,SAV,512,periodic,75p,10,2000,448.055596499635,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75p_phi.csv
+Julia,NMG,128,periodic,50p,2000,2000,89.51030870766573,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_phi.csv
+Julia,SAV,128,neumann,75p,10,2000,63.243920416541826,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75p_phi.csv
+Julia,SAV,128,periodic,25p,10,2000,63.20088169280991,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25p_phi.csv
+Julia,NMG,64,neumann,75p,10,2000,31.41579722504934,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75p_phi.csv
+Julia,NMG,256,periodic,75p,2000,2000,203.909910982339,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_75p_phi.csv
+Julia,NMG,128,periodic,75p,2000,2000,62.542757425095104,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_75p_phi.csv
+Julia,NMG,128,neumann,25p,2000,2000,62.527666683047684,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_25p_phi.csv
+Julia,SAV,512,periodic,25p,2000,2000,447.54572847403915,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_25p_phi.csv
+Julia,NMG,64,neumann,50p,10,2000,15.463282342791958,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_phi.csv
+Julia,SAV,256,neumann,50p,2000,2000,206.60433055934558,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_phi.csv
+Julia,SAV,512,periodic,25p,10,2000,447.54572847403915,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25p_phi.csv
+Julia,SAV,128,periodic,50p,10,2000,86.93505241480163,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_phi.csv
+Julia,SAV,512,neumann,75p,10,2000,448.0575826674208,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75p_phi.csv
+Julia,NMG,256,periodic,50p,2000,2000,205.57255859051415,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_phi.csv
+Julia,SAV,128,periodic,50p,2000,2000,86.93505241480163,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_phi.csv
+Julia,SAV,64,neumann,25p,2000,2000,31.528587428094546,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_25p_phi.csv
+Julia,NMG,512,periodic,75p,2000,2000,428.14489466834357,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_75p_phi.csv
+Julia,SAV,256,periodic,75p,2000,2000,211.2265768592991,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_75p_phi.csv
+Julia,SAV,256,neumann,25p,10,2000,211.67642928101375,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25p_phi.csv
+Julia,SAV,128,neumann,25p,2000,2000,63.29371271544478,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_25p_phi.csv
+Julia,NMG,256,neumann,75p,10,2000,204.7426555773793,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75p_phi.csv
+Julia,SAV,512,neumann,25p,10,2000,445.95471020051394,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25p_phi.csv
+Julia,NMG,64,neumann,50p,2000,2000,15.463282342791958,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_phi.csv
+Julia,SAV,256,periodic,50p,2000,2000,207.41534302653906,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_phi.csv
+Julia,SAV,64,neumann,50p,2000,2000,11.619937454490513,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_phi.csv
+Julia,SAV,128,periodic,75p,10,2000,63.26052405106299,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75p_phi.csv
+Julia,NMG,64,periodic,50p,10,2000,15.373279366252234,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_phi.csv
+Julia,SAV,512,neumann,50p,2000,2000,449.82987147902037,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_phi.csv
+Julia,NMG,64,periodic,50p,2000,2000,15.373279366252234,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_phi.csv
+Julia,NMG,64,periodic,75p,2000,2000,31.396670886471625,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_75p_phi.csv
+Julia,NMG,512,neumann,25p,10,2000,425.1589675810097,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25p_phi.csv
+Julia,SAV,256,neumann,25p,2000,2000,211.67642928101375,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_25p_phi.csv
+Julia,SAV,256,neumann,75p,2000,2000,212.90203379185505,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_75p_phi.csv
+Julia,SAV,512,periodic,50p,10,2000,450.8142159862076,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,50p,10,2000,89.51030870766573,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_phi.csv
+Julia,NMG,128,neumann,75p,2000,2000,62.278815007830005,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_75p_phi.csv
+Julia,NMG,512,periodic,25p,2000,2000,424.79807774801725,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_25p_phi.csv
+Julia,SAV,64,periodic,25p,2000,2000,31.527487419178623,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_25p_phi.csv
+Julia,NMG,128,neumann,25p,10,2000,62.527666683047684,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25p_phi.csv
+Julia,NMG,512,periodic,50p,2000,2000,432.79129592290485,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_phi.csv
+Julia,NMG,64,periodic,75p,10,2000,31.396670886471625,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75p_phi.csv
+Julia,SAV,64,neumann,75p,2000,2000,31.529462488434042,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_75p_phi.csv
+Julia,SAV,128,neumann,75p,2000,2000,63.243920416541826,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_75p_phi.csv
+Julia,SAV,64,periodic,75p,2000,2000,31.526409405667025,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_75p_phi.csv
+Julia,SAV,128,neumann,50p,10,2000,86.66184000034077,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_phi.csv
+Julia,NMG,512,neumann,75p,10,2000,427.99515963484373,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75p_phi.csv
+Julia,SAV,256,neumann,50p,10,2000,206.60433055934558,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_phi.csv
+Julia,NMG,512,neumann,25p,2000,2000,425.1589675810097,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_25p_phi.csv
+Julia,NMG,256,periodic,25p,10,2000,204.2328961935036,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25p_phi.csv
+Julia,NMG,256,neumann,50p,10,2000,204.93765146038754,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_phi.csv
+Julia,SAV,128,neumann,50p,2000,2000,86.66184000034077,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_phi.csv
+Julia,NMG,256,periodic,75p,10,2000,203.909910982339,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75p_phi.csv
+Julia,SAV,64,neumann,25p,10,2000,31.528587428094546,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25p_phi.csv
+Julia,NMG,512,neumann,50p,10,2000,432.20687068324156,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_phi.csv
+Julia,SAV,128,neumann,25p,10,2000,63.29371271544478,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25p_phi.csv
+Julia,NMG,512,periodic,75p,10,2000,428.14489466834357,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75p_phi.csv
+Julia,SAV,512,neumann,75p,2000,2000,448.0575826674208,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_75p_phi.csv
+Julia,SAV,128,periodic,25p,2000,2000,63.20088169280991,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_25p_phi.csv
+Julia,SAV,256,periodic,25p,10,2000,212.36572037788932,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25p_phi.csv
+Julia,SAV,512,periodic,50p,2000,2000,450.8142159862076,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_phi.csv
+Julia,NMG,256,neumann,25p,2000,2000,203.5333970516826,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_25p_phi.csv
+Julia,NMG,128,neumann,75p,10,2000,62.278815007830005,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75p_phi.csv
+Julia,NMG,512,periodic,25p,10,2000,424.79807774801725,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25p_phi.csv
+Julia,NMG,64,neumann,25p,2000,2000,31.414789913155868,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_25p_phi.csv
+Julia,SAV,64,periodic,50p,2000,2000,11.038447535534498,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_phi.csv
+Julia,SAV,64,neumann,75p,10,2000,31.529462488434042,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75p_phi.csv
+Julia,SAV,64,periodic,75p,10,2000,31.526409405667025,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75p_phi.csv
+Julia,NMG,64,periodic,25p,10,2000,31.40489838805438,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25p_phi.csv
+Julia,SAV,64,periodic,50p,10,2000,11.038447535534498,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_phi.csv
+Julia,SAV,256,neumann,75p,10,2000,212.90203379185505,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75p_phi.csv
+Julia,NMG,256,neumann,25p,10,2000,203.5333970516826,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25p_phi.csv
+Julia,SAV,256,periodic,75p,10,2000,211.2265768592991,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75p_phi.csv
+Julia,SAV,64,neumann,50p,10,2000,11.619937454490513,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_phi.csv
+Julia,SAV,128,periodic,75p,2000,2000,63.26052405106299,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_75p_phi.csv
+Julia,NMG,256,periodic,50p,10,2000,205.57255859051415,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,75p,10,2000,62.542757425095104,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75p_phi.csv
+Julia,SAV,256,periodic,50p,10,2000,207.41534302653906,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,25p,10,2000,62.05804946644115,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25p_phi.csv
+Julia,NMG,64,neumann,75p,2000,2000,31.41579722504934,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_75p_phi.csv
+Julia,NMG,64,periodic,25p,2000,2000,31.40489838805438,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_25p_phi.csv
+Julia,NMG,256,neumann,75p,2000,2000,204.7426555773793,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_75p_phi.csv
+Julia,SAV,512,neumann,25p,2000,2000,445.95471020051394,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_25p_phi.csv
+Julia,NMG,512,neumann,75p,2000,2000,427.99515963484373,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_75p_phi.csv
+Julia,NMG,256,periodic,25p,2000,2000,204.2328961935036,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_25p_phi.csv
+Julia,NMG,512,periodic,50p,10,2000,432.79129592290485,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_phi.csv
+Julia,NMG,128,periodic,25p,2000,2000,62.05804946644115,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_25p_phi.csv
+Julia,SAV,64,periodic,25p,10,2000,31.527487419178623,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_julia/SAV_Julia_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25p_phi.csv
+Python,NMG,256,periodic,25p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20_25pphi.csv
+Python,SAV,256,neumann,50p,2000,2000,27.866679663342683,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000phi.csv
+Python,NMG,512,neumann,25p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_1_25pphi.csv
+Python,SAV,512,periodic,25p,2000,2000,257.50739698681565,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_25pphi.csv
+Python,NMG,512,periodic,50p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20phi.csv
+Python,SAV,64,neumann,25p,10,2000,31.528582974880834,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_25pphi.csv
+Python,NMG,256,neumann,50p,10,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_10phi.csv
+Python,NMG,128,periodic,50p,10,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_10phi.csv
+Python,NMG,64,periodic,50p,200,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_64_periodic_dtout_200phi.csv
+Python,SAV,256,neumann,75p,2000,2000,128.08024585824415,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_75pphi.csv
+Python,NMG,512,neumann,50p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20phi.csv
+Python,SAV,128,neumann,50p,10,2000,86.59259987335616,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10phi.csv
+Python,NMG,256,neumann,25p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20_25pphi.csv
+Python,SAV,256,neumann,75p,10,2000,212.85666467902712,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_75pphi.csv
+Python,NMG,128,neumann,75p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_1_75pphi.csv
+Python,NMG,512,periodic,50p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20phi.csv
+Python,SAV,64,neumann,75p,10,2000,31.529456043047084,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10_75pphi.csv
+Python,NMG,512,periodic,50p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1phi.csv
+Python,NMG,128,periodic,50p,2000,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_2000phi.csv
+Python,NMG,128,periodic,50p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20phi.csv
+Python,SAV,512,neumann,25p,2000,2000,257.54625046539655,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_25pphi.csv
+Python,NMG,128,periodic,50p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1phi.csv
+Python,NMG,64,neumann,25p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_1_25pphi.csv
+Python,SAV,128,periodic,75p,2000,2000,63.74370108014776,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_75pphi.csv
+Python,NMG,256,periodic,50p,2000,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_2000phi.csv
+Python,NMG,512,periodic,75p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1_75pphi.csv
+Python,SAV,512,neumann,50p,2000,2000,70.76562501724244,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000phi.csv
+Python,NMG,64,periodic,50p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20phi.csv
+Python,SAV,512,periodic,75p,10,2000,448.00476239448886,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_75pphi.csv
+Python,SAV,512,periodic,75p,2000,2000,257.6713341985889,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000_75pphi.csv
+Python,NMG,64,periodic,50p,2000,2000,3.743731764651743,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_2000phi.csv
+Python,NMG,64,neumann,75p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_1_75pphi.csv
+Python,NMG,128,periodic,75p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20_75pphi.csv
+Python,SAV,256,periodic,50p,2000,2000,27.758950047264467,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000phi.csv
+Python,SAV,512,neumann,75p,10,2000,448.02746855968894,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_75pphi.csv
+Python,SAV,128,periodic,25p,2000,2000,63.71787578813024,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000_25pphi.csv
+Python,NMG,64,neumann,75p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_20_75pphi.csv
+Python,SAV,256,periodic,50p,10,2000,207.3489561806162,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10phi.csv
+Python,NMG,256,periodic,50p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1phi.csv
+Python,SAV,64,periodic,25p,2000,2000,31.66377662934786,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_25pphi.csv
+Python,NMG,128,periodic,25p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1_25pphi.csv
+Python,SAV,512,periodic,50p,10,2000,450.72571521244083,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10phi.csv
+Python,NMG,128,periodic,50p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20phi.csv
+Python,NMG,64,periodic,50p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1phi.csv
+Python,SAV,64,neumann,50p,10,2000,11.503044984381381,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_10phi.csv
+Python,NMG,512,neumann,50p,10,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_10phi.csv
+Python,NMG,256,periodic,50p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20phi.csv
+Python,NMG,256,periodic,50p,200,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_256_periodic_dtout_200phi.csv
+Python,SAV,64,periodic,75p,2000,2000,31.66794612306504,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000_75pphi.csv
+Python,NMG,128,periodic,25p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_20_25pphi.csv
+Python,NMG,64,neumann,25p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_20_25pphi.csv
+Python,SAV,128,neumann,25p,10,2000,63.288553914593834,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_25pphi.csv
+Python,SAV,256,periodic,25p,2000,2000,128.0160748619007,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_25pphi.csv
+Python,NMG,128,neumann,50p,10,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_10phi.csv
+Python,NMG,256,periodic,75p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1_75pphi.csv
+Python,NMG,256,neumann,50p,2000,2000,27.586602934086983,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_2000phi.csv
+Python,NMG,512,neumann,25p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20_25pphi.csv
+Python,NMG,256,periodic,75p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20_75pphi.csv
+Python,NMG,512,periodic,50p,2000,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_2000phi.csv
+Python,NMG,64,neumann,50p,2000,2000,3.8083581611143993,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_2000phi.csv
+Python,SAV,64,neumann,50p,2000,2000,3.579272257620027,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000phi.csv
+Python,SAV,512,periodic,50p,2000,2000,70.53360142349554,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_2000phi.csv
+Python,SAV,512,neumann,50p,10,2000,449.7363752459766,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10phi.csv
+Python,SAV,64,neumann,75p,2000,2000,31.668590764550228,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_75pphi.csv
+Python,SAV,256,periodic,25p,10,2000,212.32062631275124,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_25pphi.csv
+Python,NMG,64,periodic,75p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1_75pphi.csv
+Python,NMG,512,neumann,50p,200,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_512_neumann_dtout_200phi.csv
+Python,NMG,128,neumann,25p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_1_25pphi.csv
+Python,SAV,128,neumann,50p,2000,2000,11.164805912920476,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000phi.csv
+Python,NMG,256,neumann,75p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_1_75pphi.csv
+Python,NMG,256,neumann,25p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_1_25pphi.csv
+Python,NMG,256,periodic,50p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_20phi.csv
+Python,NMG,256,neumann,50p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20phi.csv
+Python,SAV,64,neumann,25p,2000,2000,31.664241483647498,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_neumann_dtout_2000_25pphi.csv
+Python,SAV,128,neumann,75p,2000,2000,63.74474185298934,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_75pphi.csv
+Python,NMG,512,periodic,50p,10,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_10phi.csv
+Python,SAV,64,periodic,25p,10,2000,31.527482499547883,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_25pphi.csv
+Python,NMG,128,neumann,25p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_20_25pphi.csv
+Python,NMG,128,periodic,75p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_periodic_dtout_1_75pphi.csv
+Python,SAV,64,periodic,50p,2000,2000,3.554834141967341,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_2000phi.csv
+Python,SAV,128,periodic,25p,10,2000,63.19928823365865,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_25pphi.csv
+Python,NMG,128,periodic,50p,200,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_128_periodic_dtout_200phi.csv
+Python,NMG,64,periodic,25p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20_25pphi.csv
+Python,SAV,512,neumann,75p,2000,2000,257.711832919136,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_2000_75pphi.csv
+Python,SAV,256,neumann,25p,10,2000,211.63952472476888,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10_25pphi.csv
+Python,NMG,64,periodic,25p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_1_25pphi.csv
+Python,SAV,128,neumann,75p,10,2000,63.24138997529489,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_75pphi.csv
+Python,NMG,256,neumann,75p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_20_75pphi.csv
+Python,NMG,256,periodic,25p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_1_25pphi.csv
+Python,SAV,512,periodic,25p,10,2000,447.4559629069244,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_periodic_dtout_10_25pphi.csv
+Python,NMG,64,neumann,50p,10,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_neumann_dtout_10phi.csv
+Python,NMG,128,neumann,75p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_20_75pphi.csv
+Python,NMG,128,neumann,50p,2000,2000,10.212901752098293,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_128_neumann_dtout_2000phi.csv
+Python,NMG,128,neumann,50p,200,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_128_neumann_dtout_200phi.csv
+Python,NMG,512,periodic,25p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_1_25pphi.csv
+Python,NMG,64,periodic,50p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20phi.csv
+Python,NMG,512,periodic,50p,200,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_512_periodic_dtout_200phi.csv
+Python,SAV,256,neumann,50p,10,2000,206.526373869982,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_10phi.csv
+Python,SAV,64,periodic,75p,10,2000,31.526405855273836,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10_75pphi.csv
+Python,SAV,256,neumann,25p,2000,2000,128.02046511547277,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_neumann_dtout_2000_25pphi.csv
+Python,NMG,512,neumann,50p,2000,2000,72.5681735210592,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_2000phi.csv
+Python,SAV,128,periodic,50p,2000,2000,11.130159016860505,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_2000phi.csv
+Python,NMG,64,periodic,75p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_20_75pphi.csv
+Python,NMG,256,periodic,50p,10,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_10phi.csv
+Python,NMG,64,periodic,50p,10,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+Python,SAV,256,periodic,75p,10,2000,211.17429998991858,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_10_75pphi.csv
+Python,NMG,512,neumann,75p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_20_75pphi.csv
+Python,NMG,64,neumann,50p,200,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_64_neumann_dtout_200phi.csv
+Python,NMG,512,neumann,75p,1,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_neumann_dtout_1_75pphi.csv
+Python,NMG,64,periodic,50p,10,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_20_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
+Python,NMG,512,periodic,75p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20_75pphi.csv
+Python,NMG,256,neumann,50p,200,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025NMG_Python_200_dt_5.50e-06_Nx_256_neumann_dtout_200phi.csv
+Python,SAV,128,periodic,75p,10,2000,63.25698136389747,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_75pphi.csv
+Python,SAV,256,periodic,75p,2000,2000,128.07047232969046,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_256_periodic_dtout_2000_75pphi.csv
+Python,SAV,128,neumann,25p,2000,2000,63.71783370723886,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_128_neumann_dtout_2000_25pphi.csv
+Python,SAV,128,periodic,50p,10,2000,86.85846834397618,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_10phi.csv
+Python,NMG,512,periodic,25p,20,2000,0.0,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/NMG_Python_20_dt_5.50e-06_Nx_512_periodic_dtout_20_25pphi.csv
+Python,SAV,512,neumann,25p,10,2000,445.89778065632237,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/SAV_Python_2000_dt_5.50e-06_Nx_512_neumann_dtout_10_25pphi.csv
+Python,SAV,64,periodic,50p,10,2000,10.924295389236239,/project/g_bme-janeslab/SarahG/spinodal_decomp_04_2025/out_python/spinodal_decomp_04_2025SAV_Python_2000_dt_5.50e-06_Nx_64_periodic_dtout_10phi.csv
