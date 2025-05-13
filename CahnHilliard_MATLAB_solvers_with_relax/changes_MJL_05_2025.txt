@@ -1,0 +1,26 @@
+- A_inv_CN: now depends on BC; for neumann, it uses fft2_filtered, which only takes the real part of fft2
+- fft2_filtered: added real(fft2); fft2 function used alone when periodic in A_inv_CN
+- ch_discrete_energy_sav function added, which adds in E_gamma
+- ch_modified_energy_sav: not sure what the difference is with the discrete energy sav function (looks very different but why? where is it used?)
+- ch_r_error: new function
+- f function is now f_NMG, and f is a new version for SAV (want to change naming convention)
+- g_fun_CN: now includes boundary as argument, and fft2_filtered instead of fft2; finally, M is multiplied into 4th term of g calculation
+-Lap_SAV: now includes boundary condition (fft2 vs fft2_filtered)
+- r_fun: uses fft2 instead of fft2_filtered; should this depend on bc like other functions?
+- r0: replaces fphi in the calculation with E1
+-sav_solver:
+    - eta, xi_flag, M, and i are now arguments
+    - depending on i, phi_bar is calculated differently. For the first timestep i = 1, phi_bar = A_inv_CN. For all oters, phi_bar is 1.5*phi_old - 0.5* phi_prev
+    - now calculates a, b, and c differently at the end, then uses this to calculate xi and r_new
+
+
+
+Same:
+- b_fun
+- ch_error2
+- ch_smooth
+- ch_movie
+- df
+
+Running spinodal decomp
+- looks like the only difference is epsilon, based on M, where m = 8 (Min-Jhe used m = 4)

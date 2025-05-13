@@ -1,4 +1,7 @@
 # %%
+import matplotlib.colors as mcolors
+import matplotlib.cm as cm
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -68,17 +71,17 @@ for language in all_data['language'].unique():
 # %%
 # all_data = all_data.loc[~((all_data["language"] == "Julia")
 #   & (all_data["comp"] == "local"))]
-# %%
-bc = "neumann"
+# %% FIGURE 2B
+# bc = "neumann"
 GridSize = 128
 g = sns.catplot(
     all_data.loc[(all_data["GridSize"] == GridSize) &
-                 (all_data["boundary"] == bc) &
+                 #  (all_data["boundary"] == bc) &
                  (all_data["print"] == False)],
     kind="bar",
     y="elapsed_time(s)",
     x="method",
-    # hue="bc",
+    hue="boundary",
     col="language",
     height=4,
     aspect=0.4,
@@ -89,11 +92,11 @@ g = sns.catplot(
 plt.ylim(1, 1e6)
 g.figure.get_axes()[0].set_yscale('log')
 plt.suptitle(
-    f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations, {bc.capitalize()} BC", y=1.)
+    f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations", y=1.)
 g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
 plt.tight_layout()
-# plt.show()
-plt.savefig(f"./output/compare_runtime_{bc}_{GridSize}_no_print.pdf")
+plt.show()
+# plt.savefig(f"./output/both_bc_compare_runtime_{GridSize}_no_print.pdf")
 # %%
 # %%
 bc = "periodic"
@@ -230,5 +233,59 @@ g.set_axis_labels("Solver", "Memory Allocated (MB)")
 # plt.show()
 plt.savefig(f"./output/compare_memalloc_{bc}_Julia.pdf")
 
+
+# %% FIGURE 2A: IC and endpoints for periodic and neumann
+
+indir = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_Rivanna_Julia"
+phi_name_MG_periodic = "NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_phi.csv"
+phi_MG_p = np.genfromtxt(
+    f"{indir}/{phi_name_MG_periodic}",
+    delimiter=",",
+)
+phi_MG_p = phi_MG_p.reshape(-1, 128, 128).transpose(1, 2, 0)
+
+phi_name_MG_neumann = "NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_phi.csv"
+phi_MG_n = np.genfromtxt(
+    f"{indir}/{phi_name_MG_neumann}",
+    delimiter=",",
+)
+phi_MG_n = phi_MG_n.reshape(-1, 128, 128).transpose(1, 2, 0)
+
+
+# %% save individual plots
+
+# timepoints = [0, 10, 20, 100, 1000, 2000]
+timepoints = [0, 200]
+dt_out = 10
+dt = 5.5e-6
+for bc in ["periodic", 'neumann']:
+    for timepoint in timepoints:
+        normalize_phis = mcolors.TwoSlopeNorm(vcenter=0, vmin=-1, vmax=1)
+        if bc == "periodic":
+            phi_MG = phi_MG_p
+            title = "Periodic"
+        else:
+            phi_MG = phi_MG_n
+            title = "Neumann"
+
+        s = sns.heatmap(
+            phi_MG[:, :, timepoint],
+            square=True,
+            cmap=cm.RdBu_r,
+            norm=normalize_phis,
+            cbar=False,
+            linewidths=0.0,
+        )
+        plt.xticks(ticks=[], labels=[])
+        plt.yticks(ticks=[], labels=[])
+        plt.title(f"Time= {timepoint*dt*dt_out}, {title} BC")
+        plt.tight_layout()
+        plt.savefig(
+            f"{indir}/MG_Julia_2000_dt_5.5e-6_t_{title}_{timepoint*dt*dt_out:.2e}.pdf",
+            bbox_inches="tight",
+            pad_inches=0,
+            dpi=300,
+        )
+        plt.close()
 
 # %%
