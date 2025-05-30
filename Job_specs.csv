@@ -75,3 +75,5 @@ old, old,Python,NMG,64,0.015009369912862116,5.5e-6,100000.0,2000,10000.0,./outpu
 03/25/2025 10:03:44,spinodal_decomp_smoothed_save_variable_dt_out_10_print,Python,SAV,128,0.015009369912862116,5.5e-06,,2000,,./output/output_python/SAV_Python_2000_dt_5.50e-06_Nx_128_n_relax_4_periodic_,26.548539876937866,4.194980621337891,periodic
 03/27/2025 14:44:48,spinodal_decomp_smoothed_save_variable_dt_out_10_print,Python,SAV,128,0.015009369912862116,5.5e-06,,2000,,./output/output_python/SAV_Python_2000_dt_5.50e-06_Nx_128_n_relax_4_periodic_,36.93676710128784,4.297327041625977,periodic
 04/04/2025 11:04:02,spinodal_decomp_smoothed_save_variable_dtout_200_print,Python,SAV,128,0.015009369912862116,5.5e-06,,200,,./output/output_python-periodic/SAV_Python_200_dt_5.50e-06_Nx_128_n_relax_4_periodic_,2.214733123779297,4.291325569152832,periodic
+30-May-2025 16:53:30,SAV_spinodal_decomp_smoothed_neumann_dtout_10_relaxation,MATLAB,SAV,128,0.015009,5.5e-06,NaN,2000,NaN,../output/output_MATLAB-neumann/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,33.3841,NaN
+neumann,
