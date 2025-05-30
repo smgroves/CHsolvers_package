@@ -42,14 +42,18 @@ This function uses the nonlinear multigrid method to solve the Cahn-Hilliard equ
         printphi = Logical to print phi to a file regardless of whether or 
            not it can be saved as a multidimensional array. Default = false.
          pathname = Name of the path to which phi is printed. Default = 'cd'. May include a prefix for the filename.
-
+        C0       = Regularization parameter.
+        gamma0   = Stabilization parameter.
+        eta      = Relaxation parameter.
+        xi_flag  = Relaxation flag (0 or 1); if 0, no relaxation (xi is set to 1).
+        Mob      = Mobility parameter.
     OUTPUT
         t_out = Time corresponding to the dt time step outputs.
         phi_t = Multidimensional array of phi over t_out.
         delta_mass_t = Vector of mass change over t_out.
         E_t = Vector of relative energy over t_out.
 """
-function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=NaN, boundary="periodic", domain=[1 0 1 0], printres=false, printphi=false, pathname="cd", C0=0, Beta=0, gamma0=0)
+function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=NaN, boundary="periodic", domain=[1 0 1 0], printres=false, printphi=false, pathname="cd", C0=1, Beta=0, gamma0=2, eta=0.95, xi_flag=1, Mob=1)
     nx, ny = size(phi0)
     xright, xleft, yright, yleft = domain
     Lx = xright - xleft
@@ -75,8 +79,8 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=N
         m = sqrt((epsilon2 * (2 * sqrt(2) * atanh(0.9))^2) / h2) #Else overwrite m
     end
 
-    kx = 1im * vcat(0:nx÷2, -nx÷2+1:-1) * (2π / Lx)
-    ky = 1im * vcat(0:ny÷2, -ny÷2+1:-1) * (2π / Ly)
+    kx = 1im * vcat(0:nx/2, -nx/2+1:-1) * (2 * pi / Lx)
+    ky = 1im * vcat(0:ny/2, -ny/2+1:-1) * (2 * pi / Ly)
 
     kxx = kx .^ 2
     kyy = ky .^ 2
@@ -86,13 +90,25 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=N
     k2 = kxx_mat .+ kyy_mat
     k4 = k2 .^ 2
 
+    # Spectral stuff for original domain for Neumann bc to calculate energy
+    if boundary == "neumann"
+        k_x_od = 1im * vcat(0:(nx/2)/2, -(nx / 2)/2+1:-1) * (2 * pi / (Lx / 2))
+        k_y_od = 1im * vcat(0:(ny/2)/2, -(ny / 2)/2+1:-1) * (2 * pi / (Ly / 2))
+        k_xx_od = k_x_od .^ 2
+        k_yy_od = k_y_od .^ 2
+        [kxx_od, kyy_od] = meshgrid(k_xx_od, k_yy_od)
+        k2_od = kxx_od + kyy_od
+    end
+
+    # Initialization
+
     if boundary == "neumann"
         phi_old = ext(phi0)
     elseif boundary == "periodic"
         phi_old = copy(phi0)
     end
-
-    r_old = r0_fun(phi_old, hx, hy, C0) # Initialize sav state
+    phi_prev = phi_old_out
+    r_old = r0_fun(phi_old, hx, hy, C0, gamma0) # Initialize sav state
 
     downsampled = nx * ny * t_iter / dt_out > 1e9 #Logical index for the need to downsample
     n_timesteps = floor(Int64, t_iter / dt_out)
@@ -100,6 +116,8 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=N
     if printphi
         mass_t = zeros(Float64, n_timesteps + 1, 1)
         E_t = zeros(Float64, n_timesteps + 1, 1)
+        D_t = zeros(Float64, n_timesteps + 1, 1)
+
         t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out
         if pathname == "cd"
             pathname = pwd()
@@ -123,6 +141,7 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=N
         end
         mass_t = zeros(Float64, n_timesteps + 1, 1)
         E_t = zeros(Float64, n_timesteps + 1, 1)
+        D_t = zeros(Float64, n_timesteps + 1, 1)
         t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out
         if boundary == "neumann"
             phi_t = zeros(Float64, nx / 2, ny / 2, n_timesteps + 1)
@@ -135,14 +154,20 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=N
         end
     end
 
-    mass_t[1] = calculate_mass(phi0, h2, nx, ny)
-    E_t[1] = calculate_discrete_energy(phi0, h2, nx, ny, epsilon2)
+    mass_t[1] = calculate_mass(phi_old_out, h2, nx, ny)
+    if boundary == "neumann"
+        E_t[1] = calculate_discrete_energy_sav(phi_old_out, h2, epsilon2, k2_od, gamma0, r_old, C0)
+    elseif boundary == "periodic"
+        E_t[1] = calculate_discrete_energy_sav(phi_old_out, h2, epsilon2, k2, gamma0, r_old, C0)
+    end
+    D_t[1] = ch_r_error(r_old, phi_old, h2, C0, gamma0)
+
     if printres
         println("Saving squared residuals per iteration to file in the output directory\n")
     end
 
     for it in 1:t_iter
-        phi_new, r_new = sav_solver(phi_old, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0)
+        phi_new, r_new = sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag, Mob, it)
         if boundary == "neumann"
             phi_new_out = extback(phi_new)
         else
@@ -161,13 +186,21 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=N
                 phi_t[:, :, t_index] = phi_new_out
             end
             mass_t[t_index] = calculate_mass(phi_new_out, h2, nx, ny)
-            E_t[t_index] = calculate_discrete_energy(phi_new_out, h2, nx, ny, epsilon2)
+            if boundary == "neumann"
+                E = calculate_discrete_energy_sav(phi_new_out, h2, epsilon2, k2_od, gamma0, r_new, C0)
+            elseif boundary == "periodic"
+                E = calculate_discrete_energy_sav(phi_new_out, h2, epsilon2, k2, gamma0, r_new, C0)
+            end
+            E_t[t_index] = E_t
+            D_t[t_index] = ch_r_error(r_new, phi_new, h2, C0, gamma0)
+
         end
+        phi_prev = copy(phi_old)
         phi_old = copy(phi_new)
         r_old = copy(r_new)
 
     end
     delta_mass_t = mass_t .- mass_t[1]
-    E_t = E_t ./ E_t[1]
+    # E_t = E_t ./ E_t[1]
     return t_out, phi_t, delta_mass_t, E_t
 end

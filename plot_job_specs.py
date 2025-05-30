@@ -1,4 +1,6 @@
 # %%
+from statsmodels.stats.diagnostic import lilliefors
+from scipy import stats
 import matplotlib.colors as mcolors
 import matplotlib.cm as cm
 import numpy as np
@@ -97,6 +99,47 @@ g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
 plt.tight_layout()
 plt.show()
 # plt.savefig(f"./output/both_bc_compare_runtime_{GridSize}_no_print.pdf")
+
+# %% FIGURE 2B and 2C REDONE: gridsize 128, no print, both BC, all languages, NMG  or SAV only
+GridSize = 128
+method = "NMG"
+fig, ax = plt.subplots(1, 1, figsize=(4, 4))
+g = sns.barplot(
+    all_data.loc[(all_data["GridSize"] == GridSize) &
+                 (all_data["method"] == method) &
+                 (all_data["print"] == False)],
+    y="elapsed_time(s)",
+    x="language",
+    hue="boundary",
+    hue_order=["periodic", "neumann"],
+    order=["Python", "MATLAB", "Julia"],
+    errorbar=None,
+    # log=True
+    # palette="Set2"
+)
+sns.swarmplot(
+    all_data.loc[(all_data["GridSize"] == GridSize) &
+                 (all_data["method"] == method) &
+                 (all_data["print"] == False)],
+    y="elapsed_time(s)",
+    x="language",
+    hue="boundary",
+    hue_order=["periodic", "neumann"],
+    order=["Python", "MATLAB", "Julia"],
+    dodge=True,
+    # log=True
+    # palette="Set2"
+)
+plt.ylim(1, 1e6)
+g.figure.get_axes()[0].set_yscale('log')
+plt.suptitle(
+    f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations, {method}", y=1.)
+plt.xlabel("Solver")
+plt.ylabel("Elapsed Time (log[sec])")
+plt.tight_layout()
+# plt.show()
+plt.savefig(
+    f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2BC.pdf")
 # %%
 # %%
 bc = "periodic"
@@ -287,5 +330,70 @@ for bc in ["periodic", 'neumann']:
             dpi=300,
         )
         plt.close()
+
+# %% Statistical test comparisons
+GridSize = 128
+
+df = all_data.loc[(all_data["GridSize"] == GridSize) &
+                  (all_data["print"] == False)].reset_index()
+
+
+# %%
+# Log transform all the simulations in 2B, subtract the mean of each group, then qq plot the mean-centered data.
+
+
+def log_transform_and_center(df):
+    df['log_elapsed_time'] = np.log10(df['elapsed_time(s)'])
+    grouped = df.groupby(['language', 'method', 'boundary'])
+    df['mean_log_elapsed_time'] = grouped['log_elapsed_time'].transform('mean')
+    df['centered_log_elapsed_time'] = df['log_elapsed_time'] - \
+        df['mean_log_elapsed_time']
+    return df
+
+
+df = log_transform_and_center(df)
+# %%
+# Create a QQ plot for each pair across method
+a = df.loc[df['method'] == 'NMG', 'centered_log_elapsed_time']
+b = df.loc[df['method'] == 'SAV', 'centered_log_elapsed_time']
+percs = np.linspace(0, 100, 21)
+qn_a = np.percentile(a, percs)
+qn_b = np.percentile(b, percs)
+
+plt.plot(qn_a, qn_b, ls="", marker="o")
+plt.plot([-.2, .2], [-.2, .2], color='red', ls='--')
+plt.xlabel("Mean-Centered Log-transformed NMG Elapsed Time Quantiles")
+plt.ylabel("Mean Centered Log-transformed SAV Elapsed Time Quantiles")
+plt.title("QQ Plot of NMG vs SAV Elapsed Time")
+
+# %%
+
+# 2. Lillifors Test
+lilliefors_test = lilliefors(a.values - b.values)
+print("\nLilliefors Test:")
+print("Statistic:", lilliefors_test[0])
+print("P-value:", lilliefors_test[1])
+
+# 3. Jarque-Bera Test
+jarque_bera_test = stats.jarque_bera(a.values - b.values)
+print("\nJarque-Bera Test:")
+print("Statistic:", jarque_bera_test.statistic)
+print("P-value:", jarque_bera_test.pvalue)
+
+# 4. Anderson-Darling Test
+anderson_darling_test = stats.anderson(a.values - b.values)
+print("\nAnderson-Darling Test:")
+print("Statistic:", anderson_darling_test.statistic)
+print("Critical values:", anderson_darling_test.critical_values)
+print("Significance levels:", anderson_darling_test.significance_level)
+# %% t test for NMG vs SAV for Julia, neumann boundary, grid size 128
+aa = df.loc[(df['method'] == 'NMG') & (df['language'] == "Julia")
+            & (df['boundary'] == "neumann"), 'log_elapsed_time']
+bb = df.loc[(df['method'] == 'SAV') & (df['language'] == "Julia")
+            & (df['boundary'] == "neumann"), 'log_elapsed_time']
+# %%
+# Figure 2B t test
+stats.ttest_ind(aa, bb)
+# TtestResult(statistic=np.float64(1.7237699829831481e-15), pvalue=np.float64(0.9999999999999987), df=np.float64(4.0))
 
 # %%

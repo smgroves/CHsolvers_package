@@ -1,6 +1,6 @@
 function E = ch_discrete_energy(phi,hxy,eps2,gamma0)
     [gridx,gridy] = size(phi);
-    a = hxy*sum(sum(f(phi,0))); %Calculate chemical free energy
+    a = hxy*sum(sum(f_SAV(phi,0))); %Calculate chemical free energy
     sum_i = 0; % Initialize interfacial free energy in x
     for i = 1:gridx-1
         for j = 1:gridy
