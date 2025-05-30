@@ -1,4 +1,4 @@
-function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
+function [t_out, phi_t, delta_mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
 % This function uses the scalar auxiliary variable method to solve the 
 % Cahn-Hilliard equation for a specified number of time steps of size dt.
 % 
@@ -21,6 +21,11 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
     %   Format: [xright xleft yright yleft]. Default = [1 0 1 0].
     % printphi = Logical to print phi to a file. Default = true.
     % pathname = Name of the path to which phi is printed. Default = 'cd'.
+    % C0       = Regularization parameter.
+    % gamma0   = Stabilization parameter.
+    % eta      = Relaxation parameter.
+    % xi_flag  = Relaxation flag (0 or 1); if 0, no relaxation (xi is set to 1).
+    % Mob      = Mobility parameter.
 %
 %OUTPUT
     % t_out = Time corresponding to the dt time step outputs.
@@ -34,19 +39,18 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
         default_t_iter = 1e3;
         default_dt = 2.5e-5;
         default_dt_out = 1;
-        default_m = 4;
+        default_m = 8;
         default_epsilon2 = nan;
         default_boundary = 'periodic';
         default_domain = [1 0 1 0];
         default_printphi = false;
         default_pathname = 'cd';
-        default_C0 = 0; %1
-        default_Beta = 0;
-        default_gamma0 = 0; %4
-
-        % eta = 0.95
-        % xi_flag = 1
-        % Mob = 1
+        default_C0 = 1;
+        % default_Beta = 0;
+        default_gamma0 = 2; %updated to Min-Jhe's chosen default; stabilization parameter 
+        default_eta = 0.95; %user shouldn't update
+        default_xi_flag = 1;
+        default_Mob = 1;
         
         CahnHilliard_SAV_parser = inputParser;
 
@@ -54,6 +58,7 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
         valid_matrix = @(x) ismatrix(x);
         valid_integer = @(x) x-floor(x) == 0;
         valid_pos_num = @(x) isnumeric(x) && (x > 0);
+        valid_zero_to_one_num = @(x) isnumeric(x) && (x >= 0) && (x <= 1);
         valid_boundary_type = @(x) strcmpi(x,'periodic') || strcmpi(x,'neumann');
         valid_domain_vector = @(x) length(x) == 4;
         valid_logical = @(x) islogical(x) || x == 1 || x == 0;
@@ -74,6 +79,9 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
         addParameter(CahnHilliard_SAV_parser,'C0',default_C0,valid_integer);
         addParameter(CahnHilliard_SAV_parser,'Beta',default_Beta,valid_integer);
         addParameter(CahnHilliard_SAV_parser,'gamma0',default_gamma0,valid_integer);
+        addParameter(CahnHilliard_SAV_parser,'eta',default_eta,valid_zero_to_one_num);
+        addParameter(CahnHilliard_SAV_parser,'xi_flag', default_xi_flag, valid_logical);
+        addParameter(CahnHilliard_SAV_parser,'Mob',default_Mob,valid_pos_num);
 
         parse(CahnHilliard_SAV_parser, phi0, varargin{:});
     
@@ -95,6 +103,9 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
         C0 = CahnHilliard_SAV_parser.Results.C0;
         Beta = CahnHilliard_SAV_parser.Results.Beta;
         gamma0 = CahnHilliard_SAV_parser.Results.gamma0;
+        eta = CahnHilliard_SAV_parser.Results.eta;
+        xi_flag = CahnHilliard_SAV_parser.Results.xi_flag;
+        Mob = CahnHilliard_SAV_parser.Results.Mob;
 
 %% Define and initialize key simulation parameters
 
@@ -132,6 +143,14 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
     k2 = kxx + kyy;
     k4 = k2.^2;
 
+    % Spectral stuff for original domain for Neumann bc to calculate energy
+        if strcmpi(boundary,'neumann')
+                k_x_od = 1i*[0:(nx/2)/2 -(nx/2)/2+1:-1]*(2*pi/(Lx/2)); k_y_od = 1i*[0:(ny/2)/2 -(ny/2)/2+1:-1]*(2*pi/(Ly/2));
+                k_xx_od = k_x_od.^2; k_yy_od = k_y_od.^2;
+                [kxx_od,kyy_od] = meshgrid(k_xx_od,k_yy_od);
+                k2_od = kxx_od + kyy_od;
+        end
+
 %% Initialization
 
     % Initialize chemical state and SAV state
@@ -140,7 +159,8 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
         elseif strcmpi(boundary,'periodic')
             phi_old = phi0; % Initialize chemical state
         end
-        r_old = r0_fun(phi_old,hx,hy,C0); % Initialize sav state
+        phi_prev = phi_old; % Initialize previous chemical state
+        r_old = r0_fun(phi_old,hx,hy,C0,gamma0); % Initialize sav state
 
     % Initialize output variables according to the output specifications
         n_timesteps = floor(t_iter/dt_out);
@@ -148,6 +168,7 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
         if printphi
             mass_t = zeros(n_timesteps+1,1);
             E_t = zeros(n_timesteps+1,1);
+            D_t = zeros(n_timesteps+1,1);
             if pathname == "cd"
                 pathname = pwd;
             end
@@ -177,18 +198,26 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
             end
             mass_t = zeros(n_timesteps+1,1);
             E_t = zeros(n_timesteps+1,1);
+            D_t = zeros(n_timesteps+1,1);
             phi_t(:,:,1) = phi_old_out;
         end
         mass_t(1) = ch_mass(phi_old_out,h2);
-        E_t(1) = ch_discrete_energy(phi_old_out,h2,epsilon2);
+        if strcmpi(boundary,'neumann')
+            E_t(1) = ch_discrete_energy_sav(phi_old_out,h2,epsilon2,k2_od,gamma0,r_old,C0);
+            % E_t(1) = ch_discrete_energy(phi_old_out,h2,epsilon2,gamma0);
+        elseif strcmpi(boundary,'periodic')
+            E_t(1) = ch_discrete_energy_sav(phi_old_out,h2,epsilon2,k2,gamma0,r_old,C0);
+            % E_t(1) = ch_discrete_energy(phi_old_out,h2,epsilon2,gamma0);
+        end
+        D_t(1) = ch_r_error(r_old,phi_old,h2,C0,gamma0);
 
 %% Run SAV solver
 
     for i = 1:t_iter
 
         % Calculate current phi, r, mass and E
-            [phi_new, r_new] = sav_solver(phi_old, r_old, ...
-                hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0);
+            [phi_new, r_new] = sav_solver(phi_old, phi_prev, r_old, ...
+                hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag, Mob,i);
 
         % Shrink the result back to the original domain size in phi_new_out for output
             if strcmpi(boundary,'neumann')
@@ -199,7 +228,14 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
 
         % Calculate mass and energy according to the phi_new_out
             mass = ch_mass(phi_new_out,h2);
-            E = ch_discrete_energy(phi_new_out,h2,epsilon2);
+            if strcmpi(boundary,'neumann')
+                E = ch_discrete_energy_sav(phi_new_out,h2,epsilon2,k2_od,gamma0,r_new,C0);
+                % E = ch_discrete_energy(phi_new_out,h2,epsilon2,gamma0);
+            elseif strcmpi(boundary,'periodic')
+                E = ch_discrete_energy_sav(phi_new_out,h2,epsilon2,k2,gamma0,r_new,C0);
+                % E = ch_discrete_energy(phi_new_out,h2,epsilon2,gamma0);
+            end
+            D = ch_r_error(r_new,phi_new,h2,C0,gamma0);
 
         % Store data according to the output specifications
             if mod(i,dt_out) == 0
@@ -214,9 +250,11 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
                 % Store mass and energy
                 mass_t(t_index) = mass;
                 E_t(t_index) = E;
+                D_t(t_index) = D;
             end
             
         % Update iteration variables
+            phi_prev = phi_old;
             phi_old = phi_new;
             r_old = r_new;
 
@@ -230,7 +268,7 @@ function [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0, varargin)
 
 % Center mass and normalize energy to t == 0
     delta_mass_t = mass_t - mass_t(1);
-    E_t = E_t/E_t(1);
+    % E_t = E_t/E_t(1);
 
 % Output t_out vector for post-processing
     t_out = (0:1:n_timesteps)*dt*dt_out;
@@ -242,8 +280,10 @@ end
 
 % Local function for calculating mass across the domain
     function mass = ch_mass(phi,h2)
-        [nx,ny] = size(phi);
-        mass = sum(sum(phi))/(h2*nx*ny);
+        % [nx,ny] = size(phi);
+        % mass = sum(sum(phi))/(h2*nx*ny);
+        mass = fft2(phi);
+        mass = mass(1,1)*h2;
     end
 
 % Local function for "flip" extension

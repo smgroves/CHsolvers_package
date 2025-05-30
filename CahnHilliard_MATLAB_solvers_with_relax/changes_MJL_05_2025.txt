@@ -12,11 +12,10 @@
     - eta, xi_flag, Mob, and i are now arguments
     - depending on i, phi_bar is calculated differently. For the first timestep i = 1, phi_bar = A_inv_CN. For all oters, phi_bar is 1.5*phi_old - 0.5* phi_prev
     - now calculates a, b, and c differently at the end, then uses this to calculate xi and r_new
-
+- b_fun: fft2 instead of fft2_filtered
 
 
 Same:
-- b_fun
 - ch_error2
 - ch_smooth
 - ch_movie

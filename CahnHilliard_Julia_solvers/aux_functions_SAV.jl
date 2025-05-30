@@ -75,7 +75,7 @@ function fft_filtered(x)
 end
 
 function b_fun(phi, hx, hy, C0, gamma0) #good
-    E1 = fft_filtered(f_SAV(phi, gamma0))
+    E1 = fft(f_SAV(phi, gamma0))
     return df(phi, gamma0) ./ sqrt.(E1[1, 1] * hx * hy .+ C0)
 end
 
