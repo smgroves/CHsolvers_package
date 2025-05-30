@@ -34,7 +34,7 @@ function [phi_new,r_new] = sav_solver(phi_old, phi_prev, r_old, ...
     elseif i>=2
         % phi_bar = A_inv_CN(phi0 + dt/2 * M * Lap_dfphi0, dt, k2, k4, gamma0, epsilon2, M, boundary);
         phi_bar = 1.5*phi_old - 0.5*phi_prev;
-        phi_bar = max(-1, min(1, phi_bar)); 
+        % phi_bar = max(-1, min(1, phi_bar)); 
         % fprintf('Step %d:  max|phi_bar|=%.3f,  diff_prev=%.3e\n', ...
         %          i, max(abs(phi_bar(:))), norm(phi_old(:)-phi_prev(:)));
     end
