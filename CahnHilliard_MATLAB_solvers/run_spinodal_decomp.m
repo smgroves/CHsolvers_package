@@ -1,5 +1,6 @@
+% FIGURE 1
 indir = "../IC/";
-outdir = "../output/output_MATLAB-neumann";
+outdir = "../output/output_MATLAB-periodic";
 
 n_relax = 4;
 m = 8;
@@ -8,7 +9,7 @@ h = 1/GridSize;
 epsilon = m * h/ (2 * sqrt(2) * atanh(0.9));
 dt = 5.5e-6;
 max_it = 2000;
-boundary = 'neumann';
+boundary = 'periodic';
 init_file = sprintf("%s/initial_phi_%d_smooth_n_relax_%d.csv",indir,GridSize, n_relax);
 phi0 = readmatrix(init_file);
 print_phi = true;
@@ -32,7 +33,7 @@ tStart_SAV = tic;
 elapsedTime = toc(tStart_SAV);
 
 fid = fopen('../Job_specs.csv', 'a+');
-v = [string(datetime) "SAV_spinodal_decomp_smoothed_neumann_dtout_10_relaxation" "MATLAB" "SAV" GridSize epsilon dt 'NaN' max_it 'NaN' pathname elapsedTime "NaN" boundary];
+v = [string(datetime) "SAV_spinodal_decomp_smoothed_periodic_dtout_10_relaxation" "MATLAB" "SAV" GridSize epsilon dt 'NaN' max_it 'NaN' pathname elapsedTime "NaN" boundary];
 fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);
 fclose(fid);
 
