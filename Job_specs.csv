@@ -77,4 +77,9 @@ old, old,Python,NMG,64,0.015009369912862116,5.5e-6,100000.0,2000,10000.0,./outpu
 04/04/2025 11:04:02,spinodal_decomp_smoothed_save_variable_dtout_200_print,Python,SAV,128,0.015009369912862116,5.5e-06,,200,,./output/output_python-periodic/SAV_Python_200_dt_5.50e-06_Nx_128_n_relax_4_periodic_,2.214733123779297,4.291325569152832,periodic
 30-May-2025 16:53:30,SAV_spinodal_decomp_smoothed_neumann_dtout_10_relaxation,MATLAB,SAV,128,0.015009,5.5e-06,NaN,2000,NaN,../output/output_MATLAB-neumann/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,33.3841,NaN
 neumann,30-May-2025 17:00:42,SAV_spinodal_decomp_smoothed_periodic_dtout_10_relaxation,MATLAB,SAV,128,0.015009,5.5e-06,NaN,2000,NaN,../output/output_MATLAB-periodic/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,13.8893,NaN
-periodic,
+periodic,05-Jun-2025 17:02:14,SAV_spinodal_decomp_smoothed_periodic_dtout_10_relaxation,MATLAB,SAV,128,0.015009,5.5e-06,NaN,2000,NaN,../output/output_MATLAB-periodic/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,21.2144,NaN
+periodic,05-Jun-2025 17:04:37,SAV_spinodal_decomp_smoothed_neumann_dtout_10_relaxation,MATLAB,SAV,128,0.015009,5.5e-06,NaN,2000,NaN,../output/output_MATLAB-periodic/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,123.8646,NaN
+neumann,05-Jun-2025 17:08:16,SAV_spinodal_decomp_smoothed_periodic_dtout_10_relaxation,MATLAB,SAV,128,0.015009,5.5e-06,NaN,2000,NaN,../output/output_MATLAB-periodic/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,13.7185,NaN
+periodic,06-Jun-2025 10:23:16,SAV_spinodal_decomp_smoothed_periodic_dtout_10_relaxation,MATLAB,SAV,128,0.015009,5.5e-06,NaN,2000,NaN,../output/output_MATLAB-periodic/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,19.8113,NaN
+periodic,06-Jun-2025 10:24:59,SAV_spinodal_decomp_smoothed_neumann_dtout_10_relaxation,MATLAB,SAV,128,0.015009,5.5e-06,NaN,2000,NaN,../output/output_MATLAB-neumann/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_,63.9487,NaN
+neumann,

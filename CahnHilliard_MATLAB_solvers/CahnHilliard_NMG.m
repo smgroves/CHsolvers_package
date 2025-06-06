@@ -179,5 +179,5 @@ end
 
 %Center mass and normalize energy to t == 0
 delta_mass_t = mass_t - mass_t(1);
-E_t = E_t/E_t(1);
+% E_t = E_t/E_t(1);
 end
