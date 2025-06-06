@@ -19,35 +19,35 @@ ny = GridSize;
 % RUN SAV SOLVER 
 % #################################################
 
-% pathname = sprintf("%s/SAV_MATLAB_%d_dt_%.2e_Nx_%d_n_relax_%d_",outdir,max_it,dt, GridSize, n_relax);
-% fprintf("Running SAV solver with parameters: %s\n", pathname);
-% tStart_SAV = tic;
-% [t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0,...
-%                                     t_iter = max_it,...
-%                                     dt = dt,...
-%                                     m = m,...
-%                                     boundary = boundary,...
-%                                     printphi=print_phi,...
-%                                     pathname=pathname,...
-%                                     dt_out = dt_out);
-% elapsedTime = toc(tStart_SAV);
+pathname = sprintf("%s/SAV_MATLAB_%d_dt_%.2e_Nx_%d_n_relax_%d_",outdir,max_it,dt, GridSize, n_relax);
+fprintf("Running SAV solver with parameters: %s\n", pathname);
+tStart_SAV = tic;
+[t_out, phi_t, delta_mass_t, E_t] = CahnHilliard_SAV(phi0,...
+                                    t_iter = max_it,...
+                                    dt = dt,...
+                                    m = m,...
+                                    boundary = boundary,...
+                                    printphi=print_phi,...
+                                    pathname=pathname,...
+                                    dt_out = dt_out);
+elapsedTime = toc(tStart_SAV);
 
-% fid = fopen('../Job_specs.csv', 'a+');
-% v = [string(datetime) "SAV_spinodal_decomp_smoothed_neumann_dtout_10_relaxation" "MATLAB" "SAV" GridSize epsilon dt 'NaN' max_it 'NaN' pathname elapsedTime "NaN" boundary];
-% fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);
-% fclose(fid);
+fid = fopen('../Job_specs.csv', 'a+');
+v = [string(datetime) "SAV_spinodal_decomp_smoothed_neumann_dtout_10_relaxation" "MATLAB" "SAV" GridSize epsilon dt 'NaN' max_it 'NaN' pathname elapsedTime "NaN" boundary];
+fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);
+fclose(fid);
 
-% % writematrix(phi_t(:,:,end),sprintf('%sfinal_phi.csv', pathname));
-% % writematrix(delta_mass_t,sprintf('%smass.csv', pathname));
-% writematrix(E_t,sprintf('%senergy_original.csv', pathname));
+% writematrix(phi_t(:,:,end),sprintf('%sfinal_phi.csv', pathname));
+% writematrix(delta_mass_t,sprintf('%smass.csv', pathname));
+writematrix(E_t,sprintf('%senergy_original.csv', pathname));
 
-% % fprintf("Creating movie\n");
-% % filename = strcat(pathname, "movie");
-% % if print_phi
-% %     ch_movie_from_file(strcat(pathname,"phi.csv"), t_out, ny,filename = filename)
-% % else
-% %     ch_movie(phi_t,t_out, filename = filename);
-% % end
+% fprintf("Creating movie\n");
+% filename = strcat(pathname, "movie");
+% if print_phi
+%     ch_movie_from_file(strcat(pathname,"phi.csv"), t_out, ny,filename = filename)
+% else
+%     ch_movie(phi_t,t_out, filename = filename);
+% end
 
 % % #################################################
 % % RUN NMG SOLVER 
@@ -71,16 +71,16 @@ v = [string(datetime) "NMG_spinodal_decomp_smoothed_dtout_10" "MATLAB" "NMG" Gri
 fprintf(fid, '%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n', v);
 fclose(fid);
 
-writematrix(phi_t(:,:,end),sprintf('%sfinal_phi.csv', pathname));
-writematrix(delta_mass_t,sprintf('%smass.csv', pathname));
+% writematrix(phi_t(:,:,end),sprintf('%sfinal_phi.csv', pathname));
+% writematrix(delta_mass_t,sprintf('%smass.csv', pathname));
 writematrix(E_t,sprintf('%senergy.csv', pathname));
-filename = strcat(pathname, "movie");
-fprintf("Creating movie\n");
-if print_phi
-    ch_movie_from_file(strcat(pathname,"phi.csv"), t_out, ny,filename = filename)
-else
-    ch_movie(phi_t,t_out, filename = filename);
-end
+% filename = strcat(pathname, "movie");
+% fprintf("Creating movie\n");
+% if print_phi
+%     ch_movie_from_file(strcat(pathname,"phi.csv"), t_out, ny,filename = filename)
+% else
+%     ch_movie(phi_t,t_out, filename = filename);
+% end
 
 
 
