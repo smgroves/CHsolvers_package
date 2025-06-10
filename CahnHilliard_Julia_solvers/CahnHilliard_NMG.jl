@@ -135,7 +135,7 @@ function CahnHilliard_NMG(phi0; t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5
             E_t[t_index] = calculate_discrete_energy(phi_new, h2, nx, ny, epsilon2)
         end
     end
-    delta_mass_t = mass_t .- mass_t[1]
+    delta_mass_t = mass_t #.- mass_t[1]
     E_t = E_t ./ E_t[1]
     return t_out, phi_t, delta_mass_t, E_t
 end

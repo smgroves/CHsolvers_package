@@ -113,7 +113,7 @@ function calculate_discrete_energy_sav(phi, h2, epsilon2, k2, gamma0, r, C0)
     E_gamma = h2 * fft(gamma0 / 2 * phi .^ 2)
     E_gamma = E_gamma[1, 1]
 
-    [gridx, gridy] = size(phi)
+    (gridx, gridy) = size(phi)
     a = r^2 - C0 - (gamma0^2 + 2 * gamma0) / 4
 
     a = h2 * sum(f_SAV(phi, gamma0))

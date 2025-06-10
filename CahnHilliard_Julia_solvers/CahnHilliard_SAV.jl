@@ -96,7 +96,7 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
         k_y_od = 1im * vcat(0:(ny/2)/2, -(ny / 2)/2+1:-1) * (2 * pi / (Ly / 2))
         k_xx_od = k_x_od .^ 2
         k_yy_od = k_y_od .^ 2
-        [kxx_od, kyy_od] = meshgrid(k_xx_od, k_yy_od)
+        (kxx_od, kyy_od) = meshgrid(k_xx_od, k_yy_od)
         k2_od = kxx_od + kyy_od
     end
 
@@ -156,9 +156,9 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
 
     mass_t[1] = calculate_mass(phi_old_out, h2, nx, ny)
     if boundary == "neumann"
-        E_t[1] = calculate_discrete_energy_sav(phi_old_out, h2, epsilon2, k2_od, gamma0, r_old, C0)
+        E_t[1] = calculate_discrete_energy(phi_old_out, h2, nx, ny, epsilon2)
     elseif boundary == "periodic"
-        E_t[1] = calculate_discrete_energy_sav(phi_old_out, h2, epsilon2, k2, gamma0, r_old, C0)
+        E_t[1] = calculate_discrete_energy(phi_old_out, h2, nx, ny, epsilon2)
     end
     D_t[1] = ch_r_error(r_old, phi_old, h2, C0, gamma0)
 
@@ -187,9 +187,9 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
             end
             mass_t[t_index] = calculate_mass(phi_new_out, h2, nx, ny)
             if boundary == "neumann"
-                E = calculate_discrete_energy_sav(phi_new_out, h2, epsilon2, k2_od, gamma0, r_new, C0)
+                E = calculate_discrete_energy(phi_new_out, h2, nx, ny, epsilon2)
             elseif boundary == "periodic"
-                E = calculate_discrete_energy_sav(phi_new_out, h2, epsilon2, k2, gamma0, r_new, C0)
+                E = calculate_discrete_energy(phi_new_out, h2, nx, ny, epsilon2)
             end
             E_t[t_index] = E_t
             D_t[t_index] = ch_r_error(r_new, phi_new, h2, C0, gamma0)
@@ -200,7 +200,7 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
         r_old = copy(r_new)
 
     end
-    delta_mass_t = mass_t .- mass_t[1]
+    delta_mass_t = mass_t #.- mass_t[1]
     # E_t = E_t ./ E_t[1]
     return t_out, phi_t, delta_mass_t, E_t
 end

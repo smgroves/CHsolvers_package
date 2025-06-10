@@ -1,4 +1,4 @@
-function [t_out,phi_t,delta_mass_t,E_t] = CahnHilliard_NMG(phi0,varargin)
+function [t_out,phi_t,mass_t,E_t] = CahnHilliard_NMG(phi0,varargin)
 %This function uses the nonlinear multigrid method to solve the 
 %Cahn-Hilliard equation for a specified number of time steps of size dt.
 % 
@@ -170,14 +170,14 @@ for i = 1:t_iter
             % Path = strcat(pwd, '/', Filename);
             writematrix(phi_new, Filename, 'WriteMode', 'append'); 
         else
-            phi_t(:,:,t_index) = phi_old;
+            phi_t(:,:,t_index) = phi_new;
         end
-        mass_t(t_index) = sum(sum(phi_old))/(h2*nx*ny);
-        E_t(t_index) = ch_discrete_energy(phi_old,h2,epsilon2);
+        mass_t(t_index) = sum(sum(phi_new))/(h2*nx*ny);
+        E_t(t_index) = ch_discrete_energy(phi_new,h2,epsilon2);
     end
 end
 
 %Center mass and normalize energy to t == 0
-delta_mass_t = mass_t - mass_t(1);
+% delta_mass_t = mass_t - mass_t(1);
 % E_t = E_t/E_t(1);
 end

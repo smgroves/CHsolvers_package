@@ -1,4 +1,4 @@
-function [t_out, phi_t, delta_mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
+function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
 % This function uses the scalar auxiliary variable method to solve the 
 % Cahn-Hilliard equation for a specified number of time steps of size dt.
 % 
@@ -201,7 +201,9 @@ function [t_out, phi_t, delta_mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargi
             D_t = zeros(n_timesteps+1,1);
             phi_t(:,:,1) = phi_old_out;
         end
-        mass_t(1) = ch_mass(phi_old_out,h2);
+        mass_t(1) = sum(sum(phi0))/(h2*nx*ny);
+
+        % mass_t(1) = ch_mass(phi_old_out,h2);
         if strcmpi(boundary,'neumann')
             % E_t(1) = ch_discrete_energy_sav(phi_old_out,h2,epsilon2,k2_od,gamma0,r_old,C0);
             E_t(1) = ch_discrete_energy(phi_old_out,h2,epsilon2);
@@ -227,7 +229,9 @@ function [t_out, phi_t, delta_mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargi
             end
 
         % Calculate mass and energy according to the phi_new_out
-            mass = ch_mass(phi_new_out,h2);
+            % mass = ch_mass(phi_new_out,h2);
+            mass = sum(sum(phi_new_out))/(h2*nx*ny);
+
             if strcmpi(boundary,'neumann')
                 % E = ch_discrete_energy_sav(phi_new_out,h2,epsilon2,k2_od,gamma0,r_new,C0);
                 E = ch_discrete_energy(phi_new_out,h2,epsilon2);
@@ -267,7 +271,7 @@ function [t_out, phi_t, delta_mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargi
 %% For post-processing
 
 % Center mass and normalize energy to t == 0
-    delta_mass_t = mass_t - mass_t(1);
+    % delta_mass_t = mass_t - mass_t(1);
     % E_t = E_t/E_t(1);
 
 % Output t_out vector for post-processing
