@@ -25,3 +25,4 @@ output/output_MATLAB-periodic/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_dtout
 output/output_MATLAB-periodic/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_dtout_1_phi.csv
 output/output_MATLAB-neumann/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_dtout_1_phi.csv
 output/output_MATLAB-neumann/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_dtout_1_phi.csv
+output/output_MATLAB-periodic/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_dtout_1_tol_1e-6phi.csv
