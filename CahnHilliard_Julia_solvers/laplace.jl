@@ -11,7 +11,7 @@ function laplace!(lap_a, a, nxt, nyt, xright, xleft, yright, yleft, boundary)
                 if boundary == "neumann"
                     dadx_L = 0
                 elseif boundary == "periodic"
-                    dadx_L = a[i, j] - a[nxt-1, j]
+                    dadx_L = a[i, j] - a[nxt, j] #changed
                 end
             end
             if i < nxt
@@ -20,7 +20,7 @@ function laplace!(lap_a, a, nxt, nyt, xright, xleft, yright, yleft, boundary)
                 if boundary == "neumann"
                     dadx_R = 0
                 elseif boundary == "periodic"
-                    dadx_R = a[2, j] - a[i, j]
+                    dadx_R = a[1, j] - a[i, j] #changed
                 end
             end
             if j > 1
@@ -29,7 +29,7 @@ function laplace!(lap_a, a, nxt, nyt, xright, xleft, yright, yleft, boundary)
                 if boundary == "neumann"
                     dady_B = 0
                 elseif boundary == "periodic"
-                    dady_B = a[i, j] - a[i, nyt-1]
+                    dady_B = a[i, j] - a[i, nyt] #changed
                 end
             end
             if j < nyt
@@ -38,7 +38,7 @@ function laplace!(lap_a, a, nxt, nyt, xright, xleft, yright, yleft, boundary)
                 if boundary == "neumann"
                     dady_T = 0
                 elseif boundary == "periodic"
-                    dady_T = a[i, 2] - a[i, j]
+                    dady_T = a[i, 1] - a[i, j] #changed
                 end
             end
             lap_a[i, j] = (dadx_R - dadx_L + dady_T - dady_B) / ht2

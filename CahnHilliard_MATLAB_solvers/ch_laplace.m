@@ -27,28 +27,28 @@ for i = 1:nx
         elseif neumann
             dadx_L = 0;
         elseif periodic
-            dadx_L = a(i,j)-a(nx-1,j);
+            dadx_L = a(i,j)-a(nx,j); %changed
         end
         if i < nx
             dadx_R = a(i+1,j)-a(i,j);
         elseif neumann
             dadx_R = 0;
         elseif periodic
-            dadx_R = a(2,j)-a(i,j);
+            dadx_R = a(1,j)-a(i,j);
         end
         if j > 1
             dady_B = a(i,j)-a(i,j-1);
         elseif neumann
             dady_B = 0;
         elseif periodic
-            dady_B = a(i,j)-a(i,ny-1);
+            dady_B = a(i,j)-a(i,ny); %changed
         end
         if j < ny
             dady_T = a(i,j+1)-a(i,j);
         elseif neumann
             dady_T = 0;
         elseif periodic
-            dady_T = a(i,2)-a(i,j);
+            dady_T = a(i,1)-a(i,j);
         end
         lap_a(i,j) = (dadx_R-dadx_L + dady_T-dady_B)/ht2;
     end

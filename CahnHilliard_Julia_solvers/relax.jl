@@ -32,29 +32,29 @@ function relax!(c_new, mu_new, su, sw, nxt, nyt, c_relax, xright, xleft, yright,
                     f[1] += mu_new[i-1, j] / ht2
                     f[2] -= epsilon2 * c_new[i-1, j] / ht2
                 elseif boundary == "periodic"
-                    f[1] += mu_new[nxt-1, j] / ht2
-                    f[2] -= epsilon2 * c_new[nxt-1, j] / ht2
+                    f[1] += mu_new[nxt, j] / ht2 #changed
+                    f[2] -= epsilon2 * c_new[nxt, j] / ht2 #changed
                 end
                 if i < nxt
                     f[1] += mu_new[i+1, j] / ht2
                     f[2] -= epsilon2 * c_new[i+1, j] / ht2
                 elseif boundary == "periodic"
-                    f[1] += mu_new[2, j] / ht2
-                    f[2] -= epsilon2 * c_new[2, j] / ht2
+                    f[1] += mu_new[1, j] / ht2 #changed
+                    f[2] -= epsilon2 * c_new[1, j] / ht2 #changed
                 end
                 if j > 1
                     f[1] += mu_new[i, j-1] / ht2
                     f[2] -= epsilon2 * c_new[i, j-1] / ht2
                 elseif boundary == "periodic"
-                    f[1] += mu_new[i, nyt-1] / ht2
-                    f[2] -= epsilon2 * c_new[i, nyt-1] / ht2
+                    f[1] += mu_new[i, nyt] / ht2 #changed
+                    f[2] -= epsilon2 * c_new[i, nyt] / ht2 #changed
                 end
                 if j < nyt
                     f[1] += mu_new[i, j+1] / ht2
                     f[2] -= epsilon2 * c_new[i, j+1] / ht2
                 elseif boundary == "periodic"
-                    f[1] += mu_new[i, 2] / ht2
-                    f[2] -= epsilon2 * c_new[i, 2] / ht2
+                    f[1] += mu_new[i, 1] / ht2 #changed
+                    f[2] -= epsilon2 * c_new[i, 1] / ht2 #changed
                 end
                 det = a[1] * a[4] - a[2] * a[3]
                 c_new[i, j] = (a[4] * f[1] - a[2] * f[2]) / det

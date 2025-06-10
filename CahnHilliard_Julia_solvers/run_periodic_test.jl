@@ -22,15 +22,16 @@ max_it = 10
 
 phi0 = zeros(GridSize, GridSize)
 phi0[1, 10] = 2
-phi0[4, 25] = 4
 phi0[32, 1] = 6
 phi0[50, 64] = 8
 phi0[32, 32] = 10
+phi0[64, 25] = 4
+
 ################
 # NMG
 ################
 method = "NMG"
-pathname = @sprintf("%speriodic_NMG_test_", outdir)
+pathname = @sprintf("%speriodic_NMG_testv2_", outdir)
 result, elapsed_time, mem_allocated, gc_time, memory_counters = @timed CahnHilliard_NMG(phi0; t_iter=max_it, dt=dt, dt_out=dt_out, m=m, boundary=boundary, printphi=printphi, pathname=pathname)
 
 t_out = result[1]

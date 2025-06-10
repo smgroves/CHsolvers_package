@@ -63,29 +63,29 @@ for iter = 1:c_relax
                 f(1) = f(1) + mu_new(i-1,j)/ht2;
                 f(2) = f(2) - epsilon2*phi_new(i-1,j)/ht2;
             elseif periodic
-                f(1) = f(1) + mu_new(nx-1,j)/ht2;
-                f(2) = f(2) - epsilon2*phi_new(nx-1,j)/ht2;
+                f(1) = f(1) + mu_new(nx,j)/ht2; %changed
+                f(2) = f(2) - epsilon2*phi_new(nx,j)/ht2; %changed
             end
             if i < nx
                 f(1) = f(1) + mu_new(i+1,j)/ht2;
                 f(2) = f(2) - epsilon2*phi_new(i+1,j)/ht2;
             elseif periodic
-                f(1) = f(1) + mu_new(2,j)/ht2;
-                f(2) = f(2) - epsilon2*phi_new(2,j)/ht2;
+                f(1) = f(1) + mu_new(1,j)/ht2; %changed
+                f(2) = f(2) - epsilon2*phi_new(1,j)/ht2; %changed
             end
             if j > 1
                 f(1) = f(1) + mu_new(i,j-1)/ht2;
                 f(2) = f(2) - epsilon2*phi_new(i,j-1)/ht2;
             elseif periodic
-                f(1) = f(1) + mu_new(i,ny-1)/ht2;
-                f(2) = f(2) - epsilon2*phi_new(i,ny-1)/ht2;
+                f(1) = f(1) + mu_new(i,ny)/ht2; %changed
+                f(2) = f(2) - epsilon2*phi_new(i,ny)/ht2;%changed
             end
             if j < ny
                 f(1) = f(1) + mu_new(i,j+1)/ht2;
                 f(2) = f(2) - epsilon2*phi_new(i,j+1)/ht2;
             elseif periodic
-                f(1) = f(1) + mu_new(i,2)/ht2;
-                f(2) = f(2) - epsilon2*phi_new(i,2)/ht2;
+                f(1) = f(1) + mu_new(i,1)/ht2; %changed
+                f(2) = f(2) - epsilon2*phi_new(i,1)/ht2; %changed
             end
             phi_new(i,j) = (a(2,2)*f(1)-a(1,2)*f(2))/det(a); %Solve for next phi
             mu_new(i,j) = (-a(2,1)*f(1) + a(1,1)*f(2))/det(a); %Solve for next mu
