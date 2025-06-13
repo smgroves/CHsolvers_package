@@ -59,8 +59,9 @@ function meshgrid(x, y)
     return X, Y
 end
 
-function initialization_from_function(nx, ny, h; R0=0.1, epsilon=0.01)
+function initialization_from_function(nx, ny; R0=0.1, epsilon=0.01)
     phi = zeros(Float64, nx, ny)
+    h = 1 / nx
     x = h .* (0:nx-1)
     y = h .* (0:ny-1)
     xx, yy = meshgrid(x, y)
@@ -96,7 +97,7 @@ function ch_initialization(nx, ny; method="spinodal", initial_file="", delim=","
     if method == "random"
         phi0 = initialization_random(nx, ny)
     elseif method == "droplet"
-        phi0 = initialization_from_function(nx, ny, h, R0=R0, epsilon=epsilon)
+        phi0 = initialization_from_function(nx, ny, R0=R0, epsilon=epsilon)
     elseif method == "geometric"
         phi0 = initialize_geometric_CPC(nx, ny, CPC_width=CPC_width, cohesin_width=cohesin_width)
     elseif method == "file"

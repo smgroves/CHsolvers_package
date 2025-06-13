@@ -33,7 +33,7 @@ def f(phi):
     return fphi
 
 
-def calculate_discrete_energy(phi, h2, nx, ny, epsilon2):
+def calculate_discrete_energy(phi, h2, epsilon2):
     a = h2 * np.sum(f(phi))
     sum_i = np.sum((phi[2:-1, :] - phi[1:-2, :]) ** 2)
 

@@ -26,7 +26,7 @@ include("aux_functions_SAV.jl")
 #OUTPUT
 #phi_new = Next chemical state.
 #r_new   = Next sav state.
-function sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma, eta, xi_flag, Mob, i)
+function sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag, Mob, i)
 
     phi0 = phi_old
     r0 = r_old

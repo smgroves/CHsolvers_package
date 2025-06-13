@@ -58,14 +58,15 @@ def relax(
                     f[0] += mu_new[i - 1][j] / ht2
                     f[1] -= epsilon2 * c_new[i - 1][j] / ht2
                 elif boundary == "periodic":
-                    f[0] += mu_new[nxt - 1][j] / ht2
+                    # should stay nxt-1 because python is 0-indexed
+                    f[0] += mu_new[nxt-1][j] / ht2
                     f[1] -= epsilon2 * c_new[nxt - 1][j] / ht2
                 if i < nxt - 1:
                     f[0] += mu_new[i + 1][j] / ht2
                     f[1] -= epsilon2 * c_new[i + 1][j] / ht2
                 elif boundary == "periodic":
-                    f[0] += mu_new[1][j] / ht2
-                    f[1] -= epsilon2 * c_new[1][j] / ht2
+                    f[0] += mu_new[0][j] / ht2  # changed
+                    f[1] -= epsilon2 * c_new[0][j] / ht2  # changed
                 if j > 0:
                     f[0] += mu_new[i][j - 1] / ht2
                     f[1] -= epsilon2 * c_new[i][j - 1] / ht2
@@ -76,13 +77,9 @@ def relax(
                     f[0] += mu_new[i][j + 1] / ht2
                     f[1] -= epsilon2 * c_new[i][j + 1] / ht2
                 elif boundary == "periodic":
-                    f[0] += mu_new[i][1] / ht2
-                    f[1] -= epsilon2 * c_new[i][1] / ht2
+                    f[0] += mu_new[i][0] / ht2  # changed
+                    f[1] -= epsilon2 * c_new[i][0] / ht2  # changed
                 det = a[0] * a[3] - a[1] * a[2]
                 c_new[i][j] = (a[3] * f[0] - a[1] * f[1]) / det
                 mu_new[i][j] = (-a[2] * f[0] + a[0] * f[1]) / det
-        # print("f: \n", f)
-        # print("a: \n", a)
-        # print("c_new: \n", c_new)
-        # print("mu_new: \n", mu_new)
     return c_new, mu_new

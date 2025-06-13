@@ -27,7 +27,7 @@ function f(phi)
     return fphi
 end
 
-function calculate_discrete_energy(phi, h2, nx, ny, epsilon2)
+function calculate_discrete_energy(phi, h2, epsilon2)
     a = h2 * sum(f(phi))
     sum_i = sum((phi[2:end, :] .- phi[1:end-1, :]) .^ 2)
 
@@ -40,8 +40,8 @@ function calculate_discrete_energy(phi, h2, nx, ny, epsilon2)
 end
 
 function calculate_discrete_norm_energy(phi, phi0, h2, nx, ny, epsilon2)
-    E0 = calculate_discrete_energy(phi0, h2, nx, ny, epsilon2)
-    E = calculate_discrete_energy(phi, h2, nx, ny, epsilon2)
+    E0 = calculate_discrete_energy(phi0, h2, epsilon2)
+    E = calculate_discrete_energy(phi, h2, epsilon2)
     return E / E0
 end
 

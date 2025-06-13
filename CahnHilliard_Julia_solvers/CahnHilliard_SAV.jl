@@ -107,7 +107,7 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
     elseif boundary == "periodic"
         phi_old = copy(phi0)
     end
-    phi_prev = phi_old_out
+    phi_prev = phi_old
     r_old = r0_fun(phi_old, hx, hy, C0, gamma0) # Initialize sav state
 
     downsampled = nx * ny * t_iter / dt_out > 1e9 #Logical index for the need to downsample
@@ -155,11 +155,11 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
     end
 
     mass_t[1] = calculate_mass(phi_old_out, h2, nx, ny)
-    if boundary == "neumann"
-        E_t[1] = calculate_discrete_energy(phi_old_out, h2, nx, ny, epsilon2)
-    elseif boundary == "periodic"
-        E_t[1] = calculate_discrete_energy(phi_old_out, h2, nx, ny, epsilon2)
-    end
+    # if boundary == "neumann"
+    # E_t[1] = calculate_discrete_energy(phi_old_out, h2, epsilon2)
+    # elseif boundary == "periodic"
+    E_t[1] = calculate_discrete_energy(phi_old_out, h2, epsilon2)
+    # end
     D_t[1] = ch_r_error(r_old, phi_old, h2, C0, gamma0)
 
     if printres
@@ -186,12 +186,12 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
                 phi_t[:, :, t_index] = phi_new_out
             end
             mass_t[t_index] = calculate_mass(phi_new_out, h2, nx, ny)
-            if boundary == "neumann"
-                E = calculate_discrete_energy(phi_new_out, h2, nx, ny, epsilon2)
-            elseif boundary == "periodic"
-                E = calculate_discrete_energy(phi_new_out, h2, nx, ny, epsilon2)
-            end
-            E_t[t_index] = E_t
+            # if boundary == "neumann"
+            #     E = calculate_discrete_energy(phi_new_out, h2, epsilon2)
+            # elseif boundary == "periodic"
+            #     E = calculate_discrete_energy(phi_new_out, h2, epsilon2)
+            # end
+            E_t[t_index] = calculate_discrete_energy(phi_new_out, h2, epsilon2)
             D_t[t_index] = ch_r_error(r_new, phi_new, h2, C0, gamma0)
 
         end

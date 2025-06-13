@@ -1,5 +1,5 @@
-# %%
 import numpy as np
+
 
 # Auxiliary function to create a meshgrid similar to MATLAB's meshgrid
 
@@ -46,9 +46,17 @@ def f(phi):  # good
     return fphi
 
 
-def r0_fun(phi0, hx, hy, C0):  # good
-    fphi = f(phi0)
-    r0 = np.sqrt(hx * hy * np.sum(fphi) + C0)
+def f_SAV(phi, gamma0):
+    fphi = (phi ** 2 - 1 - gamma0) ** 2 / 4
+    return fphi
+
+
+def r0_fun(phi0, hx, hy, C0, gamma0):
+
+    e1 = np.fft.fft2(f_SAV(phi0, gamma0))
+    r0 = np.sqrt(hx * hy * e1[0, 0] + C0)
+    # fphi = f(phi0)
+    # r0 = np.sqrt(hx * hy * np.sum(fphi) + C0)
     return r0
 
 
@@ -66,54 +74,92 @@ def df(phi, gamma0):  # good
     return phi ** 3 - (1 + gamma0) * phi
 
 
-def Lap_SAV(phi, k2):  # good
-    phi_hat = fft_filtered(phi)
-    result = np.real(np.fft.ifft2(k2 * phi_hat))
-    return result
+def Lap_SAV(phi, k2, boundary):
+    # phi_hat = fft_filtered(phi)
+    # result = np.real(np.fft.ifft2(k2 * phi_hat))
+    if boundary == "periodic":
+        Lphi = np.real(np.fft.ifft2(k2 * np.fft.fft2(phi)))
+    elif boundary == "neumann":
+        Lphi = np.real(np.fft.ifft2(k2 * fft_filtered(np.fft.fft2(phi))))
+    else:
+        print("Boundary condition not recognized. Use 'periodic' or 'neumann'.")
+    return Lphi
+
+    # return result
 
 
-def A_inv_CN(phi, dt, k2, k4, gamma0, epsilon2):  # good
-    denom = 1 + (dt / 2) * epsilon2 * k4 - (dt / 2) * gamma0 * k2
-    return np.real(np.fft.ifft2(fft_filtered(phi) / denom))
+def A_inv_CN(phi, dt, k2, k4, gamma0, epsilon2, Mob, boundary):
+    if boundary == "periodic":
+        denom = 1 + ((dt / 2) * epsilon2 * k4 - (dt / 2) * gamma0 * k2) * Mob
+        Ai = np.real(np.fft.ifft2(np.fft.fft2(phi) / denom))
+    elif boundary == "neumann":
+        denom = 1 + ((dt / 2) * epsilon2 * k4 - (dt / 2) * gamma0 * k2) * Mob
+        Ai = np.real(np.fft.ifft2(fft_filtered(phi) / denom))
+    return Ai
 
 
 def fft_filtered(x):  # fft2 is equivalent to fft in julia for 2d array, good
-    return (np.fft.fft2(x))
+    return np.real(np.fft.fft2(x))
 
 
 def b_fun(phi, hx, hy, C0, gamma0):  # good
-    e1 = fft_filtered(f(phi))
+    e1 = np.fft.fft2(f_SAV(phi, gamma0))
     return df(phi, gamma0) / np.sqrt(e1[0, 0] * hx * hy + C0)
 
 
-def g_fun_CN(phi0, r0, b, dt, hx, hy, epsilon2, gamma0, Beta, C0, k2):  # good
-    Lap_phi0 = Lap_SAV(phi0, k2)
-    Lap_Lap_phi0 = Lap_SAV(Lap_phi0, k2)
+def g_fun_CN(phi0, r0, b, dt, hx, hy, epsilon2, gamma0, Beta, C0, k2, Mob, boundary):  # good
+    Lap_phi0 = Lap_SAV(phi0, k2, boundary)
+    Lap_Lap_phi0 = Lap_SAV(Lap_phi0, k2, boundary)
 
     bphi0 = fft_filtered(b * phi0)
     bphi0 = hx * hy * bphi0[0, 0]
 
-    e1 = fft_filtered(f(phi0))
+    e1 = np.fft.fft2(f_SAV(phi0, gamma0))
 
-    g = phi0 - (dt / 2) * epsilon2 * Lap_Lap_phi0 + (dt / 2) * gamma0 * Lap_phi0 + dt * Lap_SAV(b, k2) * \
+    g = phi0 - (dt / 2) * Mob * epsilon2 * Lap_Lap_phi0 + (dt / 2) * Mob * gamma0 * Lap_phi0 + dt * Mob * Lap_SAV(b, k2, boundary) * \
         (r0 - (1 / 4) * bphi0 - (1 / 2) * Beta * dt *
          r0 * (r0 - np.sqrt(e1[0, 0] * hx * hy + C0)))
 
     return g
 
 
-def r_fun(phi, phi0, r0, b, hx, hy, C0, Beta, dt):  # good
-    bphi0 = fft_filtered(b * phi0)
+def r_fun(phi, phi0, r0, b, hx, hy, C0, Beta, dt, gamma0):  # good
+    bphi0 = np.fft.fft2(b * phi0)
     bphi0 = hx * hy * bphi0[0, 0]
 
-    bphi = fft_filtered(b * phi)
+    bphi = np.fft.fft2(b * phi)
     bphi = hx * hy * bphi[0, 0]
 
-    e1 = fft_filtered(f(phi0))
+    e1 = np.fft.fft2(f_SAV(phi0, gamma0))
 
     r = r0 + (1 / 2) * (bphi - bphi0) - Beta * dt * \
         r0 * (r0 - np.sqrt(e1[0, 0] * hx * hy + C0))
 
     return r
 
-# %%
+
+def calculate_discrete_energy_sav(phi, h2, epsilon2, k2, gamma0, r, C0):
+
+    E_gamma = h2 * np.fft.fft2(gamma0 / 2 * phi ** 2)
+    E_gamma = E_gamma[1, 1]
+
+    gridx, gridy = phi.shape
+    a = r ** 2 - C0 - (gamma0 ** 2 + 2 * gamma0) / 4
+
+    a = h2 * np.sum(f_SAV(phi, gamma0))
+    sum_i = np.sum((phi[1:, :] - phi[0:-1, :]) ** 2)
+
+    b = (epsilon2 / 2) * sum_i
+    sum_j = np.sum((phi[:, 2:] - phi[:, 1:-1]) ** 2)
+
+    c = (epsilon2 / 2) * sum_j
+    E = a + b + c + E_gamma
+
+    return E
+
+
+def ch_r_error(r, phi, h2, C0, gamma0):
+    e1 = np.fft.fft2(f_SAV(phi, gamma0))
+    D = r - np.sqrt(h2 * e1[0, 0] + C0)
+    D = D / np.sqrt(h2 * e1[0, 0] + C0)
+    return D

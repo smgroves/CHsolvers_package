@@ -204,13 +204,13 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
         mass_t(1) = sum(sum(phi0))/(h2*nx*ny);
 
         % mass_t(1) = ch_mass(phi_old_out,h2);
-        if strcmpi(boundary,'neumann')
+        % if strcmpi(boundary,'neumann')
             % E_t(1) = ch_discrete_energy_sav(phi_old_out,h2,epsilon2,k2_od,gamma0,r_old,C0);
-            E_t(1) = ch_discrete_energy(phi_old_out,h2,epsilon2);
-        elseif strcmpi(boundary,'periodic')
+            % E_t(1) = ch_discrete_energy(phi_old_out,h2,epsilon2);
+        % elseif strcmpi(boundary,'periodic')
             % E_t(1) = ch_discrete_energy_sav(phi_old_out,h2,epsilon2,k2,gamma0,r_old,C0);
-            E_t(1) = ch_discrete_energy(phi_old_out,h2,epsilon2);
-        end
+        E_t(1) = ch_discrete_energy(phi_old_out,h2,epsilon2);
+        % end
         D_t(1) = ch_r_error(r_old,phi_old,h2,C0,gamma0);
 
 %% Run SAV solver
@@ -232,13 +232,13 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
             % mass = ch_mass(phi_new_out,h2);
             mass = sum(sum(phi_new_out))/(h2*nx*ny);
 
-            if strcmpi(boundary,'neumann')
+            % if strcmpi(boundary,'neumann')
                 % E = ch_discrete_energy_sav(phi_new_out,h2,epsilon2,k2_od,gamma0,r_new,C0);
-                E = ch_discrete_energy(phi_new_out,h2,epsilon2);
-            elseif strcmpi(boundary,'periodic')
+                % E = ch_discrete_energy(phi_new_out,h2,epsilon2);
+            % elseif strcmpi(boundary,'periodic')
                 % E = ch_discrete_energy_sav(phi_new_out,h2,epsilon2,k2,gamma0,r_new,C0);
-                E = ch_discrete_energy(phi_new_out,h2,epsilon2);
-            end
+            E = ch_discrete_energy(phi_new_out,h2,epsilon2);
+            % end
             D = ch_r_error(r_new,phi_new,h2,C0,gamma0);
 
         % Store data according to the output specifications

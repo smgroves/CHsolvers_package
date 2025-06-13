@@ -6,7 +6,7 @@ from . import SAV_solver as solver
 
 
 @time_and_mem
-def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=np.nan, boundary="periodic", domain=[1, 0, 1, 0], printres=False, printphi=False, pathname="cd", C0=0, Beta=0, gamma0=0):
+def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=np.nan, boundary="periodic", domain=[1, 0, 1, 0], printres=False, printphi=False, pathname="cd", C0=0, Beta=0, gamma0=2, eta=0.95, xi_flag=1, Mob=1):
     """
     This function uses the nonlinear multigrid method to solve the Cahn-Hilliard equation for a specified number of time steps of size dt.
 
@@ -76,12 +76,23 @@ def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=np.nan
     k2 = kxx_mat + kyy_mat
     k4 = k2**2
 
+    # Spectral stuff for original domain for Neumann bc to calculate energy
+    if boundary == "neumann":
+        k_x_od = compute_kx(nx/2, Lx/2)
+        k_y_od = compute_kx(ny/2, Ly/2)
+        k_xx_od = k_x_od ** 2
+        k_yy_od = k_y_od ** 2
+        kxx_od, kyy_od = meshgrid(k_xx_od, k_yy_od)
+        k2_od = kxx_od + kyy_od
+
+    # Initialization
     if boundary == "neumann":
         phi_old = ext(phi0)
     elif boundary == "periodic":
         phi_old = phi0.copy()
 
-    r_old = r0_fun(phi_old, hx, hy, C0)  # Initialize sav state
+    phi_prev = phi_old
+    r_old = r0_fun(phi_old, hx, hy, C0, gamma0)  # Initialize sav state
 
     # Logical index for the need to downsample
     downsampled = nx * ny * t_iter / dt_out > 1e9
@@ -90,6 +101,8 @@ def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=np.nan
     if printphi:
         mass_t = np.zeros(int(n_timesteps + 1))
         E_t = np.zeros(int(n_timesteps + 1))
+        D_t = np.zeros(int(n_timesteps + 1))
+
         t_out = np.arange(0, (int(n_timesteps+1))*dt*dt_out, dt_out*dt)
         if pathname == "cd":
             pathname = os.pwd()
@@ -118,6 +131,8 @@ def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=np.nan
 
         mass_t = np.zeros(int(n_timesteps + 1))
         E_t = np.zeros(int(n_timesteps + 1))
+        D_t = np.zeros(int(n_timesteps + 1))
+
         t_out = np.arange(0, (int(n_timesteps+1))*dt*dt_out, dt_out*dt)
 
         if boundary == "neumann":
@@ -129,15 +144,16 @@ def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=np.nan
             phi_old_out = phi_old
             phi_t[:, :, 1] = phi_old_out
 
-    mass_t[1] = calculate_mass(phi0, h2, nx, ny)
-    E_t[1] = calculate_discrete_energy(phi0, h2, nx, ny, epsilon2)
+    mass_t[0] = calculate_mass(phi_old_out, h2, nx, ny)
+    E_t[0] = calculate_discrete_energy(phi_old_out, h2, epsilon2)
+    D_t[0] = ch_r_error(r_old, phi_old, h2, C0, gamma0)
     if printres:
         print(
             "Saving squared residuals per iteration to file in the output directory\n")
 
     for it in range(t_iter):
         phi_new, r_new = solver.sav_solver(
-            phi_old, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0)
+            phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag, Mob, it)
         if boundary == "neumann":
             phi_new_out = extback(phi_new)
         else:
@@ -161,11 +177,12 @@ def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=1, m=4, epsilon2=np.nan
 
             mass_t[t_index] = calculate_mass(phi_new_out, h2, nx, ny)
             E_t[t_index] = calculate_discrete_energy(
-                phi_new_out, h2, nx, ny, epsilon2)
-
+                phi_new_out, h2, epsilon2)
+            D_t[t_index] = ch_r_error(r_new, phi_new, h2, C0, gamma0)
+        phi_prev = phi_old.copy()
         phi_old = (phi_new).copy()
         r_old = (r_new).copy()
 
-    delta_mass_t = mass_t - mass_t[1]
-    E_t = E_t / E_t[1]
+    delta_mass_t = mass_t  # - mass_t[1]
+    # E_t = E_t / E_t[1]
     return t_out, phi_t, delta_mass_t, E_t
