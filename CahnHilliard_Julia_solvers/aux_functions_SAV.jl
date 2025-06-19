@@ -21,7 +21,7 @@ end
 
 function f_SAV(phi, gamma0) #good
     # f = @(x) 0.25*(x.^2-1).^2
-    fphi = (phi .^ 2 .- 1 - gamma0) .^ 2 ./ 4
+    fphi = (phi .^ 2 .- 1 .- gamma0) .^ 2 ./ 4
     return fphi
 end
 
@@ -71,7 +71,9 @@ function A_inv_CN(phi, dt, k2, k4, gamma0, epsilon2, Mob, boundary) #good
 end
 
 function fft_filtered(x)
-    return real(fft(x))
+    return (fft(x))
+
+    # return real(fft(x))
 end
 
 function b_fun(phi, hx, hy, C0, gamma0) #good

@@ -185,6 +185,7 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
             else
                 phi_t[:, :, t_index] = phi_new_out
             end
+            println("Saving time step ", t_index, " of ", n_timesteps + 1, " to file")
             mass_t[t_index] = calculate_mass(phi_new_out, h2, nx, ny)
             # if boundary == "neumann"
             #     E = calculate_discrete_energy(phi_new_out, h2, epsilon2)

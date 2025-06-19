@@ -37,7 +37,7 @@ function sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boun
         phi_bar = A_inv_CN(phi0 + dt / 2 * Lap_dfphi0, dt, k2, k4, gamma0, epsilon2, Mob, boundary)
     elseif i >= 2
         phi_bar = 1.5 * phi_old - 0.5 * phi_prev
-        phi_bar = max(-1, min(1, phi_bar))
+        phi_bar = max.(-1, min.(1, real.(phi_bar)))
     end
 
 
@@ -61,54 +61,54 @@ function sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boun
 
 
     # Calculate a, b, c
-        # Q_phi_new
-            E1_new = fft(f_SAV(phi_new, gamma0))
-            E1_new = E1_new[1,1]*hx*hy
-            Q_phi_new = sqrt(E1_new+C0)
-        # q_tilde
-            q_tilde = r_new
-        # mu_half and Lap_mu_half
-            phi_half = (phi_new + phi_old) / 2
-            r_half   = (r_new + r_old) / 2 
-            mu_half = Lap_SAV(phi_half, k2, boundary) + r_half .* b
-            Lap_mu_half = Lap_SAV(mu_half, k2, boundary)
-        # muGmu_half
-            muGmu_half = fft(mu_half .* (-Lap_mu_half))
-            muGmu_half = muGmu_half[1,1]*hx*hy
-        # a, b, c
-            a = (q_tilde - Q_phi_new)^2
-            b = 2 * (q_tilde - Q_phi_new) * Q_phi_new
-            c = Q_phi_new^2 - q_tilde^2 - dt * eta * muGmu_half
+    # Q_phi_new
+    E1_new = fft(f_SAV(phi_new, gamma0))
+    E1_new = E1_new[1, 1] * hx * hy
+    Q_phi_new = sqrt(E1_new + C0)
+    # q_tilde
+    q_tilde = r_new
+    # mu_half and Lap_mu_half
+    phi_half = (phi_new + phi_old) / 2
+    r_half = (r_new + r_old) / 2
+    mu_half = Lap_SAV(phi_half, k2, boundary) + r_half .* b
+    Lap_mu_half = Lap_SAV(mu_half, k2, boundary)
+    # muGmu_half
+    muGmu_half = fft(mu_half .* (-Lap_mu_half))
+    muGmu_half = muGmu_half[1, 1] * hx * hy
+    # a, b, c
+    a = (q_tilde - Q_phi_new)^2
+    b = 2 * (q_tilde - Q_phi_new) * Q_phi_new
+    c = Q_phi_new^2 - q_tilde^2 - dt * eta * muGmu_half
 
     # Calculate relaxation parameter xi based on xi_flag
-        if xi_flag == 0
-            xi = 1 # No relaxation when xi_flag is 1
-        elseif xi_flag == 1
-            if a > 0
-                discriminant = b^2 - 4 * a * c # Calculate discriminant
-                if discriminant >= 0
-                    xi = (-b - sqrt(discriminant)) / (2 * a)
-                    xi = max(0, min(xi, 1)) # Restrict xi to the range [0,1]
-                else
-                    xi = 1 # When discriminant < 0, choose xi = 1
-                end
+    if xi_flag == 0
+        xi = 1 # No relaxation when xi_flag is 1
+    elseif xi_flag == 1
+        if real(a) > 0 #in Julia, a should be real (i.e. 0im) but is a complex number variable so need to compare only the real part
+            discriminant = b^2 - 4 * a * c # Calculate discriminant
+            if real(discriminant) >= 0
+                xi = real((-b - sqrt(discriminant)) / (2 * a))
+                xi = max(0, min(xi, 1)) # Restrict xi to the range [0,1]
             else
-                # Special case when a = 0
-                if b ~= 0
-                    xi = -c / b
-                    xi = max(0, min(xi, 1)) # Restrict xi to the range [0,1]
+                xi = 1 # When discriminant < 0, choose xi = 1
+            end
+        else
+            # Special case when a = 0
+            if real(b) != 0
+                xi = real(-c / b)
+                xi = max(0, min(xi, 1)) # Restrict xi to the range [0,1]
+            else
+                if real(c) <= 0
+                    xi = 1 # When c <= 0, choose xi = 1
                 else
-                    if c <= 0
-                        xi = 1 # When c <= 0, choose xi = 1
-                    else
-                        xi = 0 # When c > 0, no solution, choose xi = 0
-                    end
+                    xi = 0 # When c > 0, no solution, choose xi = 0
                 end
             end
         end
-    
+    end
+
     # Update r_new
-        r_new = xi * q_tilde + (1 - xi) * Q_phi_new
+    r_new = xi * q_tilde + (1 - xi) * Q_phi_new
 
     return phi_new, r_new
 end

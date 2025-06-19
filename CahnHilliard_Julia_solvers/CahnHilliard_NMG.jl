@@ -111,7 +111,7 @@ function CahnHilliard_NMG(phi0; t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5
     end
 
     mass_t[1] = calculate_mass(phi0, h2, nx, ny)
-    E_t[1] = calculate_discrete_energy(phi0, h2, nx, ny, epsilon2)
+    E_t[1] = calculate_discrete_energy(phi0, h2, epsilon2)
     if printres
         println("Saving squared residuals per iteration to file in the output directory\n")
     end
@@ -132,7 +132,7 @@ function CahnHilliard_NMG(phi0; t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5
                 phi_t[:, :, t_index] = phi_old
             end
             mass_t[t_index] = calculate_mass(phi_new, h2, nx, ny)
-            E_t[t_index] = calculate_discrete_energy(phi_new, h2, nx, ny, epsilon2)
+            E_t[t_index] = calculate_discrete_energy(phi_new, h2, epsilon2)
         end
     end
     delta_mass_t = mass_t #.- mass_t[1]

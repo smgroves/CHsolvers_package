@@ -129,7 +129,6 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
 
     hx = Lx/nx; hy = Ly/ny;
     h2 = hx*hy; % Define mesh size
-
     if isnan(epsilon2)
         epsilon2 = h2*m^2/(2*sqrt(2)*atanh(0.9))^2; % Define ϵ^2 if not prespecified
     else
@@ -201,7 +200,8 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
             D_t = zeros(n_timesteps+1,1);
             phi_t(:,:,1) = phi_old_out;
         end
-        mass_t(1) = sum(sum(phi0))/(h2*nx*ny);
+
+        mass_t(1) = sum(sum(phi0))/(h2*nx*ny/4); % divide by 4 because nx and ny are doubled, but h2 = 2Lx/2nx * 2Ly/2ny, so it didn't change.  
 
         % mass_t(1) = ch_mass(phi_old_out,h2);
         % if strcmpi(boundary,'neumann')
@@ -229,8 +229,8 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
             end
 
         % Calculate mass and energy according to the phi_new_out
-            % mass = ch_mass(phi_new_out,h2);
-            mass = sum(sum(phi_new_out))/(h2*nx*ny);
+            mass = ch_mass(phi_new_out,h2);
+            % mass = sum(sum(phi_new_out))/(h2*nx*ny);
 
             % if strcmpi(boundary,'neumann')
                 % E = ch_discrete_energy_sav(phi_new_out,h2,epsilon2,k2_od,gamma0,r_new,C0);
@@ -284,10 +284,10 @@ end
 
 % Local function for calculating mass across the domain
     function mass = ch_mass(phi,h2)
-        % [nx,ny] = size(phi);
-        % mass = sum(sum(phi))/(h2*nx*ny);
-        mass = fft2(phi);
-        mass = mass(1,1)*h2;
+        [nx,ny] = size(phi);
+        mass = sum(sum(phi))/(h2*nx*ny);
+        % mass = fft2(phi);
+        % mass = mass(1,1)*h2;
     end
 
 % Local function for "flip" extension
