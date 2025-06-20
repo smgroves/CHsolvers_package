@@ -205,8 +205,11 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
             phi_t(:,:,1) = phi_old_out;
         end
 
-        mass_t(1) = sum(sum(phi0))/(h2*nx*ny/4); % divide by 4 because nx and ny are doubled, but h2 = 2Lx/2nx * 2Ly/2ny, so it didn't change.  
-
+        if strcmpi(boundary,'neumann')
+            mass_t(1) = sum(sum(phi0))/(h2*nx*ny/4); % divide by 4 because nx and ny are doubled, but h2 = 2Lx/2nx * 2Ly/2ny, so it didn't change.  
+        elseif strcmpi(boundary,'periodic')
+            mass_t(1) = sum(sum(phi0))/(h2*nx*ny); % divide by 1 because h2 = Lx/nx * Ly/ny, so it didn't change.
+        end
         % mass_t(1) = ch_mass(phi_old_out,h2);
         % if strcmpi(boundary,'neumann')
             % E_t(1) = ch_discrete_energy_sav(phi_old_out,h2,epsilon2,k2_od,gamma0,r_old,C0);

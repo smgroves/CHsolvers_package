@@ -21,7 +21,8 @@ dt = 5.5e-6
 max_it = 2000
 
 
-for n_relax = [2, 4, 8, 16]
+for n_relax = [0, 2, 4, 8, 16]
+    println(n_relax)
     if n_relax == 0
         phi0 = initialization_from_file("$(indir)initial_phi_$(GridSize)_50p.csv", GridSize, GridSize, delim=',', transpose_matrix=false)
     else
@@ -32,6 +33,7 @@ for n_relax = [2, 4, 8, 16]
     # SAV
     ########
     method = "SAV"
+    println(method)
     pathname = @sprintf("%s%s_SAV_%d_dt_%.2e_Nx_%d_n_relax_%d_", outdir, method, max_it, dt, GridSize, n_relax)
 
     date_time = now()
@@ -59,6 +61,8 @@ for n_relax = [2, 4, 8, 16]
     # NMG
     ################
     method = "NMG"
+    println(method)
+
     pathname = @sprintf("%s%s_Julia_%d_dt_%.2e_Nx_%d_n_relax_%d_", outdir, method, max_it, dt, GridSize, n_relax)
     date_time = now()
     result, elapsed_time, mem_allocated, gc_time, memory_counters = @timed CahnHilliard_NMG(phi0; t_iter=max_it, dt=dt, dt_out=dt_out, m=m, boundary=boundary, printphi=printphi, pathname=pathname)
