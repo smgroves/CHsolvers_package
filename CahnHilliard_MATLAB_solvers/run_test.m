@@ -1,6 +1,6 @@
 % FIGURE 1
 indir = "../IC/";
-boundary = 'periodic';
+boundary = 'neumann';
 
 outdir = sprintf("../output/output_MATLAB-%s", boundary);
 

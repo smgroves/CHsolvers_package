@@ -19,19 +19,6 @@ function ext(x) #good
     return x_ext
 end
 
-function f_SAV(phi, gamma0) #good
-    # f = @(x) 0.25*(x.^2-1).^2
-    fphi = (phi .^ 2 .- 1 .- gamma0) .^ 2 ./ 4
-    return fphi
-end
-
-function r0_fun(phi0, hx, hy, C0, gamma0) #good
-    # fphi = f_SAV(phi0, gamma0)
-    E1 = fft(f_SAV(phi0, gamma0))
-    r0 = sqrt(hx * hy * E1[1, 1] + C0)
-    return r0
-end
-
 function extback(x_ext) #good
     # Shrinks from 2*nx x 2*ny back to nx x ny (upper-left block)
     nx_ext, ny_ext = size(x_ext)
@@ -42,6 +29,22 @@ function extback(x_ext) #good
     return x_back
 end
 
+
+function f_SAV(phi, gamma0) #good
+    # f = @(x) 0.25*(x.^2-1).^2
+    fphi = (phi .^ 2 .- 1 .- gamma0) .^ 2 ./ 4
+    return fphi
+end
+
+function r0_fun(phi0, hx, hy, C0, gamma0) #good
+    # fphi = f_SAV(phi0, gamma0)
+    E1 = fft(f_SAV(phi0, gamma0))
+    tmp = imag(E1[1, 1]) == 0 ? real(E1[1, 1]) : E1[1, 1]
+    r0 = sqrt(hx * hy * tmp + C0)
+    return r0
+end
+
+
 function df(phi, gamma0) #good
     return phi .^ 3 .- (1 .+ gamma0) .* phi
 end
@@ -50,7 +53,7 @@ function Lap_SAV(phi, k2, boundary)
     if boundary == "periodic"
         Lphi = real(ifft(k2 .* fft(phi)))
     elseif boundary == "neumann"
-        Lphi = real(ifft(k2 .* fft_filtered(fft(phi))))
+        Lphi = real(ifft(k2 .* fft_filtered(phi)))
     else
         error("Boundary condition not recognized. Use 'periodic' or 'neumann'.")
     end
@@ -141,7 +144,9 @@ end
 
 function ch_r_error(r, phi, h2, C0, gamma0) #need to check if this needs to be vectorized
     E1 = fft(f_SAV(phi, gamma0))
-    D = r - sqrt(h2 * E1[1, 1] + C0)
-    D = D / sqrt(h2 * E1[1, 1] + C0)
+    tmp = imag(E1[1, 1]) == 0 ? real(E1[1, 1]) : E1[1, 1]
+
+    D = r - sqrt(h2 * tmp + C0)
+    D = D / sqrt(h2 * tmp + C0)
     return D
 end

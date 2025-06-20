@@ -9,8 +9,8 @@ import Random
 using FFTW
 include("sav_solver.jl")
 include("ch_initialization.jl")
-include("aux_functions_NMG.jl")
 include("aux_functions_SAV.jl")
+
 
 Random.seed!(1234) #note that when using a random seed, you must RESTART the REPL or run in a new instance for the runs to be the same. 
 
@@ -79,11 +79,11 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
         m = sqrt((epsilon2 * (2 * sqrt(2) * atanh(0.9))^2) / h2) #Else overwrite m
     end
 
-    kx = 1im * vcat(0:nx/2, -nx/2+1:-1) * (2 * pi / Lx)
-    ky = 1im * vcat(0:ny/2, -ny/2+1:-1) * (2 * pi / Ly)
+    kx = 1im * vcat(0:nx÷2, -nx÷2+1:-1) * (2 * pi / Lx)
+    ky = 1im * vcat(0:ny÷2, -ny÷2+1:-1) * (2 * pi / Ly)
 
-    kxx = kx .^ 2
-    kyy = ky .^ 2
+    kxx = real(kx .^ 2)
+    kyy = real(ky .^ 2)
     meshgrid(x, y) = (repeat(x, 1, length(y)), repeat(y', length(x), 1))
     kxx_mat, kyy_mat = meshgrid(kxx, kyy)
 
@@ -92,12 +92,12 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
 
     # Spectral stuff for original domain for Neumann bc to calculate energy
     if boundary == "neumann"
-        k_x_od = 1im * vcat(0:(nx/2)/2, -(nx / 2)/2+1:-1) * (2 * pi / (Lx / 2))
-        k_y_od = 1im * vcat(0:(ny/2)/2, -(ny / 2)/2+1:-1) * (2 * pi / (Ly / 2))
-        k_xx_od = k_x_od .^ 2
-        k_yy_od = k_y_od .^ 2
+        k_x_od = 1im * vcat(0:(nx÷2)/2, -(nx ÷ 2)/2+1:-1) * (2 * pi / (Lx / 2))
+        k_y_od = 1im * vcat(0:(ny÷2)/2, -(ny ÷ 2)/2+1:-1) * (2 * pi / (Ly / 2))
+        k_xx_od = real(k_x_od .^ 2)
+        k_yy_od = real(k_y_od .^ 2)
         (kxx_od, kyy_od) = meshgrid(k_xx_od, k_yy_od)
-        k2_od = kxx_od + kyy_od
+        k2_od = real(kxx_od + kyy_od)
     end
 
     # Initialization
@@ -144,7 +144,7 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
         D_t = zeros(Float64, n_timesteps + 1, 1)
         t_out = 0:dt_out*dt:(n_timesteps)*dt*dt_out
         if boundary == "neumann"
-            phi_t = zeros(Float64, nx / 2, ny / 2, n_timesteps + 1)
+            phi_t = zeros(Float64, nx ÷ 2, ny ÷ 2, n_timesteps + 1)
             phi_old_out = extback(phi_old)
             phi_t[:, :, 1] = phi_old_out
         else
@@ -154,7 +154,7 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
         end
     end
 
-    mass_t[1] = calculate_mass(phi_old_out, h2, nx, ny)
+    mass_t[1] = calculate_mass(phi0, h2, nx / 2, ny / 2)
     # if boundary == "neumann"
     # E_t[1] = calculate_discrete_energy(phi_old_out, h2, epsilon2)
     # elseif boundary == "periodic"
@@ -185,13 +185,7 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
             else
                 phi_t[:, :, t_index] = phi_new_out
             end
-            println("Saving time step ", t_index, " of ", n_timesteps + 1, " to file")
-            mass_t[t_index] = calculate_mass(phi_new_out, h2, nx, ny)
-            # if boundary == "neumann"
-            #     E = calculate_discrete_energy(phi_new_out, h2, epsilon2)
-            # elseif boundary == "periodic"
-            #     E = calculate_discrete_energy(phi_new_out, h2, epsilon2)
-            # end
+            mass_t[t_index] = calculate_mass(phi_new_out, h2, nx / 2, ny / 2)
             E_t[t_index] = calculate_discrete_energy(phi_new_out, h2, epsilon2)
             D_t[t_index] = ch_r_error(r_new, phi_new, h2, C0, gamma0)
 

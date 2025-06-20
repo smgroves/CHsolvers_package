@@ -136,16 +136,20 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
         display(m);
     end
 
-    k_x = 1i*[0:nx/2 -nx/2+1:-1]*(2*pi/Lx); k_y = 1i*[0:ny/2 -ny/2+1:-1]*(2*pi/Ly);
-    k_xx = k_x.^2; k_yy = k_y.^2;
+    k_x = 1i*[0:nx/2 -nx/2+1:-1]*(2*pi/Lx); 
+    k_y = 1i*[0:ny/2 -ny/2+1:-1]*(2*pi/Ly);
+    k_xx = k_x.^2; 
+    k_yy = k_y.^2;
     [kxx,kyy] = meshgrid(k_xx,k_yy);
     k2 = kxx + kyy;
     k4 = k2.^2;
 
     % Spectral stuff for original domain for Neumann bc to calculate energy
         if strcmpi(boundary,'neumann')
-                k_x_od = 1i*[0:(nx/2)/2 -(nx/2)/2+1:-1]*(2*pi/(Lx/2)); k_y_od = 1i*[0:(ny/2)/2 -(ny/2)/2+1:-1]*(2*pi/(Ly/2));
-                k_xx_od = k_x_od.^2; k_yy_od = k_y_od.^2;
+                k_x_od = 1i*[0:(nx/2)/2 -(nx/2)/2+1:-1]*(2*pi/(Lx/2)); 
+                k_y_od = 1i*[0:(ny/2)/2 -(ny/2)/2+1:-1]*(2*pi/(Ly/2));
+                k_xx_od = k_x_od.^2; 
+                k_yy_od = k_y_od.^2;
                 [kxx_od,kyy_od] = meshgrid(k_xx_od,k_yy_od);
                 k2_od = kxx_od + kyy_od;
         end
@@ -290,30 +294,3 @@ end
         % mass = mass(1,1)*h2;
     end
 
-% Local function for "flip" extension
-    function x_ext = ext(x)
-        % Mirroring extension: takes x(nx, ny) -> x_ext(2*nx, 2*ny)
-            [nx, ny] = size(x);
-            x_ext = zeros(2*nx, 2*ny);
-        
-            % Original block
-            x_ext(1:nx, 1:ny) = x;
-        
-            % Flip horizontally
-            x_ext(1:nx, ny+1:2*ny) = x(:, end:-1:1);
-        
-            % Flip vertically
-            x_ext(nx+1:2*nx, 1:ny) = x(end:-1:1, :);
-        
-            % Flip both
-            x_ext(nx+1:2*nx, ny+1:2*ny) = x(end:-1:1, end:-1:1);
-        end
-
-% Local function for "flip" extension back
-    function x_back = extback(x_ext)
-        % Shrinks from 2*nx x 2*ny back to nx x ny (upper-left block)
-            [nx_ext, ny_ext] = size(x_ext);
-            nx = nx_ext/2;
-            ny = ny_ext/2;
-            x_back = x_ext(1:nx, 1:ny);
-    end
