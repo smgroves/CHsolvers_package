@@ -75,7 +75,7 @@ function prolong_ch(uc, vc, nxc, nyc)
     return uf, vf
 end
 
-function vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level, boundary)
+function vcycle!(uf_new, wf_new, su, sw, nxf, nyf, ilevel, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level, boundary)
     relax!(uf_new, wf_new, su, sw, nxf, nyf, c_relax, xright, xleft, yright, yleft, dt, epsilon2, boundary)
 
     if ilevel < n_level
@@ -89,7 +89,8 @@ function vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel, c_relax, xright, xleft
         uc_def = copy(uc_new)
         wc_def = copy(wc_new)
 
-        uc_def, wc_def = vcycle(uc_def, wc_def, duc, dwc, nxc, nyc, ilevel + 1, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level, boundary)
+        # uc_def, wc_def = 
+        vcycle!(uc_def, wc_def, duc, dwc, nxc, nyc, ilevel + 1, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level, boundary)
 
 
         uc_def = uc_def - uc_new
@@ -103,7 +104,7 @@ function vcycle(uf_new, wf_new, su, sw, nxf, nyf, ilevel, c_relax, xright, xleft
         relax!(uf_new, wf_new, su, sw, nxf, nyf, c_relax, xright, xleft, yright, yleft, dt, epsilon2, boundary)
 
     end
-    return uf_new, wf_new
+    # return uf_new, wf_new
 end
 
 
@@ -113,8 +114,8 @@ function nmg_solver!(rr, c_old, c_new, mu, nx, ny, dt, solver_iter, tol, c_relax
     sc, smu = source(c_old, nx, ny, dt, xright, xleft, yright, yleft, boundary)
 
     while resid2 > tol && it_mg2 < solver_iter
-
-        c_new, mu = vcycle(c_new, mu, sc, smu, nx, ny, 1, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level, boundary)
+        # c_new, mu = 
+        vcycle!(c_new, mu, sc, smu, nx, ny, 1, c_relax, xright, xleft, yright, yleft, dt, epsilon2, n_level, boundary)
 
         resid2 = error2!(rr, c_old, c_new, mu, nx, ny, dt, xright, xleft, yright, yleft, boundary)
         if printres

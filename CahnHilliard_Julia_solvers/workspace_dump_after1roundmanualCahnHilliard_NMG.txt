@@ -1,0 +1,821 @@
+=== Julia Workspace Dump ===
+
+Variable: ##CahnHilliard_NMG#13
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##CahnHilliard_SAV#29
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##ch_initialization#10
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##ch_initialization#26
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##initialization_from_file#25
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##initialization_from_file#9
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##initialization_from_function#24
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##initialization_from_function#8
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##initialize_geometric_CPC#18
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##initialize_geometric_CPC#2
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##initialize_round_CPC#19
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##initialize_round_CPC#3
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: ##meta#59
+Type: IdDict{Any, Any}
+(Custom type or structure)
+----------------------------------------
+Variable: ##nmg_solver!#1
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #11#12
+Type: UnionAll
+(Custom type or structure)
+----------------------------------------
+Variable: #14#16
+Type: UnionAll
+(Custom type or structure)
+----------------------------------------
+Variable: #15#17
+Type: UnionAll
+(Custom type or structure)
+----------------------------------------
+Variable: #20#22
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #21#23
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #27#28
+Type: UnionAll
+(Custom type or structure)
+----------------------------------------
+Variable: #30#33
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #31#34
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #35#37
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #36#38
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #39#41
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #4#6
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #40#42
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #43#45
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #44#46
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #5#7
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #A_inv_CN
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #CahnHilliard_NMG
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #CahnHilliard_NMG#13
+Type: var"##CahnHilliard_NMG#13"
+(Custom type or structure)
+----------------------------------------
+Variable: #CahnHilliard_SAV
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #CahnHilliard_SAV#29
+Type: var"##CahnHilliard_SAV#29"
+(Custom type or structure)
+----------------------------------------
+Variable: #Lap_SAV
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #b_fun
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #calculate_discrete_energy
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #calculate_discrete_energy_sav
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #calculate_discrete_norm_energy
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #calculate_mass
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #ch_initialization
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #ch_initialization#10
+Type: var"##ch_initialization#10"
+(Custom type or structure)
+----------------------------------------
+Variable: #ch_initialization#26
+Type: var"##ch_initialization#26"
+(Custom type or structure)
+----------------------------------------
+Variable: #ch_modified_energy
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #ch_r_error
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #convert_matrix
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #defect!
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #df
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #error2!
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #eval
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #ext
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #extback
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #f
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #f_SAV
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #fft_filtered
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #g_fun_CN
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #include
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #initialization_from_file
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #initialization_from_file#25
+Type: var"##initialization_from_file#25"
+(Custom type or structure)
+----------------------------------------
+Variable: #initialization_from_file#9
+Type: var"##initialization_from_file#9"
+(Custom type or structure)
+----------------------------------------
+Variable: #initialization_from_function
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #initialization_from_function#24
+Type: var"##initialization_from_function#24"
+(Custom type or structure)
+----------------------------------------
+Variable: #initialization_from_function#8
+Type: var"##initialization_from_function#8"
+(Custom type or structure)
+----------------------------------------
+Variable: #initialization_random
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #initialization_spinodal
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #initialize_geometric_CPC
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #initialize_geometric_CPC#18
+Type: var"##initialize_geometric_CPC#18"
+(Custom type or structure)
+----------------------------------------
+Variable: #initialize_geometric_CPC#2
+Type: var"##initialize_geometric_CPC#2"
+(Custom type or structure)
+----------------------------------------
+Variable: #initialize_round_CPC
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #initialize_round_CPC#19
+Type: var"##initialize_round_CPC#19"
+(Custom type or structure)
+----------------------------------------
+Variable: #initialize_round_CPC#3
+Type: var"##initialize_round_CPC#3"
+(Custom type or structure)
+----------------------------------------
+Variable: #laplace!
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #meshgrid
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #meshgrid#32
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #nmg_solver!
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #nmg_solver!#1
+Type: var"##nmg_solver!#1"
+(Custom type or structure)
+----------------------------------------
+Variable: #nonL!
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #print_mat
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #prolong_ch
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #r0_fun
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #r_fun
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #relax!
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #restrict_ch
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #sav_solver
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #source
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: #vcycle
+Type: DataType
+(Custom type or structure)
+----------------------------------------
+Variable: A_inv_CN
+Type: typeof(A_inv_CN)
+(Custom type or structure)
+----------------------------------------
+Variable: CahnHilliard_NMG
+Type: typeof(CahnHilliard_NMG)
+(Custom type or structure)
+----------------------------------------
+Variable: CahnHilliard_SAV
+Type: typeof(CahnHilliard_SAV)
+(Custom type or structure)
+----------------------------------------
+Variable: E_t
+Type: Matrix{Float64}
+Size: (101, 1)
+Preview (first 5x5 or 5 elements):
+5×1 Matrix{Float64}:
+ 0.5891271286818773
+ 0.32443132491495863
+ 0.0
+ 0.0
+ 0.0
+Sum of all elements: 0.913558453596836
+
+----------------------------------------
+Variable: GridSize
+Type: Int64
+Value: 128
+----------------------------------------
+Variable: Lap_SAV
+Type: typeof(Lap_SAV)
+(Custom type or structure)
+----------------------------------------
+Variable: b_fun
+Type: typeof(b_fun)
+(Custom type or structure)
+----------------------------------------
+Variable: boundary
+Type: String
+Value: periodic
+----------------------------------------
+Variable: c_new
+Type: Matrix{Float64}
+Size: (128, 128)
+Preview (first 5x5 or 5 elements):
+5×5 Matrix{Float64}:
+  0.214309    0.372189   0.413579   0.548303  0.533992
+ -0.107495    0.159791   0.342357   0.445849  0.38544
+ -0.343543   -0.155734   0.0923421  0.219639  0.223779
+ -0.253637   -0.204279   0.0374531  0.337123  0.462603
+ -0.0948493  -0.0585952  0.214399   0.548929  0.685178
+Sum of all elements: -6.058985500034495
+
+----------------------------------------
+Variable: c_old
+Type: Matrix{Float64}
+Size: (128, 128)
+Preview (first 5x5 or 5 elements):
+5×5 Matrix{Float64}:
+  0.514589    0.533137   0.242798  0.737747    0.772399
+ -0.18644     0.285199   0.487126  0.590296    0.441451
+ -0.438143   -0.314485   0.137033  0.0138601  -0.0714103
+  0.0727521  -0.377928  -0.140552  0.381956    0.546384
+  0.154125   -0.172713   0.231496  0.682843    0.819795
+Sum of all elements: -6.058985500505074
+
+----------------------------------------
+Variable: c_relax
+Type: Int64
+Value: 2
+----------------------------------------
+Variable: calculate_discrete_energy
+Type: typeof(calculate_discrete_energy)
+(Custom type or structure)
+----------------------------------------
+Variable: calculate_discrete_energy_sav
+Type: typeof(calculate_discrete_energy_sav)
+(Custom type or structure)
+----------------------------------------
+Variable: calculate_discrete_norm_energy
+Type: typeof(calculate_discrete_norm_energy)
+(Custom type or structure)
+----------------------------------------
+Variable: calculate_mass
+Type: typeof(calculate_mass)
+(Custom type or structure)
+----------------------------------------
+Variable: ch_initialization
+Type: typeof(ch_initialization)
+(Custom type or structure)
+----------------------------------------
+Variable: ch_modified_energy
+Type: typeof(ch_modified_energy)
+(Custom type or structure)
+----------------------------------------
+Variable: ch_r_error
+Type: typeof(ch_r_error)
+(Custom type or structure)
+----------------------------------------
+Variable: convert_matrix
+Type: typeof(convert_matrix)
+(Custom type or structure)
+----------------------------------------
+Variable: defect!
+Type: typeof(defect!)
+(Custom type or structure)
+----------------------------------------
+Variable: df
+Type: typeof(df)
+(Custom type or structure)
+----------------------------------------
+Variable: domain
+Type: Matrix{Int64}
+Size: (1, 4)
+Values:
+1×4 Matrix{Int64}:
+ 1  0  1  0
+----------------------------------------
+Variable: downsampled
+Type: Bool
+Value: false
+----------------------------------------
+Variable: dt
+Type: Float64
+Value: 5.5e-6
+----------------------------------------
+Variable: dt_out
+Type: Int64
+Value: 1
+----------------------------------------
+Variable: epsilon
+Type: Float64
+Value: 0.015009369912862116
+----------------------------------------
+Variable: epsilon2
+Type: Float64
+Value: 0.0002252811851811305
+----------------------------------------
+Variable: error2!
+Type: typeof(error2!)
+(Custom type or structure)
+----------------------------------------
+Variable: eval
+Type: typeof(eval)
+(Custom type or structure)
+----------------------------------------
+Variable: ext
+Type: typeof(ext)
+(Custom type or structure)
+----------------------------------------
+Variable: extback
+Type: typeof(extback)
+(Custom type or structure)
+----------------------------------------
+Variable: f
+Type: typeof(f)
+(Custom type or structure)
+----------------------------------------
+Variable: f_SAV
+Type: typeof(f_SAV)
+(Custom type or structure)
+----------------------------------------
+Variable: fft_filtered
+Type: typeof(fft_filtered)
+(Custom type or structure)
+----------------------------------------
+Variable: g_fun_CN
+Type: typeof(g_fun_CN)
+(Custom type or structure)
+----------------------------------------
+Variable: h
+Type: Float64
+Value: 0.0078125
+----------------------------------------
+Variable: h2
+Type: Float64
+Value: 6.103515625e-5
+----------------------------------------
+Variable: include
+Type: typeof(include)
+(Custom type or structure)
+----------------------------------------
+Variable: indir
+Type: String
+Value: ../IC/
+----------------------------------------
+Variable: init_file
+Type: String
+Value: ../IC//initial_phi_128_smooth_n_relax_4.csv
+----------------------------------------
+Variable: initialization_from_file
+Type: typeof(initialization_from_file)
+(Custom type or structure)
+----------------------------------------
+Variable: initialization_from_function
+Type: typeof(initialization_from_function)
+(Custom type or structure)
+----------------------------------------
+Variable: initialization_random
+Type: typeof(initialization_random)
+(Custom type or structure)
+----------------------------------------
+Variable: initialization_spinodal
+Type: typeof(initialization_spinodal)
+(Custom type or structure)
+----------------------------------------
+Variable: initialize_geometric_CPC
+Type: typeof(initialize_geometric_CPC)
+(Custom type or structure)
+----------------------------------------
+Variable: initialize_round_CPC
+Type: typeof(initialize_round_CPC)
+(Custom type or structure)
+----------------------------------------
+Variable: it_mg2
+Type: Int64
+Value: 7
+----------------------------------------
+Variable: laplace!
+Type: typeof(laplace!)
+(Custom type or structure)
+----------------------------------------
+Variable: m
+Type: Int64
+Value: 8
+----------------------------------------
+Variable: mass_t
+Type: Matrix{Float64}
+Size: (101, 1)
+Preview (first 5x5 or 5 elements):
+5×1 Matrix{Float64}:
+ -6.058985500505074
+ -6.058985500034495
+  0.0
+  0.0
+  0.0
+Sum of all elements: -12.117971000539569
+
+----------------------------------------
+Variable: max_it
+Type: Int64
+Value: 100
+----------------------------------------
+Variable: meshgrid
+Type: typeof(meshgrid)
+(Custom type or structure)
+----------------------------------------
+Variable: mu
+Type: Matrix{Float64}
+Size: (128, 128)
+Preview (first 5x5 or 5 elements):
+5×5 Matrix{Float64}:
+  1.6788     1.28245    0.0937449    1.48164    1.90817
+ -0.28613    0.697431   0.99191      1.15037    0.647354
+ -1.20911   -1.21165   -0.273627    -0.803399  -1.15741
+  0.250885  -1.43548   -1.0695       0.3331     0.87713
+  0.415387  -0.827922   0.00815714   1.40535    1.83189
+Sum of all elements: -4.6756278137811265
+
+----------------------------------------
+Variable: n_level
+Type: Int64
+Value: 7
+----------------------------------------
+Variable: n_relax
+Type: Int64
+Value: 4
+----------------------------------------
+Variable: n_timesteps
+Type: Int64
+Value: 100
+----------------------------------------
+Variable: nmg_solver!
+Type: typeof(nmg_solver!)
+(Custom type or structure)
+----------------------------------------
+Variable: nonL!
+Type: typeof(nonL!)
+(Custom type or structure)
+----------------------------------------
+Variable: nx
+Type: Int64
+Value: 128
+----------------------------------------
+Variable: ny
+Type: Int64
+Value: 128
+----------------------------------------
+Variable: output_file
+Type: String
+Value: workspace_dump.txt
+----------------------------------------
+Variable: phi0
+Type: Matrix{Float64}
+Size: (128, 128)
+Preview (first 5x5 or 5 elements):
+5×5 Matrix{Float64}:
+  0.514589    0.533137   0.242798  0.737747    0.772399
+ -0.18644     0.285199   0.487126  0.590296    0.441451
+ -0.438143   -0.314485   0.137033  0.0138601  -0.0714103
+  0.0727521  -0.377928  -0.140552  0.381956    0.546384
+  0.154125   -0.172713   0.231496  0.682843    0.819795
+Sum of all elements: -6.058985500505074
+
+----------------------------------------
+Variable: phi_new
+Type: Matrix{Float64}
+Size: (128, 128)
+Preview (first 5x5 or 5 elements):
+5×5 Matrix{Float64}:
+  0.214309    0.372189   0.413579   0.548303  0.533992
+ -0.107495    0.159791   0.342357   0.445849  0.38544
+ -0.343543   -0.155734   0.0923421  0.219639  0.223779
+ -0.253637   -0.204279   0.0374531  0.337123  0.462603
+ -0.0948493  -0.0585952  0.214399   0.548929  0.685178
+Sum of all elements: -6.058985500034495
+
+----------------------------------------
+Variable: phi_old
+Type: Matrix{Float64}
+Size: (128, 128)
+Preview (first 5x5 or 5 elements):
+5×5 Matrix{Float64}:
+  0.214309    0.372189   0.413579   0.548303  0.533992
+ -0.107495    0.159791   0.342357   0.445849  0.38544
+ -0.343543   -0.155734   0.0923421  0.219639  0.223779
+ -0.253637   -0.204279   0.0374531  0.337123  0.462603
+ -0.0948493  -0.0585952  0.214399   0.548929  0.685178
+Sum of all elements: -6.058985500034495
+
+----------------------------------------
+Variable: phi_t
+Type: Array{Float64, 3}
+Size: (128, 128, 101)
+Preview (first 5x5 or 5 elements):
+5-element Vector{Float64}:
+  0.5145894512797611
+ -0.18643963487453813
+ -0.43814314040629265
+  0.07275213843029958
+  0.15412485229722858
+Sum of all elements: -12.16603200872909
+
+----------------------------------------
+Variable: print_mat
+Type: typeof(print_mat)
+(Custom type or structure)
+----------------------------------------
+Variable: print_phi
+Type: Bool
+Value: true
+----------------------------------------
+Variable: printres
+Type: Bool
+Value: false
+----------------------------------------
+Variable: prolong_ch
+Type: typeof(prolong_ch)
+(Custom type or structure)
+----------------------------------------
+Variable: r0_fun
+Type: typeof(r0_fun)
+(Custom type or structure)
+----------------------------------------
+Variable: r_fun
+Type: typeof(r_fun)
+(Custom type or structure)
+----------------------------------------
+Variable: relax!
+Type: typeof(relax!)
+(Custom type or structure)
+----------------------------------------
+Variable: resid2
+Type: Float64
+Value: 6.8303575773015366e-6
+----------------------------------------
+Variable: restrict_ch
+Type: typeof(restrict_ch)
+(Custom type or structure)
+----------------------------------------
+Variable: rr
+Type: Matrix{Float64}
+Size: (128, 128)
+Preview (first 5x5 or 5 elements):
+5×5 Matrix{Float64}:
+ -2.49985e-5  -1.60984e-5  -4.7202e-7   -9.29387e-6   1.28051e-5
+ -1.59468e-5  -8.89486e-7  -3.1163e-6    5.44561e-6   8.49377e-6
+ -6.01311e-7  -9.68517e-7   6.65204e-6   6.5644e-6    7.95177e-6
+  2.20483e-7   5.90086e-6   6.04882e-6   6.37058e-6   8.4863e-6
+  7.89401e-6   5.22408e-6   5.58899e-6   6.81509e-6  -3.74874e-6
+Sum of all elements: -8.556146933003106e-5
+
+----------------------------------------
+Variable: sav_solver
+Type: typeof(sav_solver)
+(Custom type or structure)
+----------------------------------------
+Variable: sc
+Type: Matrix{Float64}
+Size: (128, 128)
+Preview (first 5x5 or 5 elements):
+5×5 Matrix{Float64}:
+      1.21465e5       1.13022e5   27185.7       1.54223e5  156667.0
+ -47988.3         62036.3         99925.3       1.18484e5   88038.8
+ -90042.4        -71336.5         33142.8  -13576.2        -32647.9
+  41008.3        -84388.9        -40870.1   76414.5             1.07981e5
+  49607.6        -44783.7         48065.6       1.33909e5       1.58471e5
+Sum of all elements: -1.1016337273645587e6
+
+----------------------------------------
+Variable: smu
+Type: Matrix{Float64}
+Size: (128, 128)
+Preview (first 5x5 or 5 elements):
+5×5 Matrix{Float64}:
+ 0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0
+ 0.0  0.0  0.0  0.0  0.0
+Sum of all elements: 0.0
+
+----------------------------------------
+Variable: solver_iter
+Type: Float64
+Value: 10000.0
+----------------------------------------
+Variable: source
+Type: typeof(source)
+(Custom type or structure)
+----------------------------------------
+Variable: t_index
+Type: Int64
+Value: 2
+----------------------------------------
+Variable: t_iter
+Type: Int64
+Value: 100
+----------------------------------------
+Variable: t_out
+Type: StepRangeLen{Float64, Base.TwicePrecision{Float64}, Base.TwicePrecision{Float64}, Int64}
+Size: (101,)
+Preview (first 5x5 or 5 elements):
+0.0:5.5e-6:2.2e-5
+Sum of all elements: 0.027775
+
+----------------------------------------
+Variable: tol
+Type: Float64
+Value: 1.0e-5
+----------------------------------------
+Variable: vcycle
+Type: typeof(vcycle)
+(Custom type or structure)
+----------------------------------------
+Variable: xleft
+Type: Int64
+Value: 0
+----------------------------------------
+Variable: xright
+Type: Int64
+Value: 1
+----------------------------------------
+Variable: yleft
+Type: Int64
+Value: 0
+----------------------------------------
+Variable: yright
+Type: Int64
+Value: 1
+----------------------------------------

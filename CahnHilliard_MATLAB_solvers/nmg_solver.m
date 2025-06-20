@@ -36,12 +36,13 @@ phi_lap = ch_laplace(phi_old,nx,ny,xright,xleft,yright,yleft,boundary);
 s_phi = phi_old/dt - phi_lap;
 
 while resid2 > tol && iter < max_iter
+    fprintf(['Iteration ',num2str(iter),' with residual ',num2str(resid2)]);
     [phi_new,mu] = nmg_vcycle(phi_new,mu,s_phi,s_mu,nx,ny, ...
         xright,xleft,yright,yleft,1,c_relax,dt,epsilon2,n_level,boundary); %V-cycle starting a level 1
     resid2 = ch_error2(phi_old,phi_new,mu,nx,ny,xright,xleft,yright,yleft,dt,boundary);
-    if printres
-        writematrix(resid2,strcat(pwd,'/phi_res2.csv'),'WriteMode','append');
-    end
+    % if printres
+    %     writematrix(resid2,strcat(pwd,'/phi_res2.csv'),'WriteMode','append');
+    % end
     iter = iter+1;
 end
 
