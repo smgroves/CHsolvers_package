@@ -168,6 +168,8 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=N
 
     for it in 1:t_iter
         phi_new, r_new = sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag, Mob, it)
+        phi_new = real.(phi_new)
+        r_new = real.(r_new)
         if boundary == "neumann"
             phi_new_out = extback(phi_new)
         else
