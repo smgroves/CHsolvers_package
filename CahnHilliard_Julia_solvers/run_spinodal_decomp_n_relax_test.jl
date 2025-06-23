@@ -14,14 +14,14 @@ h = 1 / GridSize
 m = 8
 epsilon = m * h / (2 * sqrt(2) * atanh(0.9))
 
-boundary = "neumann"
+boundary = "periodic"
 printphi = true
 dt_out = 10
 dt = 5.5e-6
 max_it = 2000
 
 
-for n_relax = [0, 2, 4, 8, 16]
+for n_relax = [2, 4, 8, 16]
     println(n_relax)
     if n_relax == 0
         phi0 = initialization_from_file("$(indir)initial_phi_$(GridSize)_50p.csv", GridSize, GridSize, delim=',', transpose_matrix=false)
@@ -34,7 +34,7 @@ for n_relax = [0, 2, 4, 8, 16]
     ########
     method = "SAV"
     println(method)
-    pathname = @sprintf("%s%s_SAV_%d_dt_%.2e_Nx_%d_n_relax_%d_", outdir, method, max_it, dt, GridSize, n_relax)
+    pathname = @sprintf("%s%s_%s_Julia_%d_dt_%.2e_Nx_%d_n_relax_%d_", outdir, method, boundary, max_it, dt, GridSize, n_relax)
 
     date_time = now()
     result, elapsed_time, mem_allocated, gc_time, memory_counters = @timed CahnHilliard_SAV(phi0; t_iter=max_it, dt=dt, dt_out=dt_out, m=m, boundary=boundary, printphi=printphi, pathname=pathname)
@@ -63,7 +63,7 @@ for n_relax = [0, 2, 4, 8, 16]
     method = "NMG"
     println(method)
 
-    pathname = @sprintf("%s%s_Julia_%d_dt_%.2e_Nx_%d_n_relax_%d_", outdir, method, max_it, dt, GridSize, n_relax)
+    pathname = @sprintf("%s%s_%s_Julia_%d_dt_%.2e_Nx_%d_n_relax_%d_", outdir, method, boundary, max_it, dt, GridSize, n_relax)
     date_time = now()
     result, elapsed_time, mem_allocated, gc_time, memory_counters = @timed CahnHilliard_NMG(phi0; t_iter=max_it, dt=dt, dt_out=dt_out, m=m, boundary=boundary, printphi=printphi, pathname=pathname)
     open("./Job_specs.csv", "a", lock=false) do f
@@ -83,6 +83,6 @@ for n_relax = [0, 2, 4, 8, 16]
         writedlm(f, E_t, " ")
     end
     # t_out = readdlm("$(pathname)t_out.csv", ',', Float64)
-    ch_movie_from_file("$(pathname)phi.csv", t_out, 128; dtframes=1, filename="$(pathname)movie", filetype="mp4", colorbar_type="default")
+    # ch_movie_from_file("$(pathname)phi.csv", t_out, 128; dtframes=1, filename="$(pathname)movie", filetype="mp4", colorbar_type="default")
 
 end
