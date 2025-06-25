@@ -1,19 +1,21 @@
 #%%
+println("Starting...")
 using CSV, DelimitedFiles
 using Plots
 using Printf
 using Statistics
 # import Pkg;
 # Pkg.add("PyPlot");
-using PyPlot
+# using PyPlot
 # or use Makie for interactivity
-pyplot()
+# pyplot()
 # --- Step 1: Read in the matrices ---
-boundary = "periodic"
+boundary = "neumann"
 
+#%%
 folder = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_julia/n_relax_test/$(boundary)"
 n_relax = 2
-timepoint = 100
+timepoint = 10
 nx = 128
 ny = 128
 method1 = "NMG"
@@ -39,9 +41,11 @@ B = full_data2[start_row:end_row, 1:nx]
 # --- Step 2: Compute difference ---
 D = A - B
 
+#%%
+
 # --- Step 3: Plot heatmaps ---
 println("Plotting heatmaps...")
-plot(layout=(2, 3), size=(1200, 800), plot_title="", titlefontsize=16)
+Plots.plot(layout=(2, 3), size=(1200, 800), plot_title="", titlefontsize=16)
 
 # Comparing phi
 title1 = splitext(basename(file1))[1]
@@ -107,14 +111,15 @@ plot!(subplot=6, l2_norm_err, label="Error", xlabel="Time Step", title="L2 Norm 
 hline!(subplot=6, [ave_err], linestyle=:dot, color=:black, label="Average Error = $(round(ave_err, digits = 4))")  # add horizontal dotted line at y = 0.0
 
 
-#%%
+#%% FIGURE S1H
 # for boundary = ["neumann", "periodic"]
+boundary = "neumann"
+
 ave_err = Vector{Float64}()
-push!(ave_err, 0.2)
-for n_relax = [2, 4, 8, 16]
+# push!(ave_err, 0.2)
+for n_relax = [0, 1, 2, 4, 8, 16]
     println(n_relax)
     # --- Step 1: Read in the matrices ---
-    boundary = "periodic"
     folder = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_julia/n_relax_test/$(boundary)"
     timepoint = 100
     nx = 128
@@ -148,9 +153,30 @@ for n_relax = [2, 4, 8, 16]
 
 end
 print(ave_err)
+#%%
 #plot ave_err vs n_relax
-n_relax = [0, 2, 4, 8, 16]
-plot(n_relax, ave_err, marker=:o, xlabel="n_relax", ylabel="Average L2 Norm Error", title="Average L2 Norm Error vs n_relax", titlefont=font(10), legend=false)
+n_relax = [0, 1, 2, 4, 8, 16]
+# Plots.plot(n_relax, ave_err, marker=:o, xlabel="n_relax", ylabel="Average L2 Norm Error", title="Average L2 Norm Error vs n_relax", titlefont=font(10), legend=false)
+# Create the plot
+p = Plots.plot(
+    n_relax,
+    ave_err,
+    marker=:o,
+    markersize=4,
+    markercolor=:black,
+    linecolor=:black,
+    xlabel="n_relax",
+    ylabel="Average L2 Norm Error",
+    title="Average L2 Norm Error vs n_relax",
+    titlefont=font(10, "Arial"),
+    guidefont=font(10, "Arial"),
+    tickfont=font(8, "Arial"),
+    legend=false,
+    xlims=(0, 16),
+    ylims=(0.1, 0.22),
+    size=(400, 300)  # 100 dpi × 4 in = 400 px; 100 dpi × 3 in = 300 px
+)
 
+Plots.savefig(p, "./tests/$(boundary)_average_error_vs_n_relax.pdf")
 
 

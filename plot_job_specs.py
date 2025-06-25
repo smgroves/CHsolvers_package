@@ -279,21 +279,21 @@ plt.savefig(f"./output/compare_memalloc_{bc}_Julia.pdf")
 
 # %% FIGURE 2A: IC and endpoints for periodic and neumann
 
-indir = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_Rivanna_Julia"
-phi_name_MG_periodic = "NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10_phi.csv"
+indir = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_Rivanna_Figure_2"
+IC = "50p"
+phi_name_MG_periodic = f"NMG_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_10{IC}_phi.csv"
 phi_MG_p = np.genfromtxt(
     f"{indir}/{phi_name_MG_periodic}",
     delimiter=",",
 )
 phi_MG_p = phi_MG_p.reshape(-1, 128, 128).transpose(1, 2, 0)
 
-phi_name_MG_neumann = "NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10_phi.csv"
+phi_name_MG_neumann = f"NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_10{IC}_phi.csv"
 phi_MG_n = np.genfromtxt(
     f"{indir}/{phi_name_MG_neumann}",
     delimiter=",",
 )
 phi_MG_n = phi_MG_n.reshape(-1, 128, 128).transpose(1, 2, 0)
-
 
 # %% save individual plots
 
@@ -301,7 +301,7 @@ phi_MG_n = phi_MG_n.reshape(-1, 128, 128).transpose(1, 2, 0)
 timepoints = [0, 200]
 dt_out = 10
 dt = 5.5e-6
-for bc in ["periodic", 'neumann']:
+for bc in ['periodic']:
     for timepoint in timepoints:
         normalize_phis = mcolors.TwoSlopeNorm(vcenter=0, vmin=-1, vmax=1)
         if bc == "periodic":
@@ -321,15 +321,19 @@ for bc in ["periodic", 'neumann']:
         )
         plt.xticks(ticks=[], labels=[])
         plt.yticks(ticks=[], labels=[])
-        plt.title(f"Time= {timepoint*dt*dt_out}, {title} BC")
+        # plt.title(f"Time= {timepoint*dt*dt_out}, {title} BC")
         plt.tight_layout()
         plt.savefig(
-            f"{indir}/MG_Julia_2000_dt_5.5e-6_t_{title}_{timepoint*dt*dt_out:.2e}.pdf",
+            f"{indir}/NMG_Julia_2000_dt_5.5e-6_t_{title}_{IC}_{timepoint*dt*dt_out:.2e}.pdf",
             bbox_inches="tight",
             pad_inches=0,
             dpi=300,
         )
         plt.close()
+
+# %%
+
+# %%
 
 # %% Statistical test comparisons
 GridSize = 128
