@@ -25,7 +25,6 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
     % gamma0   = Stabilization parameter.
     % eta      = Relaxation parameter.
     % xi_flag  = Relaxation flag (0 or 1); if 0, no relaxation (xi is set to 1).
-    % Mob      = Mobility parameter.
 %
 %OUTPUT
     % t_out = Time corresponding to the dt time step outputs.
@@ -50,7 +49,6 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
         default_gamma0 = 2; %updated to Min-Jhe's chosen default; stabilization parameter 
         default_eta = 0.95; %user shouldn't update
         default_xi_flag = 1;
-        default_Mob = 1;
         
         CahnHilliard_SAV_parser = inputParser;
 
@@ -81,7 +79,6 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
         addParameter(CahnHilliard_SAV_parser,'gamma0',default_gamma0,valid_integer);
         addParameter(CahnHilliard_SAV_parser,'eta',default_eta,valid_zero_to_one_num);
         addParameter(CahnHilliard_SAV_parser,'xi_flag', default_xi_flag, valid_logical);
-        addParameter(CahnHilliard_SAV_parser,'Mob',default_Mob,valid_pos_num);
 
         parse(CahnHilliard_SAV_parser, phi0, varargin{:});
     
@@ -105,7 +102,6 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
         gamma0 = CahnHilliard_SAV_parser.Results.gamma0;
         eta = CahnHilliard_SAV_parser.Results.eta;
         xi_flag = CahnHilliard_SAV_parser.Results.xi_flag;
-        Mob = CahnHilliard_SAV_parser.Results.Mob;
 
 %% Define and initialize key simulation parameters
 
@@ -226,7 +222,7 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
 
         % Calculate current phi, r, mass and E
             [phi_new, r_new] = sav_solver(phi_old, phi_prev, r_old, ...
-                hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag, Mob,i);
+                hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag,i);
 
         % Shrink the result back to the original domain size in phi_new_out for output
             if strcmpi(boundary,'neumann')

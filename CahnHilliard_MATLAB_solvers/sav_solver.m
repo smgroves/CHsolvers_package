@@ -1,6 +1,6 @@
 function [phi_new,r_new] = sav_solver(phi_old, phi_prev, r_old, ...
     hx,hy,k2,k4,dt,epsilon2, ...
-    boundary,C0,Beta,gamma0,eta,xi_flag,Mob,i)
+    boundary,C0,Beta,gamma0,eta,xi_flag,i)
 %This function uses the sav method to solve the 
 %Cahn-Hilliard equation for the next time step.
 %
@@ -30,9 +30,9 @@ function [phi_new,r_new] = sav_solver(phi_old, phi_prev, r_old, ...
     phi0_df   = df(phi0,gamma0);        % df at phi0
     Lap_dfphi0 = Lap_SAV(phi0_df, k2, boundary);                    % Lap of df(phi0)
     if i == 1
-        phi_bar = A_inv_CN(phi0 + dt/2 * Mob * Lap_dfphi0, dt, k2, k4, gamma0, epsilon2, Mob, boundary);
+        phi_bar = A_inv_CN(phi0 + dt/2 * Lap_dfphi0, dt, k2, k4, gamma0, epsilon2, boundary);
     elseif i>=2
-        % phi_bar = A_inv_CN(phi0 + dt/2 * Mob * Lap_dfphi0, dt, k2, k4, gamma0, epsilon2, Mob, boundary);
+        % phi_bar = A_inv_CN(phi0 + dt/2 * Lap_dfphi0, dt, k2, k4, gamma0, epsilon2,  boundary);
         phi_bar = 1.5*phi_old - 0.5*phi_prev;
         phi_bar = max(-1, min(1, phi_bar)); 
         % fprintf('Step %d:  max|phi_bar|=%.3f,  diff_prev=%.3e\n', ...
@@ -43,10 +43,10 @@ function [phi_new,r_new] = sav_solver(phi_old, phi_prev, r_old, ...
 
     % Step 1
     b = b_fun(phi_bar,hx,hy,C0,gamma0);
-    g = g_fun_CN(phi0,r0,b,dt,hx,hy,epsilon2,gamma0,Beta,C0,k2,Mob,boundary);
+    g = g_fun_CN(phi0,r0,b,dt,hx,hy,epsilon2,gamma0,Beta,C0,k2,boundary);
 
-    AiLb = A_inv_CN(Mob*Lap_SAV(b,k2,boundary),dt,k2,k4,gamma0,epsilon2,Mob,boundary);
-    Aig  = A_inv_CN(g,dt,k2,k4,gamma0,epsilon2,Mob,boundary);
+    AiLb = A_inv_CN(Lap_SAV(b,k2,boundary),dt,k2,k4,gamma0,epsilon2,boundary);
+    Aig  = A_inv_CN(g,dt,k2,k4,gamma0,epsilon2,boundary);
 
     gamma = -fft2(b.*AiLb);
     gamma = gamma(1,1)*hx*hy;

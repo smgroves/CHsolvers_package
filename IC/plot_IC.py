@@ -52,6 +52,34 @@ plt.close()
 # plt.show()
 
 # %%
+indir = "/Users/smgroves/Documents/GitHub/CHsolvers_package/IC"
+phi_name = "CPC_droplet_e_0.0067_128_R0_0.8.csv"
+
+phi = np.genfromtxt(
+    f"{indir}/{phi_name}",
+    delimiter=",",
+)
+
+normalize_phis = mcolors.TwoSlopeNorm(vcenter=0, vmin=-1, vmax=1)
+s = sns.heatmap(
+    phi,
+    square=True,
+    cmap=cm.RdBu_r,
+    norm=normalize_phis,
+    cbar=False,
+    linewidths=0.0,
+)
+plt.xticks(ticks=[], labels=[])
+plt.yticks(ticks=[], labels=[])
+# plt.title(f"Time= {timepoint*dt}")
+plt.tight_layout()
+plt.savefig(
+    f"{indir}/{phi_name}.png",
+    bbox_inches="tight",
+    pad_inches=0,
+    dpi=300,
+)
+plt.close()
 
 # %%
 

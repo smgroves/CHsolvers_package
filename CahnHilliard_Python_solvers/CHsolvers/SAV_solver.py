@@ -21,7 +21,7 @@ from . import aux_functions_SAV as aux   # Import auxiliary functions
 # r_new   = Next sav state.
 
 
-def sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag, Mob, i):
+def sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag, i):
 
     phi0 = phi_old
     r0 = r_old
@@ -31,7 +31,7 @@ def sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary,
 
     if i == 0:
         phi_bar = aux.A_inv_CN(phi0 + dt/2 * Lap_dfphi0,
-                               dt, k2, k4, gamma0, epsilon2, Mob, boundary)
+                               dt, k2, k4, gamma0, epsilon2, boundary)
     elif i >= 1:
         phi_bar = 1.5 * phi_old - 0.5 * phi_prev
         phi_bar = np.max(-1, np.min(1, phi_bar))
@@ -39,11 +39,11 @@ def sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary,
     # Step 1
     b = aux.b_fun(phi_bar, hx, hy, C0, gamma0)
     g = aux.g_fun_CN(phi0, r0, b, dt, hx, hy, epsilon2,
-                     gamma0, Beta, C0, k2, Mob, boundary)
+                     gamma0, Beta, C0, k2, boundary)
 
-    AiLb = aux.A_inv_CN(Mob * aux.Lap_SAV(b, k2, boundary),
-                        dt, k2, k4, gamma0, epsilon2, Mob, boundary)
-    Aig = aux.A_inv_CN(g, dt, k2, k4, gamma0, epsilon2, Mob, boundary)
+    AiLb = aux.A_inv_CN(aux.Lap_SAV(b, k2, boundary),
+                        dt, k2, k4, gamma0, epsilon2, boundary)
+    Aig = aux.A_inv_CN(g, dt, k2, k4, gamma0, epsilon2, boundary)
 
     gamma = -np.fft.fft2(b*AiLb)
     gamma = gamma[0, 0]*hx*hy

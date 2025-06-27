@@ -6,7 +6,7 @@ from . import SAV_solver as solver
 
 
 @time_and_mem
-def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=10, m=8, epsilon2=np.nan, boundary="periodic", domain=[1, 0, 1, 0], printres=False, printphi=False, pathname="cd", C0=0, Beta=0, gamma0=2, eta=0.95, xi_flag=1, Mob=1):
+def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=10, m=8, epsilon2=np.nan, boundary="periodic", domain=[1, 0, 1, 0], printres=False, printphi=False, pathname="cd", C0=0, Beta=0, gamma0=2, eta=0.95, xi_flag=1):
     """
     This function uses the nonlinear multigrid method to solve the Cahn-Hilliard equation for a specified number of time steps of size dt.
 
@@ -153,7 +153,7 @@ def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=10, m=8, epsilon2=np.na
 
     for it in range(t_iter):
         phi_new, r_new = solver.sav_solver(
-            phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag, Mob, it)
+            phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag, it)
         if boundary == "neumann":
             phi_new_out = extback(phi_new)
         else:

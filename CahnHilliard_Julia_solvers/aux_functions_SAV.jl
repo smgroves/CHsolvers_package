@@ -60,12 +60,12 @@ function Lap_SAV(phi, k2, boundary)
     return Lphi
 end
 
-function A_inv_CN(phi, dt, k2, k4, gamma0, epsilon2, Mob, boundary) #good
+function A_inv_CN(phi, dt, k2, k4, gamma0, epsilon2, boundary) #good
     if boundary == "periodic"
-        denom = 1 .+ ((dt / 2) * epsilon2 .* k4 .- (dt / 2) * gamma0 .* k2) * Mob
+        denom = 1 .+ ((dt / 2) * epsilon2 .* k4 .- (dt / 2) * gamma0 .* k2)
         Ai = real.(ifft(fft(phi) ./ denom))
     elseif boundary == "neumann"
-        denom = 1 .+ ((dt / 2) * epsilon2 .* k4 .- (dt / 2) * gamma0 .* k2) * Mob
+        denom = 1 .+ ((dt / 2) * epsilon2 .* k4 .- (dt / 2) * gamma0 .* k2)
         Ai = real.(ifft(fft_filtered(phi) ./ denom))
     else
         error("Boundary condition not recognized. Use 'periodic' or 'neumann'.")
@@ -84,7 +84,7 @@ function b_fun(phi, hx, hy, C0, gamma0) #good
     return df(phi, gamma0) ./ sqrt.(E1[1, 1] * hx * hy .+ C0)
 end
 
-function g_fun_CN(phi0, r0, b, dt, hx, hy, epsilon2, gamma0, Beta, C0, k2, Mob, boundary) #good
+function g_fun_CN(phi0, r0, b, dt, hx, hy, epsilon2, gamma0, Beta, C0, k2, boundary) #good
     Lap_phi0 = Lap_SAV(phi0, k2, boundary)
     Lap_Lap_phi0 = Lap_SAV(Lap_phi0, k2, boundary)
 
@@ -93,8 +93,8 @@ function g_fun_CN(phi0, r0, b, dt, hx, hy, epsilon2, gamma0, Beta, C0, k2, Mob, 
 
     E1 = fft(f_SAV(phi0, gamma0))
 
-    g = phi0 .- (dt / 2) * Mob * epsilon2 .* Lap_Lap_phi0 .+ (dt / 2) * Mob * gamma0 .* Lap_phi0 .+
-        dt * Mob .* Lap_SAV(b, k2, boundary) .* (r0 .- (1 / 4) * bphi0 .- (1 / 2) * Beta * dt * r0 .* (r0 .- sqrt.(E1[1, 1] * hx * hy .+ C0)))
+    g = phi0 .- (dt / 2) * epsilon2 .* Lap_Lap_phi0 .+ (dt / 2) * gamma0 .* Lap_phi0 .+
+        dt .* Lap_SAV(b, k2, boundary) .* (r0 .- (1 / 4) * bphi0 .- (1 / 2) * Beta * dt * r0 .* (r0 .- sqrt.(E1[1, 1] * hx * hy .+ C0)))
 
     return g
 end
