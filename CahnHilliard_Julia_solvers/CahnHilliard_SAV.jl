@@ -53,7 +53,7 @@ This function uses the nonlinear multigrid method to solve the Cahn-Hilliard equ
         delta_mass_t = Vector of mass change over t_out.
         E_t = Vector of relative energy over t_out.
 """
-function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=NaN, boundary="periodic", domain=[1 0 1 0], printres=false, printphi=false, pathname="cd", C0=1, Beta=0, gamma0=2, eta=0.95, xi_flag=1, Mob=1)
+function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=10, m=8, epsilon2=NaN, boundary="periodic", domain=[1 0 1 0], printres=false, printphi=false, pathname="cd", C0=1, Beta=0, gamma0=2, eta=0.95, xi_flag=1, Mob=1)
     nx, ny = size(phi0)
     xright, xleft, yright, yleft = domain
     Lx = xright - xleft

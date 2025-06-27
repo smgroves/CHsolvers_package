@@ -5,7 +5,7 @@ from .aux_functions import *
 
 
 @time_and_mem
-def CahnHilliard_NMG(phi0, t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5, dt_out=1, m=4, epsilon2=np.nan, boundary="periodic", c_relax=2, domain=[1, 0, 1, 0], printres=False, printphi=False, pathname="cd"):
+def CahnHilliard_NMG(phi0, t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5, dt_out=10, m=8, epsilon2=np.nan, boundary="periodic", c_relax=2, domain=[1, 0, 1, 0], printres=False, printphi=False, pathname="cd"):
     nx, ny = phi0.shape
     xright, xleft, yright, yleft = domain
 

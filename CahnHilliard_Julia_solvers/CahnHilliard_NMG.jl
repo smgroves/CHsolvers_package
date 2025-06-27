@@ -65,7 +65,7 @@ This function uses the nonlinear multigrid method to solve the Cahn-Hilliard equ
         delta_mass_t = Vector of mass change over t_out.
         E_t = Vector of relative energy over t_out.
 """
-function CahnHilliard_NMG(phi0; t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5, dt_out=1, m=8, epsilon2=NaN, boundary="periodic", c_relax=2, domain=[1 0 1 0], printres=false, printphi=false, pathname="cd")
+function CahnHilliard_NMG(phi0; t_iter=1e3, dt=2.5e-5, solver_iter=1e4, tol=1e-5, dt_out=10, m=8, epsilon2=NaN, boundary="periodic", c_relax=2, domain=[1 0 1 0], printres=false, printphi=false, pathname="cd")
     nx, ny = size(phi0)
     xright, xleft, yright, yleft = domain
     # ny = nx

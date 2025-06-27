@@ -6,7 +6,7 @@ from . import SAV_solver as solver
 
 
 @time_and_mem
-def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=1, m=8, epsilon2=np.nan, boundary="periodic", domain=[1, 0, 1, 0], printres=False, printphi=False, pathname="cd", C0=0, Beta=0, gamma0=2, eta=0.95, xi_flag=1, Mob=1):
+def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=10, m=8, epsilon2=np.nan, boundary="periodic", domain=[1, 0, 1, 0], printres=False, printphi=False, pathname="cd", C0=0, Beta=0, gamma0=2, eta=0.95, xi_flag=1, Mob=1):
     """
     This function uses the nonlinear multigrid method to solve the Cahn-Hilliard equation for a specified number of time steps of size dt.
 

@@ -38,7 +38,7 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
     % Set parameter defaults
         default_t_iter = 1e3;
         default_dt = 2.5e-5;
-        default_dt_out = 1;
+        default_dt_out = 10;
         default_m = 8;
         default_epsilon2 = nan;
         default_boundary = 'periodic';
