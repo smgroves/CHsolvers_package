@@ -10,7 +10,7 @@ boundary = "periodic"
 
 outdir = f"./output/output_python-{boundary}/"
 
-method = "NMG"
+method = "SAV"
 n_relax = 4
 GridSize = 128
 h = 1/GridSize
