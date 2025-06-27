@@ -1,4 +1,4 @@
-from . import aux_functions as aux
+from . import aux_functions_NMG as aux
 import numpy as np
 
 from .laplacian import laplace

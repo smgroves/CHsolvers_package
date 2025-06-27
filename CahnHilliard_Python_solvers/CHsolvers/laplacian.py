@@ -1,4 +1,4 @@
-from . import aux_functions as aux
+from . import aux_functions_NMG as aux
 
 
 def laplace(a, nxt, nyt, xright, xleft, yright, yleft, boundary):

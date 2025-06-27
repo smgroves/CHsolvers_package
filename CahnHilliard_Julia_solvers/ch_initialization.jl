@@ -6,30 +6,30 @@ using StaticArrays
 using Printf
 import Random
 
-function initialize_geometric_CPC(nx, ny; CPC_width=20, cohesin_width=4)
-    phi = zeros(Float64, nx, ny)
-    # CPC_width = 20
-    # cohesin_width = 4
-    @simd for i in 1:nx
-        for j in 1:ny
-            if i > round(nx / 2) - CPC_width && i < round(nx / 2) + CPC_width
-                if j > round(ny / 2) - CPC_width && j < round(ny / 2) + CPC_width
-                    phi[i, j] = 1
-                elseif i > round(nx / 2) - cohesin_width && i < round(nx / 2) + cohesin_width
-                    phi[i, j] = 1
-                else
-                    phi[i, j] = -1
-                end
-            else
-                phi[i, j] = -1
-            end
-        end
-    end
-    return phi
-end
+# function initialize_geometric_CPC(nx, ny; CPC_width=20, cohesin_width=4)
+#     phi = zeros(Float64, nx, ny)
+#     # CPC_width = 20
+#     # cohesin_width = 4
+#     @simd for i in 1:nx
+#         for j in 1:ny
+#             if i > round(nx / 2) - CPC_width && i < round(nx / 2) + CPC_width
+#                 if j > round(ny / 2) - CPC_width && j < round(ny / 2) + CPC_width
+#                     phi[i, j] = 1
+#                 elseif i > round(nx / 2) - cohesin_width && i < round(nx / 2) + cohesin_width
+#                     phi[i, j] = 1
+#                 else
+#                     phi[i, j] = -1
+#                 end
+#             else
+#                 phi[i, j] = -1
+#             end
+#         end
+#     end
+#     return phi
+# end
 
-function initialize_round_CPC_um(nx, ny; CPC_width=0.173, cohesin_width=0.2, domain_width=3.2, c1=-1.0, c2=1.0)
-    CPC_radius_grid_points = nx * CPC_width / domain_width
+function initialize_round_CPC_um(nx, ny; CPC_radius=0.173, cohesin_width=0.2, domain_width=3.2, c1=-1.0, c2=1.0)
+    CPC_radius_grid_points = nx * CPC_radius / domain_width
     cohesin_width_grid_points = nx * cohesin_width / domain_width
     cohesin_half_width = cohesin_width_grid_points / 2
     # Create an empty matrix filled with -1
@@ -95,13 +95,13 @@ function initialization_from_file(file, nx, ny; delim=',', transpose_matrix=fals
     return phi
 end
 
-function ch_initialization(nx, ny; method="spinodal", initial_file="", delim=",", R0=0.1, epsilon=0.01, cohesin_width=4, CPC_width=20)
+function ch_initialization(nx, ny; method="spinodal", initial_file="", delim=",", R0=0.1, epsilon=0.01, cohesin_width=0.1, CPC_radius=0.2, domain_width=3.2, c1=-1.0, c2=1.0)
     if method == "random"
         phi0 = initialization_random(nx, ny)
     elseif method == "droplet"
         phi0 = initialization_from_function(nx, ny, R0=R0, epsilon=epsilon)
     elseif method == "geometric"
-        phi0 = initialize_geometric_CPC(nx, ny, CPC_width=CPC_width, cohesin_width=cohesin_width)
+        phi0 = initialize_round_CPC_um(nx, ny, CPC_radius=CPC_radius, cohesin_width=cohesin_width, domain_width=3.2, c1=-1.0, c2=1.0)
     elseif method == "file"
         phi0 = initialization_from_file(initial_file, nx, ny, delim=delim)
     elseif method == "spinodal"

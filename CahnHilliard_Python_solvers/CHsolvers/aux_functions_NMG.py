@@ -45,10 +45,10 @@ def calculate_discrete_energy(phi, h2, epsilon2):
     return E
 
 
-def calculate_discrete_norm_energy(phi, phi0, h2, nx, ny, epsilon2):
-    E0 = calculate_discrete_energy(phi0, h2, nx, ny, epsilon2)
-    E = calculate_discrete_energy(phi, h2, nx, ny, epsilon2)
-    return E / E0
+# def calculate_discrete_norm_energy(phi, phi0, h2, epsilon2):
+#     E0 = calculate_discrete_energy(phi0, h2, epsilon2)
+#     E = calculate_discrete_energy(phi, h2, epsilon2)
+#     return E / E0
 
 
 def time_and_mem(func):

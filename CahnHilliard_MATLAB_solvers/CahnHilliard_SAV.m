@@ -141,14 +141,14 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
     k4 = k2.^2;
 
     % Spectral stuff for original domain for Neumann bc to calculate energy
-        if strcmpi(boundary,'neumann')
-                k_x_od = 1i*[0:(nx/2)/2 -(nx/2)/2+1:-1]*(2*pi/(Lx/2)); 
-                k_y_od = 1i*[0:(ny/2)/2 -(ny/2)/2+1:-1]*(2*pi/(Ly/2));
-                k_xx_od = k_x_od.^2; 
-                k_yy_od = k_y_od.^2;
-                [kxx_od,kyy_od] = meshgrid(k_xx_od,k_yy_od);
-                k2_od = kxx_od + kyy_od;
-        end
+        % if strcmpi(boundary,'neumann')
+        %         k_x_od = 1i*[0:(nx/2)/2 -(nx/2)/2+1:-1]*(2*pi/(Lx/2)); 
+        %         k_y_od = 1i*[0:(ny/2)/2 -(ny/2)/2+1:-1]*(2*pi/(Ly/2));
+        %         k_xx_od = k_x_od.^2; 
+        %         k_yy_od = k_y_od.^2;
+        %         [kxx_od,kyy_od] = meshgrid(k_xx_od,k_yy_od);
+        %         k2_od = kxx_od + kyy_od;
+        % end
 
 %% Initialization
 

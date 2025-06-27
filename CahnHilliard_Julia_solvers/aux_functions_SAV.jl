@@ -118,7 +118,6 @@ function calculate_discrete_energy_sav(phi, h2, epsilon2, k2, gamma0, r, C0)
     E_gamma = h2 * fft(gamma0 / 2 * phi .^ 2)
     E_gamma = E_gamma[1, 1]
 
-    (gridx, gridy) = size(phi)
     a = r^2 - C0 - (gamma0^2 + 2 * gamma0) / 4
 
     a = h2 * sum(f_SAV(phi, gamma0))
@@ -133,14 +132,14 @@ function calculate_discrete_energy_sav(phi, h2, epsilon2, k2, gamma0, r, C0)
     return E
 end
 
-function ch_modified_energy(phi, h2, epsilon2, k2, gamma0)
-    E1 = h2 * fft(f_SAV(phi, 0))
-    E1 = E1[1, 1]
+# function ch_modified_energy(phi, h2, epsilon2, k2, gamma0)
+#     E1 = h2 * fft(f_SAV(phi, 0))
+#     E1 = E1[1, 1]
 
-    E = 0.5 * epsilon2 * fft(phi .* (-real(ifft(k2 .* fft(phi)))))
-    E = E1 + E[1, 1]
-    return E
-end
+#     E = 0.5 * epsilon2 * fft(phi .* (-real(ifft(k2 .* fft(phi)))))
+#     E = E1 + E[1, 1]
+#     return E
+# end
 
 function ch_r_error(r, phi, h2, C0, gamma0) #need to check if this needs to be vectorized
     E1 = fft(f_SAV(phi, gamma0))

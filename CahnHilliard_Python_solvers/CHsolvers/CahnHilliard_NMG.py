@@ -1,7 +1,7 @@
 import numpy as np
 from . import NMG_solver as solver
 import os
-from .aux_functions import *
+from .aux_functions_NMG import *
 
 
 @time_and_mem

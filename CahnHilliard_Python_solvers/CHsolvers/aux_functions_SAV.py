@@ -40,6 +40,16 @@ def ext(x):  # good
     return x_ext
 
 
+def extback(x_ext):  # good
+    # Shrinks from 2*nx x 2*ny back to nx x ny (upper-left block)
+    [nx_ext, ny_ext] = (x_ext).shape
+    nx = int(nx_ext / 2)
+    ny = int(ny_ext / 2)
+    x_back = x_ext[0:nx, 0:ny]
+
+    return x_back
+
+
 def f(phi):  # good
     # f = @(x) 0.25*(x.^2-1).^2
     fphi = (phi ** 2 - 1) ** 2 / 4
@@ -60,16 +70,6 @@ def r0_fun(phi0, hx, hy, C0, gamma0):
     return r0
 
 
-def extback(x_ext):  # good
-    # Shrinks from 2*nx x 2*ny back to nx x ny (upper-left block)
-    [nx_ext, ny_ext] = (x_ext).shape
-    nx = int(nx_ext / 2)
-    ny = int(ny_ext / 2)
-    x_back = x_ext[0:nx, 0:ny]
-
-    return x_back
-
-
 def df(phi, gamma0):  # good
     return phi ** 3 - (1 + gamma0) * phi
 
@@ -80,7 +80,7 @@ def Lap_SAV(phi, k2, boundary):
     if boundary == "periodic":
         Lphi = np.real(np.fft.ifft2(k2 * np.fft.fft2(phi)))
     elif boundary == "neumann":
-        Lphi = np.real(np.fft.ifft2(k2 * fft_filtered(np.fft.fft2(phi))))
+        Lphi = np.real(np.fft.ifft2(k2 * fft_filtered(phi)))
     else:
         print("Boundary condition not recognized. Use 'periodic' or 'neumann'.")
     return Lphi
@@ -99,7 +99,7 @@ def A_inv_CN(phi, dt, k2, k4, gamma0, epsilon2, boundary):
 
 
 def fft_filtered(x):  # fft2 is equivalent to fft in julia for 2d array, good
-    return np.real(np.fft.fft2(x))
+    return np.fft.fft2(x)
 
 
 def b_fun(phi, hx, hy, C0, gamma0):  # good
@@ -111,7 +111,7 @@ def g_fun_CN(phi0, r0, b, dt, hx, hy, epsilon2, gamma0, Beta, C0, k2, boundary):
     Lap_phi0 = Lap_SAV(phi0, k2, boundary)
     Lap_Lap_phi0 = Lap_SAV(Lap_phi0, k2, boundary)
 
-    bphi0 = fft_filtered(b * phi0)
+    bphi0 = np.fft.fft2(b * phi0)
     bphi0 = hx * hy * bphi0[0, 0]
 
     e1 = np.fft.fft2(f_SAV(phi0, gamma0))
@@ -143,7 +143,6 @@ def calculate_discrete_energy_sav(phi, h2, epsilon2, k2, gamma0, r, C0):
     E_gamma = h2 * np.fft.fft2(gamma0 / 2 * phi ** 2)
     E_gamma = E_gamma[1, 1]
 
-    gridx, gridy = phi.shape
     a = r ** 2 - C0 - (gamma0 ** 2 + 2 * gamma0) / 4
 
     a = h2 * np.sum(f_SAV(phi, gamma0))

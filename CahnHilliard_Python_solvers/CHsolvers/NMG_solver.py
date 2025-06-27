@@ -1,5 +1,5 @@
 import numpy as np
-from . import aux_functions as aux
+from . import aux_functions_NMG as aux
 from . import laplacian as ll
 from . import error2
 from . import relax

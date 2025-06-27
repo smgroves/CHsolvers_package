@@ -90,14 +90,14 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=10, m=8, epsilon2=
     k4 = k2 .^ 2
 
     # Spectral stuff for original domain for Neumann bc to calculate energy
-    if boundary == "neumann"
-        k_x_od = 1im * vcat(0:(nx÷2)/2, -(nx ÷ 2)/2+1:-1) * (2 * pi / (Lx / 2))
-        k_y_od = 1im * vcat(0:(ny÷2)/2, -(ny ÷ 2)/2+1:-1) * (2 * pi / (Ly / 2))
-        k_xx_od = real(k_x_od .^ 2)
-        k_yy_od = real(k_y_od .^ 2)
-        (kxx_od, kyy_od) = meshgrid(k_xx_od, k_yy_od)
-        k2_od = real(kxx_od + kyy_od)
-    end
+    # if boundary == "neumann"
+    #     k_x_od = 1im * vcat(0:(nx÷2)/2, -(nx ÷ 2)/2+1:-1) * (2 * pi / (Lx / 2))
+    #     k_y_od = 1im * vcat(0:(ny÷2)/2, -(ny ÷ 2)/2+1:-1) * (2 * pi / (Ly / 2))
+    #     k_xx_od = real(k_x_od .^ 2)
+    #     k_yy_od = real(k_y_od .^ 2)
+    #     (kxx_od, kyy_od) = meshgrid(k_xx_od, k_yy_od)
+    #     k2_od = real(kxx_od + kyy_od)
+    # end
 
     # Initialization
 
@@ -153,8 +153,11 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=10, m=8, epsilon2=
         end
     end
 
-    mass_t[1] = calculate_mass(phi0, h2, nx / 2, ny / 2)
-    # if boundary == "neumann"
+    if boundary == "neumann"
+        mass_t[1] = calculate_mass(phi0, h2, nx / 2, ny / 2)
+    else
+        mass_t[1] = calculate_mass(phi0, h2, nx, ny)
+    end
     # E_t[1] = calculate_discrete_energy(phi_old_out, h2, epsilon2)
     # elseif boundary == "periodic"
     E_t[1] = calculate_discrete_energy(phi_old_out, h2, epsilon2)
@@ -186,7 +189,11 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=10, m=8, epsilon2=
             else
                 phi_t[:, :, t_index] = phi_new_out
             end
-            mass_t[t_index] = calculate_mass(phi_new_out, h2, nx / 2, ny / 2)
+            if boundary == "neumann"
+                mass_t[t_index] = calculate_mass(phi0, h2, nx / 2, ny / 2)
+            else
+                mass_t[t_index] = calculate_mass(phi0, h2, nx, ny)
+            end
             E_t[t_index] = calculate_discrete_energy(phi_new_out, h2, epsilon2)
             D_t[t_index] = ch_r_error(r_new, phi_new, h2, C0, gamma0)
 
@@ -196,7 +203,7 @@ function CahnHilliard_SAV(phi0; t_iter=1e3, dt=2.5e-5, dt_out=10, m=8, epsilon2=
         r_old = copy(r_new)
 
     end
-    delta_mass_t = mass_t #.- mass_t[1]
+    # delta_mass_t = mass_t #.- mass_t[1]
     # E_t = E_t ./ E_t[1]
-    return t_out, phi_t, delta_mass_t, E_t
+    return t_out, phi_t, mass_t, E_t
 end

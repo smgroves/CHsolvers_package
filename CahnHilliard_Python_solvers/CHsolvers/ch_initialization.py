@@ -1,29 +1,32 @@
-from . import aux_functions as aux
+from . import aux_functions_NMG as aux
 import scipy as sc
 import numpy as np
 import random
 
 
-def initialize_geometric_CPC(nx, ny, CPC_width=20, cohesin_width=4):
-    phi = aux.dmatrix(nx, ny)
-    for i in range(nx):
-        for j in range(ny):
-            if i > round(nx / 2) - CPC_width and i < round(nx / 2) + CPC_width:
-                if j > round(ny / 2) - CPC_width and j < round(ny / 2) + CPC_width:
-                    phi[i, j] = 1
-                elif (
-                    i > round(nx / 2) - cohesin_width
-                    and i < round(nx / 2) + cohesin_width
-                ):
-                    phi[i, j] = 1
-                else:
-                    phi[i, j] = -1
-            else:
-                phi[i, j] = -1
-    return phi
+# def initialize_geometric_CPC(nx, ny, CPC_width=20, cohesin_width=4):
+#     phi = aux.dmatrix(nx, ny)
+#     for i in range(nx):
+#         for j in range(ny):
+#             if i > round(nx / 2) - CPC_width and i < round(nx / 2) + CPC_width:
+#                 if j > round(ny / 2) - CPC_width and j < round(ny / 2) + CPC_width:
+#                     phi[i, j] = 1
+#                 elif (
+#                     i > round(nx / 2) - cohesin_width
+#                     and i < round(nx / 2) + cohesin_width
+#                 ):
+#                     phi[i, j] = 1
+#                 else:
+#                     phi[i, j] = -1
+#             else:
+#                 phi[i, j] = -1
+#     return phi
 
 
-def initialize_round_CPC(nx, ny, CPC_width=10, cohesin_width=4):
+def initialize_round_CPC_um(nx, ny, CPC_radius=.2, cohesin_width=.1, domain_width=3.2, c1=-1, c2=1):
+    CPC_radius_grid_points = nx * CPC_radius / domain_width
+    cohesin_width_grid_points = nx * cohesin_width / domain_width
+    cohesin_half_width = cohesin_width_grid_points / 2
     # Create an empty matrix filled with -1
     phi = np.ones(nx, ny)
     phi = -1 * phi
@@ -38,25 +41,26 @@ def initialize_round_CPC(nx, ny, CPC_width=10, cohesin_width=4):
             distance = np.linalg.norm([i - center, j - center])
 
             # Check if the distance is less than or equal to CPC_width
-            if distance <= CPC_width:
+            if distance <= CPC_radius_grid_points:
                 phi[i, j] = 1.0
             elif (
-                i > round((nx) / 2) - cohesin_width
-                and i < round((nx) / 2) + cohesin_width
+                i > round((nx) / 2) - cohesin_half_width
+                and i < round((nx) / 2) + cohesin_half_width
             ):
                 phi[i, j] = 1.0
     return phi
 
 
-def initialization_from_def(nx, ny, h, R0=0.1, epsilon=0.01):
+def initialization_from_function(nx, ny, R0=0.1, epsilon=0.01):
     # Assuming aux.dmatrix(nx, ny) creates a zero matrix
     phi = np.zeros((ny, nx))
-
-    x = np.arange(nx) * h
-    y = np.arange(ny) * h
+    hx = 1 / nx
+    hy = 1 / ny
+    x = np.arange(nx) * hx
+    y = np.arange(ny) * hy
 
     # Manually creating the meshgrid effect
-    R = np.sqrt((x[None, :] - 0.5) ** 2 + (y[:, None] - 0.5) ** 2)
+    R = np.sqrt((x[None, :] - 0.5)**2 + (y[:, None] - 0.5)**2)
 
     phi = np.tanh((R0 - R) / (np.sqrt(2) * epsilon))
 
@@ -92,16 +96,16 @@ def ch_initialization(
     h=1 / 128,
     R0=0.1,
     epsilon=0.01,
-    cohesin_width=4,
-    CPC_width=20,
+    cohesin_width=.1,
+    CPC_radius=.2,
 ):
     if method == "random":
         phi0 = initialization_random(nx, ny)
     elif method == "droplet":
-        phi0 = initialization_from_def(nx, ny, h, R0=R0, epsilon=epsilon)
+        phi0 = initialization_from_function(nx, ny, R0=R0, epsilon=epsilon)
     elif method == "geometric":
-        phi0 = initialize_geometric_CPC(
-            nx, ny, CPC_width=CPC_width, cohesin_width=cohesin_width
+        phi0 = initialize_round_CPC_um(
+            nx, ny, CPC_radius=CPC_radius, cohesin_width=cohesin_width, domain_width=3.2, c1=-1.0, c2=1.0
         )
     elif method == "file":
         phi0 = initialization_from_file(initial_file, nx, ny, delim=delim)
