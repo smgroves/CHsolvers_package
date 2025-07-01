@@ -35,7 +35,7 @@ date_time = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
 
 # note that if using the time_and_mem decorator (in CahnHilliard_NMG), it will return a results dictionary.
 # TODO remove decorator for final package
-results_dict = ch.NMG.CahnHilliard_NMG(phi0, t_iter=max_it, dt=dt, dt_out=dt_out, m=m,
+results_dict = ch.SAV.CahnHilliard_SAV(phi0, t_iter=max_it, dt=dt, dt_out=dt_out, m=m,
                                        boundary=boundary, printphi=printphi, printres=True, pathname=pathname)
 
 # t_out, phi_t, delta_mass_t, E_t

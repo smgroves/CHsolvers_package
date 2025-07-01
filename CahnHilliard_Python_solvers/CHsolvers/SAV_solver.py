@@ -34,7 +34,7 @@ def sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary,
                                dt, k2, k4, gamma0, epsilon2, boundary)
     elif i >= 1:
         phi_bar = 1.5 * phi_old - 0.5 * phi_prev
-        phi_bar = np.max(-1, np.min(1, phi_bar))
+        phi_bar = np.maximum(-1, np.minimum(1, phi_bar))
 
     # Step 1
     b = aux.b_fun(phi_bar, hx, hy, C0, gamma0)
@@ -82,15 +82,17 @@ def sav_solver(phi_old, phi_prev, r_old, hx, hy, k2, k4, dt, epsilon2, boundary,
         if a > 0:
             discriminant = b**2 - 4 * a * c  # Calculate discriminant
             if discriminant >= 0:
-                xi = (-b - np.sqrt(discriminant)) / (2 * a)
-                xi = np.max(0, np.min(xi, 1))  # Restrict xi to the range [0,1]
+                xi = np.real((-b - np.sqrt(discriminant)) / (2 * a))
+                # Restrict xi to the range [0,1]
+                xi = np.max([0, np.min([xi, 1])])
             else:
                 xi = 1  # When discriminant < 0, choose xi = 1
         else:
             # Special case when a = 0
             if b != 0:
                 xi = -c / b
-                xi = np.max(0, np.min(xi, 1))  # Restrict xi to the range [0,1]
+                # Restrict xi to the range [0,1]
+                xi = np.max([0, np.min([xi, 1])])
             else:
                 if c <= 0:
                     xi = 1  # When c <= 0, choose xi = 1
