@@ -45,7 +45,6 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
         default_printphi = false;
         default_pathname = 'cd';
         default_C0 = 1;
-        default_Beta = 0;
         default_gamma0 = 2; %updated to Min-Jhe's chosen default; stabilization parameter 
         default_eta = 0.95; %user shouldn't update
         default_xi_flag = 1;
@@ -75,7 +74,6 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
         addParameter(CahnHilliard_SAV_parser,'printphi',default_printphi,valid_logical);
         addParameter(CahnHilliard_SAV_parser,'pathname',default_pathname,valid_string);
         addParameter(CahnHilliard_SAV_parser,'C0',default_C0,valid_integer);
-        addParameter(CahnHilliard_SAV_parser,'Beta',default_Beta,valid_integer);
         addParameter(CahnHilliard_SAV_parser,'gamma0',default_gamma0,valid_integer);
         addParameter(CahnHilliard_SAV_parser,'eta',default_eta,valid_zero_to_one_num);
         addParameter(CahnHilliard_SAV_parser,'xi_flag', default_xi_flag, valid_logical);
@@ -98,7 +96,6 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
         printphi = CahnHilliard_SAV_parser.Results.printphi;
         pathname = CahnHilliard_SAV_parser.Results.pathname;
         C0 = CahnHilliard_SAV_parser.Results.C0;
-        Beta = CahnHilliard_SAV_parser.Results.Beta;
         gamma0 = CahnHilliard_SAV_parser.Results.gamma0;
         eta = CahnHilliard_SAV_parser.Results.eta;
         xi_flag = CahnHilliard_SAV_parser.Results.xi_flag;
@@ -222,7 +219,7 @@ function [t_out, phi_t, mass_t, E_t, D_t] = CahnHilliard_SAV(phi0, varargin)
 
         % Calculate current phi, r, mass and E
             [phi_new, r_new] = sav_solver(phi_old, phi_prev, r_old, ...
-                hx, hy, k2, k4, dt, epsilon2, boundary, C0, Beta, gamma0, eta, xi_flag,i);
+                hx, hy, k2, k4, dt, epsilon2, boundary, C0, gamma0, eta, xi_flag,i);
 
         % Shrink the result back to the original domain size in phi_new_out for output
             if strcmpi(boundary,'neumann')

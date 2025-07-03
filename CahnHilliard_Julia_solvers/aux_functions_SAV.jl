@@ -84,7 +84,7 @@ function b_fun(phi, hx, hy, C0, gamma0) #good
     return df(phi, gamma0) ./ sqrt.(E1[1, 1] * hx * hy .+ C0)
 end
 
-function g_fun_CN(phi0, r0, b, dt, hx, hy, epsilon2, gamma0, Beta, C0, k2, boundary) #good
+function g_fun_CN(phi0, r0, b, dt, hx, hy, epsilon2, gamma0, C0, k2, boundary) #good
     Lap_phi0 = Lap_SAV(phi0, k2, boundary)
     Lap_Lap_phi0 = Lap_SAV(Lap_phi0, k2, boundary)
 
@@ -94,12 +94,12 @@ function g_fun_CN(phi0, r0, b, dt, hx, hy, epsilon2, gamma0, Beta, C0, k2, bound
     E1 = fft(f_SAV(phi0, gamma0))
 
     g = phi0 .- (dt / 2) * epsilon2 .* Lap_Lap_phi0 .+ (dt / 2) * gamma0 .* Lap_phi0 .+
-        dt .* Lap_SAV(b, k2, boundary) .* (r0 .- (1 / 4) * bphi0 .- (1 / 2) * Beta * dt * r0 .* (r0 .- sqrt.(E1[1, 1] * hx * hy .+ C0)))
+        dt .* Lap_SAV(b, k2, boundary) .* (r0 .- (1 / 4) * bphi0)
 
     return g
 end
 
-function r_fun(phi, phi0, r0, b, hx, hy, C0, Beta, dt, gamma0)
+function r_fun(phi, phi0, r0, b, hx, hy, C0, dt, gamma0)
     bphi0 = fft(b .* phi0)
     bphi0 = hx * hy * bphi0[1, 1]
 
@@ -108,7 +108,7 @@ function r_fun(phi, phi0, r0, b, hx, hy, C0, Beta, dt, gamma0)
 
     E1 = fft(f_SAV(phi0, gamma0))
 
-    r = r0 .+ (1 / 2) * (bphi .- bphi0) .- Beta * dt * r0 .* (r0 .- sqrt.(E1[1, 1] * hx * hy .+ C0))
+    r = r0 .+ (1 / 2) * (bphi .- bphi0)
 
     return r
 end
