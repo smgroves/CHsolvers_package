@@ -12,7 +12,7 @@ plt.rcParams['pdf.use14corefonts'] = True
 plt.rcParams['pdf.fonttype'] = 'TrueType'
 # %%
 # data = pd.read_csv("Job_specs.csv", sep=",", header=0, index_col=None)
-data_rivanna = pd.read_csv("Job_specs_rivanna.csv",
+data_rivanna = pd.read_csv("Job_specs_Rivanna.csv",
                            sep=",", header=0, index_col=None)
 
 # data['comp'] = "local"
@@ -52,229 +52,322 @@ for language in all_data['language'].unique():
                                         (all_data["IC_percent_+1"] == IC) &
                                         (all_data["print"] == print_data)].shape[0] == 0:
                             print(
-                                f"Missing {language} {method} {GridSize} {bc} {IC} {print_data}")
+                                f"Missing {language} {GridSize} {bc} {print_data} {method} {IC} ")
+                        # elif all_data.loc[(all_data["GridSize"] == GridSize) &
+                        #                   (all_data["boundary"] == bc) &
+                        #                   (all_data["method"] == method) &
+                        #                   (all_data["language"] == language) &
+                        #                   (all_data["IC_percent_+1"] == IC) &
+                        #                   (all_data["print"] == print_data)].shape[0] > 1:
+
+                        #     print(
+                        #         f"Duplicated: {language} {GridSize} {bc} {print_data} {method} {IC}")
+                        #     print(all_data.loc[(all_data["GridSize"] == GridSize) &
+                        #                        (all_data["boundary"] == bc) &
+                        #                        (all_data["method"] == method) &
+                        #                        (all_data["language"] == language) &
+                        #                        (all_data["IC_percent_+1"] == IC) &
+                        #                        (all_data["print"] == print_data)].index)
 # (all_data.groupby(['language', 'method', 'GridSize', 'print', 'boundary',
 #  'IC_percent_+1']).count()['date']).to_csv("Job_specs_Rivanna_counts.csv")
+
+# output.403923 Missing Julia NMG 512 neumann 75p False
+
 # %%
-    for method in all_data['method'].unique():
-        for GridSize in all_data['GridSize'].unique():
-            for bc in all_data['boundary'].unique():
-                for IC in all_data['IC_percent_+1'].unique():
-                    for print_data in all_data['print'].unique():
-                        # print(bc, method, GridSize, language, IC)
-                        if all_data.loc[(all_data["GridSize"] == GridSize) &
-                                        (all_data["boundary"] == bc) &
-                                        (all_data["method"] == method) &
-                                        (all_data["language"] == "Python") &
-                                        (all_data["IC_percent_+1"] == IC) &
-                                        (all_data["print"] == print_data)].shape[0] == 0:
-                            print(
-                                f"{GridSize} {bc} {method} {print_data} {IC}")
+# if duplicated, keep the later one
+all_data = all_data.sort_values(by=['date'])
+all_data = all_data.drop_duplicates(
+    subset=['language', 'method', 'GridSize', 'print', 'boundary', 'IC_percent_+1'], keep='last')
+
 # %%
+all_data.to_csv("Job_specs_Rivanna_cleaned.csv", index=False)
 # all_data = all_data.loc[~((all_data["language"] == "Julia")
 #   & (all_data["comp"] == "local"))]
 # %% FIGURE 2B
 # bc = "neumann"
-GridSize = 128
-g = sns.catplot(
-    all_data.loc[(all_data["GridSize"] == GridSize) &
-                 #  (all_data["boundary"] == bc) &
-                 (all_data["print"] == False)],
-    kind="bar",
-    y="elapsed_time(s)",
-    x="method",
-    hue="boundary",
-    col="language",
-    height=4,
-    aspect=0.4,
-    col_order=["Python", "MATLAB", "Julia"],
-    # log=True
-    # palette="Set2"
-)
-plt.ylim(1, 1e6)
-g.figure.get_axes()[0].set_yscale('log')
-plt.suptitle(
-    f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations", y=1.)
-g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
-plt.tight_layout()
-plt.show()
+# GridSize = 128
+# g = sns.catplot(
+#     all_data.loc[(all_data["GridSize"] == GridSize) &
+#                  #  (all_data["boundary"] == bc) &
+#                  (all_data["print"] == False)],
+#     kind="bar",
+#     y="elapsed_time(s)",
+#     x="method",
+#     hue="boundary",
+#     col="language",
+#     height=4,
+#     aspect=0.4,
+#     col_order=["Python", "MATLAB", "Julia"],
+#     # log=True
+#     # palette="Set2"
+# )
+# plt.ylim(1, 1e6)
+# g.figure.get_axes()[0].set_yscale('log')
+# plt.suptitle(
+#     f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations", y=1.)
+# g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
+# plt.tight_layout()
+# plt.show()
 # plt.savefig(f"./output/both_bc_compare_runtime_{GridSize}_no_print.pdf")
 
 # %% FIGURE 2B and 2C REDONE: gridsize 128, no print, both BC, all languages, NMG  or SAV only
 GridSize = 128
-method = "NMG"
-fig, ax = plt.subplots(1, 1, figsize=(4, 4))
-g = sns.barplot(
-    all_data.loc[(all_data["GridSize"] == GridSize) &
-                 (all_data["method"] == method) &
-                 (all_data["print"] == False)],
-    y="elapsed_time(s)",
-    x="language",
-    hue="boundary",
-    hue_order=["periodic", "neumann"],
-    order=["Python", "MATLAB", "Julia"],
-    errorbar=None,
-    # log=True
-    # palette="Set2"
-)
-sns.swarmplot(
-    all_data.loc[(all_data["GridSize"] == GridSize) &
-                 (all_data["method"] == method) &
-                 (all_data["print"] == False)],
-    y="elapsed_time(s)",
-    x="language",
-    hue="boundary",
-    hue_order=["periodic", "neumann"],
-    order=["Python", "MATLAB", "Julia"],
-    dodge=True,
-    # log=True
-    # palette="Set2"
-)
-plt.ylim(1, 1e6)
-g.figure.get_axes()[0].set_yscale('log')
-plt.suptitle(
-    f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations, {method}", y=1.)
-plt.xlabel("Solver")
-plt.ylabel("Elapsed Time (log[sec])")
+method = "SAV"
+
+
+def plot_fig2(all_data, method):
+    fig, ax = plt.subplots(1, 1, figsize=(4, 4))
+    g = sns.barplot(
+        all_data.loc[(all_data["GridSize"] == GridSize) &
+                     (all_data["method"] == method) &
+                     (all_data["print"] == False)],
+        y="elapsed_time(s)",
+        x="language",
+        hue="boundary",
+        hue_order=["periodic", "neumann"],
+        order=["Python", "MATLAB", "Julia"],
+        errorbar=None,
+        legend=False
+        # log=True
+        # palette="Set2"
+    )
+    sns.swarmplot(
+        all_data.loc[(all_data["GridSize"] == GridSize) &
+                     (all_data["method"] == method) &
+                     (all_data["print"] == False)],
+        y="elapsed_time(s)",
+        x="language",
+        hue="boundary",
+        hue_order=["periodic", "neumann"],
+        order=["Python", "MATLAB", "Julia"],
+        dodge=True,
+        palette='dark:k',
+        legend=False
+        # log=True
+        # palette="Set2"
+    )
+    plt.ylim(1, 1e6)
+    g.figure.get_axes()[0].set_yscale('log')
+    plt.suptitle(
+        f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations, {method}", y=1.)
+    plt.xlabel("Solver")
+    plt.ylabel("Elapsed Time (seconds)")
+    plt.tight_layout()
+    return fig, ax
+
+
+method = "SAV"
+fig, ax = plot_fig2(all_data, method)
+ax.yaxis.tick_right()
+ax.yaxis.set_label_position("right")  # move the label too
+
+# Hide top and left spines
+ax.spines['left'].set_visible(False)
+ax.spines['top'].set_visible(False)
 plt.tight_layout()
+
 # plt.show()
 plt.savefig(
-    f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2BC.pdf")
-# %%
-# %%
-bc = "periodic"
-GridSize = 128
-g = sns.catplot(
-    all_data.loc[(all_data["GridSize"] == GridSize) &
-                 (all_data["boundary"] == bc) &
-                 (all_data["print"] == False)],
-    kind="bar",
-    y="elapsed_time(s)",
-    x="method",
-    # hue="bc",
-    col="language",
-    height=4,
-    aspect=0.4,
-    col_order=["Python", "MATLAB", "Julia"],
-    # log=True
-    # palette="Set2"
+    f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2B.pdf"
 )
-plt.ylim(1, 1e6)
-g.figure.get_axes()[0].set_yscale('log')
-plt.suptitle(
-    f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations, {bc.capitalize()} BC", y=1.)
-g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
-plt.tight_layout()
+
+method = "NMG"
+fig, ax = plot_fig2(all_data, method)
+# Hide top and right spines
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
 # plt.show()
-plt.savefig(f"./output/compare_runtime_{bc}_{GridSize}_no_print.pdf")
+plt.savefig(
+    f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2C.pdf")
+# %%
+# %%
+# bc = "periodic"
+# GridSize = 128
+# g = sns.catplot(
+#     all_data.loc[(all_data["GridSize"] == GridSize) &
+#                  (all_data["boundary"] == bc) &
+#                  (all_data["print"] == False)],
+#     kind="bar",
+#     y="elapsed_time(s)",
+#     x="method",
+#     # hue="bc",
+#     col="language",
+#     height=4,
+#     aspect=0.4,
+#     col_order=["Python", "MATLAB", "Julia"],
+#     # log=True
+#     # palette="Set2"
+# )
+# plt.ylim(1, 1e6)
+# g.figure.get_axes()[0].set_yscale('log')
+# plt.suptitle(
+#     f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations, {bc.capitalize()} BC", y=1.)
+# g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
+# plt.tight_layout()
+# # plt.show()
+# plt.savefig(f"./output/compare_runtime_{bc}_{GridSize}_no_print.pdf")
 
 # %% compare printing to no print
-bc = "neumann"
-GridSize = 512
-g = sns.catplot(
-    all_data.loc[(all_data["GridSize"] == GridSize) &
-                 (all_data["boundary"] == bc)],
-    kind="bar",
-    y="elapsed_time(s)",
-    x="method",
-    hue="print",
-    col="language",
-    height=4,
-    aspect=0.5,
-    col_order=["Python", "MATLAB", "Julia"],
-    # log=True
-    # palette="Set2"
-)
-plt.ylim(1, 1e6)
-g.figure.get_axes()[0].set_yscale('log')
-plt.suptitle(
-    f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations, {bc.capitalize()} BC", y=1.)
-g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
-plt.tight_layout()
-# plt.show()
-plt.savefig(f"./output/compare_runtime_{bc}_{GridSize}_printing_effect.pdf")
+# bc = "neumann"
+# GridSize = 512
+# g = sns.catplot(
+#     all_data.loc[(all_data["GridSize"] == GridSize) &
+#                  (all_data["boundary"] == bc)],
+#     kind="bar",
+#     y="elapsed_time(s)",
+#     x="method",
+#     hue="print",
+#     col="language",
+#     height=4,
+#     aspect=0.5,
+#     col_order=["Python", "MATLAB", "Julia"],
+#     # log=True
+#     # palette="Set2"
+# )
+# plt.ylim(1, 1e6)
+# g.figure.get_axes()[0].set_yscale('log')
+# plt.suptitle(
+#     f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations, {bc.capitalize()} BC", y=1.)
+# g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
+# plt.tight_layout()
+# # plt.show()
+# plt.savefig(f"./output/compare_runtime_{bc}_{GridSize}_printing_effect.pdf")
 
 # %% compare grid sizes
-bc = "neumann"
 GridSizes = [512, 256, 128, 64]
-print_data = True
-fig, ax = plt.subplots(1, 3, figsize=(9, 5))
-for i, language in enumerate(["Python", "MATLAB", "Julia"]):
-    for gr in GridSizes:
-        g = sns.barplot(
-            data=all_data.loc[(all_data["GridSize"] == gr) &
-                              (all_data["boundary"] == bc) &
-                              (all_data["print"] == print_data) &
-                              (all_data["language"] == language)],
+print_data = False
+# Create color palette: dark to light for each GridSize
+default_colors = sns.color_palette()  # seaborn default
+blue_base = default_colors[0]   # typically blue
+orange_base = default_colors[1]  # typically orange
+
+blue_shades = sns.light_palette(
+    blue_base, n_colors=len(GridSizes)+1, reverse=True)
+orange_shades = sns.light_palette(orange_base,
+                                  n_colors=len(GridSizes)+1,
+                                  reverse=True)
+gray_shades = sns.light_palette(
+    "black", n_colors=len(GridSizes)+1, reverse=True)
+
+# palette_periodic = sns.light_palette("blue", len(GridSizes)+1)[::-1]
+# palette_neumann = sns.light_palette("orange", len(GridSizes)+1)[::-1]
+for i, method in enumerate(["NMG", "SAV"]):
+    fig, ax = plt.subplots(figsize=(4, 4))
+
+    for j, gr in enumerate(GridSizes):
+        # Filter by GridSize and Method
+        subset = all_data.loc[(all_data["GridSize"] == gr)
+                              & (all_data["method"] == method) &
+                              (all_data["print"] == False)]
+
+        grid_palette = {
+            "periodic": blue_shades[j],
+            "neumann": orange_shades[j]
+        }
+
+        gray_palette = {"periodic": gray_shades[j], "neumann": gray_shades[j]}
+        # Plot this GridSize on top of previous ones
+        sns.barplot(
+            data=subset,
+            x="language",
             y="elapsed_time(s)",
-            x="method",
-            alpha=1,
-            log=True,
-            label=f"{gr}x{gr}",
-            ax=ax[i],
-        )
-    ax[i].set_ylim(1, 1e7)
-    ax[i].set_title(language)
-    # plt.set_yscale('log')
-plt.suptitle(
-    f"Elapsed Time for 2000 Iterations, {bc.capitalize()} BC, print to file: {print_data}", y=1.)
-plt.tight_layout()
-plt.legend()
+            hue="boundary",
+            hue_order=["periodic", "neumann"],
+            order=["Python", "MATLAB", "Julia"],
+            dodge=True,
+            ax=ax,
+            palette=grid_palette,  # ✅ This is now a dict, not a Series
+            errorbar=None,
+            zorder=i,  # optional for drawing order control,
+            legend=False)
+        sns.swarmplot(
+            data=subset,
+            x="language",
+            y="elapsed_time(s)",
+            hue="boundary",
+            hue_order=["periodic", "neumann"],
+            order=["Python", "MATLAB", "Julia"],
+            dodge=True,
+            # palette=gray_palette,
+            palette="dark:k",
+            size=4,
+            ax=ax,
+            # errorbar=None,
+            zorder=i,  # optional for drawing order control,
+            legend=False)
+    ax.set_yscale("log")
+    ax.set_title(f"{method}")
+    ax.set_xlabel("Solver")
+    ax.set_ylabel("Elapsed Time (seconds)")
+    if method == "SAV":
+        ax.yaxis.tick_right()
+        ax.yaxis.set_label_position("right")  # move the label too
+
+        # Hide top and left spines
+        ax.spines['left'].set_visible(False)
+        ax.spines['top'].set_visible(False)
+    else:
+        # Hide top and right spines
+        ax.spines['right'].set_visible(False)
+        ax.spines['top'].set_visible(False)
+    plt.ylim(1, 1e7)
+    plt.tight_layout()
+    # plt.show()
+    plt.savefig(f"./output/{method}_no_print_Figure_S2_gridsizes.pdf")
+
+# %%
+# bc = "neumann"
+# GridSize = 512
+# g = sns.swarmplot(
+#     all_data.loc[(all_data["GridSize"] == GridSize) &
+#                  (all_data["boundary"] == bc)],
+#     y="elapsed_time(s)",
+#     hue="language",
+#     x="print",
+
+# )
+# g.figure.get_axes()[0].set_yscale('log')
+
 # plt.show()
-plt.savefig(f"./output/compare_runtime_{bc}_compare_gridsize_with_print.pdf")
-# %%
-bc = "neumann"
-GridSize = 512
-g = sns.swarmplot(
-    all_data.loc[(all_data["GridSize"] == GridSize) &
-                 (all_data["boundary"] == bc)],
-    y="elapsed_time(s)",
-    hue="language",
-    x="print",
 
-)
-g.figure.get_axes()[0].set_yscale('log')
+# # %%
+# g = sns.lineplot(
+#     all_data,
+#     y="elapsed_time(s)",
+#     x="GridSize",
+#     hue="method",
+#     style="language",
+# )
+# g.figure.get_axes()[0].set_yscale('log')
+# g.figure.get_axes()[0].set_xscale('log')
 
-plt.show()
-
-# %%
-g = sns.lineplot(
-    all_data,
-    y="elapsed_time(s)",
-    x="GridSize",
-    hue="method",
-    style="language",
-)
-g.figure.get_axes()[0].set_yscale('log')
-g.figure.get_axes()[0].set_xscale('log')
-
-plt.show()
-
-# %%
-
-bc = "periodic"
-g = sns.catplot(
-    all_data.loc[
-        (all_data["boundary"] == bc) &
-        (all_data['language'] == "Julia")
-    ],
-    kind="bar",
-    y="mem_allocated(MB)",
-    x="solver",
-    # # hue="bc",
-    col="GridSize",
-    # height=4,
-    aspect=0.35,
-)
-# plt.ylim(1, 1e7)
-g.figure.get_axes()[0].set_yscale('log')
-
-plt.suptitle(
-    f"Memory Allocated for 2000 Iterations, {bc.capitalize()} BC, Julia", y=1.)
-g.set_axis_labels("Solver", "Memory Allocated (MB)")
-# plt.tight_layout()
 # plt.show()
-plt.savefig(f"./output/compare_memalloc_{bc}_Julia.pdf")
+
+# # %%
+
+# bc = "periodic"
+# g = sns.catplot(
+#     all_data.loc[
+#         (all_data["boundary"] == bc) &
+#         (all_data['language'] == "Julia")
+#     ],
+#     kind="bar",
+#     y="mem_allocated(MB)",
+#     x="solver",
+#     # # hue="bc",
+#     col="GridSize",
+#     # height=4,
+#     aspect=0.35,
+# )
+# # plt.ylim(1, 1e7)
+# g.figure.get_axes()[0].set_yscale('log')
+
+# plt.suptitle(
+#     f"Memory Allocated for 2000 Iterations, {bc.capitalize()} BC, Julia", y=1.)
+# g.set_axis_labels("Solver", "Memory Allocated (MB)")
+# # plt.tight_layout()
+# # plt.show()
+# plt.savefig(f"./output/compare_memalloc_{bc}_Julia.pdf")
 
 
 # %% FIGURE 2A: IC and endpoints for periodic and neumann
@@ -398,6 +491,6 @@ bb = df.loc[(df['method'] == 'SAV') & (df['language'] == "Julia")
 # %%
 # Figure 2B t test
 stats.ttest_ind(aa, bb)
-# TtestResult(statistic=np.float64(1.7237699829831481e-15), pvalue=np.float64(0.9999999999999987), df=np.float64(4.0))
+# TtestResult(statistic=np.float64(4.262818745173554), pvalue=np.float64(0.013024338196012182), df=np.float64(4.0))
 
 # %%
