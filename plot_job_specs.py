@@ -37,7 +37,7 @@ all_data = all_data.loc[all_data['comp'] != "local"]
 
 # %% Check if all expected cases ran on Rivanna
 all_data = all_data.sort_values(
-    by=['method', 'language', 'GridSize', 'print', 'boundary', 'IC_percent_+1'])
+    by=['method', 'language', 'GridSize', 'print', 'boundary', 'IC_percent_+1', 'dt_out'])
 for language in all_data['language'].unique():
     for method in all_data['method'].unique():
         for GridSize in all_data['GridSize'].unique():
@@ -52,22 +52,22 @@ for language in all_data['language'].unique():
                                         (all_data["IC_percent_+1"] == IC) &
                                         (all_data["print"] == print_data)].shape[0] == 0:
                             print(
-                                f"Missing {language} {GridSize} {bc} {print_data} {method} {IC} ")
-                        # elif all_data.loc[(all_data["GridSize"] == GridSize) &
-                        #                   (all_data["boundary"] == bc) &
-                        #                   (all_data["method"] == method) &
-                        #                   (all_data["language"] == language) &
-                        #                   (all_data["IC_percent_+1"] == IC) &
-                        #                   (all_data["print"] == print_data)].shape[0] > 1:
+                                f"Missing {language} {GridSize} {bc} {print_data} {method} {IC}")
+                        elif all_data.loc[(all_data["GridSize"] == GridSize) &
+                                          (all_data["boundary"] == bc) &
+                                          (all_data["method"] == method) &
+                                          (all_data["language"] == language) &
+                                          (all_data["IC_percent_+1"] == IC) &
+                                          (all_data["print"] == print_data)].shape[0] > 1:
 
-                        #     print(
-                        #         f"Duplicated: {language} {GridSize} {bc} {print_data} {method} {IC}")
-                        #     print(all_data.loc[(all_data["GridSize"] == GridSize) &
-                        #                        (all_data["boundary"] == bc) &
-                        #                        (all_data["method"] == method) &
-                        #                        (all_data["language"] == language) &
-                        #                        (all_data["IC_percent_+1"] == IC) &
-                        #                        (all_data["print"] == print_data)].index)
+                            print(
+                                f"Duplicated: {language} {GridSize} {bc} {print_data} {method} {IC}")
+                            print(all_data.loc[(all_data["GridSize"] == GridSize) &
+                                               (all_data["boundary"] == bc) &
+                                               (all_data["method"] == method) &
+                                               (all_data["language"] == language) &
+                                               (all_data["IC_percent_+1"] == IC) &
+                                               (all_data["print"] == print_data)].index)
 # (all_data.groupby(['language', 'method', 'GridSize', 'print', 'boundary',
 #  'IC_percent_+1']).count()['date']).to_csv("Job_specs_Rivanna_counts.csv")
 
@@ -80,6 +80,7 @@ all_data = all_data.drop_duplicates(
     subset=['language', 'method', 'GridSize', 'print', 'boundary', 'IC_percent_+1'], keep='last')
 
 # %%
+all_data = all_data.loc[(all_data["print"] == False)].reset_index()
 all_data.to_csv("Job_specs_Rivanna_cleaned.csv", index=False)
 # all_data = all_data.loc[~((all_data["language"] == "Julia")
 #   & (all_data["comp"] == "local"))]
@@ -166,19 +167,19 @@ ax.spines['left'].set_visible(False)
 ax.spines['top'].set_visible(False)
 plt.tight_layout()
 
-# plt.show()
-plt.savefig(
-    f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2B.pdf"
-)
+plt.show()
+# plt.savefig(
+# f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2B.pdf"
+# )
 
 method = "NMG"
 fig, ax = plot_fig2(all_data, method)
 # Hide top and right spines
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
-# plt.show()
-plt.savefig(
-    f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2C.pdf")
+plt.show()
+# plt.savefig(
+# f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2C.pdf")
 # %%
 # %%
 # bc = "periodic"

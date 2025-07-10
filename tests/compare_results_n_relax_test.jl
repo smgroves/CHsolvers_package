@@ -27,9 +27,11 @@ start_row = (timepoint - 1) * ny + 1
 end_row = timepoint * ny
 
 A = full_data1[start_row:end_row, 1:nx]
-
+#%%
 method2 = "SAV"
 file2 = "$(folder)/$(method2)_$(boundary)_Julia_2000_dt_5.50e-06_Nx_128_n_relax_$(n_relax)"
+# rivanna_folder = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_rivanna_07_2025"
+# file2 = "NMG_Julia_2000_dt_5.50e-06_Nx_128_neumann_dtout_1050p_phi"
 full_data2 = readdlm("$(file2)_phi.csv", ',')
 
 # Extract rows for the desired timepoint
@@ -113,11 +115,11 @@ hline!(subplot=6, [ave_err], linestyle=:dot, color=:black, label="Average Error 
 
 #%% FIGURE S1H
 # for boundary = ["neumann", "periodic"]
-boundary = "neumann"
+boundary = "periodic"
 
 ave_err = Vector{Float64}()
-# push!(ave_err, 0.2)
-for n_relax = [0, 1, 2, 4, 8, 16]
+push!(ave_err, 0.017673534809872195)
+for n_relax = [1, 2, 4, 8, 16]
     println(n_relax)
     # --- Step 1: Read in the matrices ---
     folder = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_julia/n_relax_test/$(boundary)"
@@ -146,7 +148,7 @@ for n_relax = [0, 1, 2, 4, 8, 16]
     # --- Step 2: Compute difference ---
     D = A - B
 
-    l2_norm_err = sqrt.(sum((D) .^ 2, dims=2))
+    l2_norm_err = sqrt.(mean((D) .^ 2, dims=2))
     #append to ave_err
     println(mean(l2_norm_err))
     push!(ave_err, mean(l2_norm_err))
@@ -166,17 +168,17 @@ p = Plots.plot(
     markercolor=:black,
     linecolor=:black,
     xlabel="n_relax",
-    ylabel="Average L2 Norm Error",
-    title="Average L2 Norm Error vs n_relax",
+    ylabel="RMSE",
+    title="RMSE vs n_relax",
     titlefont=font(10, "Arial"),
     guidefont=font(10, "Arial"),
     tickfont=font(8, "Arial"),
     legend=false,
     xlims=(0, 16),
-    ylims=(0.1, 0.22),
+    # ylims=(0.1, 0.22),
     size=(400, 300)  # 100 dpi × 4 in = 400 px; 100 dpi × 3 in = 300 px
 )
 
-Plots.savefig(p, "./tests/$(boundary)_average_error_vs_n_relax.pdf")
+Plots.savefig(p, "./tests/$(boundary)_average_RMSE_vs_n_relax.pdf")
 
 
