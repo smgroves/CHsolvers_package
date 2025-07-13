@@ -116,7 +116,7 @@ def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=10, m=8, epsilon2=np.na
             [nx_print, ny_print] = phi_old_out.shape
             for i in range(nx_print):
                 for j in range(ny_print):
-                    f.write(f"{phi_old_out[i][j]},")
+                    f.write(f"{np.real(phi_old_out[i][j])},")
                 f.write("\n")  # end of each row
 
         phi_t = np.nan
@@ -172,7 +172,7 @@ def CahnHilliard_SAV(phi0, t_iter=1e3, dt=2.5e-5, dt_out=10, m=8, epsilon2=np.na
                     [nx_print, ny_print] = phi_new_out.shape
                     for i in range(nx_print):
                         for j in range(ny_print):
-                            f.write(f"{phi_new_out[i][j]},")
+                            f.write(f"{np.real(phi_new_out[i][j])},")
                         f.write("\n")  # end of each row
 
             else:

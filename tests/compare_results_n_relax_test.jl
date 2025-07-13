@@ -106,20 +106,22 @@ plot!(subplot=5, energy2, label="$(title2)", xlabel="Time Step", title="Energy",
 
 # L2 norm over time
 
-# calculare L2 norm for each timepoint in phi
-l2_norm_err = sqrt.(sum((D) .^ 2, dims=2))
-ave_err = mean(l2_norm_err)
-plot!(subplot=6, l2_norm_err, label="Error", xlabel="Time Step", title="L2 Norm Error", titlefont=font(10), legend=:topright)
-hline!(subplot=6, [ave_err], linestyle=:dot, color=:black, label="Average Error = $(round(ave_err, digits = 4))")  # add horizontal dotted line at y = 0.0
+# # calculare L2 norm for each timepoint in phi
+# l2_norm_err = sqrt.(sum((D) .^ 2, dims=2))
+# ave_err = mean(l2_norm_err)
+# plot!(subplot=6, l2_norm_err, label="Error", xlabel="Time Step", title="L2 Norm Error", titlefont=font(10), legend=:topright)
+# hline!(subplot=6, [ave_err], linestyle=:dot, color=:black, label="Average Error = $(round(ave_err, digits = 4))")  # add horizontal dotted line at y = 0.0
+
+#%%
 
 
 #%% FIGURE S1H
 # for boundary = ["neumann", "periodic"]
-boundary = "periodic"
+boundary = "neumann"
 
 ave_err = Vector{Float64}()
-push!(ave_err, 0.017673534809872195)
-for n_relax = [1, 2, 4, 8, 16]
+# push!(ave_err, 0.017673534809872195)
+for n_relax = [0, 1, 2, 4, 8, 16]
     println(n_relax)
     # --- Step 1: Read in the matrices ---
     folder = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_julia/n_relax_test/$(boundary)"
@@ -130,29 +132,21 @@ for n_relax = [1, 2, 4, 8, 16]
     file1 = "$(folder)/$(method1)_$(boundary)_Julia_2000_dt_5.50e-06_Nx_128_n_relax_$(n_relax)"
     full_data1 = readdlm("$(file1)_phi.csv", ',')
 
-    # Extract rows for the desired timepoint
-    start_row = (timepoint - 1) * ny + 1
-    end_row = timepoint * ny
-
-    A = full_data1[start_row:end_row, 1:nx]
-
     method2 = "SAV"
     file2 = "$(folder)/$(method2)_$(boundary)_Julia_2000_dt_5.50e-06_Nx_128_n_relax_$(n_relax)"
     full_data2 = readdlm("$(file2)_phi.csv", ',')
+    full_data1 = reshape(full_data1, (nx, nx, 201))
+    full_data2 = reshape(full_data2, (nx, nx, 201))
 
-    # Extract rows for the desired timepoint
-    start_row = (timepoint - 1) * ny + 1
-    end_row = timepoint * ny
-    B = full_data2[start_row:end_row, 1:nx]
 
-    # --- Step 2: Compute difference ---
-    D = A - B
 
-    l2_norm_err = sqrt.(mean((D) .^ 2, dims=2))
-    #append to ave_err
-    println(mean(l2_norm_err))
-    push!(ave_err, mean(l2_norm_err))
+    rmse = vec(sqrt.(mean((full_data1 - full_data2) .^ 2, dims=(1, 2))))
+    ave_rmse = mean(rmse)
+    push!(ave_err, mean(ave_rmse))
 
+    p = plot(rmse, label="RMSE", xlabel="Time Step", title="RMSE \n$(n_relax)", titlefont=font(10), legend=:topleft)
+    hline!([ave_rmse], linestyle=:dot, color=:black, label="Average RMSE = $(round(ave_rmse, digits = 4))")
+    display(p)
 end
 print(ave_err)
 #%%
@@ -175,7 +169,7 @@ p = Plots.plot(
     tickfont=font(8, "Arial"),
     legend=false,
     xlims=(0, 16),
-    # ylims=(0.1, 0.22),
+    ylims=(0.01, 0.02),
     size=(400, 300)  # 100 dpi × 4 in = 400 px; 100 dpi × 3 in = 300 px
 )
 

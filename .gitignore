@@ -38,3 +38,5 @@ output/output_rivanna_07_2025/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_1
 .git/objects/c8/804d99fb1f27e7b73b9e4c2cd203c3ce4d7340
 .git/objects/07/723098d74f8596b1abb47d621fe5c2cf274bea
 .git/objects/dd/bc2d63f89f8d0cf3d27e6bd1aa648742663d0b
+output/output_rivanna_07_2025/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_1025p_phi.csv
+output/output_rivanna_07_2025/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_1025p_phi.csv

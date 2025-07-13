@@ -158,7 +158,7 @@ end
 for i = 1:t_iter
     phi_new = nmg_solver(phi_old,phi_new,mu,nx,ny, ...
         xright,xleft,yright,yleft,c_relax,dt,epsilon2,n_level, ...
-        solver_iter,tol,boundary,printres);
+        solver_iter,tol,boundary,printres,pathname);
     phi_old = phi_new;
     if mod(i/t_iter*100,5) == 0
         fprintf('%3.0f percent complete\n',i/t_iter*100)
