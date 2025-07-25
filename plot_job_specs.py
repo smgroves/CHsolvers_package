@@ -82,36 +82,8 @@ all_data = all_data.drop_duplicates(
 # %%
 all_data = all_data.loc[(all_data["print"] == False)].reset_index()
 all_data.to_csv("Job_specs_Rivanna_cleaned.csv", index=False)
-# all_data = all_data.loc[~((all_data["language"] == "Julia")
-#   & (all_data["comp"] == "local"))]
-# %% FIGURE 2B
-# bc = "neumann"
-# GridSize = 128
-# g = sns.catplot(
-#     all_data.loc[(all_data["GridSize"] == GridSize) &
-#                  #  (all_data["boundary"] == bc) &
-#                  (all_data["print"] == False)],
-#     kind="bar",
-#     y="elapsed_time(s)",
-#     x="method",
-#     hue="boundary",
-#     col="language",
-#     height=4,
-#     aspect=0.4,
-#     col_order=["Python", "MATLAB", "Julia"],
-#     # log=True
-#     # palette="Set2"
-# )
-# plt.ylim(1, 1e6)
-# g.figure.get_axes()[0].set_yscale('log')
-# plt.suptitle(
-#     f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations", y=1.)
-# g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
-# plt.tight_layout()
-# plt.show()
-# plt.savefig(f"./output/both_bc_compare_runtime_{GridSize}_no_print.pdf")
 
-# %% FIGURE 2B and 2C REDONE: gridsize 128, no print, both BC, all languages, NMG  or SAV only
+# %% FIGURE 2B and 2C: gridsize 128, no print, both BC, all languages, NMG  or SAV only
 GridSize = 128
 method = "SAV"
 
@@ -180,59 +152,6 @@ ax.spines['top'].set_visible(False)
 plt.show()
 # plt.savefig(
 # f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2C.pdf")
-# %%
-# %%
-# bc = "periodic"
-# GridSize = 128
-# g = sns.catplot(
-#     all_data.loc[(all_data["GridSize"] == GridSize) &
-#                  (all_data["boundary"] == bc) &
-#                  (all_data["print"] == False)],
-#     kind="bar",
-#     y="elapsed_time(s)",
-#     x="method",
-#     # hue="bc",
-#     col="language",
-#     height=4,
-#     aspect=0.4,
-#     col_order=["Python", "MATLAB", "Julia"],
-#     # log=True
-#     # palette="Set2"
-# )
-# plt.ylim(1, 1e6)
-# g.figure.get_axes()[0].set_yscale('log')
-# plt.suptitle(
-#     f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations, {bc.capitalize()} BC", y=1.)
-# g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
-# plt.tight_layout()
-# # plt.show()
-# plt.savefig(f"./output/compare_runtime_{bc}_{GridSize}_no_print.pdf")
-
-# %% compare printing to no print
-# bc = "neumann"
-# GridSize = 512
-# g = sns.catplot(
-#     all_data.loc[(all_data["GridSize"] == GridSize) &
-#                  (all_data["boundary"] == bc)],
-#     kind="bar",
-#     y="elapsed_time(s)",
-#     x="method",
-#     hue="print",
-#     col="language",
-#     height=4,
-#     aspect=0.5,
-#     col_order=["Python", "MATLAB", "Julia"],
-#     # log=True
-#     # palette="Set2"
-# )
-# plt.ylim(1, 1e6)
-# g.figure.get_axes()[0].set_yscale('log')
-# plt.suptitle(
-#     f"Elapsed Time for {GridSize}x{GridSize} Grid Size, 2000 Iterations, {bc.capitalize()} BC", y=1.)
-# g.set_axis_labels("Solver", "Elapsed Time (log[sec])")
-# plt.tight_layout()
-# # plt.show()
-# plt.savefig(f"./output/compare_runtime_{bc}_{GridSize}_printing_effect.pdf")
 
 # %% compare grid sizes
 GridSizes = [512, 256, 128, 64]
@@ -316,60 +235,6 @@ for i, method in enumerate(["NMG", "SAV"]):
     # plt.show()
     plt.savefig(f"./output/{method}_no_print_Figure_S2_gridsizes.pdf")
 
-# %%
-# bc = "neumann"
-# GridSize = 512
-# g = sns.swarmplot(
-#     all_data.loc[(all_data["GridSize"] == GridSize) &
-#                  (all_data["boundary"] == bc)],
-#     y="elapsed_time(s)",
-#     hue="language",
-#     x="print",
-
-# )
-# g.figure.get_axes()[0].set_yscale('log')
-
-# plt.show()
-
-# # %%
-# g = sns.lineplot(
-#     all_data,
-#     y="elapsed_time(s)",
-#     x="GridSize",
-#     hue="method",
-#     style="language",
-# )
-# g.figure.get_axes()[0].set_yscale('log')
-# g.figure.get_axes()[0].set_xscale('log')
-
-# plt.show()
-
-# # %%
-
-# bc = "periodic"
-# g = sns.catplot(
-#     all_data.loc[
-#         (all_data["boundary"] == bc) &
-#         (all_data['language'] == "Julia")
-#     ],
-#     kind="bar",
-#     y="mem_allocated(MB)",
-#     x="solver",
-#     # # hue="bc",
-#     col="GridSize",
-#     # height=4,
-#     aspect=0.35,
-# )
-# # plt.ylim(1, 1e7)
-# g.figure.get_axes()[0].set_yscale('log')
-
-# plt.suptitle(
-#     f"Memory Allocated for 2000 Iterations, {bc.capitalize()} BC, Julia", y=1.)
-# g.set_axis_labels("Solver", "Memory Allocated (MB)")
-# # plt.tight_layout()
-# # plt.show()
-# plt.savefig(f"./output/compare_memalloc_{bc}_Julia.pdf")
-
 
 # %% FIGURE 2A: IC and endpoints for periodic and neumann
 
@@ -425,11 +290,7 @@ for bc in ['periodic']:
         )
         plt.close()
 
-# %%
-
-# %%
-
-# %% Statistical test comparisons
+# %% Statistical test comparisons: normality tests
 GridSize = 128
 
 df = all_data.loc[(all_data["GridSize"] == GridSize) &
@@ -484,14 +345,3 @@ print("\nAnderson-Darling Test:")
 print("Statistic:", anderson_darling_test.statistic)
 print("Critical values:", anderson_darling_test.critical_values)
 print("Significance levels:", anderson_darling_test.significance_level)
-# %% t test for NMG vs SAV for Julia, neumann boundary, grid size 128
-aa = df.loc[(df['method'] == 'NMG') & (df['language'] == "Julia")
-            & (df['boundary'] == "neumann"), 'log_elapsed_time']
-bb = df.loc[(df['method'] == 'SAV') & (df['language'] == "Julia")
-            & (df['boundary'] == "neumann"), 'log_elapsed_time']
-# %%
-# Figure 2B t test
-stats.ttest_ind(aa, bb)
-# TtestResult(statistic=np.float64(4.262818745173554), pvalue=np.float64(0.013024338196012182), df=np.float64(4.0))
-
-# %%

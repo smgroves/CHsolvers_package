@@ -75,14 +75,15 @@ function difference_movie(difference, t_out, ny; dtframes=1, filename="differenc
     println("Animation saved as $filename.$filetype")
 end
 
-nx = 512
+nx = 128
 println("Starting...")
-file1 = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_rivanna_07_2025/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_1025p_phi"
-
+# file1 = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_rivanna_07_2025/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_1025p_phi"
+file1 = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_MATLAB-neumann/SAV_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_phi"
 full_data1 = readdlm("$(file1).csv", ',')
 
-file2 = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_rivanna_07_2025/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_1025p_phi"
+# file2 = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_rivanna_07_2025/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_1025p_phi"
 # file2 = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_$(language2)-$(boundary)/$(boundary)_$(method2)_finaltest"
+file2 = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_MATLAB-neumann/NMG_MATLAB_2000_dt_5.50e-06_Nx_128_n_relax_4_phi"
 full_data2 = readdlm("$(file2).csv", ',')
 
 #reshape full_data1 from [AxB,C] to [A,B,C]
@@ -115,4 +116,9 @@ end
 title1 = (basename(file1))
 title2 = (basename(file2))
 println(size((full_data1_reshaped - full_data2_reshaped)))
-difference_movie((full_data1_reshaped - full_data2_reshaped), 1:10, nx; dtframes=1, filename="$(title1)_$(title2)", filetype="mp4", colorbar_type="variable")
+
+rmse = vec(sqrt.(mean((full_data1_reshaped - full_data2_reshaped) .^ 2, dims=(1, 2))))
+ave_err = mean(rmse)
+println(ave_err)
+
+# difference_movie((full_data1_reshaped - full_data2_reshaped), 1:201, nx; dtframes=1, filename="$(title1)_$(title2)", filetype="mp4", colorbar_type="default")

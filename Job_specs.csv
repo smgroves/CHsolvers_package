@@ -1,0 +1,2 @@
+07/24/2025 15:16:26,spinodal_decomp_smoothed_dt_scan,Julia,NMG,64,0.015009369912862116,5.5e-6,1.0e-5,6000,10000.0,./output/output_julia/NMG_Julia_6000_dt_5.50e-06_Nx_64_n_relax_4_,1416.588732297,450798.646504
+07/24/2025 15:40:04,spinodal_decomp_smoothed_dt_scan,Julia,NMG,128,0.015009369912862116,5.5e-6,1.0e-5,6000,10000.0,./output/output_julia/NMG_Julia_6000_dt_5.50e-06_Nx_128_n_relax_4_,2124.562003148,450646.275856

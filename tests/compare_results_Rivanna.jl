@@ -1,5 +1,7 @@
 #%%
 println("Starting...")
+import Pkg;
+Pkg.add("CSV");
 using CSV, DelimitedFiles
 using Plots
 using Printf
@@ -57,8 +59,11 @@ boundary = "neumann"
 #%% #PYTHON COMPARISON
 folder = "/Users/smgroves/Documents/GitHub/CHsolvers_package/output/output_rivanna_07_2025"
 nx = 128
-file1 = "SAV_Julia_2000_dt_5.50e-06_Nx_128_periodic_dtout_1050p_phi"
+file1 = "NMG_Python_20_dt_5.50e-06_Nx_256_periodic_dtout_125pphi"
 full_data1 = readdlm("$(folder)/$(file1).csv", ',')
+if all(x -> x == "" || x == missing, full_data1[:, end])
+    full_data1 = full_data1[:, 1:end-1]
+end
 
 # Extract rows for the desired timepoint
 # start_row = (timepoint - 1) * nx + 1
@@ -66,8 +71,11 @@ full_data1 = readdlm("$(folder)/$(file1).csv", ',')
 
 # A = full_data1[start_row:end_row, 1:nx]
 #%%
-file2 = "SAV_Python_2000_dt_5.50e-06_Nx_128_periodic_dtout_1050pphi"
+file2 = "NMG_Python_20_dt_5.50e-06_Nx_256_neumann_dtout_125pphi"
 full_data2 = readdlm("$(folder)/$(file2).csv", ',')
+if all(x -> x == "" || x == missing, full_data2[:, end])
+    full_data2 = fullfull_data2_data1[:, 1:end-1]
+end
 
 #%%
 
