@@ -12,10 +12,10 @@ from matplotlib import rcParams
 #         print(f)
 
 
-arial_path = "/System/Library/Fonts/Supplemental/Arial.ttf"  # e.g., from Step 1
-arial_font = font_manager.FontProperties(fname=arial_path)
-rcParams["font.family"] = arial_font.get_name()
-plt.rcParams['pdf.use14corefonts'] = False
+# arial_path = "/System/Library/Fonts/Supplemental/Arial.ttf"  # e.g., from Step 1
+# arial_font = font_manager.FontProperties(fname=arial_path)
+# rcParams["font.family"] = arial_font.get_name()
+plt.rcParams['pdf.use14corefonts'] = True
 
 
 def extract_info(s):
@@ -68,32 +68,33 @@ df_small_dt = df_small_dt[df_small_dt['timepoint'].isin(
 # %%
 
 for bc in ['periodic', 'neumann']:
-    fig, ax = plt.subplots(figsize=(10, 6))
-    for nx in df_small_dt['Nx'].unique():
+    fig, ax = plt.subplots(figsize=(4, 3))
+    # for nx in df_small_dt['Nx'].unique():
 
-        # for ic in df_small_dt['IC'].unique():
-        lines = ['--', '-']
-        dt_labels = ['5.5e-7', '5.5e-6']
+    # for ic in df_small_dt['IC'].unique():
+    lines = ['--', '-']
+    dt_labels = ['5.5e-7', '5.5e-6']
 
-        for i, (d, line) in enumerate(zip([df_small_dt, df_large_dt], lines)):
-            # df_tmp = d[(d['boundary'] == bc) & (d['IC'] == ic)]
-            df_tmp = d[(d['boundary'] == bc) & (d['Nx'] == nx)]
+    for i, (d, line) in enumerate(zip([df_small_dt, df_large_dt], lines)):
+        # df_tmp = d[(d['boundary'] == bc) & (d['IC'] == ic)]
+        df_tmp = d[(d['boundary'] == bc) & (d['Nx'] == 512)]
 
-            sns.lineplot(
-                data=df_tmp,
-                x='timepoint', y='value',
-                # hue='Nx',
-                hue="IC",
-                hue_order=['1075p', '1050p', '1025p'],
-                linestyle=line,
-                ax=ax,
-            )
+        sns.lineplot(
+            data=df_tmp,
+            x='timepoint',
+            y='value',
+            hue='IC',
+            # palette=sns.color_palette("Greys")[1:5],
+            hue_order=['1075p', '1050p', '1025p'],
+            linestyle=line,
+            ax=ax,
+        )
 
-    ax.set_title(
-        f'RMSE(NMG-SAV) Over Time for BC: {bc}')
+    ax.set_title(f'RMSE(NMG-SAV) Over Time for BC: {bc}')
     ax.set_xlabel('Time')
     ax.set_ylabel('RMSE')
     ax.set_ylim(0, .5)
+    ax.set_xlim(0, 0.011)
     # Grab Seaborn-generated legend for hue='Nx'
     handles1, labels1 = ax.get_legend_handles_labels()
 
@@ -117,7 +118,8 @@ for bc in ['periodic', 'neumann']:
     plt.tight_layout()
     # plt.show()
     plt.savefig(
-        f"./output/rmse/rmse_NMG_SAV_Julia_dt_comparison_color_IC_{bc}.pdf",)
+        f"./output/rmse/rmse_NMG_SAV_Julia_dt_comparison_color_IC_{bc}_512.pdf",
+    )
 
 
 # %% code consistency
