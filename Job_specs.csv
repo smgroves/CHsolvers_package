@@ -1,2 +1,6 @@
+date,note,language,method,GridSize,epsilon,dt,tol,t_iter,solver_iter,pathname,elapsed_time(s),mem_allocated(Gb),boundary
 07/24/2025 15:16:26,spinodal_decomp_smoothed_dt_scan,Julia,NMG,64,0.015009369912862116,5.5e-6,1.0e-5,6000,10000.0,./output/output_julia/NMG_Julia_6000_dt_5.50e-06_Nx_64_n_relax_4_,1416.588732297,450798.646504
 07/24/2025 15:40:04,spinodal_decomp_smoothed_dt_scan,Julia,NMG,128,0.015009369912862116,5.5e-6,1.0e-5,6000,10000.0,./output/output_julia/NMG_Julia_6000_dt_5.50e-06_Nx_128_n_relax_4_,2124.562003148,450646.275856
+04/30/2026 17:51:54,spinodal_decomp_smoothed_save_variable_dtout_20_print,Python,NMG,128,0.015009369912862116,5.5e-06,,20,,./output/output_python-periodic/NMG_Python_20_dt_5.50e-06_Nx_128_n_relax_4_periodic_,3.2603189945220947,5.565982818603516,periodic
+04/30/2026 17:55:02,spinodal_decomp_smoothed_save_variable_dtout_20_print,Python,NMG,128,0.015009369912862116,5.5e-06,,100,,./output/output_python-periodic/NMG_Python_100_dt_5.50e-06_Nx_128_n_relax_4_periodic_,7.388975143432617,5.567373275756836,periodic
+04/30/2026 21:26:13,spinodal_decomp_smoothed_dtout_10_speedup_Cython_nmg_solver_update_v4,Python,NMG,128,0.015009369912862116,5.5e-06,,20,,./output/output_python-periodic/NMG_Python_20_dt_5.50e-06_Nx_128_n_relax_4_periodic_,34.23311400413513,1.8946113586425781,periodic

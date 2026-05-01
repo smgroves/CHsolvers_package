@@ -40,3 +40,4 @@ output/output_rivanna_07_2025/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_1
 .git/objects/dd/bc2d63f89f8d0cf3d27e6bd1aa648742663d0b
 output/output_rivanna_07_2025/SAV_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_1025p_phi.csv
 output/output_rivanna_07_2025/NMG_Julia_2000_dt_5.50e-06_Nx_512_periodic_dtout_1025p_phi.csv
+output/output_MATLAB-periodic/NMG_MATLAB_6000_dt_5.50e-06_Nx_128_n_relax_4_dtout_1_tol_1e-6phi.csv

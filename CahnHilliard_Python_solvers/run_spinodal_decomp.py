@@ -10,7 +10,7 @@ boundary = "periodic"
 
 outdir = f"./output/output_python-{boundary}/"
 
-method = "SAV"
+method = "NMG"
 n_relax = 4
 GridSize = 128
 h = 1/GridSize
@@ -20,7 +20,7 @@ epsilon = m * h / (2 * np.sqrt(2) * np.arctanh(0.9))
 dt = 5.5E-06
 max_it = 20
 printphi = True
-dt_out = max_it  # output every 10 timesteps
+dt_out = 10  # output every 10 timesteps
 
 
 # phi0 = ch.init.initialization_from_file(f"{indir}initial_phi_$(GridSize)_smooth_n_relax_{n_relax}.csv",
@@ -35,7 +35,7 @@ date_time = datetime.now().strftime("%m/%d/%Y %H:%M:%S")
 
 # note that if using the time_and_mem decorator (in CahnHilliard_NMG), it will return a results dictionary.
 # TODO remove decorator for final package
-results_dict = ch.SAV.CahnHilliard_SAV(phi0, t_iter=max_it, dt=dt, dt_out=dt_out, m=m,
+results_dict = ch.NMG.CahnHilliard_NMG(phi0, t_iter=max_it, dt=dt, dt_out=dt_out, m=m,
                                        boundary=boundary, printphi=printphi, printres=True, pathname=pathname)
 
 # t_out, phi_t, delta_mass_t, E_t
@@ -63,7 +63,7 @@ np.savetxt(f"{pathname}E_t.csv", results_dict["E_t"], delimiter=",")
 
 T = {}
 T['date'] = date_time
-T['name'] = "spinodal_decomp_smoothed_save_variable_dtout_20_print"
+T['name'] = "spinodal_decomp_smoothed_no_print_original"
 T['language'] = "Python"
 T['solver'] = method
 T['nx'] = GridSize
