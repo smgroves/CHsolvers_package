@@ -20,7 +20,7 @@ epsilon = m * h / (2 * np.sqrt(2) * np.arctanh(0.9))
 dt = 5.5E-06
 max_it = 20
 printphi = True
-dt_out = 10  # output every 10 timesteps
+dt_out = 1  # output every 10 timesteps
 
 
 # phi0 = ch.init.initialization_from_file(f"{indir}initial_phi_$(GridSize)_smooth_n_relax_{n_relax}.csv",
