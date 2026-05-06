@@ -81,11 +81,52 @@ all_data = all_data.drop_duplicates(
 
 # %%
 all_data = all_data.loc[(all_data["print"] == False)].reset_index()
-all_data.to_csv("Job_specs_Rivanna_cleaned.csv", index=False)
+# all_data.to_csv("Job_specs_Rivanna_cleaned.csv", index=False)
 
+#%% add in Cython data
+cython_data = pd.read_csv("Job_specs_Cython.csv", sep=",", header=0, index_col=0)
+cython_data['comp'] = "cython"
+for length in [20, 200]:
+    for i, r in cython_data.loc[cython_data['t_iter'] == length].iterrows():
+        new_r = r.copy()
+        new_r['t_iter'] = new_r['t_iter'] * 2000//length
+        new_r['elapsed_time(s)'] = new_r['elapsed_time(s)'] * 2000//length
+        new_r['comp'] = "rivanna_extrap_cython"
+        cython_data.loc[cython_data.shape[0]+1] = new_r
+cython_data = cython_data.loc[cython_data["t_iter"] == 2000]
+# cython_data['language'] = "Cython"
+#rename columns to match all_data
+cython_data = cython_data.rename(columns={
+    'GridSize': 'GridSize',
+    'boundary': 'boundary',
+    'method': 'method',
+    'print': 'print',
+    'note': 'IC_percent_+1',
+    'elapsed_time(s)': 'elapsed_time(s)',
+})
+#%%
+all_data = pd.concat([all_data, cython_data], join='outer', ignore_index=True)
+print(all_data)
+
+#%% compare average time for NMG, 128, periodic, no print, all languages, with and without Cython
+subset_no_cython = all_data.loc[(all_data["GridSize"] == 128)
+                                & (all_data["method"] == "NMG") &
+                                (all_data['comp'] == "rivanna_extrap")]
+subset_cython = all_data.loc[(all_data["GridSize"] == 128)
+                            & (all_data["method"] == "NMG") &
+                                (all_data['comp'] == "rivanna_extrap_cython")]
+
+# compare each condition separately
+for IC in all_data['IC_percent_+1'].unique():
+    for BC in all_data['boundary'].unique():
+        no_cython_time = subset_no_cython.loc[subset_no_cython['IC_percent_+1'] == IC]['elapsed_time(s)'].mean()
+        cython_time = subset_cython.loc[subset_cython['IC_percent_+1'] == IC]['elapsed_time(s)'].mean()
+        print(f"{IC} NMG 128 {BC} no print: No Cython: {no_cython_time:.2f} seconds, With Cython: {cython_time:.2f} seconds, Speedup: {no_cython_time/cython_time:.2f}x")
+
+#max vs min speedup
 # %% FIGURE 2B and 2C: gridsize 128, no print, both BC, all languages, NMG  or SAV only
 GridSize = 128
-method = "SAV"
+method = "NMG"
 
 
 def plot_fig2(all_data, method):
@@ -149,10 +190,10 @@ fig, ax = plot_fig2(all_data, method)
 # Hide top and right spines
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
+plt.savefig(f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2C_with_Cython.pdf")
 plt.show()
-# plt.savefig(
-# f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2C.pdf")
 
+plt.close()
 # %% compare grid sizes
 GridSizes = [512, 256, 128, 64]
 print_data = False
@@ -234,6 +275,7 @@ for i, method in enumerate(["NMG", "SAV"]):
     plt.tight_layout()
     # plt.show()
     plt.savefig(f"./output/{method}_no_print_Figure_S2_gridsizes.pdf")
+    plt.close()
 
 
 # %% FIGURE 2A: IC and endpoints for periodic and neumann
