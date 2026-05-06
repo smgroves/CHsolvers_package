@@ -26,6 +26,7 @@ addParameter(p, 'linear_solver', 'backslash');
 addParameter(p, 'line_search', true);
 addParameter(p, 'stop_threshold', 1e8);
 addParameter(p, 'verbose', false);
+addParameter(p, 'pathname', 'cd');
 parse(p, varargin{:});
 opt = p.Results;
 
@@ -43,6 +44,8 @@ if mod(opt.t_iter, save_every) ~= 0
 end
 phi_t = zeros(nx, ny, n_save);
 phi_t(:, :, 1) = phi0;
+FileName = strcat(opt.pathname, 'phi.csv');
+writematrix(phi0, FileName, 'WriteMode', 'overwrite'); 
 
 stats = initialize_stats(opt.t_iter, opt.dt, u, phi0, opt.gamma, boundary, save_every);
 
@@ -75,6 +78,7 @@ for step = 1:opt.t_iter
     if mod(step, save_every) == 0 || step == opt.t_iter
         save_idx = save_idx + 1;
         phi_t(:, :, save_idx) = phi;
+        writematrix(phi, FileName, 'WriteMode', 'append'); 
         stats.saved_steps(save_idx) = step;
         stats.saved_t(save_idx) = step * opt.dt;
     end
