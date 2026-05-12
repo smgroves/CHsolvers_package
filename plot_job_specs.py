@@ -83,8 +83,9 @@ all_data = all_data.drop_duplicates(
 all_data = all_data.loc[(all_data["print"] == False)].reset_index()
 # all_data.to_csv("Job_specs_Rivanna_cleaned.csv", index=False)
 
-#%% add in Cython data
-cython_data = pd.read_csv("Job_specs_Cython.csv", sep=",", header=0, index_col=0)
+# %% add in Cython data
+cython_data = pd.read_csv("Job_specs_Cython.csv",
+                          sep=",", header=0, index_col=0)
 cython_data['comp'] = "cython"
 for length in [20, 200]:
     for i, r in cython_data.loc[cython_data['t_iter'] == length].iterrows():
@@ -95,7 +96,7 @@ for length in [20, 200]:
         cython_data.loc[cython_data.shape[0]+1] = new_r
 cython_data = cython_data.loc[cython_data["t_iter"] == 2000]
 # cython_data['language'] = "Cython"
-#rename columns to match all_data
+# rename columns to match all_data
 cython_data = cython_data.rename(columns={
     'GridSize': 'GridSize',
     'boundary': 'boundary',
@@ -104,26 +105,28 @@ cython_data = cython_data.rename(columns={
     'note': 'IC_percent_+1',
     'elapsed_time(s)': 'elapsed_time(s)',
 })
-#%%
+# %%
 all_data = pd.concat([all_data, cython_data], join='outer', ignore_index=True)
 print(all_data)
 
-#%% compare average time for NMG, 128, periodic, no print, all languages, with and without Cython
+# %% compare average time for NMG, 128, periodic, no print, all languages, with and without Cython
 subset_no_cython = all_data.loc[(all_data["GridSize"] == 128)
                                 & (all_data["method"] == "NMG") &
                                 (all_data['comp'] == "rivanna_extrap")]
 subset_cython = all_data.loc[(all_data["GridSize"] == 128)
-                            & (all_data["method"] == "NMG") &
-                                (all_data['comp'] == "rivanna_extrap_cython")]
+                             & (all_data["method"] == "NMG") &
+                             (all_data['comp'] == "rivanna_extrap_cython")]
 
 # compare each condition separately
 for IC in all_data['IC_percent_+1'].unique():
     for BC in all_data['boundary'].unique():
-        no_cython_time = subset_no_cython.loc[subset_no_cython['IC_percent_+1'] == IC]['elapsed_time(s)'].mean()
-        cython_time = subset_cython.loc[subset_cython['IC_percent_+1'] == IC]['elapsed_time(s)'].mean()
+        no_cython_time = subset_no_cython.loc[subset_no_cython['IC_percent_+1']
+                                              == IC]['elapsed_time(s)'].mean()
+        cython_time = subset_cython.loc[subset_cython['IC_percent_+1']
+                                        == IC]['elapsed_time(s)'].mean()
         print(f"{IC} NMG 128 {BC} no print: No Cython: {no_cython_time:.2f} seconds, With Cython: {cython_time:.2f} seconds, Speedup: {no_cython_time/cython_time:.2f}x")
 
-#max vs min speedup
+# max vs min speedup
 # %% FIGURE 2B and 2C: gridsize 128, no print, both BC, all languages, NMG  or SAV only
 GridSize = 128
 method = "NMG"
@@ -134,7 +137,8 @@ def plot_fig2(all_data, method):
     g = sns.barplot(
         all_data.loc[(all_data["GridSize"] == GridSize) &
                      (all_data["method"] == method) &
-                     (all_data["print"] == False)],
+                     (all_data["print"] == False) &
+                     (all_data['comp'] != "rivanna_extrap_cython")],
         y="elapsed_time(s)",
         x="language",
         hue="boundary",
@@ -170,17 +174,17 @@ def plot_fig2(all_data, method):
     return fig, ax
 
 
-method = "SAV"
-fig, ax = plot_fig2(all_data, method)
-ax.yaxis.tick_right()
-ax.yaxis.set_label_position("right")  # move the label too
+# method = "SAV"
+# fig, ax = plot_fig2(all_data, method)
+# ax.yaxis.tick_right()
+# ax.yaxis.set_label_position("right")  # move the label too
 
-# Hide top and left spines
-ax.spines['left'].set_visible(False)
-ax.spines['top'].set_visible(False)
-plt.tight_layout()
+# # Hide top and left spines
+# ax.spines['left'].set_visible(False)
+# ax.spines['top'].set_visible(False)
+# plt.tight_layout()
 
-plt.show()
+# plt.show()
 # plt.savefig(
 # f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2B.pdf"
 # )
@@ -190,7 +194,8 @@ fig, ax = plot_fig2(all_data, method)
 # Hide top and right spines
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
-plt.savefig(f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2C_with_Cython.pdf")
+plt.savefig(
+    f"./output/both_bc_compare_runtime_{GridSize}_{method}_no_print_Figure_2C_with_Cython.pdf")
 plt.show()
 
 plt.close()
@@ -387,3 +392,27 @@ print("\nAnderson-Darling Test:")
 print("Statistic:", anderson_darling_test.statistic)
 print("Critical values:", anderson_darling_test.critical_values)
 print("Significance levels:", anderson_darling_test.significance_level)
+
+# %% compare NMG vs FD_IE for neumann and periodic BC, 128, no print, MATLAB
+# neumann then periodic
+NMG_ex = [263.2739, 435.1856]
+FD_IE_ex = [415.4461, 806.8495]
+labels = ['Neumann', 'Periodic']
+x = np.arange(len(labels))
+width = 0.35
+fig, ax = plt.subplots(figsize=(3, 3))
+rects1 = ax.bar(x - width/2, NMG_ex, width, label='NMG')
+rects2 = ax.bar(x + width/2, FD_IE_ex, width, label='FD_IE')
+ax.set_ylabel('Elapsed Time (seconds)')
+# ax.set_title('Elapsed Time by Method and Boundary Condition')
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
+ax.legend()
+
+plt.ylim(1e2, 1e3)
+plt.yscale('log')
+plt.tight_layout()
+plt.savefig(f"./output/NMG_vs_FD_IE_neumann_periodic_128_no_print_MATLAB.pdf")
+plt.show()
+
+# %%
